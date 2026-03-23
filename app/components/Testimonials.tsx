@@ -3,24 +3,35 @@ import ScrollReveal from "./ScrollReveal";
 const testimonials = [
   {
     quote:
-      "To był absolutnie najpiękniejszy element naszego wesela. Goście kolejkowali się do artystki, a wieczorem każdy wychodził z uśmiechem i portretem w ręku. Kilka osób powiedziało nam, że to najlepsza pamiątka weselna, jaką kiedykolwiek dostali.",
-    name: "Kasia & Marek",
-    event: "Wesele w Krakowie, sierpień 2024",
+      "Live painting w wykonaniu Aleksandry podczas eventu w Płocku był strzałem w dziesiątkę. Fajnie było zobaczyć, jak w kilkanaście minut powstaje ilustracja, która naprawdę oddaje charakter osoby lub pary. Super, że taka ilustracja zostaje z nami i z gośćmi na dłużej. To nie jest jednorazowa atrakcja, tylko realna pamiątka, do której chce się wracać. Widać dbałość o detale, jakość papieru i farb, a także ogromne zaangażowanie Aleksandry w to, co robi. Zdecydowanie polecam.",
+    name: "Rafał",
+    event: "Event, Płock — wrzesień 2025",
     accent: "#E8C4B8",
+    source: "weselezklasa.pl",
   },
   {
     quote:
-      "Zamawiałam live painting na event firmowy dla 60 osób. Atmosfera była niesamowita — pracownicy byli zachwyceni, a portrety wisiały potem na biurkach przez tygodnie. Zdecydowanie polecam jako alternatywę dla klasycznej fotografii.",
-    name: "Agnieszka W.",
-    event: "Event firmowy, Warszawa, maj 2024",
+      "Z całego serca polecam współpracę z Panią Olą! Mieliśmy duży event firmowy na 120 osób i mogę śmiało powiedzieć, że jej obecność była jedną z najfajniejszych i najbardziej zapamiętanych części całego wydarzenia. Ola idealnie wpasowała się w klimat imprezy — dostosowała styl rysunków i papier do naszego motywu przewodniego. Jest osobą niezwykle ciepłą, otwartą i pełną pasji. Współpraca z nią to była czysta przyjemność — zero stresu, dużo uśmiechu i pełne zaufanie, że wszystko będzie pięknie.",
+    name: "Kasia",
+    event: "Event firmowy, 120 osób — sierpień 2025",
     accent: "#B8D4E8",
+    source: "weselezklasa.pl",
   },
   {
     quote:
-      "Byłam świadkową na weselu i dostałam portret. Do dziś wisi w ramce w salonie. Jest w nim coś magicznego — ten styl akwarelowy sprawia, że wygląda jak mały obraz, nie jak zdjęcie. Niepowtarzalna pamiątka.",
-    name: "Zofia T.",
-    event: "Gość weselny, Wrocław",
+      "Aleksandra jest pełną pasji i zaangażowania profesjonalistką, a do tego przemiłą i otwartą na ustalenia czy rozmowy z Gośćmi osobą! W naszym przypadku była to impreza firmowa, gdzie zaskoczeniem dla pracowników i gości nie było tylko to, co Ola wykonała, lecz również włączenie live-paintingu do programu. Zdecydowanie polecam skorzystać z jej usług — choć nazwanie tego \"usługą\" nie jest adekwatne, bardziej pasuje \"zdolności i możliwości\".",
+    name: "Adam",
+    event: "Impreza firmowa — maj 2025",
     accent: "#D4B896",
+    source: "weselezklasa.pl",
+  },
+  {
+    quote:
+      "Pani Olu, bardzo dziękujemy za wszystko, za przepiękne ilustracje, za ekspresowe ugaszenie pożaru! Odezwaliśmy się do Pani Oli chwilę przed walentynkami, gdyż inna artystka bez uprzedzenia odwołała malowanie. Pani Ola w 2 dni ogarnęła sytuację i finalnie namalowała prawie 30 ilustracji nas i naszych gości! Gdybym mogła, wystawiłabym 10 gwiazdek! Serdecznie polecam!",
+    name: "Maria",
+    event: "Walentynki, luty 2026",
+    accent: "#2C3E35",
+    source: "weselezklasa.pl",
   },
 ];
 
@@ -44,7 +55,7 @@ export default function Testimonials() {
           <div className="brush-line mt-6" />
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {testimonials.map((t, i) => (
             <ScrollReveal key={t.name} delay={i * 120}>
               <div
@@ -75,6 +86,14 @@ export default function Testimonials() {
                 </p>
 
                 <div className="mt-8 pt-6" style={{ borderTop: `1px solid ${t.accent}40` }}>
+                  <div className="flex items-center gap-0.5 mb-2">
+                    {[1,2,3,4,5].map(s => (
+                      <svg key={s} width="12" height="12" viewBox="0 0 12 12" fill="#E8C4B8">
+                        <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z"/>
+                      </svg>
+                    ))}
+                    <span className="text-xs text-muted ml-1" style={{ fontFamily: "var(--font-dm-sans)" }}>weselezklasa.pl</span>
+                  </div>
                   <p
                     className="text-sm font-medium text-dark"
                     style={{ fontFamily: "var(--font-playfair)" }}
