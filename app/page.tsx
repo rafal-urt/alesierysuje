@@ -25,7 +25,7 @@ const testimonials = [
   {
     name: "Adam",
     context: "Impreza firmowa — maj 2025",
-    text: "Aleksandra jest pełną pasji i zaangażowania profesjonalistką, a do tego przemiłą i otwartą na ustalenia czy rozmowy z gośćmi osobą. Zdecydowanie polecam — choć nazwanie tego „usługą" nie jest adekwatne. Bardziej pasuje „zdolności i możliwości".",
+    text: "Aleksandra jest pełną pasji i zaangażowania profesjonalistką, a do tego przemiłą i otwartą na ustalenia czy rozmowy z gośćmi osobą. Zdecydowanie polecam — choć nazwanie tego \u201Eusługą\u201D nie jest adekwatne. Bardziej pasuje \u201Ezdolności i możliwości\u201D.",
   },
 ];
 
