@@ -54,7 +54,7 @@ export default function ContactForm() {
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Zarezerwuj{" "}
-            <span className="italic" style={{ color: "#E8C4B8" }}>
+            <span className="italic" style={{ color: "#B06E5E" }}>
               swój termin
             </span>
           </h2>
@@ -111,7 +111,7 @@ export default function ContactForm() {
             >
               <p
                 className="text-4xl mb-4"
-                style={{ fontFamily: "var(--font-playfair)", color: "#E8C4B8" }}
+                style={{ fontFamily: "var(--font-playfair)", color: "#B06E5E" }}
               >
                 ✦
               </p>
@@ -154,7 +154,7 @@ export default function ContactForm() {
                     style={inputStyle}
                   />
                   {errors.name && (
-                    <p className="text-xs mt-1" style={{ color: "#E8C4B8", fontFamily: "var(--font-dm-sans)" }}>
+                    <p className="text-xs mt-1" style={{ color: "#9B4A3A", fontFamily: "var(--font-dm-sans)" }}>
                       Wymagane
                     </p>
                   )}
@@ -171,7 +171,7 @@ export default function ContactForm() {
                     style={inputStyle}
                   />
                   {errors.email && (
-                    <p className="text-xs mt-1" style={{ color: "#E8C4B8", fontFamily: "var(--font-dm-sans)" }}>
+                    <p className="text-xs mt-1" style={{ color: "#9B4A3A", fontFamily: "var(--font-dm-sans)" }}>
                       Podaj prawidłowy email
                     </p>
                   )}
@@ -217,7 +217,7 @@ export default function ContactForm() {
                 style={inputStyle}
               />
               {errors.message && (
-                <p className="text-xs" style={{ color: "#E8C4B8", fontFamily: "var(--font-dm-sans)" }}>
+                <p className="text-xs" style={{ color: "#9B4A3A", fontFamily: "var(--font-dm-sans)" }}>
                   Wiadomość jest wymagana
                 </p>
               )}

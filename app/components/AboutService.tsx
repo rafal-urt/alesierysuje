@@ -17,7 +17,7 @@ export default function AboutService() {
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Portret namalowany{" "}
-            <span className="italic" style={{ color: "#E8C4B8" }}>
+            <span className="italic" style={{ color: "#B06E5E" }}>
               w czasie rzeczywistym
             </span>
           </h2>
@@ -57,7 +57,7 @@ export default function AboutService() {
               <div className="text-center p-10">
                 <div
                   className="text-8xl mb-6"
-                  style={{ fontFamily: "var(--font-playfair)", color: "#D4B896" }}
+                  style={{ fontFamily: "var(--font-playfair)", color: "#8B6A40" }}
                 >
                   &#9786;
                 </div>

@@ -57,7 +57,7 @@ export default function HowItWorks() {
                   className="text-5xl font-light mb-6 block"
                   style={{
                     fontFamily: "var(--font-playfair)",
-                    color: "#E8C4B8",
+                    color: "#B06E5E",
                   }}
                 >
                   {step.number}

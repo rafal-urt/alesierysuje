@@ -124,7 +124,7 @@ export default function LivePaintingWesele() {
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Live Painting<br />
-            <span className="italic" style={{ color: "#E8C4B8" }}>na Wesele</span>
+            <span className="italic" style={{ color: "#B06E5E" }}>na Wesele</span>
           </h1>
           <p className="text-lg text-muted max-w-2xl leading-relaxed mb-10" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Twoi goście podczas przyjęcia weselnego mogą otrzymać coś, czego żadna fotografia
@@ -183,11 +183,11 @@ export default function LivePaintingWesele() {
             className="rounded-3xl p-10 text-center"
             style={{ background: "#fdfaf6", border: "1px solid rgba(232,196,184,0.3)" }}
           >
-            <p className="text-6xl mb-4" style={{ fontFamily: "var(--font-playfair)", color: "#E8C4B8" }}>4.9</p>
+            <p className="text-6xl mb-4" style={{ fontFamily: "var(--font-playfair)", color: "#B06E5E" }}>4.9</p>
             <p className="text-sm text-muted mb-2" style={{ fontFamily: "var(--font-dm-sans)" }}>Średnia ocena na weselezklasa.pl</p>
             <div className="flex justify-center gap-1 mb-6">
               {[1,2,3,4,5].map(s => (
-                <svg key={s} width="18" height="18" viewBox="0 0 12 12" fill="#E8C4B8">
+                <svg key={s} width="18" height="18" viewBox="0 0 12 12" fill="#B06E5E">
                   <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z"/>
                 </svg>
               ))}
@@ -222,7 +222,7 @@ export default function LivePaintingWesele() {
               <div key={step.number} className="relative">
                 <p
                   className="text-6xl mb-4 opacity-15"
-                  style={{ fontFamily: "var(--font-playfair)", color: "#E8C4B8" }}
+                  style={{ fontFamily: "var(--font-playfair)", color: "#B06E5E" }}
                 >
                   {step.number}
                 </p>
@@ -252,7 +252,7 @@ export default function LivePaintingWesele() {
               <div key={item} className="flex items-start gap-3">
                 <span
                   className="mt-1 shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs"
-                  style={{ background: "rgba(232,196,184,0.3)", color: "#E8C4B8" }}
+                  style={{ background: "rgba(176,110,94,0.15)", color: "#9B4A3A" }}
                 >
                   ✓
                 </span>
@@ -298,7 +298,7 @@ export default function LivePaintingWesele() {
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
             Zarezerwuj live painting<br />
-            <span className="italic" style={{ color: "#E8C4B8" }}>na swoje wesele</span>
+            <span className="italic" style={{ color: "#B06E5E" }}>na swoje wesele</span>
           </h2>
           <p className="text-muted text-sm mb-10 leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Popularne terminy znikają szybko — szczególnie w sezonie ślubnym (maj–wrzesień).

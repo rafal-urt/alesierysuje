@@ -25,7 +25,7 @@ export default function FAQPage() {
             Pytania i odpowiedzi
           </p>
           <h1 className="text-3xl md:text-6xl text-dark leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
-            <span className="italic" style={{ color: "#E8C4B8" }}>FAQ</span>
+            <span className="italic" style={{ color: "#B06E5E" }}>FAQ</span>
           </h1>
         </div>
       </section>

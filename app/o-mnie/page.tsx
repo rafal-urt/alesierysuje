@@ -77,7 +77,7 @@ export default function OMnie() {
               <h1 className="text-4xl sm:text-5xl md:text-7xl text-dark leading-tight mb-8" style={{ fontFamily: "var(--font-playfair)" }}>
                 Rysuję,<br />
                 bo inaczej<br />
-                <span className="italic" style={{ color: "#E8C4B8" }}>nie umiem</span>
+                <span className="italic" style={{ color: "#B06E5E" }}>nie umiem</span>
               </h1>
               <p className="text-muted leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
                 Jestem portrecistką i ilustratorką — z wyboru i z pasji, która towarzyszy mi
@@ -108,7 +108,7 @@ export default function OMnie() {
               >
                 <div className="flex gap-0.5 mb-1">
                   {[1,2,3,4,5].map(s => (
-                    <svg key={s} width="12" height="12" viewBox="0 0 12 12" fill="#E8C4B8">
+                    <svg key={s} width="12" height="12" viewBox="0 0 12 12" fill="#B06E5E">
                       <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z"/>
                     </svg>
                   ))}
@@ -130,7 +130,7 @@ export default function OMnie() {
           </p>
           <h2 className="text-2xl md:text-5xl text-dark mb-8 leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
             Pasja, która znalazła{" "}
-            <span className="italic" style={{ color: "#E8C4B8" }}>swoje miejsce</span>
+            <span className="italic" style={{ color: "#B06E5E" }}>swoje miejsce</span>
           </h2>
 
           <div className="space-y-6 text-muted leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
@@ -167,7 +167,7 @@ export default function OMnie() {
           <p className="text-xl md:text-4xl italic text-dark leading-relaxed" style={{ fontFamily: "var(--font-playfair)" }}>
             „Nie chodzi o to, żeby portret był fotograficznie dokładny.<br />
             Chodzi o to, żeby był{" "}
-            <span style={{ color: "#E8C4B8" }}>prawdziwy</span>."
+            <span style={{ color: "#B06E5E" }}>prawdziwy</span>."
           </p>
           <div className="brush-line mt-10" />
         </div>
@@ -181,7 +181,7 @@ export default function OMnie() {
           </p>
           <h2 className="text-2xl md:text-5xl text-dark mb-10 md:mb-14" style={{ fontFamily: "var(--font-playfair)" }}>
             Jak podchodzę do{" "}
-            <span className="italic" style={{ color: "#D4B896" }}>swojej pracy</span>
+            <span className="italic" style={{ color: "#8B6A40" }}>swojej pracy</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -216,7 +216,7 @@ export default function OMnie() {
             </p>
             <h2 className="text-2xl md:text-4xl text-dark mb-8 leading-snug" style={{ fontFamily: "var(--font-playfair)" }}>
               Wesele lub event —<br />
-              <span className="italic" style={{ color: "#E8C4B8" }}>oba zasługują na więcej</span>
+              <span className="italic" style={{ color: "#B06E5E" }}>oba zasługują na więcej</span>
             </h2>
             <div className="space-y-5 text-sm text-muted leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
               <p>
@@ -280,7 +280,7 @@ export default function OMnie() {
           </p>
           <h2 className="text-2xl md:text-5xl text-dark mb-10 md:mb-14" style={{ fontFamily: "var(--font-playfair)" }}>
             Jak wygląda{" "}
-            <span className="italic" style={{ color: "#E8C4B8" }}>nasza współpraca</span>
+            <span className="italic" style={{ color: "#B06E5E" }}>nasza współpraca</span>
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -295,7 +295,7 @@ export default function OMnie() {
               >
                 <span
                   className="text-5xl font-light mb-6 block"
-                  style={{ fontFamily: "var(--font-playfair)", color: "#E8C4B8" }}
+                  style={{ fontFamily: "var(--font-playfair)", color: "#B06E5E" }}
                 >
                   {step.number}
                 </span>
@@ -316,7 +316,7 @@ export default function OMnie() {
         <div className="max-w-3xl mx-auto text-center">
           <div className="flex justify-center gap-1 mb-8">
             {[1,2,3,4,5].map(s => (
-              <svg key={s} width="16" height="16" viewBox="0 0 12 12" fill="#E8C4B8">
+              <svg key={s} width="16" height="16" viewBox="0 0 12 12" fill="#B06E5E">
                 <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z"/>
               </svg>
             ))}
@@ -340,7 +340,7 @@ export default function OMnie() {
         <div className="max-w-xl mx-auto">
           <h2 className="text-2xl md:text-4xl text-dark mb-5" style={{ fontFamily: "var(--font-playfair)" }}>
             Chcesz, żebym była<br />
-            <span className="italic" style={{ color: "#E8C4B8" }}>na Waszym weselu?</span>
+            <span className="italic" style={{ color: "#B06E5E" }}>na Waszym weselu?</span>
           </h2>
           <p className="text-muted text-sm mb-10 leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Napisz do mnie — opowiedz o swoim evencie, a ja sprawdzę dostępność

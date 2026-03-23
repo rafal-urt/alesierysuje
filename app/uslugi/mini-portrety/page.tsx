@@ -120,7 +120,7 @@ export default function MiniPortrety() {
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Mini Portrety<br />
-            <span className="italic" style={{ color: "#E8C4B8" }}>jako Winietki</span>
+            <span className="italic" style={{ color: "#B06E5E" }}>jako Winietki</span>
           </h1>
           <p className="text-lg text-muted max-w-2xl leading-relaxed mb-10" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Wyobraź sobie, że każdy gość siada przy stoliku i zamiast kartki z imieniem
@@ -164,7 +164,7 @@ export default function MiniPortrety() {
               <div key={title}>
                 <p
                   className="text-6xl mb-4 opacity-15"
-                  style={{ fontFamily: "var(--font-playfair)", color: "#E8C4B8" }}
+                  style={{ fontFamily: "var(--font-playfair)", color: "#B06E5E" }}
                 >
                   0{i + 1}
                 </p>
@@ -238,7 +238,7 @@ export default function MiniPortrety() {
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
             Zamów mini portrety<br />
-            <span className="italic" style={{ color: "#E8C4B8" }}>na swoje wesele</span>
+            <span className="italic" style={{ color: "#B06E5E" }}>na swoje wesele</span>
           </h2>
           <p className="text-muted text-sm mb-10 leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Napisz liczbę gości i datę wesela — Aleksandra przygotuje ofertę i sprawdzi dostępność.

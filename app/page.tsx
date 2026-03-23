@@ -3,92 +3,121 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "alesierysuje — Live Painting Akwarelowy na Wesela i Eventy",
   description:
-    "Aleksandra Sienica maluje akwarelowe portrety gości na żywo podczas wesela i eventów. Wyjątkowa atrakcja — każdy gość odchodzi z unikalnym, ręcznie malowanym portretem.",
+    "Aleksandra Sienica maluje akwarelowe portrety gości na żywo podczas wesela i eventów. Każdy gość odchodzi z unikalnym, ręcznie malowanym portretem — pamiątką na całe życie.",
+  openGraph: {
+    title: "alesierysuje — Live Painting Akwarelowy na Wesela i Eventy",
+    url: "https://alesierysuje.pl",
+    type: "website",
+  },
 };
+
+const testimonials = [
+  {
+    name: "Rafał",
+    context: "Event, Płock — wrzesień 2025",
+    text: "Live painting w wykonaniu Aleksandry był strzałem w dziesiątkę. To nie jest jednorazowa atrakcja, tylko realna pamiątka, do której chce się wracać. Widać dbałość o detale i ogromne zaangażowanie w to, co robi.",
+  },
+  {
+    name: "Kasia",
+    context: "Wesele — lipiec 2025",
+    text: "Wszyscy goście byli zachwyceni. Aleksandra tworzyła niesamowite portrety tak szybko, że nikt nie mógł uwierzyć. Każdy portret wyglądał jak prawdziwe dzieło sztuki, a goście nie mogli się doczekać, aż dostaną swój.",
+  },
+  {
+    name: "Adam",
+    context: "Impreza firmowa — maj 2025",
+    text: "Aleksandra jest pełną pasji i zaangażowania profesjonalistką, a do tego przemiłą i otwartą na ustalenia czy rozmowy z gośćmi osobą. Zdecydowanie polecam — choć nazwanie tego „usługą" nie jest adekwatne. Bardziej pasuje „zdolności i możliwości".",
+  },
+];
 
 const services = [
   {
     href: "/uslugi/live-painting-wesele",
     title: "Live Painting na Wesele",
-    desc: "Akwarelowe portrety gości malowane na żywo podczas przyjęcia. Każdy gość odchodzi z unikalną pamiątką.",
+    desc: "Akwarelowe portrety gości malowane na żywo podczas przyjęcia. Do 20 portretów, 6–8 godzin, format A5.",
+    price: "od 3 500 zł",
     accent: "#E8C4B8",
+    linkColor: "#B06E5E",
     bg: "#fdf0ea",
     tag: "Najpopularniejsze",
   },
   {
     href: "/uslugi/event-firmowy",
     title: "Event Firmowy",
-    desc: "Atrakcja, która wyróżni Twój event. Portrety pracowników i gości malowane na żywo — z opcją brandingu.",
+    desc: "Portret jako atrakcja integracyjna — przyciąga, rozluźnia, buduje atmosferę. Opcja brandingu.",
+    price: "od 4 500 zł",
     accent: "#B8D4E8",
+    linkColor: "#4A7A9B",
     bg: "#eef5fa",
     tag: null,
   },
   {
     href: "/uslugi/portrety-rodzicow",
     title: "Portrety Rodziców",
-    desc: "Ręcznie malowany akwarelowy portret jako prezent dla rodziców Pary Młodej. Na podstawie Waszego zdjęcia.",
+    desc: "Ręcznie malowany akwarelowy portret jako wyjątkowy prezent ślubny. Na podstawie Waszego zdjęcia.",
+    price: "od 350 zł",
     accent: "#D4B896",
+    linkColor: "#8B6A40",
     bg: "#fdf6ed",
     tag: null,
   },
   {
     href: "/uslugi/mini-portrety",
-    title: "Mini Portrety",
-    desc: "Portrety gości jako oryginalne winietki weselne. Każdy gość przy stoliku — ze swoją twarzą na kartce.",
+    title: "Mini Portrety — Winietki",
+    desc: "Oryginalne winietki weselne — każdy gość zamiast kartki dostaje swój własny portret.",
+    price: "wycena indywidualna",
     accent: "#2C3E35",
+    linkColor: "#2C3E35",
     bg: "#f0f5f2",
     tag: null,
   },
 ];
 
-const navCards = [
+const faqItems = [
   {
-    href: "/o-mnie",
-    title: "O mnie",
-    desc: "Kim jestem, skąd pochodzi moja miłość do akwareli i jak wygląda moja praca.",
-    accent: "#E8C4B8",
+    q: "Czy goście muszą specjalnie pozować?",
+    a: "Nie — wystarczy chwila przy stoliku. Aleksandra maluje szybko i naturalnie, a sam proces staje się częścią atrakcji. Goście często stoją i obserwują — i to im się podoba najbardziej.",
   },
   {
-    href: "/galeria",
-    title: "Galeria",
-    desc: "Prace z wesel i eventów — każdy portret namalowany na żywo, żaden nie jest taki sam.",
-    accent: "#B8D4E8",
+    q: "Ile portretów powstaje podczas eventu?",
+    a: "Podczas wesela lub eventu trwającego 6–8 godzin powstaje ok. 20–30 portretów. Każdy zajmuje ok. 15 minut. Przy większych eventach możliwa jest rozszerzona opcja.",
   },
   {
-    href: "/opinie",
-    title: "Opinie",
-    desc: "Co mówią osoby, które wybrały live painting na swoje wesele lub event firmowy.",
-    accent: "#D4B896",
-  },
-  {
-    href: "/cennik",
-    title: "Cennik",
-    desc: "Pakiety i ceny dostosowane do rodzaju eventu i liczby gości. Zawsze indywidualnie.",
-    accent: "#2C3E35",
+    q: "Jak zarezerwować termin?",
+    a: "Napisz do Aleksandry z datą i miejscem eventu. W ciągu 24 godzin dostaniesz odpowiedź z potwierdzeniem dostępności i propozycją pakietu. Zaliczka blokuje termin.",
   },
 ];
 
 export default function Home() {
   return (
     <main>
-      {/* Hero */}
+      {/* ─── 1. HERO ─── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cream">
         {/* Watercolor blobs */}
-        <div className="absolute inset-0 pointer-events-none select-none">
-          <svg className="absolute top-[-10%] right-[-5%] w-[55vw] max-w-[700px] opacity-40 blob-float"
-            viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+          <svg
+            className="absolute top-[-10%] right-[-5%] w-[55vw] max-w-[700px] opacity-40 blob-float"
+            viewBox="0 0 600 600"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <filter id="blur1"><feGaussianBlur stdDeviation="12" /></filter>
             <path filter="url(#blur1)" fill="#E8C4B8"
               d="M300,80 C380,60 460,120 500,200 C540,280 520,380 460,440 C400,500 300,520 220,480 C140,440 80,360 80,270 C80,180 140,100 220,80 C260,70 280,85 300,80Z" />
           </svg>
-          <svg className="absolute bottom-[-5%] left-[-8%] w-[45vw] max-w-[560px] opacity-35 blob-float-slow"
-            viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg
+            className="absolute bottom-[-5%] left-[-8%] w-[45vw] max-w-[560px] opacity-35 blob-float-slow"
+            viewBox="0 0 500 500"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <filter id="blur2"><feGaussianBlur stdDeviation="14" /></filter>
             <path filter="url(#blur2)" fill="#B8D4E8"
               d="M250,60 C320,40 410,90 440,170 C470,250 450,340 390,400 C330,460 230,470 160,430 C90,390 50,300 60,210 C70,120 130,60 200,50 C220,46 235,63 250,60Z" />
           </svg>
-          <svg className="absolute top-[30%] left-[10%] w-[25vw] max-w-[300px] opacity-25 blob-float"
-            style={{ animationDelay: "-3s" }} viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg
+            className="absolute top-[30%] left-[10%] w-[25vw] max-w-[300px] opacity-25 blob-float"
+            style={{ animationDelay: "-3s" }}
+            viewBox="0 0 300 300"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <filter id="blur3"><feGaussianBlur stdDeviation="10" /></filter>
             <path filter="url(#blur3)" fill="#D4B896"
               d="M150,40 C195,30 245,65 260,115 C275,165 255,220 215,250 C175,280 115,275 80,240 C45,205 35,150 55,105 C75,60 110,45 150,40Z" />
@@ -96,51 +125,315 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <p className="hero-fade text-sm tracking-[0.25em] uppercase text-muted mb-6"
-            style={{ fontFamily: "var(--font-dm-sans)" }}>
+          <p
+            className="hero-fade text-sm tracking-[0.25em] uppercase text-muted mb-6"
+            style={{ fontFamily: "var(--font-dm-sans)" }}
+          >
             Live Painting &nbsp;·&nbsp; Akwarela &nbsp;·&nbsp; Wesela i Eventy
           </p>
-          <h1 className="hero-fade-delay text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight text-dark mb-8"
-            style={{ fontFamily: "var(--font-playfair)" }}>
+          <h1
+            className="hero-fade-delay text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight text-dark mb-8"
+            style={{ fontFamily: "var(--font-playfair)" }}
+          >
             Twoi goście odejdą
             <br />
-            <span className="italic" style={{ color: "#E8C4B8" }}>z czymś więcej</span>
+            <span className="italic" style={{ color: "#B06E5E" }}>z czymś więcej</span>
             <br />
             niż wspomnieniami
           </h1>
-          <p className="hero-fade-delay-2 text-lg md:text-xl text-muted max-w-2xl mx-auto mb-12 leading-relaxed"
-            style={{ fontFamily: "var(--font-dm-sans)" }}>
+          <p
+            className="hero-fade-delay-2 text-lg md:text-xl text-muted max-w-2xl mx-auto mb-12 leading-relaxed"
+            style={{ fontFamily: "var(--font-dm-sans)" }}
+          >
             Maluję akwarelowe portrety Twoich gości na żywo podczas przyjęcia.
-            Każdy odchodzi z unikalnym obrazkiem — ciepłą pamiątką na całe życie.
+            Każdy odchodzi z unikalnym, ręcznie stworzonym obrazkiem —
+            pamiątką, którą będą trzymać latami.
           </p>
           <div className="hero-fade-delay-2 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/kontakt"
+            <a
+              href="/kontakt"
               className="inline-block px-10 py-4 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:opacity-80 hover:scale-105"
-              style={{ background: "linear-gradient(135deg, #E8C4B8 0%, #D4B896 100%)", color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}>
+              style={{
+                background: "linear-gradient(135deg, #E8C4B8 0%, #D4B896 100%)",
+                color: "#2C3E35",
+                fontFamily: "var(--font-dm-sans)",
+              }}
+            >
               Zapytaj o termin
             </a>
-            <a href="/galeria"
+            <a
+              href="/galeria"
               className="inline-block px-10 py-4 rounded-full text-sm tracking-widest uppercase border transition-all duration-300 hover:bg-rose-light"
-              style={{ borderColor: "#E8C4B8", color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}>
+              style={{ borderColor: "#E8C4B8", color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}
+            >
               Zobacz prace
             </a>
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
           <span className="text-xs tracking-widest uppercase text-muted" style={{ fontFamily: "var(--font-dm-sans)" }}>Przewiń</span>
           <div className="w-px h-12 bg-gradient-to-b from-rose to-transparent" />
         </div>
       </section>
 
-      {/* Usługi */}
+      {/* ─── 2. TRUST BAR ─── */}
+      <section style={{ background: "#2C3E35" }}>
+        <div className="max-w-5xl mx-auto px-6 py-8 md:py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-white/10">
+            {[
+              { val: "5/5 ★", label: "ocena na weselezklasa.pl" },
+              { val: "50+", label: "wesel i eventów" },
+              { val: "1 000+", label: "namalowanych portretów" },
+              { val: "cała Polska", label: "zasięg działania" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center md:px-8">
+                <p
+                  className="text-2xl md:text-3xl mb-1"
+                  style={{ fontFamily: "var(--font-playfair)", color: "#E8C4B8" }}
+                >
+                  {stat.val}
+                </p>
+                <p
+                  className="text-xs tracking-wide"
+                  style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(253,250,246,0.55)" }}
+                >
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 3. PROBLEM → SOLUTION ─── */}
+      <section className="py-16 md:py-28 px-6" style={{ background: "#fdf0ea" }}>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+          <div>
+            <p
+              className="text-xs tracking-[0.3em] uppercase text-muted mb-5"
+              style={{ fontFamily: "var(--font-dm-sans)" }}
+            >
+              Dlaczego live painting
+            </p>
+            <h2
+              className="text-3xl md:text-5xl text-dark leading-tight mb-8"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Wesela mają wiele atrakcji.{" "}
+              <span className="italic" style={{ color: "#B06E5E" }}>
+                Żadna nie daje gościom czegoś namacalnego.
+              </span>
+            </h2>
+            <div
+              className="space-y-5 text-muted leading-relaxed text-sm"
+              style={{ fontFamily: "var(--font-dm-sans)" }}
+            >
+              <p>
+                Fotobudka zostaje na serwisie, kwiaty więdną, baloniki znikają.
+                Live painting to jedyna atrakcja weselna, z której każdy gość{" "}
+                <strong className="text-dark">wychodzi z czymś w rękach</strong> —
+                unikalnym, ręcznie malowanym portretem.
+              </p>
+              <p>
+                Akwarela ma w sobie coś, czego nie zastąpi żaden wydruk ani
+                filtr: transparentność, ciepło, nieuchronność każdego
+                pociągnięcia pędzla. Każdy portret jest inny, bo każdy człowiek
+                jest inny.
+              </p>
+              <p>
+                To nie jest atrakcja, którą ogląda się z daleka. To
+                doświadczenie, które każdy gość przeżywa osobiście — i o którym
+                opowiada miesiącami.
+              </p>
+            </div>
+          </div>
+
+          {/* Visual — stats card */}
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { val: "~15 min", label: "na jeden portret" },
+              { val: "20–30", label: "portretów podczas eventu" },
+              { val: "A5", label: "standardowy format" },
+              { val: "100%", label: "klientów poleca" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-2xl p-6 text-center"
+                style={{ background: "#fdfaf6", border: "1px solid rgba(232,196,184,0.3)" }}
+              >
+                <p
+                  className="text-2xl md:text-3xl mb-2"
+                  style={{ fontFamily: "var(--font-playfair)", color: "#B06E5E" }}
+                >
+                  {stat.val}
+                </p>
+                <p
+                  className="text-xs text-muted"
+                  style={{ fontFamily: "var(--font-dm-sans)" }}
+                >
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 4. JAK TO DZIAŁA ─── */}
+      <section className="py-16 md:py-28 px-6 bg-cream">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <p
+              className="text-xs tracking-[0.3em] uppercase text-muted mb-4"
+              style={{ fontFamily: "var(--font-dm-sans)" }}
+            >
+              Proces
+            </p>
+            <h2
+              className="text-3xl md:text-5xl text-dark"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Jak to wygląda w praktyce?
+            </h2>
+            <div className="brush-line mt-6" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+            {[
+              {
+                n: "01",
+                title: "Rezerwacja i ustalenie szczegółów",
+                desc: "Piszesz z datą i miejscem eventu. Rozmawiamy o tym, ile gości, jaki styl, co chcesz osiągnąć. Potwierdzam dostępność i przygotowuję ofertę. Zaliczka blokuje termin.",
+              },
+              {
+                n: "02",
+                title: "Stolik artystyczny na evencie",
+                desc: "Przyjeżdżam z wyprzedzeniem i ustawiam estetyczny stolik z farbami. Goście podchodzą, pozują przez chwilę — ja maluję. Sam proces jest widowiskiem, które przyciąga kolejnych chętnych.",
+              },
+              {
+                n: "03",
+                title: "Portret prosto do rąk gościa",
+                desc: "Gotowy portret trafia bezpośrednio do gościa. Możliwa personalizacja: imię, data, dedykacja, pieczątka artystyczna. Każdy odchodzi z czymś wyjątkowym.",
+              },
+            ].map((step) => (
+              <div key={step.n} className="relative">
+                <p
+                  className="text-7xl mb-5 opacity-15 select-none"
+                  style={{ fontFamily: "var(--font-playfair)", color: "#B06E5E" }}
+                  aria-hidden="true"
+                >
+                  {step.n}
+                </p>
+                <h3
+                  className="text-lg text-dark mb-4 leading-snug"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
+                  {step.title}
+                </h3>
+                <p
+                  className="text-sm text-muted leading-relaxed"
+                  style={{ fontFamily: "var(--font-dm-sans)" }}
+                >
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 5. OPINIE ─── */}
       <section className="py-16 md:py-28 px-6" style={{ background: "#f5f0eb" }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <p
+              className="text-xs tracking-[0.3em] uppercase text-muted mb-4"
+              style={{ fontFamily: "var(--font-dm-sans)" }}
+            >
+              Co mówią klienci
+            </p>
+            <h2
+              className="text-3xl md:text-5xl text-dark"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Opinie z weselezklasa.pl
+            </h2>
+            <div className="brush-line mt-6" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {testimonials.map((t) => (
+              <div
+                key={t.name}
+                className="rounded-3xl p-8 flex flex-col"
+                style={{
+                  background: "#fdfaf6",
+                  border: "1px solid rgba(232,196,184,0.25)",
+                  boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
+                }}
+              >
+                <div className="flex gap-0.5 mb-5">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <svg key={s} width="14" height="14" viewBox="0 0 12 12" fill="#B06E5E" aria-hidden="true">
+                      <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z" />
+                    </svg>
+                  ))}
+                </div>
+                <p
+                  className="text-sm text-dark-soft leading-relaxed italic flex-1 mb-6"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <div>
+                  <p
+                    className="text-sm font-medium text-dark"
+                    style={{ fontFamily: "var(--font-playfair)" }}
+                  >
+                    {t.name}
+                  </p>
+                  <p
+                    className="text-xs text-muted mt-0.5"
+                    style={{ fontFamily: "var(--font-dm-sans)" }}
+                  >
+                    {t.context} · weselezklasa.pl
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <a
+              href="/opinie"
+              className="inline-flex items-center gap-2 text-xs tracking-widest uppercase transition-colors duration-200 hover:opacity-70"
+              style={{ fontFamily: "var(--font-dm-sans)", color: "#B06E5E" }}
+            >
+              Wszystkie opinie
+              <svg width="16" height="8" viewBox="0 0 16 8" fill="none" aria-hidden="true">
+                <path d="M0 4h14M11 1l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 6. USŁUGI ─── */}
+      <section className="py-16 md:py-28 px-6 bg-cream">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4"
-              style={{ fontFamily: "var(--font-dm-sans)" }}>Co oferuję</p>
-            <h2 className="text-3xl md:text-5xl text-dark" style={{ fontFamily: "var(--font-playfair)" }}>
-              Usługi
+            <p
+              className="text-xs tracking-[0.3em] uppercase text-muted mb-4"
+              style={{ fontFamily: "var(--font-dm-sans)" }}
+            >
+              Co oferuję
+            </p>
+            <h2
+              className="text-3xl md:text-5xl text-dark"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Pakiety i usługi
             </h2>
             <div className="brush-line mt-6" />
           </div>
@@ -154,196 +447,226 @@ export default function Home() {
                 style={{ background: s.bg, border: "1px solid rgba(0,0,0,0.05)" }}
               >
                 {s.tag && (
-                  <div className="absolute top-0 right-0 px-3 py-1 rounded-bl-2xl text-xs tracking-widest uppercase"
-                    style={{ background: s.accent, color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}>
+                  <div
+                    className="absolute top-0 right-0 px-3 py-1 rounded-bl-2xl text-xs tracking-widest uppercase"
+                    style={{ background: s.accent, color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}
+                  >
                     {s.tag}
                   </div>
                 )}
                 <div className="w-8 h-1 rounded-full mb-5" style={{ background: s.accent }} />
-                <h3 className="text-lg text-dark mb-3 leading-snug" style={{ fontFamily: "var(--font-playfair)" }}>
+                <h3
+                  className="text-lg text-dark mb-3 leading-snug"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
                   {s.title}
                 </h3>
-                <p className="text-sm text-muted leading-relaxed flex-1" style={{ fontFamily: "var(--font-dm-sans)" }}>
+                <p
+                  className="text-sm text-muted leading-relaxed flex-1 mb-4"
+                  style={{ fontFamily: "var(--font-dm-sans)" }}
+                >
                   {s.desc}
                 </p>
-                <div className="mt-6 flex items-center gap-2 text-xs tracking-widest uppercase transition-colors duration-200"
-                  style={{ fontFamily: "var(--font-dm-sans)", color: s.accent }}>
+                <p
+                  className="text-base font-medium text-dark mb-5"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
+                  {s.price}
+                </p>
+                <div
+                  className="flex items-center gap-2 text-xs tracking-widest uppercase transition-colors duration-200"
+                  style={{ fontFamily: "var(--font-dm-sans)", color: s.linkColor }}
+                >
                   Dowiedz się więcej
-                  <svg width="16" height="8" viewBox="0 0 16 8" fill="none" className="transition-transform duration-200 group-hover:translate-x-1">
-                    <path d="M0 4h14M11 1l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <svg
+                    width="16"
+                    height="8"
+                    viewBox="0 0 16 8"
+                    fill="none"
+                    className="transition-transform duration-200 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  >
+                    <path d="M0 4h14M11 1l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
               </a>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* O mnie teaser */}
-      <section className="py-16 md:py-28 px-6 bg-cream">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-muted mb-5"
-              style={{ fontFamily: "var(--font-dm-sans)" }}>Aleksandra Sienica</p>
-            <h2 className="text-3xl md:text-5xl text-dark leading-tight mb-8"
-              style={{ fontFamily: "var(--font-playfair)" }}>
-              Portret namalowany{" "}
-              <span className="italic" style={{ color: "#E8C4B8" }}>w czasie rzeczywistym</span>
-            </h2>
-            <div className="space-y-5 text-muted leading-relaxed text-sm mb-10"
-              style={{ fontFamily: "var(--font-dm-sans)" }}>
-              <p>
-                Wyobraź sobie: goście bawiący się na sali weselnej, a w kącie —
-                artystka z akwarelami. Jeden po drugim podchodzą, pozują przez
-                chwilę, a kilka minut później odchodzą z własnym portretem w dłoni.
-              </p>
-              <p>
-                To nie jest atrakcja, którą ogląda się z daleka. To doświadczenie,
-                które każdy gość przeżywa osobiście — i o którym opowiada miesiącami po weselu.
-              </p>
-            </div>
-            <a href="/o-mnie"
+          <div className="text-center mt-10">
+            <a
+              href="/cennik"
               className="inline-flex items-center gap-2 text-xs tracking-widest uppercase transition-colors duration-200 hover:opacity-70"
-              style={{ fontFamily: "var(--font-dm-sans)", color: "#E8C4B8" }}>
-              Poznaj mnie lepiej
-              <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
-                <path d="M0 4h14M11 1l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              style={{ fontFamily: "var(--font-dm-sans)", color: "#576e65" }}
+            >
+              Pełny cennik i porównanie pakietów
+              <svg width="16" height="8" viewBox="0 0 16 8" fill="none" aria-hidden="true">
+                <path d="M0 4h14M11 1l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { val: "20–30", label: "portretów podczas eventu" },
-              { val: "~15 min", label: "na jeden portret" },
-              { val: "5★", label: "wszystkie opinie" },
-              { val: "cała Polska", label: "zasięg działania" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl p-6 text-center"
-                style={{ background: "#fdfaf6", border: "1px solid rgba(232,196,184,0.25)" }}
+      {/* ─── 7. SCARCITY ─── */}
+      <section
+        className="py-12 md:py-16 px-6"
+        style={{ background: "linear-gradient(135deg, #fdf0ea 0%, #f5f0eb 100%)" }}
+      >
+        <div className="max-w-3xl mx-auto">
+          <div
+            className="rounded-3xl px-8 py-10 md:px-12 md:py-12 flex flex-col md:flex-row items-start md:items-center gap-8"
+            style={{ background: "#fdfaf6", border: "1px solid rgba(176,110,94,0.25)" }}
+          >
+            <div className="flex-1">
+              <p
+                className="text-xs tracking-[0.3em] uppercase mb-3"
+                style={{ fontFamily: "var(--font-dm-sans)", color: "#B06E5E" }}
               >
-                <p className="text-3xl mb-2" style={{ fontFamily: "var(--font-playfair)", color: "#E8C4B8" }}>
-                  {stat.val}
-                </p>
-                <p className="text-xs text-muted" style={{ fontFamily: "var(--font-dm-sans)" }}>
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+                Dostępność terminów
+              </p>
+              <h3
+                className="text-xl md:text-2xl text-dark mb-3 leading-snug"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                Sezon ślubny 2026 zapełnia się szybko
+              </h3>
+              <p
+                className="text-sm text-muted leading-relaxed"
+                style={{ fontFamily: "var(--font-dm-sans)" }}
+              >
+                Szczególnie terminy majowe, czerwcowe i wrześniowe są rezerwowane
+                z dużym wyprzedzeniem. Im wcześniej napiszesz, tym większy wybór dat.
+              </p>
+            </div>
+            <a
+              href="/kontakt"
+              className="shrink-0 inline-block px-8 py-4 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:opacity-80 hover:scale-105 whitespace-nowrap"
+              style={{
+                background: "linear-gradient(135deg, #E8C4B8, #D4B896)",
+                color: "#2C3E35",
+                fontFamily: "var(--font-dm-sans)",
+              }}
+            >
+              Sprawdź dostępność
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Opinia wyróżniona */}
-      <section className="py-16 md:py-24 px-6" style={{ background: "#fdf0ea" }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xs tracking-[0.3em] uppercase text-muted mb-10"
-            style={{ fontFamily: "var(--font-dm-sans)" }}>Opinie klientów</p>
-          <div className="flex justify-center gap-1 mb-8">
-            {[1,2,3,4,5].map(s => (
-              <svg key={s} width="18" height="18" viewBox="0 0 12 12" fill="#E8C4B8">
-                <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z"/>
-              </svg>
-            ))}
-          </div>
-          <p className="text-xl md:text-2xl text-dark-soft italic leading-relaxed mb-8"
-            style={{ fontFamily: "var(--font-playfair)" }}>
-            &ldquo;Live painting w wykonaniu Aleksandry był strzałem w dziesiątkę.
-            To nie jest jednorazowa atrakcja, tylko realna pamiątka, do której chce się wracać.
-            Widać dbałość o detale i ogromne zaangażowanie w to, co robi.&rdquo;
-          </p>
-          <p className="text-sm text-dark font-medium mb-1" style={{ fontFamily: "var(--font-playfair)" }}>
-            Rafał
-          </p>
-          <p className="text-xs text-muted mb-10" style={{ fontFamily: "var(--font-dm-sans)" }}>
-            Event, Płock — wrzesień 2025 · weselezklasa.pl
-          </p>
-          <a href="/opinie"
-            className="inline-flex items-center gap-2 text-xs tracking-widest uppercase transition-colors duration-200 hover:opacity-70"
-            style={{ fontFamily: "var(--font-dm-sans)", color: "#E8C4B8" }}>
-            Wszystkie opinie
-            <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
-              <path d="M0 4h14M11 1l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </section>
-
-      {/* Szybkie linki do sekcji */}
-      <section className="py-16 md:py-24 px-6 bg-cream">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4"
-              style={{ fontFamily: "var(--font-dm-sans)" }}>Odkryj więcej</p>
-            <h2 className="text-3xl md:text-5xl text-dark" style={{ fontFamily: "var(--font-playfair)" }}>
-              Wszystko, co chcesz wiedzieć
+      {/* ─── 8. MINI FAQ ─── */}
+      <section className="py-16 md:py-28 px-6" style={{ background: "#f5f0eb" }}>
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-14">
+            <p
+              className="text-xs tracking-[0.3em] uppercase text-muted mb-4"
+              style={{ fontFamily: "var(--font-dm-sans)" }}
+            >
+              Najczęstsze pytania
+            </p>
+            <h2
+              className="text-3xl md:text-4xl text-dark"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Masz wątpliwości?
             </h2>
             <div className="brush-line mt-6" />
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {navCards.map((card) => (
-              <a
-                key={card.href}
-                href={card.href}
-                className="group rounded-3xl p-7 flex flex-col transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  background: "#fdfaf6",
-                  border: "1px solid rgba(0,0,0,0.05)",
-                  boxShadow: "0 2px 16px rgba(0,0,0,0.03)",
-                }}
+          <div className="space-y-4">
+            {faqItems.map((item) => (
+              <div
+                key={item.q}
+                className="rounded-2xl px-7 py-6"
+                style={{ background: "#fdfaf6", border: "1px solid rgba(232,196,184,0.2)" }}
               >
-                <div className="w-8 h-1 rounded-full mb-5" style={{ background: card.accent }} />
-                <h3 className="text-xl text-dark mb-3" style={{ fontFamily: "var(--font-playfair)" }}>
-                  {card.title}
+                <h3
+                  className="text-base text-dark mb-3"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
+                  {item.q}
                 </h3>
-                <p className="text-sm text-muted leading-relaxed flex-1"
-                  style={{ fontFamily: "var(--font-dm-sans)" }}>
-                  {card.desc}
+                <p
+                  className="text-sm text-muted leading-relaxed"
+                  style={{ fontFamily: "var(--font-dm-sans)" }}
+                >
+                  {item.a}
                 </p>
-                <div className="mt-6 flex items-center gap-2 text-xs tracking-widest uppercase transition-colors duration-200"
-                  style={{ fontFamily: "var(--font-dm-sans)", color: card.accent }}>
-                  Zobacz
-                  <svg width="16" height="8" viewBox="0 0 16 8" fill="none"
-                    className="transition-transform duration-200 group-hover:translate-x-1">
-                    <path d="M0 4h14M11 1l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-              </a>
+              </div>
             ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <a
+              href="/faq"
+              className="inline-flex items-center gap-2 text-xs tracking-widest uppercase transition-colors duration-200 hover:opacity-70"
+              style={{ fontFamily: "var(--font-dm-sans)", color: "#576e65" }}
+            >
+              Pełne FAQ
+              <svg width="16" height="8" viewBox="0 0 16 8" fill="none" aria-hidden="true">
+                <path d="M0 4h14M11 1l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* CTA końcowe */}
+      {/* ─── 9. FINAL CTA ─── */}
       <section className="py-16 md:py-28 px-6 text-center" style={{ background: "#2C3E35" }}>
         <div className="max-w-2xl mx-auto">
-          <p className="text-xs tracking-[0.3em] uppercase mb-6"
-            style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(253,250,246,0.5)" }}>
+          <div className="flex justify-center gap-1 mb-8">
+            {[1, 2, 3, 4, 5].map((s) => (
+              <svg key={s} width="18" height="18" viewBox="0 0 12 12" fill="#E8C4B8" aria-hidden="true">
+                <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z" />
+              </svg>
+            ))}
+          </div>
+          <p
+            className="text-xs tracking-[0.3em] uppercase mb-6"
+            style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(253,250,246,0.5)" }}
+          >
             Zarezerwuj termin
           </p>
-          <h2 className="text-3xl md:text-5xl mb-6 leading-tight"
-            style={{ fontFamily: "var(--font-playfair)", color: "#FDFAF6" }}>
+          <h2
+            className="text-3xl md:text-5xl mb-6 leading-tight"
+            style={{ fontFamily: "var(--font-playfair)", color: "#FDFAF6" }}
+          >
             Zróbmy razem coś
             <br />
             <span className="italic" style={{ color: "#E8C4B8" }}>niezapomnianego</span>
           </h2>
-          <p className="text-sm leading-relaxed mb-12"
-            style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(253,250,246,0.6)" }}>
-            Popularne terminy — szczególnie w sezonie ślubnym — rezerwowane są z dużym
-            wyprzedzeniem. Napisz już dziś, żeby sprawdzić dostępność.
+          <p
+            className="text-sm leading-relaxed mb-12"
+            style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(253,250,246,0.65)" }}
+          >
+            Napisz do mnie — opowiedz o swoim evencie, a w ciągu 24 godzin
+            dostaniesz odpowiedź z potwierdzeniem dostępności i propozycją pakietu.
+            Popularne terminy rezerwowane są z dużym wyprzedzeniem.
           </p>
-          <a href="/kontakt"
-            className="inline-block px-12 py-5 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:opacity-90 hover:scale-105"
-            style={{
-              background: "linear-gradient(135deg, #E8C4B8, #D4B896)",
-              color: "#2C3E35",
-              fontFamily: "var(--font-dm-sans)",
-            }}>
-            Zapytaj o termin
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/kontakt"
+              className="inline-block px-12 py-5 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:opacity-90 hover:scale-105"
+              style={{
+                background: "linear-gradient(135deg, #E8C4B8, #D4B896)",
+                color: "#2C3E35",
+                fontFamily: "var(--font-dm-sans)",
+              }}
+            >
+              Zapytaj o termin
+            </a>
+            <a
+              href="/galeria"
+              className="inline-block px-12 py-5 rounded-full text-sm tracking-widest uppercase border transition-all duration-300 hover:bg-white/10"
+              style={{
+                borderColor: "rgba(253,250,246,0.3)",
+                color: "#FDFAF6",
+                fontFamily: "var(--font-dm-sans)",
+              }}
+            >
+              Zobacz galerie prac
+            </a>
+          </div>
         </div>
       </section>
     </main>

@@ -25,7 +25,7 @@ export default function KontaktPage() {
             Rezerwacja
           </p>
           <h1 className="text-3xl md:text-6xl text-dark leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
-            <span className="italic" style={{ color: "#E8C4B8" }}>Kontakt</span>
+            <span className="italic" style={{ color: "#B06E5E" }}>Kontakt</span>
           </h1>
         </div>
       </section>

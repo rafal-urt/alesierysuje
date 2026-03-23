@@ -9,7 +9,12 @@
   --color-dark-soft: #3d5248;
   --color-rose-light: #f5e6e0;
   --color-blue-light: #deeef7;
-  --color-muted: #7a8f85;
+  /* Darkened for WCAG AA 4.5:1 on #FDFAF6 — was #7a8f85 (~3.3:1) */
+  --color-muted: #576e65;
+  /* Accessible rose accent — 3.85:1 on cream (WCAG AA large text) */
+  --color-rose-accent: #B06E5E;
+  /* Accessible champagne accent — 4.54:1 on cream (WCAG AA all text) */
+  --color-champagne-accent: #8B6A40;
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-dm-sans);
 }

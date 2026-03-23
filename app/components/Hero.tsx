@@ -71,7 +71,7 @@ export default function Hero() {
         >
           Twoi goście odejdą
           <br />
-          <span className="italic" style={{ color: "#E8C4B8" }}>
+          <span className="italic" style={{ color: "#B06E5E" }}>
             z czymś więcej
           </span>
           <br />

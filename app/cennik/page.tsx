@@ -25,7 +25,7 @@ export default function CennikPage() {
             Pakiety i ceny
           </p>
           <h1 className="text-3xl md:text-6xl text-dark leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
-            <span className="italic" style={{ color: "#D4B896" }}>Cennik</span>
+            <span className="italic" style={{ color: "#8B6A40" }}>Cennik</span>
           </h1>
         </div>
       </section>

@@ -25,7 +25,7 @@ export default function OpiniePage() {
             Co mówią klienci
           </p>
           <h1 className="text-3xl md:text-6xl text-dark leading-tight mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
-            <span className="italic" style={{ color: "#D4B896" }}>Opinie</span>
+            <span className="italic" style={{ color: "#8B6A40" }}>Opinie</span>
           </h1>
           <p className="text-muted text-sm" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Wszystkie opinie pochodzą z serwisu{" "}

@@ -96,7 +96,7 @@ export default function PortretyRodzicow() {
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Portret<br />
-            <span className="italic" style={{ color: "#D4B896" }}>dla Rodziców</span>
+            <span className="italic" style={{ color: "#8B6A40" }}>dla Rodziców</span>
           </h1>
           <p className="text-lg text-muted max-w-2xl leading-relaxed mb-10" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Zamiast kolejnego kompletu ręczników czy bonu do restauracji — ręcznie malowany
@@ -151,7 +151,7 @@ export default function PortretyRodzicow() {
               >
                 <span
                   className="mt-1 shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs"
-                  style={{ background: "rgba(212,184,150,0.25)", color: "#D4B896" }}
+                  style={{ background: "rgba(139,106,64,0.15)", color: "#8B6A40" }}
                 >
                   ✓
                 </span>
@@ -179,7 +179,7 @@ export default function PortretyRodzicow() {
               <div key={step.number}>
                 <p
                   className="text-6xl mb-4 opacity-15"
-                  style={{ fontFamily: "var(--font-playfair)", color: "#D4B896" }}
+                  style={{ fontFamily: "var(--font-playfair)", color: "#8B6A40" }}
                 >
                   {step.number}
                 </p>
@@ -213,7 +213,7 @@ export default function PortretyRodzicow() {
               >
                 <h3 className="text-xl text-dark mb-2" style={{ fontFamily: "var(--font-playfair)" }}>{f.name}</h3>
                 <p className="text-sm text-muted mb-5 leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>{f.desc}</p>
-                <p className="text-lg" style={{ fontFamily: "var(--font-playfair)", color: "#D4B896" }}>{f.price}</p>
+                <p className="text-lg" style={{ fontFamily: "var(--font-playfair)", color: "#8B6A40" }}>{f.price}</p>
               </div>
             ))}
           </div>
@@ -228,7 +228,7 @@ export default function PortretyRodzicow() {
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
             Zamów portret<br />
-            <span className="italic" style={{ color: "#D4B896" }}>przed swoim ślubem</span>
+            <span className="italic" style={{ color: "#8B6A40" }}>przed swoim ślubem</span>
           </h2>
           <p className="text-muted text-sm mb-10 leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Napisz do Aleksandry — podaj datę ślubu, format i prześlij zdjęcie. Razem ustalimy szczegóły i termin realizacji.
