@@ -14,14 +14,14 @@ export default function Footer() {
       `}</style>
 
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
-          <div>
+          <div className="md:col-span-1">
             <h3
               className="text-2xl italic mb-4"
               style={{ fontFamily: "var(--font-playfair)", color: "#FDFAF6" }}
             >
-              Ale się rysuje
+              alesierysuje
             </h3>
             <p
               className="text-sm leading-relaxed mb-6"
@@ -44,7 +44,31 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
+          {/* Usługi */}
+          <div>
+            <h4
+              className="text-xs tracking-[0.3em] uppercase mb-5"
+              style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(253,250,246,0.4)" }}
+            >
+              Usługi
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { href: "/uslugi/live-painting-wesele", label: "Live Painting na Wesele" },
+                { href: "/uslugi/event-firmowy", label: "Event Firmowy" },
+                { href: "/uslugi/portrety-rodzicow", label: "Portrety Rodziców" },
+                { href: "/uslugi/mini-portrety", label: "Mini Portrety" },
+              ].map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} className="footer-nav-link text-sm" style={{ fontFamily: "var(--font-dm-sans)" }}>
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Nawigacja */}
           <div>
             <h4
               className="text-xs tracking-[0.3em] uppercase mb-5"
@@ -54,19 +78,15 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                { href: "#o-usludze", label: "O usłudze" },
-                { href: "#jak-dziala", label: "Jak to działa" },
-                { href: "#pakiety", label: "Pakiety" },
-                { href: "#galeria", label: "Galeria" },
-                { href: "#faq", label: "FAQ" },
-                { href: "#kontakt", label: "Kontakt" },
+                { href: "/o-mnie", label: "O mnie" },
+                { href: "/galeria", label: "Galeria" },
+                { href: "/opinie", label: "Opinie" },
+                { href: "/cennik", label: "Cennik" },
+                { href: "/faq", label: "FAQ" },
+                { href: "/kontakt", label: "Kontakt" },
               ].map((l) => (
                 <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className="footer-nav-link text-sm"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
+                  <a href={l.href} className="footer-nav-link text-sm" style={{ fontFamily: "var(--font-dm-sans)" }}>
                     {l.label}
                   </a>
                 </li>
@@ -74,7 +94,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Kontakt */}
           <div>
             <h4
               className="text-xs tracking-[0.3em] uppercase mb-5"
@@ -85,25 +105,16 @@ export default function Footer() {
             <ul className="space-y-3 text-sm" style={{ fontFamily: "var(--font-dm-sans)" }}>
               <li>
                 <span style={{ color: "rgba(253,250,246,0.4)" }}>Email: </span>
-                <a
-                  href="mailto:hej@alesierysuje.pl"
-                  className="footer-nav-link"
-                >
+                <a href="mailto:hej@alesierysuje.pl" className="footer-nav-link">
                   hej@alesierysuje.pl
                 </a>
               </li>
-              <li>
-                <span style={{ color: "rgba(253,250,246,0.4)" }}>Tel: </span>
-                <a href="tel:+48000000000" className="footer-nav-link">
-                  +48 000 000 000
-                </a>
-              </li>
               <li style={{ color: "rgba(253,250,246,0.7)" }}>
-                Kraków · cała Polska
+                Warszawa · cała Polska
               </li>
               <li>
                 <a
-                  href="https://instagram.com"
+                  href="https://instagram.com/alesierysuje"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-social-link"
@@ -124,7 +135,7 @@ export default function Footer() {
             color: "rgba(253,250,246,0.3)",
           }}
         >
-          <p>© {year} Ale się rysuje · alesierysuje.pl</p>
+          <p>© {year} alesierysuje · alesierysuje.pl</p>
           <p>Wszelkie prawa zastrzeżone</p>
         </div>
       </div>

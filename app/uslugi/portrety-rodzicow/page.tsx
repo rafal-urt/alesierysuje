@@ -104,7 +104,7 @@ export default function PortretyRodzicow() {
             Malowane z miłością, na podstawie Waszego zdjęcia.
           </p>
           <a
-            href="/#kontakt"
+            href="/kontakt"
             className="inline-block px-10 py-4 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:opacity-80 hover:scale-105"
             style={{ background: "linear-gradient(135deg, #D4B896, #E8C4B8)", color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}
           >
@@ -234,7 +234,7 @@ export default function PortretyRodzicow() {
             Napisz do Aleksandry — podaj datę ślubu, format i prześlij zdjęcie. Razem ustalimy szczegóły i termin realizacji.
           </p>
           <a
-            href="/#kontakt"
+            href="/kontakt"
             className="inline-block px-12 py-5 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:opacity-80 hover:scale-105"
             style={{ background: "linear-gradient(135deg, #D4B896, #E8C4B8)", color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}
           >

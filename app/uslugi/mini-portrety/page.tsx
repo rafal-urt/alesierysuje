@@ -129,7 +129,7 @@ export default function MiniPortrety() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="/#kontakt"
+              href="/kontakt"
               className="inline-block px-10 py-4 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:opacity-80 hover:scale-105"
               style={{ background: "linear-gradient(135deg, #E8C4B8, #D4B896)", color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}
             >
@@ -245,7 +245,7 @@ export default function MiniPortrety() {
             Im wcześniej, tym spokojniej.
           </p>
           <a
-            href="/#kontakt"
+            href="/kontakt"
             className="inline-block px-12 py-5 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:opacity-80 hover:scale-105"
             style={{ background: "linear-gradient(135deg, #E8C4B8, #D4B896)", color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}
           >

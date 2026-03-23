@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "Jak daleko dojeżdżasz?",
-    a: "Bazuję w Krakowie i obsługuję całą Polskę. Przy odległościach powyżej 100 km doliczam koszty dojazdu i ewentualnego noclegu. Napisz do mnie z lokalizacją — wycenię indywidualnie.",
+    a: "Bazuję w Warszawie i obsługuję całą Polskę. Przy odległościach powyżej 100 km doliczam koszty dojazdu i ewentualnego noclegu. Napisz do mnie z lokalizacją — wycenię indywidualnie.",
   },
   {
     q: "Jak wygląda styl malowania? Czy to będzie 'podobne'?",

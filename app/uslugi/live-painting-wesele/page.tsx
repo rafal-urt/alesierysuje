@@ -133,14 +133,14 @@ export default function LivePaintingWesele() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="/#kontakt"
+              href="/kontakt"
               className="inline-block px-10 py-4 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:opacity-80 hover:scale-105"
               style={{ background: "linear-gradient(135deg, #E8C4B8, #D4B896)", color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}
             >
               Zapytaj o termin
             </a>
             <a
-              href="/#pakiety"
+              href="/cennik"
               className="inline-block px-10 py-4 rounded-full text-sm tracking-widest uppercase border transition-all duration-300 hover:bg-rose-light"
               style={{ borderColor: "#E8C4B8", color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}
             >
@@ -305,7 +305,7 @@ export default function LivePaintingWesele() {
             Napisz, żeby sprawdzić dostępność i omówić szczegóły.
           </p>
           <a
-            href="/#kontakt"
+            href="/kontakt"
             className="inline-block px-12 py-5 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:opacity-80 hover:scale-105"
             style={{ background: "linear-gradient(135deg, #E8C4B8, #D4B896)", color: "#2C3E35", fontFamily: "var(--font-dm-sans)" }}
           >

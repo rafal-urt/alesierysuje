@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 const serviceLinks = [
   { href: "/uslugi/live-painting-wesele", label: "Live Painting na Wesele" },
@@ -10,12 +11,11 @@ const serviceLinks = [
 ];
 
 const links = [
-  { href: "#jak-dziala", label: "Jak to działa" },
-  { href: "#pakiety", label: "Pakiety" },
-  { href: "#galeria", label: "Galeria" },
-  { href: "#opinie", label: "Opinie" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#kontakt", label: "Kontakt" },
+  { href: "/o-mnie", label: "O mnie" },
+  { href: "/galeria", label: "Galeria" },
+  { href: "/opinie", label: "Opinie" },
+  { href: "/cennik", label: "Cennik" },
+  { href: "/kontakt", label: "Kontakt" },
 ];
 
 export default function Navbar() {
@@ -24,12 +24,19 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setOpen(false);
+    setServicesOpen(false);
+    setMobileServicesOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -41,10 +48,10 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleLink = () => {
-    setOpen(false);
-    setMobileServicesOpen(false);
-  };
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(href + "/");
+
+  const isServicesActive = serviceLinks.some((l) => pathname.startsWith(l.href));
 
   return (
     <header
@@ -62,11 +69,11 @@ export default function Navbar() {
           className="text-xl tracking-wide text-dark hover:opacity-70 transition-opacity"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
-          <span className="italic">Ale się rysuje</span>
+          <span className="italic">alesierysuje</span>
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {/* Usługi dropdown */}
           <div
             ref={dropdownRef}
@@ -75,17 +82,19 @@ export default function Navbar() {
             onMouseLeave={() => setServicesOpen(false)}
           >
             <button
-              className="flex items-center gap-1 text-xs tracking-widest uppercase text-muted hover:text-dark transition-colors duration-200"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
+              className="flex items-center gap-1 text-xs tracking-widest uppercase transition-colors duration-200"
+              style={{
+                fontFamily: "var(--font-dm-sans)",
+                color: isServicesActive ? "#2C3E35" : undefined,
+              }}
               onClick={() => setServicesOpen((v) => !v)}
             >
-              Usługi
+              <span className={isServicesActive ? "text-dark font-medium" : "text-muted hover:text-dark"}>
+                Usługi
+              </span>
               <svg
-                width="10"
-                height="6"
-                viewBox="0 0 10 6"
-                fill="none"
-                className="transition-transform duration-200"
+                width="10" height="6" viewBox="0 0 10 6" fill="none"
+                className="transition-transform duration-200 text-muted"
                 style={{ transform: servicesOpen ? "rotate(180deg)" : "none" }}
               >
                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -93,7 +102,7 @@ export default function Navbar() {
             </button>
 
             <div
-              className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-56 transition-all duration-200"
+              className="absolute top-full left-1/2 pt-3 w-60 transition-all duration-200"
               style={{
                 opacity: servicesOpen ? 1 : 0,
                 pointerEvents: servicesOpen ? "auto" : "none",
@@ -108,17 +117,21 @@ export default function Navbar() {
                   boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
                 }}
               >
-                {serviceLinks.map((sl) => (
+                {serviceLinks.map((sl, i) => (
                   <a
                     key={sl.href}
                     href={sl.href}
-                    className="block px-5 py-3 text-xs tracking-widest uppercase text-muted hover:text-dark transition-colors duration-150"
+                    className="block px-5 py-3 text-xs tracking-widest uppercase transition-colors duration-150"
                     style={{
                       fontFamily: "var(--font-dm-sans)",
-                      borderBottom: "1px solid rgba(232,196,184,0.2)",
+                      borderBottom: i < serviceLinks.length - 1 ? "1px solid rgba(232,196,184,0.2)" : "none",
+                      color: pathname === sl.href ? "#2C3E35" : undefined,
+                      background: pathname === sl.href ? "rgba(232,196,184,0.1)" : undefined,
                     }}
                   >
-                    {sl.label}
+                    <span className={pathname === sl.href ? "text-dark font-medium" : "text-muted hover:text-dark"}>
+                      {sl.label}
+                    </span>
                   </a>
                 ))}
               </div>
@@ -129,17 +142,23 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-xs tracking-widest uppercase text-muted hover:text-dark transition-colors duration-200"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
+              className="text-xs tracking-widest uppercase transition-colors duration-200"
+              style={{
+                fontFamily: "var(--font-dm-sans)",
+                color: isActive(l.href) ? "#2C3E35" : undefined,
+                fontWeight: isActive(l.href) ? 500 : undefined,
+              }}
             >
-              {l.label}
+              <span className={isActive(l.href) ? "text-dark" : "text-muted hover:text-dark"}>
+                {l.label}
+              </span>
             </a>
           ))}
         </nav>
 
         {/* CTA desktop */}
         <a
-          href="#kontakt"
+          href="/kontakt"
           className="hidden md:inline-block px-6 py-2.5 rounded-full text-xs tracking-widest uppercase transition-all duration-300 hover:scale-105"
           style={{
             background: "linear-gradient(135deg, #E8C4B8, #D4B896)",
@@ -156,18 +175,12 @@ export default function Navbar() {
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
-          <span
-            className="block w-6 h-0.5 bg-dark transition-all duration-300"
-            style={{ transform: open ? "rotate(45deg) translateY(8px)" : "none" }}
-          />
-          <span
-            className="block w-6 h-0.5 bg-dark transition-all duration-300"
-            style={{ opacity: open ? 0 : 1 }}
-          />
-          <span
-            className="block w-6 h-0.5 bg-dark transition-all duration-300"
-            style={{ transform: open ? "rotate(-45deg) translateY(-8px)" : "none" }}
-          />
+          <span className="block w-6 h-0.5 bg-dark transition-all duration-300"
+            style={{ transform: open ? "rotate(45deg) translateY(8px)" : "none" }} />
+          <span className="block w-6 h-0.5 bg-dark transition-all duration-300"
+            style={{ opacity: open ? 0 : 1 }} />
+          <span className="block w-6 h-0.5 bg-dark transition-all duration-300"
+            style={{ transform: open ? "rotate(-45deg) translateY(-8px)" : "none" }} />
         </button>
       </div>
 
@@ -183,18 +196,13 @@ export default function Navbar() {
             background: "rgba(253,250,246,0.97)",
           }}
         >
-          {/* Mobile Usługi accordion */}
           <button
             className="flex items-center justify-between text-sm tracking-widest uppercase text-muted hover:text-dark transition-colors py-1 w-full text-left"
             style={{ fontFamily: "var(--font-dm-sans)" }}
             onClick={() => setMobileServicesOpen((v) => !v)}
           >
             Usługi
-            <svg
-              width="10"
-              height="6"
-              viewBox="0 0 10 6"
-              fill="none"
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
               className="transition-transform duration-200"
               style={{ transform: mobileServicesOpen ? "rotate(180deg)" : "none" }}
             >
@@ -202,15 +210,14 @@ export default function Navbar() {
             </svg>
           </button>
           <div
-            className="overflow-hidden transition-all duration-200 pl-4"
+            className="overflow-hidden transition-all duration-200 pl-4 space-y-2"
             style={{ maxHeight: mobileServicesOpen ? "300px" : "0" }}
           >
             {serviceLinks.map((sl) => (
               <a
                 key={sl.href}
                 href={sl.href}
-                onClick={handleLink}
-                className="block text-xs tracking-widest uppercase text-muted hover:text-dark transition-colors py-2"
+                className="block text-xs tracking-widest uppercase text-muted hover:text-dark transition-colors py-1.5"
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               >
                 {sl.label}
@@ -222,7 +229,6 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              onClick={handleLink}
               className="text-sm tracking-widest uppercase text-muted hover:text-dark transition-colors py-1"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
@@ -230,8 +236,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#kontakt"
-            onClick={handleLink}
+            href="/kontakt"
             className="mt-2 inline-block text-center px-6 py-3 rounded-full text-xs tracking-widest uppercase"
             style={{
               background: "linear-gradient(135deg, #E8C4B8, #D4B896)",

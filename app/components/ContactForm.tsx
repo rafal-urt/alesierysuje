@@ -78,7 +78,7 @@ export default function ContactForm() {
             {[
               { label: "Email", value: "hej@alesierysuje.pl" },
               { label: "Telefon", value: "+48 000 000 000" },
-              { label: "Lokalizacja", value: "Kraków (obsługuję całą Polskę)" },
+              { label: "Lokalizacja", value: "Warszawa (obsługuję całą Polskę)" },
               { label: "Instagram", value: "@alesierysuje" },
             ].map((item) => (
               <div key={item.label} className="flex gap-4 items-baseline">
