@@ -15,17 +15,26 @@ const testimonials = [
   {
     name: "Rafał",
     context: "Event, Płock — wrzesień 2025",
-    text: "Live painting w wykonaniu Aleksandry był strzałem w dziesiątkę. To nie jest jednorazowa atrakcja, tylko realna pamiątka, do której chce się wracać. Widać dbałość o detale i ogromne zaangażowanie w to, co robi.",
+    accentColor: "#B06E5E",
+    text: "Live painting w wykonaniu Aleksandry podczas eventu w Płocku był strzałem w dziesiątkę. Fajnie było zobaczyć, jak w kilkanaście minut powstaje ilustracja, która naprawdę oddaje charakter osoby lub pary. To nie jest jednorazowa atrakcja, tylko realna pamiątka, do której chce się wracać. Widać dbałość o detale, jakość papieru i farb, a także ogromne zaangażowanie w to, co robi. Zdecydowanie polecam.",
   },
   {
     name: "Kasia",
-    context: "Wesele — lipiec 2025",
-    text: "Wszyscy goście byli zachwyceni. Aleksandra tworzyła niesamowite portrety tak szybko, że nikt nie mógł uwierzyć. Każdy portret wyglądał jak prawdziwe dzieło sztuki, a goście nie mogli się doczekać, aż dostaną swój.",
+    context: "Event firmowy, 120 osób — sierpień 2025",
+    accentColor: "#4A7A9B",
+    text: "Z całego serca polecam współpracę z Panią Olą! Mieliśmy duży event firmowy na 120 osób i mogę śmiało powiedzieć, że jej obecność była jedną z najfajniejszych i najbardziej zapamiętanych części całego wydarzenia. Ola idealnie wpasowała się w klimat imprezy. Jest osobą niezwykle ciepłą, otwartą i pełną pasji. Współpraca z nią to była czysta przyjemność — zero stresu, dużo uśmiechu i pełne zaufanie, że wszystko będzie pięknie.",
   },
   {
     name: "Adam",
     context: "Impreza firmowa — maj 2025",
-    text: "Aleksandra jest pełną pasji i zaangażowania profesjonalistką, a do tego przemiłą i otwartą na ustalenia czy rozmowy z gośćmi osobą. Zdecydowanie polecam — choć nazwanie tego \u201Eusługą\u201D nie jest adekwatne. Bardziej pasuje \u201Ezdolności i możliwości\u201D.",
+    accentColor: "#8B6A40",
+    text: "Aleksandra jest pełną pasji i zaangażowania profesjonalistką, a do tego przemiłą i otwartą na ustalenia czy rozmowy z gośćmi osobą. W naszym przypadku zaskoczeniem dla pracowników i gości nie było tylko to, co Ola wykonała, lecz również samo włączenie live-paintingu do programu. Zdecydowanie polecam skorzystać z jej usług.",
+  },
+  {
+    name: "Maria",
+    context: "Walentynki — luty 2026",
+    accentColor: "#2C3E35",
+    text: "Pani Olu, bardzo dziękujemy za wszystko, za przepiękne ilustracje, za ekspresowe ugaszenie pożaru! Odezwaliśmy się do Pani Oli chwilę przed walentynkami, gdyż inna artystka bez uprzedzenia odwołała malowanie. Pani Ola w 2 dni ogarnęła sytuację i finalnie namalowała prawie 30 ilustracji nas i naszych gości! Gdybym mogła, wystawiłabym 10 gwiazdek! Serdecznie polecam!",
   },
 ];
 
@@ -346,64 +355,141 @@ export default function Home() {
       {/* ─── 5. OPINIE ─── */}
       <section className="py-16 md:py-28 px-6" style={{ background: "#f5f0eb" }}>
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <p
-              className="text-xs tracking-[0.3em] uppercase text-muted mb-4"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
-            >
-              Co mówią klienci
-            </p>
-            <h2
-              className="text-3xl md:text-5xl text-dark"
-              style={{ fontFamily: "var(--font-playfair)" }}
-            >
-              Opinie z weselezklasa.pl
-            </h2>
-            <div className="brush-line mt-6" />
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="rounded-3xl p-8 flex flex-col"
-                style={{
-                  background: "#fdfaf6",
-                  border: "1px solid rgba(232,196,184,0.25)",
-                  boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
-                }}
+          {/* Intro — split layout */}
+          <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-end mb-16 md:mb-20">
+            <div>
+              <p
+                className="text-xs tracking-[0.3em] uppercase text-muted mb-5"
+                style={{ fontFamily: "var(--font-dm-sans)" }}
               >
-                <div className="flex gap-0.5 mb-5">
+                Co mówią klienci
+              </p>
+              <h2
+                className="text-3xl md:text-5xl text-dark leading-tight mb-6"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                Nie musisz mi{" "}
+                <span className="italic" style={{ color: "#B06E5E" }}>
+                  wierzyć na słowo
+                </span>
+              </h2>
+              <p
+                className="text-sm text-muted leading-relaxed"
+                style={{ fontFamily: "var(--font-dm-sans)" }}
+              >
+                Wszystkie opinie są prawdziwe i zweryfikowane przez serwis
+                weselezklasa.pl — platformę, na której pary weselne i organizatorzy
+                eventów oceniają usługodawców po zakończonym wydarzeniu.
+                Żadna nie jest anonimowa.
+              </p>
+            </div>
+
+            {/* Aggregate badge */}
+            <div
+              className="rounded-2xl px-8 py-7 flex items-center gap-6"
+              style={{ background: "#fdfaf6", border: "1px solid rgba(176,110,94,0.2)" }}
+            >
+              <div
+                className="text-5xl leading-none shrink-0"
+                style={{ fontFamily: "var(--font-playfair)", color: "#B06E5E" }}
+                aria-hidden="true"
+              >
+                5/5
+              </div>
+              <div>
+                <div className="flex gap-1 mb-2">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <svg key={s} width="14" height="14" viewBox="0 0 12 12" fill="#B06E5E" aria-hidden="true">
+                    <svg key={s} width="16" height="16" viewBox="0 0 12 12" fill="#B06E5E" aria-hidden="true">
                       <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z" />
                     </svg>
                   ))}
                 </div>
                 <p
-                  className="text-sm text-dark-soft leading-relaxed italic flex-1 mb-6"
+                  className="text-sm text-dark font-medium mb-0.5"
                   style={{ fontFamily: "var(--font-playfair)" }}
                 >
-                  &ldquo;{t.text}&rdquo;
+                  100% klientów poleca
                 </p>
-                <div>
-                  <p
-                    className="text-sm font-medium text-dark"
-                    style={{ fontFamily: "var(--font-playfair)" }}
-                  >
-                    {t.name}
-                  </p>
-                  <p
-                    className="text-xs text-muted mt-0.5"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
-                    {t.context} · weselezklasa.pl
-                  </p>
+                <p
+                  className="text-xs text-muted"
+                  style={{ fontFamily: "var(--font-dm-sans)" }}
+                >
+                  Wszystkie oceny na weselezklasa.pl
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Cards — 2-column grid */}
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
+            {testimonials.map((t) => (
+              <div
+                key={t.name}
+                className="rounded-3xl p-8 md:p-10 flex flex-col"
+                style={{
+                  background: "#fdfaf6",
+                  border: "1px solid rgba(232,196,184,0.2)",
+                  boxShadow: "0 4px 30px rgba(0,0,0,0.04)",
+                }}
+              >
+                {/* Decorative quote mark */}
+                <div
+                  className="text-7xl leading-none mb-5 select-none"
+                  style={{ fontFamily: "var(--font-playfair)", color: t.accentColor, opacity: 0.35 }}
+                  aria-hidden="true"
+                >
+                  &ldquo;
+                </div>
+
+                {/* Quote */}
+                <p
+                  className="text-sm md:text-base text-dark-soft leading-relaxed flex-1 mb-8"
+                  style={{ fontFamily: "var(--font-dm-sans)" }}
+                >
+                  {t.text}
+                </p>
+
+                {/* Author */}
+                <div
+                  className="pt-6 flex items-center justify-between gap-4"
+                  style={{ borderTop: `1px solid rgba(44,62,53,0.08)` }}
+                >
+                  <div>
+                    <p
+                      className="text-sm font-medium text-dark mb-0.5"
+                      style={{ fontFamily: "var(--font-playfair)" }}
+                    >
+                      {t.name}
+                    </p>
+                    <p
+                      className="text-xs text-muted"
+                      style={{ fontFamily: "var(--font-dm-sans)" }}
+                    >
+                      {t.context}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <div className="flex gap-0.5">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <svg key={s} width="11" height="11" viewBox="0 0 12 12" fill="#B06E5E" aria-hidden="true">
+                          <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <span
+                      className="text-xs text-muted"
+                      style={{ fontFamily: "var(--font-dm-sans)" }}
+                    >
+                      weselezklasa.pl
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
+          {/* Link */}
           <div className="text-center">
             <a
               href="/opinie"
