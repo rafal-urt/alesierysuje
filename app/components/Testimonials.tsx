@@ -55,57 +55,66 @@ export default function Testimonials() {
           <div className="brush-line mt-6" />
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {testimonials.map((t, i) => (
-            <ScrollReveal key={t.name} delay={i * 120}>
+            <ScrollReveal key={t.name} delay={i * 100}>
               <div
-                className="rounded-3xl p-8 h-full flex flex-col"
+                className="rounded-3xl p-8 md:p-10 h-full flex flex-col"
                 style={{
                   background: "#fdfaf6",
-                  border: "1px solid rgba(0,0,0,0.05)",
+                  border: "1px solid rgba(232,196,184,0.2)",
                   boxShadow: "0 4px 30px rgba(0,0,0,0.04)",
                 }}
               >
                 {/* Quote mark */}
                 <div
-                  className="text-6xl leading-none mb-4"
+                  className="text-8xl leading-none mb-4 select-none"
                   style={{
                     fontFamily: "var(--font-playfair)",
                     color: t.accent,
-                    opacity: 0.5,
+                    opacity: 0.25,
+                    lineHeight: 0.8,
                   }}
+                  aria-hidden="true"
                 >
                   &ldquo;
                 </div>
 
                 <p
-                  className="text-sm leading-relaxed text-dark-soft flex-1"
+                  className="text-sm md:text-base leading-relaxed text-dark-soft flex-1 mb-8"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   {t.quote}
                 </p>
 
-                <div className="mt-8 pt-6" style={{ borderTop: `1px solid ${t.accent}40` }}>
-                  <div className="flex items-center gap-0.5 mb-2">
-                    {[1,2,3,4,5].map(s => (
-                      <svg key={s} width="12" height="12" viewBox="0 0 12 12" fill="#E8C4B8">
-                        <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z"/>
-                      </svg>
-                    ))}
-                    <span className="text-xs text-muted ml-1" style={{ fontFamily: "var(--font-dm-sans)" }}>weselezklasa.pl</span>
+                <div
+                  className="pt-6 flex items-center justify-between gap-4"
+                  style={{ borderTop: "1px solid rgba(44,62,53,0.07)" }}
+                >
+                  <div>
+                    <p
+                      className="text-sm font-medium text-dark"
+                      style={{ fontFamily: "var(--font-playfair)" }}
+                    >
+                      {t.name}
+                    </p>
+                    <p
+                      className="text-xs text-muted mt-0.5"
+                      style={{ fontFamily: "var(--font-dm-sans)" }}
+                    >
+                      {t.event}
+                    </p>
                   </div>
-                  <p
-                    className="text-sm font-medium text-dark"
-                    style={{ fontFamily: "var(--font-playfair)" }}
-                  >
-                    {t.name}
-                  </p>
-                  <p
-                    className="text-xs text-muted mt-1"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
-                    {t.event}
-                  </p>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <div className="flex gap-0.5">
+                      {[1,2,3,4,5].map(s => (
+                        <svg key={s} width="11" height="11" viewBox="0 0 12 12" fill="#B06E5E" aria-hidden="true">
+                          <path d="M6 1l1.3 2.6 2.9.4-2.1 2 .5 2.9L6 7.5 3.4 8.9l.5-2.9-2.1-2 2.9-.4z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <span className="text-xs text-muted" style={{ fontFamily: "var(--font-dm-sans)" }}>weselezklasa.pl</span>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
