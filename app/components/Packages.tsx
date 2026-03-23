@@ -3,14 +3,14 @@ import ScrollReveal from "./ScrollReveal";
 const packages = [
   {
     name: "Wesele Standard",
-    price: "od 1 800 zł",
-    duration: "4 godziny",
+    price: "od 3 500 zł",
+    duration: "6–8 godzin",
     accent: "#E8C4B8",
     bg: "#fdf0ea",
     features: [
-      "Do 25 portretów gości",
+      "Do 20 portretów gości",
       "Format A5 (148×210 mm)",
-      "Lekki szkic akwarelowy",
+      "Akwarelowy portret na miejscu",
       "Portret wręczany na miejscu",
       "Podróż do 100 km od Warszawy",
     ],
@@ -18,13 +18,13 @@ const packages = [
   },
   {
     name: "Wesele Premium",
-    price: "od 2 800 zł",
-    duration: "6 godzin",
+    price: "od 5 500 zł",
+    duration: "ok. 8 godzin",
     accent: "#D4B896",
     bg: "#fdf6ed",
     features: [
-      "Do 40 portretów gości",
-      "Format A4 (210×297 mm)",
+      "Do 30 portretów gości",
+      "Format A5 (148×210 mm)",
       "Dopracowany portret akwarelowy",
       "Portret Pary Młodej w prezencie",
       "Portret świadków i rodziców",
@@ -34,12 +34,12 @@ const packages = [
   },
   {
     name: "Event Firmowy",
-    price: "od 2 200 zł",
+    price: "od 4 500 zł",
     duration: "4–6 godzin",
     accent: "#B8D4E8",
     bg: "#eef5fa",
     features: [
-      "Do 35 portretów uczestników",
+      "20–30 ilustracji uczestników",
       "Format A5 lub A4 (do uzgodnienia)",
       "Branding na marginesie portretu",
       "Idealne na targi i konferencje",
