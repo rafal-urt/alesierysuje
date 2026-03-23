@@ -86,13 +86,13 @@ export default function PortretyRodzicow() {
       </section>
 
       {/* Hero */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Usługi &nbsp;·&nbsp; Prezent Ślubny
           </p>
           <h1
-            className="text-4xl md:text-6xl text-dark mb-6 leading-tight"
+            className="text-3xl md:text-6xl text-dark mb-6 leading-tight"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Portret<br />
@@ -114,10 +114,10 @@ export default function PortretyRodzicow() {
       </section>
 
       {/* Dlaczego portret */}
-      <section className="py-20 px-6" style={{ background: "#fdf6ed" }}>
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="py-14 md:py-20 px-6" style={{ background: "#fdf6ed" }}>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
+            <h2 className="text-2xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
               Dlaczego portret<br />akwarelowy?
             </h2>
             <div className="space-y-4 text-muted leading-relaxed text-sm" style={{ fontFamily: "var(--font-dm-sans)" }}>
@@ -166,12 +166,12 @@ export default function PortretyRodzicow() {
       </section>
 
       {/* Jak zamówić */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Proces zamówienia
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Jak to działa?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -196,12 +196,12 @@ export default function PortretyRodzicow() {
       </section>
 
       {/* Formaty i ceny */}
-      <section className="py-20 px-6" style={{ background: "#fdf6ed" }}>
+      <section className="py-14 md:py-20 px-6" style={{ background: "#fdf6ed" }}>
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Formaty
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Dostępne rozmiary
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -224,9 +224,9 @@ export default function PortretyRodzicow() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 text-center bg-cream">
+      <section className="py-16 md:py-24 px-6 text-center bg-cream">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
             Zamów portret<br />
             <span className="italic" style={{ color: "#D4B896" }}>przed swoim ślubem</span>
           </h2>

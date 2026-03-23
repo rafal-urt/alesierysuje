@@ -11,7 +11,7 @@ const placeholders = [
 
 export default function Gallery() {
   return (
-    <section id="galeria" className="py-28 px-6" style={{ background: "#f5f0eb" }}>
+    <section id="galeria" className="py-16 md:py-28 px-6" style={{ background: "#f5f0eb" }}>
       <div className="max-w-7xl mx-auto">
         <ScrollReveal className="text-center mb-16">
           <p
@@ -21,7 +21,7 @@ export default function Gallery() {
             Galeria
           </p>
           <h2
-            className="text-4xl md:text-5xl text-dark"
+            className="text-3xl md:text-5xl text-dark"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Prace z eventów

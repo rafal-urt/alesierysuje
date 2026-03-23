@@ -100,7 +100,7 @@ export default function Home() {
             style={{ fontFamily: "var(--font-dm-sans)" }}>
             Live Painting &nbsp;·&nbsp; Akwarela &nbsp;·&nbsp; Wesela i Eventy
           </p>
-          <h1 className="hero-fade-delay text-5xl md:text-7xl lg:text-8xl leading-tight text-dark mb-8"
+          <h1 className="hero-fade-delay text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight text-dark mb-8"
             style={{ fontFamily: "var(--font-playfair)" }}>
             Twoi goście odejdą
             <br />
@@ -134,12 +134,12 @@ export default function Home() {
       </section>
 
       {/* Usługi */}
-      <section className="py-28 px-6" style={{ background: "#f5f0eb" }}>
+      <section className="py-16 md:py-28 px-6" style={{ background: "#f5f0eb" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4"
               style={{ fontFamily: "var(--font-dm-sans)" }}>Co oferuję</p>
-            <h2 className="text-4xl md:text-5xl text-dark" style={{ fontFamily: "var(--font-playfair)" }}>
+            <h2 className="text-3xl md:text-5xl text-dark" style={{ fontFamily: "var(--font-playfair)" }}>
               Usługi
             </h2>
             <div className="brush-line mt-6" />
@@ -180,12 +180,12 @@ export default function Home() {
       </section>
 
       {/* O mnie teaser */}
-      <section className="py-28 px-6 bg-cream">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="py-16 md:py-28 px-6 bg-cream">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
             <p className="text-xs tracking-[0.3em] uppercase text-muted mb-5"
               style={{ fontFamily: "var(--font-dm-sans)" }}>Aleksandra Sienica</p>
-            <h2 className="text-4xl md:text-5xl text-dark leading-tight mb-8"
+            <h2 className="text-3xl md:text-5xl text-dark leading-tight mb-8"
               style={{ fontFamily: "var(--font-playfair)" }}>
               Portret namalowany{" "}
               <span className="italic" style={{ color: "#E8C4B8" }}>w czasie rzeczywistym</span>
@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* Opinia wyróżniona */}
-      <section className="py-24 px-6" style={{ background: "#fdf0ea" }}>
+      <section className="py-16 md:py-24 px-6" style={{ background: "#fdf0ea" }}>
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-10"
             style={{ fontFamily: "var(--font-dm-sans)" }}>Opinie klientów</p>
@@ -272,12 +272,12 @@ export default function Home() {
       </section>
 
       {/* Szybkie linki do sekcji */}
-      <section className="py-24 px-6 bg-cream">
+      <section className="py-16 md:py-24 px-6 bg-cream">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4"
               style={{ fontFamily: "var(--font-dm-sans)" }}>Odkryj więcej</p>
-            <h2 className="text-4xl md:text-5xl text-dark" style={{ fontFamily: "var(--font-playfair)" }}>
+            <h2 className="text-3xl md:text-5xl text-dark" style={{ fontFamily: "var(--font-playfair)" }}>
               Wszystko, co chcesz wiedzieć
             </h2>
             <div className="brush-line mt-6" />
@@ -318,13 +318,13 @@ export default function Home() {
       </section>
 
       {/* CTA końcowe */}
-      <section className="py-28 px-6 text-center" style={{ background: "#2C3E35" }}>
+      <section className="py-16 md:py-28 px-6 text-center" style={{ background: "#2C3E35" }}>
         <div className="max-w-2xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase mb-6"
             style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(253,250,246,0.5)" }}>
             Zarezerwuj termin
           </p>
-          <h2 className="text-4xl md:text-5xl mb-6 leading-tight"
+          <h2 className="text-3xl md:text-5xl mb-6 leading-tight"
             style={{ fontFamily: "var(--font-playfair)", color: "#FDFAF6" }}>
             Zróbmy razem coś
             <br />

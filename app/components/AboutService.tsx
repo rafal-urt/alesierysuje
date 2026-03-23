@@ -2,8 +2,8 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function AboutService() {
   return (
-    <section id="o-usludze" className="py-28 px-6 bg-cream">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <section id="o-usludze" className="py-16 md:py-28 px-6 bg-cream">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         {/* Text */}
         <ScrollReveal>
           <p
@@ -13,7 +13,7 @@ export default function AboutService() {
             O usłudze
           </p>
           <h2
-            className="text-4xl md:text-5xl text-dark leading-tight mb-8"
+            className="text-3xl md:text-5xl text-dark leading-tight mb-8"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Portret namalowany{" "}

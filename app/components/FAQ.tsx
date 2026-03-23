@@ -34,7 +34,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-28 px-6" style={{ background: "#f5f0eb" }}>
+    <section id="faq" className="py-16 md:py-28 px-6" style={{ background: "#f5f0eb" }}>
       <div className="max-w-3xl mx-auto">
         <ScrollReveal className="text-center mb-16">
           <p
@@ -44,7 +44,7 @@ export default function FAQ() {
             FAQ
           </p>
           <h2
-            className="text-4xl md:text-5xl text-dark"
+            className="text-3xl md:text-5xl text-dark"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Najczęstsze pytania

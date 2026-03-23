@@ -66,7 +66,7 @@ const packages = [
 
 export default function Packages() {
   return (
-    <section id="pakiety" className="py-28 px-6 bg-cream">
+    <section id="pakiety" className="py-16 md:py-28 px-6 bg-cream">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal className="text-center mb-16">
           <p
@@ -76,7 +76,7 @@ export default function Packages() {
             Pakiety
           </p>
           <h2
-            className="text-4xl md:text-5xl text-dark"
+            className="text-3xl md:text-5xl text-dark"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Co oferuję

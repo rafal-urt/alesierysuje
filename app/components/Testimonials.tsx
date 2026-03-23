@@ -37,7 +37,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="opinie" className="py-28 px-6 bg-cream">
+    <section id="opinie" className="py-16 md:py-28 px-6 bg-cream">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal className="text-center mb-16">
           <p
@@ -47,7 +47,7 @@ export default function Testimonials() {
             Opinie
           </p>
           <h2
-            className="text-4xl md:text-5xl text-dark"
+            className="text-3xl md:text-5xl text-dark"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Co mówią klienci

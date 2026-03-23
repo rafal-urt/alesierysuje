@@ -61,7 +61,7 @@ export default function OMnie() {
     <main className="pt-16">
 
       {/* Hero */}
-      <section className="py-24 px-6 bg-cream">
+      <section className="py-16 md:py-24 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <nav className="flex items-center gap-2 text-xs text-muted mb-10" style={{ fontFamily: "var(--font-dm-sans)" }}>
             <a href="/" className="hover:text-dark transition-colors">Strona główna</a>
@@ -69,12 +69,12 @@ export default function OMnie() {
             <span>O mnie</span>
           </nav>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div>
               <p className="text-xs tracking-[0.3em] uppercase text-muted mb-5" style={{ fontFamily: "var(--font-dm-sans)" }}>
                 Aleksandra Sienica
               </p>
-              <h1 className="text-5xl md:text-7xl text-dark leading-tight mb-8" style={{ fontFamily: "var(--font-playfair)" }}>
+              <h1 className="text-4xl sm:text-5xl md:text-7xl text-dark leading-tight mb-8" style={{ fontFamily: "var(--font-playfair)" }}>
                 Rysuję,<br />
                 bo inaczej<br />
                 <span className="italic" style={{ color: "#E8C4B8" }}>nie umiem</span>
@@ -123,12 +123,12 @@ export default function OMnie() {
       </section>
 
       {/* Moja historia */}
-      <section className="py-24 px-6" style={{ background: "#fdf0ea" }}>
+      <section className="py-16 md:py-24 px-6" style={{ background: "#fdf0ea" }}>
         <div className="max-w-3xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-5" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Skąd to wszystko
           </p>
-          <h2 className="text-3xl md:text-5xl text-dark mb-10 leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-5xl text-dark mb-8 leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
             Pasja, która znalazła{" "}
             <span className="italic" style={{ color: "#E8C4B8" }}>swoje miejsce</span>
           </h2>
@@ -161,10 +161,10 @@ export default function OMnie() {
       </section>
 
       {/* Cytat środkowy */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-12 md:py-20 px-6 bg-cream">
         <div className="max-w-4xl mx-auto text-center">
           <div className="brush-line mb-10" />
-          <p className="text-2xl md:text-4xl italic text-dark leading-relaxed" style={{ fontFamily: "var(--font-playfair)" }}>
+          <p className="text-xl md:text-4xl italic text-dark leading-relaxed" style={{ fontFamily: "var(--font-playfair)" }}>
             „Nie chodzi o to, żeby portret był fotograficznie dokładny.<br />
             Chodzi o to, żeby był{" "}
             <span style={{ color: "#E8C4B8" }}>prawdziwy</span>."
@@ -174,12 +174,12 @@ export default function OMnie() {
       </section>
 
       {/* Moje podejście */}
-      <section className="py-24 px-6" style={{ background: "#f5f0eb" }}>
+      <section className="py-16 md:py-24 px-6" style={{ background: "#f5f0eb" }}>
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-5" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Filozofia pracy
           </p>
-          <h2 className="text-3xl md:text-5xl text-dark mb-14" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-5xl text-dark mb-10 md:mb-14" style={{ fontFamily: "var(--font-playfair)" }}>
             Jak podchodzę do{" "}
             <span className="italic" style={{ color: "#D4B896" }}>swojej pracy</span>
           </h2>
@@ -208,13 +208,13 @@ export default function OMnie() {
       </section>
 
       {/* Dla kogo */}
-      <section className="py-24 px-6" style={{ background: "#fdf0ea" }}>
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="py-16 md:py-24 px-6" style={{ background: "#fdf0ea" }}>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
             <p className="text-xs tracking-[0.3em] uppercase text-muted mb-5" style={{ fontFamily: "var(--font-dm-sans)" }}>
               Dla kogo
             </p>
-            <h2 className="text-3xl md:text-4xl text-dark mb-8 leading-snug" style={{ fontFamily: "var(--font-playfair)" }}>
+            <h2 className="text-2xl md:text-4xl text-dark mb-8 leading-snug" style={{ fontFamily: "var(--font-playfair)" }}>
               Wesele lub event —<br />
               <span className="italic" style={{ color: "#E8C4B8" }}>oba zasługują na więcej</span>
             </h2>
@@ -273,12 +273,12 @@ export default function OMnie() {
       </section>
 
       {/* Jak pracuję */}
-      <section className="py-24 px-6 bg-cream">
+      <section className="py-16 md:py-24 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-5" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Proces
           </p>
-          <h2 className="text-3xl md:text-5xl text-dark mb-14" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-5xl text-dark mb-10 md:mb-14" style={{ fontFamily: "var(--font-playfair)" }}>
             Jak wygląda{" "}
             <span className="italic" style={{ color: "#E8C4B8" }}>nasza współpraca</span>
           </h2>
@@ -312,7 +312,7 @@ export default function OMnie() {
       </section>
 
       {/* Wyróżniona opinia */}
-      <section className="py-20 px-6" style={{ background: "#f5f0eb" }}>
+      <section className="py-14 md:py-20 px-6" style={{ background: "#f5f0eb" }}>
         <div className="max-w-3xl mx-auto text-center">
           <div className="flex justify-center gap-1 mb-8">
             {[1,2,3,4,5].map(s => (
@@ -336,9 +336,9 @@ export default function OMnie() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-cream text-center">
+      <section className="py-16 md:py-24 px-6 bg-cream text-center">
         <div className="max-w-xl mx-auto">
-          <h2 className="text-3xl md:text-4xl text-dark mb-5" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-5" style={{ fontFamily: "var(--font-playfair)" }}>
             Chcesz, żebym była<br />
             <span className="italic" style={{ color: "#E8C4B8" }}>na Waszym weselu?</span>
           </h2>

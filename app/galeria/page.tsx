@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function GaleriaPage() {
   return (
     <main className="pt-16">
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <nav className="flex items-center gap-2 text-xs text-muted mb-8" style={{ fontFamily: "var(--font-dm-sans)" }}>
             <a href="/" className="hover:text-dark transition-colors">Strona główna</a>
@@ -24,7 +24,7 @@ export default function GaleriaPage() {
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Prace
           </p>
-          <h1 className="text-4xl md:text-6xl text-dark leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h1 className="text-3xl md:text-6xl text-dark leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
             <span className="italic" style={{ color: "#B8D4E8" }}>Galeria</span>
           </h1>
         </div>
@@ -32,7 +32,7 @@ export default function GaleriaPage() {
 
       <Gallery />
 
-      <section className="py-20 px-6 text-center bg-cream">
+      <section className="py-14 md:py-20 px-6 text-center bg-cream">
         <div className="max-w-xl mx-auto">
           <h2 className="text-3xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
             Chcesz taki portret na swoim weselu?

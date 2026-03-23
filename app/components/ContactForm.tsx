@@ -39,8 +39,8 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="kontakt" className="py-28 px-6 bg-cream">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+    <section id="kontakt" className="py-16 md:py-28 px-6 bg-cream">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-start">
         {/* Left side */}
         <ScrollReveal>
           <p
@@ -145,7 +145,7 @@ export default function ContactForm() {
                 boxShadow: "0 4px 40px rgba(0,0,0,0.04)",
               }}
             >
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <input
                     {...register("name", { required: true })}
@@ -178,7 +178,7 @@ export default function ContactForm() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   {...register("eventDate")}
                   placeholder="Data eventu"

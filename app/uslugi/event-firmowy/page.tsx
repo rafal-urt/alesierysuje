@@ -117,13 +117,13 @@ export default function EventFirmowy() {
       </section>
 
       {/* Hero */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Usługi &nbsp;·&nbsp; Event Firmowy
           </p>
           <h1
-            className="text-4xl md:text-6xl text-dark mb-6 leading-tight"
+            className="text-3xl md:text-6xl text-dark mb-6 leading-tight"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Live Painting<br />
@@ -175,12 +175,12 @@ export default function EventFirmowy() {
       </section>
 
       {/* Korzyści */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Dlaczego warto
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Co daje live painting na evencie?
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -204,12 +204,12 @@ export default function EventFirmowy() {
       </section>
 
       {/* Gdzie pasuje */}
-      <section className="py-20 px-6" style={{ background: "#eef5fa" }}>
+      <section className="py-14 md:py-20 px-6" style={{ background: "#eef5fa" }}>
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Zastosowania
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Na jakich eventach sprawdzi się live painting?
           </h2>
           <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
@@ -224,12 +224,12 @@ export default function EventFirmowy() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-3xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             FAQ
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Najczęstsze pytania
           </h2>
           <div className="space-y-6">
@@ -252,9 +252,9 @@ export default function EventFirmowy() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 text-center" style={{ background: "#eef5fa" }}>
+      <section className="py-16 md:py-24 px-6 text-center" style={{ background: "#eef5fa" }}>
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
             Zaplanuj live painting<br />
             <span className="italic" style={{ color: "#B8D4E8" }}>na swój event</span>
           </h2>

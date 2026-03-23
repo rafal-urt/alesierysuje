@@ -110,13 +110,13 @@ export default function MiniPortrety() {
       </section>
 
       {/* Hero */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Usługi &nbsp;·&nbsp; Winietki
           </p>
           <h1
-            className="text-4xl md:text-6xl text-dark mb-6 leading-tight"
+            className="text-3xl md:text-6xl text-dark mb-6 leading-tight"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Mini Portrety<br />
@@ -147,12 +147,12 @@ export default function MiniPortrety() {
       </section>
 
       {/* Jak to wygląda w praktyce */}
-      <section className="py-20 px-6" style={{ background: "#fdf0ea" }}>
+      <section className="py-14 md:py-20 px-6" style={{ background: "#fdf0ea" }}>
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Jak to działa
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Mini portret zamiast winietki
           </h2>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -177,12 +177,12 @@ export default function MiniPortrety() {
       </section>
 
       {/* Cechy */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Dlaczego warto
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Co wyróżnia te winietki?
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -206,12 +206,12 @@ export default function MiniPortrety() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 px-6" style={{ background: "#fdf0ea" }}>
+      <section className="py-14 md:py-20 px-6" style={{ background: "#fdf0ea" }}>
         <div className="max-w-3xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             FAQ
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Najczęstsze pytania
           </h2>
           <div className="space-y-6">
@@ -234,9 +234,9 @@ export default function MiniPortrety() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 text-center bg-cream">
+      <section className="py-16 md:py-24 px-6 text-center bg-cream">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
             Zamów mini portrety<br />
             <span className="italic" style={{ color: "#E8C4B8" }}>na swoje wesele</span>
           </h2>

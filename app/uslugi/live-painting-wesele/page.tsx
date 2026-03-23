@@ -114,13 +114,13 @@ export default function LivePaintingWesele() {
       </section>
 
       {/* Hero */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Usługi &nbsp;·&nbsp; Wesele
           </p>
           <h1
-            className="text-4xl md:text-6xl text-dark mb-6 leading-tight"
+            className="text-3xl md:text-6xl text-dark mb-6 leading-tight"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Live Painting<br />
@@ -151,13 +151,13 @@ export default function LivePaintingWesele() {
       </section>
 
       {/* Czym jest */}
-      <section className="py-20 px-6" style={{ background: "#fdf0ea" }}>
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="py-14 md:py-20 px-6" style={{ background: "#fdf0ea" }}>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
             <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
               O usłudze
             </p>
-            <h2 className="text-3xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
+            <h2 className="text-2xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
               Czym jest live painting na wesele?
             </h2>
             <div className="space-y-4 text-muted leading-relaxed text-sm" style={{ fontFamily: "var(--font-dm-sans)" }}>
@@ -209,12 +209,12 @@ export default function LivePaintingWesele() {
       </section>
 
       {/* Jak to działa */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Proces
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Jak to działa?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -239,12 +239,12 @@ export default function LivePaintingWesele() {
       </section>
 
       {/* Co obejmuje */}
-      <section className="py-20 px-6" style={{ background: "#fdf0ea" }}>
+      <section className="py-14 md:py-20 px-6" style={{ background: "#fdf0ea" }}>
         <div className="max-w-5xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             Zakres usługi
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Co otrzymujesz?
           </h2>
           <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
@@ -266,12 +266,12 @@ export default function LivePaintingWesele() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 px-6 bg-cream">
+      <section className="py-14 md:py-20 px-6 bg-cream">
         <div className="max-w-3xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted mb-4" style={{ fontFamily: "var(--font-dm-sans)" }}>
             FAQ
           </p>
-          <h2 className="text-3xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-12" style={{ fontFamily: "var(--font-playfair)" }}>
             Najczęstsze pytania
           </h2>
           <div className="space-y-6">
@@ -294,9 +294,9 @@ export default function LivePaintingWesele() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 text-center" style={{ background: "#fdf0ea" }}>
+      <section className="py-16 md:py-24 px-6 text-center" style={{ background: "#fdf0ea" }}>
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-2xl md:text-4xl text-dark mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
             Zarezerwuj live painting<br />
             <span className="italic" style={{ color: "#E8C4B8" }}>na swoje wesele</span>
           </h2>
