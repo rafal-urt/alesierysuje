@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "O mnie — Aleksandra Sienica | alesierysuje",
   description:
-    "Aleksandra Sienica — portrecistka i ilustratorka zakochana w akwareli. Dowiedz się, skąd pochodzi moja pasja do rysunku, jak podchodzę do pracy i dlaczego live painting to coś więcej niż atrakcja.",
+    "Aleksandra Sienica — portrecistka zakochana w akwareli. Dowiedz się, skąd pochodzi moja pasja do rysunku, jak podchodzę do pracy i dlaczego live painting to coś więcej niż atrakcja.",
   openGraph: {
     title: "O mnie — Aleksandra Sienica | alesierysuje",
     url: "https://alesierysuje.pl/o-mnie",
@@ -80,8 +80,8 @@ export default function OMnie() {
                 <span className="italic" style={{ color: "#E8C4B8" }}>nie umiem</span>
               </h1>
               <p className="text-muted leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
-                Jestem portrecistką i ilustratorką — z wykształcenia, z wyboru i z pasji, która
-                towarzyszy mi odkąd pamiętam. Live painting to dla mnie nie praca dodatkowa.
+                Jestem portrecistką i ilustratorką — z wyboru i z pasji, która towarzyszy mi
+                odkąd pamiętam. Live painting to dla mnie nie praca dodatkowa.
                 To naturalne przedłużenie tego, kim jestem.
               </p>
             </div>
