@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "alesierysuje — Live Painting Akwarelowy na Wesela i Eventy",
@@ -258,33 +259,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Visual — stats card */}
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { val: "~15 min", label: "na jeden portret" },
-              { val: "20–30", label: "portretów podczas eventu" },
-              { val: "A5", label: "standardowy format" },
-              { val: "100%", label: "klientów poleca" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl p-6 text-center"
-                style={{ background: "#fdfaf6", border: "1px solid rgba(232,196,184,0.3)" }}
-              >
-                <p
-                  className="text-2xl md:text-3xl mb-2"
-                  style={{ fontFamily: "var(--font-playfair)", color: "#B06E5E" }}
-                >
-                  {stat.val}
-                </p>
-                <p
-                  className="text-xs text-muted"
-                  style={{ fontFamily: "var(--font-dm-sans)" }}
-                >
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+          {/* Visual — photo of guests receiving portraits */}
+          <div className="relative rounded-3xl overflow-hidden aspect-[3/4]">
+            <Image
+              src="/gfx/224893_14.webp"
+              alt="Goście odbierający akwarelowe portrety podczas wesela"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>
@@ -348,6 +331,30 @@ export default function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 4b. PHOTO STRIP ─── */}
+      <section className="bg-cream px-6 pb-0">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
+            <Image
+              src="/gfx/224893_4.webp"
+              alt="Aleksandra Sienica maluje portrety na żywo podczas wesela plenerowego"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
+            <Image
+              src="/gfx/224893_24.webp"
+              alt="Stolik artystyczny Aleksandry podczas eventu firmowego Hexeline"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>

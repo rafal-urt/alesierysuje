@@ -1,12 +1,16 @@
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
-const placeholders = [
-  { color: "#f5e6e0", label: "Portret weselny", size: "tall" },
-  { color: "#deeef7", label: "Para Młoda", size: "normal" },
-  { color: "#f0f5f2", label: "Gość weselny", size: "normal" },
-  { color: "#fdf0ea", label: "Portret kobiety", size: "tall" },
-  { color: "#e8f0f5", label: "Event firmowy", size: "normal" },
-  { color: "#f5f0e8", label: "Portret rodziny", size: "normal" },
+const items = [
+  { src: "/gfx/224893_1.webp", alt: "Akwarelowe portrety gości weselnych", size: "tall" },
+  { src: "/gfx/224893_6.webp", alt: "Portrety weselne K♥J — para i rodzice", size: "normal" },
+  { src: "/gfx/224893_22.webp", alt: "Portret dwóch kobiet — event 40-lecie", size: "tall" },
+  { src: "/gfx/224893_18.webp", alt: "Portrety z eventu firmowego United Vision", size: "normal" },
+  { src: "/gfx/224893_21.webp", alt: "Zestaw portretów z jubileuszowego eventu", size: "tall" },
+  { src: "/gfx/224893_11.jpg", alt: "Trzy portrety w drewnianej ramie", size: "normal" },
+  { src: "/gfx/224893_20.webp", alt: "Aleksandra maluje portret na żywo", size: "tall" },
+  { src: "/gfx/224893_25.webp", alt: "Gotowy portret z eventu Hexeline", size: "normal" },
+  { src: "/gfx/224893_17.webp", alt: "Stolik artystyczny z farbami i portretami w trakcie malowania", size: "normal" },
 ];
 
 export default function Gallery() {
@@ -37,58 +41,24 @@ export default function Gallery() {
 
         {/* Masonry-like grid */}
         <div className="columns-2 md:columns-3 gap-4 space-y-4">
-          {placeholders.map((item, i) => (
+          {items.map((item, i) => (
             <ScrollReveal key={i} delay={i * 80}>
               <div
-                className={`rounded-2xl overflow-hidden break-inside-avoid group cursor-pointer ${
+                className={`rounded-2xl overflow-hidden break-inside-avoid group cursor-pointer relative transition-transform duration-300 hover:scale-[1.02] ${
                   item.size === "tall" ? "aspect-[3/4]" : "aspect-square"
-                } flex flex-col items-center justify-center relative transition-transform duration-300 hover:scale-[1.02]`}
-                style={{ background: item.color }}
+                }`}
               >
-                {/* Watercolor texture simulation */}
-                <svg
-                  className="absolute inset-0 w-full h-full opacity-30"
-                  viewBox="0 0 200 200"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <filter id={`noise${i}`}>
-                    <feTurbulence
-                      type="fractalNoise"
-                      baseFrequency="0.65"
-                      numOctaves="3"
-                      stitchTiles="stitch"
-                    />
-                    <feColorMatrix type="saturate" values="0" />
-                  </filter>
-                  <rect width="200" height="200" filter={`url(#noise${i})`} opacity="0.4" />
-                </svg>
-
-                <div className="relative z-10 text-center p-6">
-                  <div
-                    className="text-5xl mb-3 opacity-40"
-                    style={{ fontFamily: "var(--font-playfair)", color: "#2C3E35" }}
-                  >
-                    ✦
-                  </div>
-                  <p
-                    className="text-xs tracking-widest uppercase text-muted"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
-                    {item.label}
-                  </p>
-                  <p
-                    className="text-xs text-muted mt-1 opacity-60"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
-                    (zdjęcie wkrótce)
-                  </p>
-                </div>
-
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
                 {/* Hover overlay */}
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                  style={{ background: "rgba(44,62,53,0.15)" }}
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
+                  style={{ background: "linear-gradient(to top, rgba(44,62,53,0.6) 0%, transparent 60%)" }}
                 >
                   <span
                     className="text-xs tracking-widest uppercase text-cream"
@@ -110,7 +80,7 @@ export default function Gallery() {
             Więcej prac znajdziesz na Instagramie
           </p>
           <a
-            href="https://instagram.com"
+            href="https://instagram.com/alesierysuje"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-3 rounded-full text-xs tracking-widest uppercase border transition-all duration-300 hover:bg-rose-light"

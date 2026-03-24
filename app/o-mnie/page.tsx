@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "O mnie — Aleksandra Sienica | alesierysuje",
@@ -86,17 +87,26 @@ export default function OMnie() {
               </p>
             </div>
 
-            {/* Visual card */}
+            {/* Photo */}
             <div className="relative">
-              <div
-                className="rounded-3xl overflow-hidden aspect-[4/5] flex items-end"
-                style={{ background: "linear-gradient(160deg, #f5e6e0 0%, #deeef7 60%, #f0f5f2 100%)" }}
-              >
-                <div className="p-8 w-full">
-                  <p className="text-3xl italic mb-2" style={{ fontFamily: "var(--font-playfair)", color: "#2C3E35" }}>
-                    „Każda twarz jest inną historią.<br />Staram się ją opowiedzieć."
+              <div className="rounded-3xl overflow-hidden aspect-[4/5] relative">
+                <Image
+                  src="/gfx/224893_20.webp"
+                  alt="Aleksandra Sienica maluje akwarelowy portret na żywo"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+                {/* Quote overlay at bottom */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 p-8"
+                  style={{ background: "linear-gradient(to top, rgba(44,62,53,0.75) 0%, transparent 100%)" }}
+                >
+                  <p className="text-xl italic text-cream leading-snug" style={{ fontFamily: "var(--font-playfair)" }}>
+                    „Każda twarz jest inną historią."
                   </p>
-                  <p className="text-xs tracking-widest uppercase text-muted" style={{ fontFamily: "var(--font-dm-sans)" }}>
+                  <p className="text-xs tracking-widest uppercase mt-2" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(253,250,246,0.6)" }}>
                     Aleksandra Sienica
                   </p>
                 </div>
@@ -211,6 +221,15 @@ export default function OMnie() {
       <section className="py-16 md:py-24 px-6" style={{ background: "#fdf0ea" }}>
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] mb-10 md:hidden">
+              <Image
+                src="/gfx/224893_4.webp"
+                alt="Aleksandra maluje portrety podczas wesela plenerowego"
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            </div>
             <p className="text-xs tracking-[0.3em] uppercase text-muted mb-5" style={{ fontFamily: "var(--font-dm-sans)" }}>
               Dla kogo
             </p>
