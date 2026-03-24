@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const serviceLinks = [
   { href: "/uslugi/live-painting-wesele", label: "Live Painting na Wesele" },
@@ -64,12 +65,15 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a
-          href="/"
-          className="text-xl tracking-wide text-dark hover:opacity-70 transition-opacity"
-          style={{ fontFamily: "var(--font-playfair)" }}
-        >
-          <span className="italic">alesierysuje</span>
+        <a href="/" className="hover:opacity-75 transition-opacity" aria-label="alesierysuje — strona główna">
+          <Image
+            src="/gfx/alesierysujelogo.png"
+            alt="alesierysuje"
+            width={140}
+            height={35}
+            className="h-7 w-auto"
+            priority
+          />
         </a>
 
         {/* Desktop nav */}
