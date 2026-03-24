@@ -112,7 +112,7 @@ export default function Home() {
               Live Painting &nbsp;·&nbsp; Akwarela &nbsp;·&nbsp; Wesela i Eventy
             </p>
             <h1
-              className="hero-fade-delay text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] leading-[1.1] text-dark mb-8"
+              className="hero-fade-delay text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] leading-[1.15] text-dark mb-8"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               Twoi goście odejdą
