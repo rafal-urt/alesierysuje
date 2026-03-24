@@ -260,12 +260,12 @@ export default function Home() {
           </div>
 
           {/* Visual — photo of guests receiving portraits */}
-          <div className="relative rounded-3xl overflow-hidden aspect-[3/4]">
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/5]">
             <Image
               src="/gfx/224893_14.webp"
               alt="Goście odbierający akwarelowe portrety podczas wesela"
               fill
-              className="object-cover"
+              className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
@@ -336,23 +336,23 @@ export default function Home() {
       </section>
 
       {/* ─── 4b. PHOTO STRIP ─── */}
-      <section className="bg-cream px-6 pb-0">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
-          <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
+      <section className="bg-cream px-6 py-16 md:py-20">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4 md:gap-6">
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/5]">
             <Image
               src="/gfx/224893_4.webp"
               alt="Aleksandra Sienica maluje portrety na żywo podczas wesela plenerowego"
               fill
-              className="object-cover"
+              className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
-          <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/5]">
             <Image
               src="/gfx/224893_24.webp"
               alt="Stolik artystyczny Aleksandry podczas eventu firmowego Hexeline"
               fill
-              className="object-cover"
+              className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
