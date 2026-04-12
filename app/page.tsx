@@ -115,19 +115,16 @@ export default function Home() {
               className="hero-fade-delay text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] leading-[1.15] text-dark mb-8"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              Twoi goście odejdą
+              Zamiast magnesu na lodówkę
               <br />
-              <span className="italic" style={{ color: "#B06E5E" }}>z czymś więcej</span>
-              <br />
-              niż wspomnieniami
+              <span className="italic" style={{ color: "#B06E5E" }}>akwarelowy portret</span>
             </h1>
             <p
               className="hero-fade-delay-2 text-base md:text-lg text-muted mb-10 leading-relaxed"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
-              Maluję akwarelowe portrety Twoich gości na żywo podczas przyjęcia.
-              Każdy odchodzi z unikalnym, ręcznie stworzonym obrazkiem —
-              pamiątką, którą będą trzymać latami.
+              Maluję gości na żywo podczas Twojego wesela. Każdy odchodzi
+              z obrazem, który naprawdę zostaje na ścianie.
             </p>
             <div className="hero-fade-delay-2 flex flex-col sm:flex-row gap-4">
               <a

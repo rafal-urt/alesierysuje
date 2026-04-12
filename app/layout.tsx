@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "alesierysuje — Live Painting Akwarelowy",
     description:
-      "Twoi goście odejdą z czymś więcej niż wspomnieniami. Portrecistka malująca akwarelowe portrety na żywo podczas wesela i eventów.",
+      "Zamiast magnesu na lodówkę — akwarelowy portret. Maluję gości na żywo podczas wesela i eventów.",
     url: "https://alesierysuje.pl",
     siteName: "alesierysuje",
     locale: "pl_PL",
