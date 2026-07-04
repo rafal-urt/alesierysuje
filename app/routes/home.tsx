@@ -13,7 +13,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
+    <main className="page flex items-center justify-center">
       <p className="font-hand text-3xl text-ink-soft">alesierysuje</p>
     </main>
   );

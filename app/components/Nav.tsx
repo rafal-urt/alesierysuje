@@ -1,0 +1,56 @@
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router";
+
+const LINKS = [
+  { to: "/live-painting-wesele", label: "Wesela" },
+  { to: "/live-painting-eventy", label: "Eventy" },
+  { to: "/portrety-na-zamowienie", label: "Portrety" },
+  { to: "/realizacje", label: "Realizacje" },
+  { to: "/cennik", label: "Cennik" },
+  { to: "/o-mnie", label: "O mnie" },
+];
+
+export function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  return (
+    <nav className={`sitenav${scrolled ? " scrolled" : ""}`}>
+      <div className="nav-inner">
+        <Link className="logo" to="/">
+          <span className="dot" />
+          alesierysuje
+        </Link>
+        <button className="burger" onClick={() => setOpen((o) => !o)} aria-label="Menu">
+          &#9776;
+        </button>
+        <ul className={`nav-links${open ? " open" : ""}`}>
+          {LINKS.map((l) => (
+            <li key={l.to}>
+              <NavLink to={l.to} className={({ isActive }) => (isActive ? "active" : "")}>
+                {l.label}
+              </NavLink>
+            </li>
+          ))}
+          <li>
+            <NavLink to="/terminy" className="nav-cta">
+              Sprawdź termin
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
