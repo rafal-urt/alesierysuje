@@ -250,7 +250,7 @@ export interface Availability {
  */
 export interface Inquiry {
   id: number;
-  eventDate: string;
+  eventDate?: string | null;
   names: string;
   email: string;
   city?: string | null;

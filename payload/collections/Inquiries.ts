@@ -17,7 +17,8 @@ export const Inquiries: CollectionConfig = {
       name: "eventDate",
       type: "date",
       label: "Data wydarzenia",
-      required: true,
+      // niewymagane: zapytania o portret (eventType: portret) nie mają daty wydarzenia
+      required: false,
       admin: { date: { pickerAppearance: "dayOnly", displayFormat: "d MMMM yyyy" } },
     },
     { name: "names", type: "text", label: "Imiona", required: true },

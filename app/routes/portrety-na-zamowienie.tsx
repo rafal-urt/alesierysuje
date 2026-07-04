@@ -1,8 +1,9 @@
 import type { Route } from "./+types/portrety-na-zamowienie";
 import { WatercolorStain } from "~/components/WatercolorStain";
-import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
-import { PORTRAIT_PRICING, formatZl } from "~/data/prices";
+import { PortraitConfigurator } from "~/components/PortraitConfigurator";
 import { getDb } from "~/lib/payload.server";
+import { sendMail } from "~/lib/email.server";
+import { clientIp, rateLimit } from "~/lib/rateLimit.server";
 
 export async function loader() {
   const db = await getDb();
@@ -16,6 +17,70 @@ export async function loader() {
       dedication: s.portraits?.dedication ?? 90,
     },
   };
+}
+
+export async function action({ request }: Route.ActionArgs) {
+  const form = await request.formData();
+
+  if (String(form.get("website") ?? "").length > 0) {
+    return { ok: true as const };
+  }
+  if (!rateLimit(`portrait:${clientIp(request)}`)) {
+    return { error: "Za dużo zapytań z tego adresu. Spróbujcie ponownie za kilka minut." };
+  }
+
+  const names = String(form.get("names") ?? "").trim();
+  const email = String(form.get("email") ?? "").trim();
+  const details = String(form.get("details") ?? "").trim();
+
+  if (!names) return { error: "Podajcie imię i nazwisko." };
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { error: "Podajcie poprawny adres e-mail." };
+  if (!details) return { error: "Brak konfiguracji portretu - odświeżcie stronę." };
+
+  const db = await getDb();
+  await db.create({
+    collection: "inquiries",
+    data: { names, email, eventType: "portret", status: "nowe", details },
+  });
+
+  const settings = await db.findGlobal({ slug: "settings" });
+  try {
+    await Promise.all([
+      sendMail({
+        to: settings.contactEmail,
+        subject: `Nowe zapytanie o portret - ${names}`,
+        text: [
+          "Nowe zapytanie o portret z alesierysuje.pl/portrety-na-zamowienie",
+          "",
+          `Zamawia: ${names}`,
+          `E-mail: ${email}`,
+          `Konfiguracja: ${details}`,
+          "",
+          "Szczegóły w panelu: /admin (kolekcja Zapytania)",
+        ].join("\n"),
+        replyTo: email,
+      }),
+      sendMail({
+        to: email,
+        subject: "Zapytanie o portret dotarło - alesierysuje",
+        text: [
+          `Cześć ${names}!`,
+          "",
+          "Zapytanie o portret dotarło do pracowni.",
+          `Wybrana konfiguracja: ${details}`,
+          "Ale odezwie się w 24 - 48 godzin z prośbą o zdjęcie referencyjne i potwierdzeniem terminu realizacji.",
+          "Zapytanie do niczego nie zobowiązuje.",
+          "",
+          "do usłyszenia,",
+          "Aleksandra Sienica - alesierysuje.pl",
+        ].join("\n"),
+      }),
+    ]);
+  } catch (err) {
+    console.error("Błąd wysyłki maila portretu:", err);
+  }
+
+  return { ok: true as const };
 }
 
 export function meta({}: Route.MetaArgs) {
@@ -39,68 +104,14 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
           <div className="eyebrow soak">Pracownia &middot; alesierysuje.pl/portrety-na-zamowienie</div>
           <h1 className="soak d1">Portrety na zamówienie - portret ze zdjęcia malowany ręcznie.</h1>
           <p className="lead soak d2">
-            Wgrywacie zdjęcie, wybieracie format, a cena układa się na Waszych oczach. Po zamówieniu
+            Wybieracie liczbę osób i format, a cena układa się na Waszych oczach. Po zamówieniu
             dostajecie kartę realizacji - zdjęcia szkicu, warstw koloru i gotowej pracy, prosto z
             pracowni.
           </p>
         </div>
       </section>
       <section style={{ paddingTop: 20 }}>
-        <div className="wrap config">
-          {/* Interaktywny konfigurator dochodzi w Etapie 5 - tu statyczny podgląd oferty */}
-          <div>
-            <div className="cstep soak">
-              <div className="clabel">1 &middot; Ile osób na portrecie</div>
-              <div className="optrow">
-                {["1", "2", "3", "4", "5+"].map((n, i) => (
-                  <span key={n} className={`opt${i === 0 ? " sel" : ""}`}>
-                    {n}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="cstep soak d1">
-              <div className="clabel">2 &middot; Format</div>
-              <div className="optrow">
-                {Object.entries(PORTRAIT_PRICING.formats).map(([key, f], i) => (
-                  <span key={key} className={`opt${i === 0 ? " sel" : ""}`}>
-                    {f.label}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="cstep soak d2">
-              <div className="clabel">3 &middot; Odręczna dedykacja na odwrocie</div>
-              <div className="optrow">
-                <span className="opt sel">Bez dedykacji</span>
-                <span className="opt">Z dedykacją (+{portraits.dedication} zł)</span>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="room soak">
-              <div className="rframe" style={{ width: 60, height: 84 }}>
-                <WatercolorPlaceholder seed={53} palette={4} width={200} height={280} />
-              </div>
-              <div className="sofa" />
-              <div className="scale-note">podgląd w skali - kanapa 220 cm</div>
-            </div>
-            <div className="pricebox soak d1">
-              <div className="row">
-                <span>Portret, format A4</span>
-                <span>{formatZl(portraits.a4)}</span>
-              </div>
-              <div className="total">
-                <span>Razem</span>
-                <b>{formatZl(portraits.a4)}</b>
-              </div>
-              <div className="small">
-                realizacja 10 - 14 dni &middot; wysyłka InPost w cenie &middot; karta realizacji na
-                maila
-              </div>
-            </div>
-          </div>
-        </div>
+        <PortraitConfigurator prices={portraits} />
       </section>
     </main>
   );
