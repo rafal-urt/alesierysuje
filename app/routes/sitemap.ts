@@ -1,4 +1,5 @@
 import { SITE_URL } from "~/lib/seo";
+import { POSTS } from "~/data/posts";
 
 const PATHS = [
   "/",
@@ -10,6 +11,8 @@ const PATHS = [
   "/o-mnie",
   "/terminy",
   "/polityka-prywatnosci",
+  "/blog",
+  ...POSTS.map((p) => `/blog/${p.slug}`),
 ];
 
 // sitemap.xml generowany na żądanie z listy tras (SPEC.md sekcja 2).

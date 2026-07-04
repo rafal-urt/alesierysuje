@@ -16,7 +16,7 @@ export async function getTakenDates(): Promise<Set<string>> {
 export async function getCalendarEnd(): Promise<string> {
   const db = await getDb();
   const settings = await db.findGlobal({ slug: "settings" });
-  return String(settings.calendarEnd ?? "2027-08-31").slice(0, 10);
+  return String(settings.calendarEnd ?? "2027-12-31").slice(0, 10);
 }
 
 // Licznik wolnych weekendów (sobota i niedziela wolne) od dziś do końca

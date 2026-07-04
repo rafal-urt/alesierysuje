@@ -60,7 +60,7 @@ export async function seedIfEmpty(payload: Payload): Promise<void> {
       data: {
         contactEmail: "kontakt@alesierysuje.pl",
         instagram: "https://www.instagram.com/alesierysuje",
-        calendarEnd: "2027-08-31",
+        calendarEnd: "2027-12-31",
         weddingPackages: { kameralny: 4000, klasyczny: 6000, prestizowy: 9000 },
         eventPricing: { portraits: 3500, scene: 4500 },
         portraits: { a4: 490, a3: 690, b50x70: 990, extraPerson: 160, dedication: 90 },
