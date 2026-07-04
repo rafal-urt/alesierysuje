@@ -61,6 +61,9 @@ export function Footer() {
             <h5>Kontakt</h5>
             <ul>
               <li>
+                <Link to="/kontakt">Formularz kontaktowy</Link>
+              </li>
+              <li>
                 <a href="mailto:kontakt@alesierysuje.pl">kontakt@alesierysuje.pl</a>
               </li>
               <li>

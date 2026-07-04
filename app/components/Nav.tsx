@@ -8,6 +8,7 @@ const LINKS = [
   { to: "/realizacje", label: "Realizacje" },
   { to: "/cennik", label: "Cennik" },
   { to: "/o-mnie", label: "O mnie" },
+  { to: "/kontakt", label: "Kontakt" },
 ];
 
 export function Nav() {

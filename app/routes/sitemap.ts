@@ -10,6 +10,7 @@ const PATHS = [
   "/cennik",
   "/o-mnie",
   "/terminy",
+  "/kontakt",
   "/polityka-prywatnosci",
   "/blog",
   ...POSTS.map((p) => `/blog/${p.slug}`),

@@ -9,6 +9,7 @@ export default [
   route("cennik", "routes/cennik.tsx"),
   route("o-mnie", "routes/o-mnie.tsx"),
   route("terminy", "routes/terminy.tsx"),
+  route("kontakt", "routes/kontakt.tsx"),
   route("polityka-prywatnosci", "routes/polityka-prywatnosci.tsx"),
   route("blog", "routes/blog.tsx"),
   route("blog/:slug", "routes/blog-post.tsx"),
