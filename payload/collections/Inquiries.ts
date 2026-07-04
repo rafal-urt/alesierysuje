@@ -13,7 +13,13 @@ export const Inquiries: CollectionConfig = {
   },
   defaultSort: "-createdAt",
   fields: [
-    { name: "eventDate", type: "date", label: "Data wydarzenia", required: true },
+    {
+      name: "eventDate",
+      type: "date",
+      label: "Data wydarzenia",
+      required: true,
+      admin: { date: { pickerAppearance: "dayOnly", displayFormat: "d MMMM yyyy" } },
+    },
     { name: "names", type: "text", label: "Imiona", required: true },
     { name: "email", type: "email", label: "E-mail", required: true },
     { name: "city", type: "text", label: "Miejscowość" },

@@ -8,7 +8,14 @@ export const Availability: CollectionConfig = {
   admin: { useAsTitle: "date", defaultColumns: ["date", "status"] },
   defaultSort: "date",
   fields: [
-    { name: "date", type: "date", label: "Data", required: true, unique: true },
+    {
+      name: "date",
+      type: "date",
+      label: "Data",
+      required: true,
+      unique: true,
+      admin: { date: { pickerAppearance: "dayOnly", displayFormat: "d MMMM yyyy" } },
+    },
     {
       name: "status",
       type: "select",

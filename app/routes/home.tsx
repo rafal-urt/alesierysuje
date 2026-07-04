@@ -5,15 +5,20 @@ import { Faq } from "~/components/Faq";
 import { WorksGallery } from "~/components/WorksGallery";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { WatercolorStain } from "~/components/WatercolorStain";
-import { getDb, mapWork, plMonthYear } from "~/lib/payload.server";
+import { getDb, mapWork } from "~/lib/payload.server";
+import { plMonthYear, plMonthYearGenitive } from "~/lib/dates";
+import { countFreeSaturdays } from "~/lib/availability.server";
 
 export async function loader() {
   const db = await getDb();
-  const [works, reviews] = await Promise.all([
+  const [works, reviews, saturdays] = await Promise.all([
     db.find({ collection: "works", sort: "order", limit: 6, depth: 1 }),
     db.find({ collection: "reviews", sort: "-date", limit: 6 }),
+    countFreeSaturdays(),
   ]);
   return {
+    freeSaturdays: saturdays.count,
+    calendarEndLabel: plMonthYearGenitive(saturdays.end),
     works: works.docs.map(mapWork),
     reviews: reviews.docs.map((r) => ({
       author: r.author,
@@ -51,7 +56,7 @@ const FAQ_ITEMS = [
 ];
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  const { works, reviews } = loaderData;
+  const { works, reviews, freeSaturdays, calendarEndLabel } = loaderData;
   return (
     <main className="page">
       <div className="hero">
@@ -78,7 +83,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             </Link>
             <div className="season">
               <span className="pulse" />
-              Wolnych sobót do sierpnia 2027: <b>zobacz kalendarz</b>
+              Wolnych sobót do {calendarEndLabel}: <b>{freeSaturdays}</b>
             </div>
           </div>
         </div>
