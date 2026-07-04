@@ -160,8 +160,26 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               </div>
             </Link>
             <Link className="door soak d1" to="/live-painting-eventy">
-              <div className="art">
-                <WatercolorPlaceholder seed={47} palette={2} width={400} height={560} />
+              <div className="art art-contain">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet="/gfx/live-art-event-stanowisko-600.avif 600w, /gfx/live-art-event-stanowisko-1000.avif 1000w"
+                    sizes="(max-width: 920px) 100vw, 430px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet="/gfx/live-art-event-stanowisko-600.webp 600w, /gfx/live-art-event-stanowisko-1000.webp 1000w"
+                    sizes="(max-width: 920px) 100vw, 430px"
+                  />
+                  <img
+                    src="/gfx/live-art-event-stanowisko-1000.jpg"
+                    alt="Brandowane stanowisko live art na evencie firmowym - sztaluga i materiały alesierysuje"
+                    width={1000}
+                    height={1500}
+                    loading="lazy"
+                  />
+                </picture>
               </div>
               <div className="veil" />
               <div className="txt">
