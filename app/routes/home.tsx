@@ -160,7 +160,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               </div>
             </Link>
             <Link className="door soak d1" to="/live-painting-eventy">
-              <div className="art art-contain">
+              <div className="art art-bottom">
                 <picture>
                   <source
                     type="image/avif"
@@ -192,7 +192,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               </div>
             </Link>
             <Link className="door soak d2" to="/portrety-na-zamowienie">
-              <div className="art art-contain">
+              <div className="art art-bottom">
                 <picture>
                   <source
                     type="image/avif"

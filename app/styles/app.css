@@ -618,6 +618,17 @@ section {
   object-fit: cover;
   object-position: center top;
 }
+/* wariant: dol zdjecia = dol karty, nadmiar chowa sie za gorna krawedzia */
+.door .art.art-bottom {
+  top: -18%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.door .art.art-bottom img {
+  object-fit: cover;
+  object-position: center bottom;
+}
 .door .veil {
   position: absolute;
   inset: 0;
