@@ -589,7 +589,7 @@ section {
 }
 .door {
   position: relative;
-  height: 580px;
+  height: 640px;
   overflow: hidden;
   border-radius: 4px;
   cursor: pointer;
@@ -609,6 +609,14 @@ section {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+/* wariant: cale zdjecie widoczne, bez przyblizenia i docinania */
+.door .art.art-contain {
+  inset: 0;
+}
+.door .art.art-contain img {
+  object-fit: contain;
+  background: #fff;
 }
 .door .veil {
   position: absolute;

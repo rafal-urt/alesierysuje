@@ -156,7 +156,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               </div>
             </Link>
             <Link className="door soak d2" to="/portrety-na-zamowienie">
-              <div className="art">
+              <div className="art art-contain">
                 <picture>
                   <source
                     type="image/avif"
