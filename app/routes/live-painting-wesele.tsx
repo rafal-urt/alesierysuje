@@ -34,7 +34,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Live painting na wesele - malowanie na żywo | alesierysuje",
     description:
-      "Kilkadziesiąt akwarelowych portretów gości i Pary Młodej malowanych podczas wesela. Szybkie zdjęcie w kąciku live art, akwarela z fotografii, odbiór ze sztalugi. Pakiety od 4 000 zł.",
+      "Kilkadziesiąt akwarelowych portretów gości i Pary Młodej malowanych podczas wesela. Szybkie zdjęcie w kąciku live art, akwarela z fotografii, odbiór na miejscu. Pakiety od 4 000 zł.",
     path: "/live-painting-wesele",
     ogImage: "/og/wesele.png",
   });
@@ -52,7 +52,7 @@ function FeatureText({ text }: { text: string }) {
 const FAQ_ITEMS = [
   {
     q: "Czy goście muszą pozować albo stać w kolejce?",
-    a: "Nie - i to największa różnica względem klasycznych karykatur. Goście podchodzą do kącika live art tylko na szybkie zdjęcie i wracają do zabawy, a ja maluję z fotografii. Gotowe ilustracje czekają na sztaludze, więc każdy odbiera swoją wtedy, kiedy mu wygodnie.",
+    a: "Nie - i to największa różnica względem klasycznych karykatur. Goście podchodzą do kącika live art tylko na szybkie zdjęcie i wracają do zabawy, a ja maluję z fotografii. Gotowe ilustracje czekają w kąciku live art, więc każdy odbiera swoją wtedy, kiedy mu wygodnie.",
   },
   {
     q: "Ile trwa namalowanie jednego portretu?",
@@ -119,7 +119,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
               Nie jeden wielki obraz, a kilkadziesiąt małych wspomnień: akwarelowe portrety Waszych
               gości i Wasz własny, malowane w trakcie przyjęcia. Goście wpadają do kącika live art
               na szybkie zdjęcie i wracają do zabawy - ja maluję z fotografii, a gotowe ilustracje
-              odbierają ze sztalugi i zabierają do domu jeszcze tej nocy.
+              odbierają z kącika i zabierają do domu jeszcze tej nocy.
             </p>
             <div className="hero-cta soak d3">
               <Link className="btn" to="/terminy">
@@ -206,8 +206,8 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             <div className="tl soak d2">
               <h4>Akwarela przy sztaludze</h4>
               <p>
-                Każdy portret to 10 - 15 minut malowania. Gotowe prace wiszą na sztaludze - goście
-                podchodzą i odbierają swoje, kiedy chcą.
+                Każdy portret to 10 - 15 minut malowania. Gotowe prace czekają w kąciku live art -
+                goście odbierają swoje, kiedy chcą.
               </p>
             </div>
             <div className="tl soak d3">
