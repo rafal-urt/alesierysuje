@@ -2073,3 +2073,12 @@ footer {
     width: auto;
   }
 }
+
+/* ===== sekcje korzysci ===== */
+.steps.benefits .step h3,
+.steps .step h3 {
+  letter-spacing: -0.01em;
+}
+.steps.benefits {
+  row-gap: 56px;
+}
