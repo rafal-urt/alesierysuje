@@ -222,7 +222,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             <p>Każdy zawiera portret Pary Młodej i podpisane, zabezpieczone prace dla gości.</p>
           </div>
           <div className="soak d1">
-            <PackagesAccordion prices={prices} />
+            <PackagesAccordion packages={WEDDING_PACKAGES} prices={prices} />
           </div>
           <p className="deposit-note soak">
             Termin sprawdzacie w kalendarzu i rezerwujecie <b>bezpłatnym zapytaniem</b> - odpowiedź

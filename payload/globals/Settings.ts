@@ -27,10 +27,20 @@ export const Settings: GlobalConfig = {
     {
       name: "eventPricing",
       type: "group",
-      label: "Ceny eventowe (zł, 'od')",
+      label: "Ceny eventowe - legacy (nieużywane)",
       fields: [
         { name: "portraits", type: "number", label: "Szybkie portrety gości (od)", required: true },
         { name: "scene", type: "number", label: "Obraz sceny wydarzenia (od)", required: true },
+      ],
+    },
+    {
+      name: "eventPackages",
+      type: "group",
+      label: "Ceny pakietów eventowych (zł)",
+      fields: [
+        { name: "networking", type: "number", label: "Networking" },
+        { name: "gala", type: "number", label: "Gala" },
+        { name: "konferencja", type: "number", label: "Konferencja" },
       ],
     },
     {

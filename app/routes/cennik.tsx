@@ -1,7 +1,7 @@
 import type { Route } from "./+types/cennik";
 import { Link } from "react-router";
 import { WatercolorStain } from "~/components/WatercolorStain";
-import { WEDDING_PACKAGES, EVENT_PRICING, EXTRA_ILLUSTRATION_PLN, PORTRAIT_PRICING, formatZl } from "~/data/prices";
+import { WEDDING_PACKAGES, EVENT_PACKAGES, EXTRA_ILLUSTRATION_PLN, EXTRA_ILLUSTRATION_B2B_PLN, PORTRAIT_PRICING, formatZl } from "~/data/prices";
 import { getDb } from "~/lib/payload.server";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
@@ -16,9 +16,10 @@ export async function loader() {
       prestizowy: s.weddingPackages?.prestizowy ?? 9000,
     } as Record<string, number>,
     events: {
-      portraits: s.eventPricing?.portraits ?? 3500,
-      scene: s.eventPricing?.scene ?? 4500,
-    },
+      networking: s.eventPackages?.networking ?? 4500,
+      gala: s.eventPackages?.gala ?? 7000,
+      konferencja: s.eventPackages?.konferencja ?? 11500,
+    } as Record<string, number>,
     portraits: {
       a4: s.portraits?.a4 ?? 490,
       a3: s.portraits?.a3 ?? 690,
@@ -33,7 +34,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Cennik - live painting, malowanie na żywo, portrety | alesierysuje",
     description:
-      "Jawne ceny live paintingu i portretów: pakiety weselne od 4 000 zł, eventy firmowe od 3 500 zł, portrety na zamówienie od 490 zł.",
+      "Jawne ceny live paintingu i portretów: pakiety weselne od 4 000 zł, eventy firmowe od 4 500 zł, portrety na zamówienie od 490 zł.",
     path: "/cennik",
     ogImage: "/og/cennik.png",
   });
@@ -42,9 +43,6 @@ export function meta({}: Route.MetaArgs) {
 export default function Cennik({ loaderData }: Route.ComponentProps) {
   const { wedding, events, portraits } = loaderData;
   const pf = PORTRAIT_PRICING.formats;
-  const eventPrices: Record<string, number> = {
-    "Szybkie portrety gości": events.portraits,
-  };
   return (
     <main className="page">
       <JsonLd data={breadcrumbJsonLd([{ name: "Cennik", path: "/cennik" }])} />
@@ -94,21 +92,21 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
             <table className="ptable">
               <tbody>
                 <tr>
-                  <th>Formuła</th>
+                  <th>Pakiet</th>
                   <th>Zakres</th>
                   <th>Cena</th>
                 </tr>
-                {EVENT_PRICING.map((e) => (
-                  <tr key={e.name}>
+                {EVENT_PACKAGES.map((e) => (
+                  <tr key={e.key}>
                     <td>{e.name}</td>
                     <td>{e.scope}</td>
-                    <td>od {formatZl(eventPrices[e.name])}</td>
+                    <td>{formatZl(events[e.key] ?? e.price)}</td>
                   </tr>
                 ))}
                 <tr>
                   <td>Dodatkowa ilustracja</td>
                   <td>każda praca ponad pakiet · na żywo albo z dosyłką po evencie</td>
-                  <td>{formatZl(EXTRA_ILLUSTRATION_PLN)}</td>
+                  <td>{formatZl(EXTRA_ILLUSTRATION_B2B_PLN)}</td>
                 </tr>
               </tbody>
             </table>

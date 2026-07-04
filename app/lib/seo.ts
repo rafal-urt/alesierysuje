@@ -57,7 +57,7 @@ export function localBusinessJsonLd(reviewCount: number) {
       "Live painting i malowanie na żywo na weselach i eventach. Portrety na zamówienie ze zdjęcia.",
     url: SITE_URL,
     areaServed: "PL",
-    priceRange: "490 - 9000 PLN",
+    priceRange: "490 - 11500 PLN",
     taxID: "1133135946",
     vatID: "PL1133135946",
     aggregateRating: {

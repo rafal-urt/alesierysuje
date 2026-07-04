@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { WEDDING_PACKAGES, formatZl } from "~/data/prices";
+import { formatZl } from "~/data/prices";
+
+export type PackageDef = {
+  key: string;
+  name: string;
+  forWho: string;
+  price: number;
+  scope: string;
+  features: string[];
+  featured: boolean;
+};
 
 // "**tekst**" -> pogrubienie; prefiks "+ " -> cecha, której nie ma w niższym pakiecie
 function FeatureText({ text }: { text: string }) {
@@ -9,12 +19,20 @@ function FeatureText({ text }: { text: string }) {
 
 // Poziomy akordeon pakietów: jeden moduł, aktywny panel rozwinięty,
 // pozostałe zwinięte do kolumny z nazwą i ceną. Hover / klik / focus przełącza.
-export function PackagesAccordion({ prices }: { prices: Record<string, number> }) {
-  const [active, setActive] = useState("klasyczny");
+export function PackagesAccordion({
+  packages,
+  prices,
+  ctaLabel = "Wybierz datę",
+}: {
+  packages: PackageDef[];
+  prices: Record<string, number>;
+  ctaLabel?: string;
+}) {
+  const [active, setActive] = useState(packages.find((p) => p.featured)?.key ?? packages[0].key);
 
   return (
     <div className="packflow">
-      {WEDDING_PACKAGES.map((p, i) => {
+      {packages.map((p, i) => {
         const open = active === p.key;
         return (
           <div
@@ -53,7 +71,7 @@ export function PackagesAccordion({ prices }: { prices: Record<string, number> }
                 tabIndex={open ? 0 : -1}
                 onClick={(e) => e.stopPropagation()}
               >
-                Wybierz datę
+                {ctaLabel}
               </Link>
             </div>
           </div>

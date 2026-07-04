@@ -3,7 +3,8 @@ import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
-import { EVENT_PRICING, EXTRA_ILLUSTRATION_PLN, formatZl } from "~/data/prices";
+import { EVENT_PACKAGES, EXTRA_ILLUSTRATION_B2B_PLN } from "~/data/prices";
+import { PackagesAccordion } from "~/components/PackagesAccordion";
 import { getDb } from "~/lib/payload.server";
 import { plMonthYear } from "~/lib/dates";
 import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
@@ -25,7 +26,11 @@ export async function loader() {
       when: plMonthYear(r.date),
     }));
   return {
-    priceFrom: settings.eventPricing?.portraits ?? 3500,
+    prices: {
+      networking: settings.eventPackages?.networking ?? 4500,
+      gala: settings.eventPackages?.gala ?? 7000,
+      konferencja: settings.eventPackages?.konferencja ?? 11500,
+    } as Record<string, number>,
     reviews: eventReviews,
   };
 }
@@ -34,7 +39,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Live art na event firmowy - malowanie na żywo | alesierysuje",
     description:
-      "Live art na eventy firmowe - seria akwarelowych portretów gości malowanych na żywo. 20 - 40 ilustracji A5, papier pod branding, faktura VAT. Sprawdź wolne terminy online.",
+      "Live art na eventy firmowe - seria akwarelowych portretów gości malowanych na żywo. Pakiety od 4 500 zł, papier pod branding, faktura VAT. Sprawdź wolne terminy online.",
     path: "/live-painting-eventy",
     ogImage: "/og/eventy.png",
   });
@@ -47,7 +52,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Ile ilustracji powstanie na naszym evencie?",
-    a: "Na żywo od 20 do 40 ilustracji A5 - jeden portret to 10 - 15 minut malowania. Jeśli chętnych będzie więcej, każda kolejna ilustracja to 100 zł, a czego nie zdążę namalować na żywo, dokańczam w pracowni i dosyłam po evencie.",
+    a: "Na żywo od 15 do 30 ilustracji A5 zależnie od pakietu - jeden portret to 10 - 15 minut malowania. Jeśli chętnych będzie więcej, każda kolejna ilustracja to 150 zł, a czego nie zdążę namalować na żywo, dokańczam w pracowni i dosyłam po evencie.",
   },
   {
     q: "Czy papier może być przygotowany pod nasz branding?",
@@ -64,7 +69,7 @@ const FAQ_ITEMS = [
 ];
 
 export default function LivePaintingEventy({ loaderData }: Route.ComponentProps) {
-  const { priceFrom, reviews } = loaderData;
+  const { prices, reviews } = loaderData;
   return (
     <main className="page">
       <JsonLd data={breadcrumbJsonLd([{ name: "Live art na event firmowy", path: "/live-painting-eventy" }])} />
@@ -76,11 +81,12 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
           serviceType: "Akwarelowe portrety gości malowane na żywo podczas eventów firmowych",
           provider: { "@id": SITE_URL + "#business" },
           areaServed: "PL",
-          offers: {
+          offers: EVENT_PACKAGES.map((p) => ({
             "@type": "Offer",
-            price: String(priceFrom),
+            name: `Pakiet ${p.name}`,
+            price: String(prices[p.key] ?? p.price),
             priceCurrency: "PLN",
-          },
+          })),
         }}
       />
       <JsonLd
@@ -111,8 +117,8 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
               <Link className="btn" to="/terminy">
                 Sprawdź termin
               </Link>
-              <a className="btn ghost" href="#cennik-eventy">
-                Zobacz ceny
+              <a className="btn ghost" href="#pakiety">
+                Zobacz pakiety i ceny
               </a>
             </div>
           </div>
@@ -234,42 +240,23 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
         </div>
       </section>
 
-      {/* cennik */}
-      <section id="cennik-eventy" style={{ paddingTop: 10 }}>
+      {/* pakiety */}
+      <section id="pakiety" style={{ paddingTop: 10 }}>
         <div className="wrap">
           <div className="sec-head soak">
-            <div className="eyebrow">Ceny</div>
-            <h2>Jawne stawki, zero "napisz po wycenę"</h2>
+            <div className="eyebrow">Pakiety</div>
+            <h2>Trzy pakiety, jawne stawki</h2>
+            <p>Każdy z kącikiem live art, fakturą VAT i umową - bez "napisz po wycenę".</p>
           </div>
-          <div className="pt-sec soak">
-            <table className="ptable">
-              <tbody>
-                <tr>
-                  <th>Formuła</th>
-                  <th>Zakres</th>
-                  <th>Cena</th>
-                </tr>
-                {EVENT_PRICING.map((e) => (
-                  <tr key={e.name}>
-                    <td>{e.name}</td>
-                    <td>{e.scope}</td>
-                    <td>od {formatZl(priceFrom)}</td>
-                  </tr>
-                ))}
-                <tr>
-                  <td>Dodatkowa ilustracja</td>
-                  <td>każda praca ponad pakiet · na żywo albo z dosyłką po evencie</td>
-                  <td>{formatZl(EXTRA_ILLUSTRATION_PLN)}</td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="note">
-              Formaty nietypowe wyceniam indywidualnie w 48 h. Faktura VAT i umowa w standardzie.
-            </div>
+          <div className="soak d1">
+            <PackagesAccordion packages={EVENT_PACKAGES} prices={prices} ctaLabel="Sprawdź termin" />
           </div>
-          <Link className="btn ghost soak" to="/cennik">
-            Zobacz pełny cennik
-          </Link>
+          <p className="deposit-note soak">
+            Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna ilustracja to{" "}
+            <b>{EXTRA_ILLUSTRATION_B2B_PLN} zł</b> - a czego nie zdążę namalować na żywo, dokańczam
+            w pracowni i dosyłam po evencie. Formaty nietypowe (wielodniowe targi, krótkie gale)
+            wyceniam indywidualnie w 48 godzin.
+          </p>
         </div>
       </section>
 

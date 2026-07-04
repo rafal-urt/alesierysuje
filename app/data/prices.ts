@@ -5,7 +5,8 @@
 // czego nie zdążymy namalować na żywo, dokańczamy w pracowni i dosyłamy.
 
 // Cena każdej ilustracji ponad limit pakietu (docelowo do przeniesienia do settings)
-export const EXTRA_ILLUSTRATION_PLN = 100;
+export const EXTRA_ILLUSTRATION_PLN = 100; // klienci indywidualni (wesela)
+export const EXTRA_ILLUSTRATION_B2B_PLN = 150; // firmy (eventy)
 
 export const WEDDING_PACKAGES = [
   {
@@ -62,11 +63,59 @@ export const WEDDING_PACKAGES = [
   },
 ];
 
-export const EVENT_PRICING = [
+// Pakiety eventowe B2B - wycena z premią 25-35% nad cennikiem indywidualnym
+export const EVENT_PACKAGES = [
   {
-    name: "Szybkie portrety gości",
-    scope: "do 4 h · ok. 20 - 40 ilustracji A5 · papier pod branding",
-    price: "od 3 500 zł",
+    key: "networking",
+    name: "Networking",
+    forWho: "spotkania firmowe do 60 gości",
+    price: 4500,
+    scope: "do 60 gości · 3 h malowania · do 15 ilustracji na żywo",
+    features: [
+      "**3 godziny** malowania na żywo",
+      "**do 15 ilustracji** gości malowanych na żywo - akwarela A5, papier 300 g",
+      "kącik live art - stolik artystki i ekspozycja prac",
+      "prace podpisane i zabezpieczone, do odbioru z kącika",
+      "konsultacja online przed eventem",
+      "faktura VAT i umowa",
+    ],
+    featured: false,
+  },
+  {
+    key: "gala",
+    name: "Gala",
+    forWho: "gale, jubileusze i premiery do 120 gości",
+    price: 7000,
+    scope: "do 120 gości · 5 h malowania · do 25 na żywo + do 10 z pracowni",
+    features: [
+      "**5 godzin** malowania na żywo",
+      "**do 25 ilustracji** gości malowanych na żywo - akwarela A5, papier 300 g",
+      "+ **do 10 ilustracji** malowanych w pracowni, wysyłanych po evencie",
+      "kącik live art - stolik artystki i ekspozycja prac",
+      "prace podpisane i zabezpieczone, do odbioru z kącika",
+      "konsultacja online przed eventem",
+      "faktura VAT i umowa",
+      "+ papier przygotowany pod branding wydarzenia",
+    ],
+    featured: true,
+  },
+  {
+    key: "konferencja",
+    name: "Konferencja",
+    forWho: "konferencje, targi i całodniowe wydarzenia",
+    price: 11500,
+    scope: "konferencje i targi · do 8 h · do 30 na żywo + do 30 z pracowni",
+    features: [
+      "**do 8 godzin** malowania na żywo",
+      "**do 30 ilustracji** gości malowanych na żywo - akwarela A5, papier 300 g",
+      "+ **do 30 ilustracji** malowanych w pracowni, wysyłanych po evencie",
+      "kącik live art - stolik artystki i ekspozycja prac",
+      "prace podpisane i zabezpieczone, do odbioru z kącika",
+      "konsultacja online przed eventem",
+      "faktura VAT i umowa",
+      "+ papier przygotowany pod branding wydarzenia",
+    ],
+    featured: false,
   },
 ];
 

@@ -576,6 +576,11 @@ export interface Setting {
     portraits: number;
     scene: number;
   };
+  eventPackages?: {
+    networking?: number | null;
+    gala?: number | null;
+    konferencja?: number | null;
+  };
   portraits: {
     a4: number;
     a3: number;
@@ -606,6 +611,13 @@ export interface SettingsSelect<T extends boolean = true> {
     | {
         portraits?: T;
         scene?: T;
+      };
+  eventPackages?:
+    | T
+    | {
+        networking?: T;
+        gala?: T;
+        konferencja?: T;
       };
   portraits?:
     | T
