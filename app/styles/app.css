@@ -1553,6 +1553,7 @@ section {
   position: sticky;
   top: 100px;
 }
+.bk h2,
 .bk h3 {
   font-size: 1.4rem;
   margin-bottom: 6px;

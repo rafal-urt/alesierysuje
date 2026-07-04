@@ -264,7 +264,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
             {sent ? (
               <div className="success">
                 <div className="check">&#10003;</div>
-                <h3>Zapytanie wysłane</h3>
+                <h2 style={{ fontSize: "1.4rem" }}>Zapytanie wysłane</h2>
                 <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem", marginTop: 8 }}>
                   Aleksandra sprawdzi dostępność terminu i wróci do Was mailowo z propozycją -
                   zwykle w ciągu 24 - 48 godzin. Do niczego to nie zobowiązuje.
@@ -278,7 +278,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
             ) : (
               <>
                 <div className="krok">Krok 2 &middot; kilka szczegółów</div>
-                <h3>Zapytanie o termin</h3>
+                <h2 style={{ fontSize: "1.4rem" }}>Zapytanie o termin</h2>
                 {selected ? (
                   <>
                     <div className="picked">{plFullDate(selected)}</div>
