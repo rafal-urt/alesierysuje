@@ -992,12 +992,6 @@ section {
   color: inherit;
   font-weight: 600;
 }
-.pack li.extra::before {
-  width: 16px;
-  height: 8px;
-  top: 14px;
-  filter: blur(0.5px);
-}
 .pack.p2 li::before {
   background: var(--color-wash-rose);
 }
@@ -2033,12 +2027,6 @@ footer {
   border-radius: 4px;
   background: var(--color-wash-blue);
   filter: blur(0.8px);
-}
-.packpanel-body li.extra::before {
-  width: 16px;
-  height: 8px;
-  top: 14px;
-  filter: blur(0.5px);
 }
 .packpanel-body li b {
   color: inherit;
