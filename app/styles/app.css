@@ -603,9 +603,12 @@ section {
   inset: -6%;
   transition: transform 0.7s cubic-bezier(0.2, 0.6, 0.2, 1);
 }
-.door .art svg {
+.door .art svg,
+.door .art img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .door .veil {
   position: absolute;

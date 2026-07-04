@@ -157,7 +157,25 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             </Link>
             <Link className="door soak d2" to="/portrety-na-zamowienie">
               <div className="art">
-                <WatercolorPlaceholder seed={59} palette={4} width={400} height={560} />
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet="/gfx/portrety-na-zamowienie-akwarela-600.avif 600w, /gfx/portrety-na-zamowienie-akwarela-1000.avif 1000w"
+                    sizes="(max-width: 920px) 100vw, 430px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet="/gfx/portrety-na-zamowienie-akwarela-600.webp 600w, /gfx/portrety-na-zamowienie-akwarela-1000.webp 1000w"
+                    sizes="(max-width: 920px) 100vw, 430px"
+                  />
+                  <img
+                    src="/gfx/portrety-na-zamowienie-akwarela-1000.jpg"
+                    alt="Oprawione akwarelowe portrety rodzinne namalowane na zamówienie ze zdjęcia"
+                    width={1000}
+                    height={1333}
+                    loading="lazy"
+                  />
+                </picture>
               </div>
               <div className="veil" />
               <div className="txt">
