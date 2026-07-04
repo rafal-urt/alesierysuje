@@ -621,7 +621,12 @@ section {
 .door .veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(250, 247, 242, 0) 34%, rgba(250, 247, 242, 0.95) 76%);
+  /* zdjecie czyste do ~58%, krotkie przejscie, pelny kolor pod tekstem */
+  background: linear-gradient(
+    180deg,
+    rgba(250, 247, 242, 0) 58%,
+    rgba(250, 247, 242, 1) 78%
+  );
 }
 .door .txt {
   position: absolute;
