@@ -170,9 +170,9 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                   />
                   <img
                     src="/gfx/portrety-na-zamowienie-akwarela-1000.jpg"
-                    alt="Oprawione akwarelowe portrety rodzinne namalowane na zamówienie ze zdjęcia"
+                    alt="Oprawiony akwarelowy portret rodzinny namalowany na zamówienie ze zdjęcia"
                     width={1000}
-                    height={1333}
+                    height={1218}
                     loading="lazy"
                   />
                 </picture>
