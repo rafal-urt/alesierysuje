@@ -116,7 +116,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             </div>
           </div>
         </div>
-        <div className="hero-scroll">przewiń</div>
       </div>
 
       <Marquee />
