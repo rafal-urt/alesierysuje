@@ -7,7 +7,6 @@ export function Footer() {
         <div className="fgrid">
           <div className="fcol">
             <Link className="logo" to="/">
-              <span className="dot" />
               <img src="/gfx/logo.png" alt="alesierysuje" />
             </Link>
             <p className="desc">
