@@ -1519,11 +1519,6 @@ section {
   color: var(--color-ink-faint);
 }
 .bk {
-  background: #fff;
-  border: 1px solid var(--color-line-soft);
-  border-radius: 3px;
-  padding: 34px;
-  box-shadow: 0 10px 34px rgba(43, 43, 43, 0.07);
   position: sticky;
   top: 100px;
 }
@@ -1557,7 +1552,7 @@ section {
   width: 100%;
   padding: 12px 14px;
   border: 1px solid var(--color-line);
-  border-radius: 2px;
+  border-radius: 10px;
   font-family: var(--font-sans);
   font-size: 0.95rem;
   background: var(--color-paper);
@@ -1565,8 +1560,8 @@ section {
 }
 .bk input:focus,
 .bk select:focus {
-  outline: 2px solid var(--color-ink);
-  outline-offset: 1px;
+  outline: 2px solid var(--color-wash-blue);
+  outline-offset: 2px;
 }
 .bk .btn {
   width: 100%;
@@ -1652,7 +1647,7 @@ section {
   width: 100%;
   padding: 12px 14px;
   border: 1px solid var(--color-line);
-  border-radius: 2px;
+  border-radius: 10px;
   font-family: var(--font-sans);
   font-size: 0.95rem;
   background: var(--color-paper);
@@ -2073,6 +2068,29 @@ footer {
     pointer-events: auto;
     width: auto;
   }
+}
+
+/* ===== terminy: wspolna karta obu kolumn ===== */
+.panel {
+  background: #fff;
+  border: 1px solid var(--color-line-soft);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(43, 43, 43, 0.08);
+  padding: 30px;
+}
+/* kalendarz w karcie traci wlasna ramke - karta jest jedna */
+.panel .macal {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  max-width: none;
+}
+.panel .legend {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-line-soft);
 }
 
 /* ===== terminy: kroki, chipy, bledy pol ===== */

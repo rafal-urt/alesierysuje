@@ -180,7 +180,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
                   width: "100%",
                   padding: "12px 14px",
                   border: "1px solid var(--color-line)",
-                  borderRadius: 2,
+                  borderRadius: 10,
                   background: "var(--color-paper)",
                 }}
               />
@@ -208,7 +208,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
                   width: "100%",
                   padding: "12px 14px",
                   border: "1px solid var(--color-line)",
-                  borderRadius: 2,
+                  borderRadius: 10,
                   background: "var(--color-paper)",
                 }}
               />

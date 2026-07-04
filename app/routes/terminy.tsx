@@ -239,7 +239,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
       </section>
       <section style={{ paddingTop: 0 }}>
         <div className="wrap cal-wrap">
-          <div className="soak">
+          <div className="panel soak">
             <div className="krok">Krok 1 &middot; wybierzcie wolny dzień</div>
             <Calendar
               takenDates={takenDates}
@@ -260,7 +260,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
               </span>
             </div>
           </div>
-          <div className="bk soak d1" id="bkPanel">
+          <div className="panel bk soak d1" id="bkPanel">
             {sent ? (
               <div className="success">
                 <div className="check">&#10003;</div>
