@@ -162,10 +162,6 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                 <span className="ldot taken" />
                 termin zajęty
               </span>
-              <span>
-                <span className="ldot today" />
-                dziś
-              </span>
             </div>
             <Calendar
               takenDates={takenDates}

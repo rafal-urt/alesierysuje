@@ -30,6 +30,8 @@ export const TAKEN_DATES = [
   "2026-08-08", "2026-08-09",
   "2026-09-05", "2026-09-06",
   "2026-09-12", "2026-09-13",
+  "2027-04-16", "2027-04-17", "2027-04-18",
+  "2027-05-21", "2027-05-22", "2027-05-23",
 ] as const;
 
 // Idempotentny seed: uzupełnia tylko puste kolekcje/ustawienia.
