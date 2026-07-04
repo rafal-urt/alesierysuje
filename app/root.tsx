@@ -3,6 +3,7 @@ import {
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
 } from "react-router";
@@ -18,7 +19,15 @@ import { getDb } from "~/lib/payload.server";
 import { GtmScript, GtmNoScript, GaScript } from "~/components/Gtm";
 import { CookieBanner } from "~/components/CookieBanner";
 
-export async function loader() {
+export async function loader({ request }: Route.LoaderArgs) {
+  // kanoniczny host: duplikaty (www, adres vercel.app) -> 301 na domene glowna
+  const url = new URL(request.url);
+  if (url.hostname === "www.alesierysuje.pl" || url.hostname === "alesierysuje.vercel.app") {
+    url.hostname = "alesierysuje.pl";
+    url.protocol = "https:";
+    url.port = "";
+    throw redirect(url.toString(), 301);
+  }
   const db = await getDb();
   const reviews = await db.count({ collection: "reviews" });
   return { reviewCount: reviews.totalDocs };

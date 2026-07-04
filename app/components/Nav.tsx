@@ -30,7 +30,7 @@ export function Nav() {
     <nav className={`sitenav${scrolled ? " scrolled" : ""}`}>
       <div className="nav-inner">
         <Link className="logo" to="/">
-          <img src="/gfx/logo.png" alt="alesierysuje" />
+          <img src="/gfx/logo.png" alt="alesierysuje" width={453} height={120} />
         </Link>
         <button className="burger" onClick={() => setOpen((o) => !o)} aria-label="Menu">
           &#9776;

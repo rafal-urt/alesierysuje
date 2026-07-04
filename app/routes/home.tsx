@@ -32,9 +32,9 @@ export async function loader() {
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: "Live painting na wesele i eventy - malowanie na żywo | alesierysuje",
+    title: "Live painting na wesele i eventy | alesierysuje",
     description:
-      "Live painting i malowanie na żywo na weselach oraz eventach firmowych. Live art, szybkie portrety gości i portrety na zamówienie ze zdjęcia. Sprawdź wolne terminy i ceny.",
+      "Malowanie na żywo na weselach i eventach: akwarelowe portrety gości do zabrania jeszcze tego wieczoru. Sprawdź wolne terminy i jawne ceny.",
     path: "/",
     ogImage: "/og/home.png",
   });

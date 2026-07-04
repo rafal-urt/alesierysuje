@@ -55,9 +55,9 @@ export function Calendar({ takenDates, todayISO, minMonth, maxMonth, selected, o
   return (
     <div className="macal">
       <div className="macal-head">
-        <h4>
+        <p className="macal-title">
           {MONTH_TITLES[view.m]} {view.y}
-        </h4>
+        </p>
         <div className="macal-nav">
           <button onClick={() => shift(-1)} disabled={atMin} aria-label="Poprzedni miesiąc">
             &#8249;

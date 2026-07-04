@@ -35,7 +35,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Live painting na wesele - malowanie na żywo | alesierysuje",
     description:
-      "Kilkadziesiąt akwarelowych portretów gości i Pary Młodej malowanych podczas wesela. Szybkie zdjęcie w kąciku live art, akwarela z fotografii, odbiór na miejscu. Pakiety od 4 000 zł.",
+      "Akwarelowe portrety gości i Pary Młodej malowane podczas wesela - bez pozowania i kolejki. Pakiety z jawnymi cenami od 4 000 zł, rezerwacja online.",
     path: "/live-painting-wesele",
     ogImage: "/og/wesele.png",
   });
@@ -182,28 +182,28 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
           </div>
           <div className="timeline">
             <div className="tl soak">
-              <h4>Zapytanie</h4>
+              <h3>Zapytanie</h3>
               <p>
                 Wybieracie termin w kalendarzu i wysyłacie bezpłatne zapytanie. Odpowiedź wraca w
                 24 - 48 h, potem ustalamy szczegóły.
               </p>
             </div>
             <div className="tl soak d1">
-              <h4>Zdjęcie w kąciku</h4>
+              <h3>Zdjęcie w kąciku</h3>
               <p>
                 Goście podchodzą do kącika live art, robię im na miejscu szybkie zdjęcie i wracają
                 do zabawy - bez pozowania i czekania.
               </p>
             </div>
             <div className="tl soak d2">
-              <h4>Akwarela przy sztaludze</h4>
+              <h3>Akwarela przy sztaludze</h3>
               <p>
                 Każdy portret to 10 - 15 minut malowania. Gotowe prace czekają w kąciku live art -
                 goście odbierają swoje, kiedy chcą.
               </p>
             </div>
             <div className="tl soak d3">
-              <h4>Pamiątki na lata</h4>
+              <h3>Pamiątki na lata</h3>
               <p>
                 Podpisane ilustracje jadą do domów jeszcze tej nocy. Czego nie zdążę namalować,
                 dokańczam w pracowni i dosyłam po weselu.

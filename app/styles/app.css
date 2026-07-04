@@ -1085,7 +1085,7 @@ section {
   display: block;
   margin-bottom: 10px;
 }
-.tl h4 {
+.tl h3 {
   font-size: 1.05rem;
   margin-bottom: 8px;
   font-family: var(--font-serif);
@@ -1434,7 +1434,7 @@ section {
   align-items: center;
   margin-bottom: 20px;
 }
-.macal-head h4 {
+.macal-head .macal-title {
   font-family: var(--font-serif);
   font-weight: 500;
   font-size: 1.6rem;

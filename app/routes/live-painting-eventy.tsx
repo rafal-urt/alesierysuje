@@ -39,7 +39,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Live art na event firmowy - malowanie na żywo | alesierysuje",
     description:
-      "Live art na eventy firmowe - seria akwarelowych portretów gości malowanych na żywo. Pakiety od 4 500 zł, papier pod branding, faktura VAT. Sprawdź wolne terminy online.",
+      "Live art na event firmowy: akwarelowe portrety gości na papierze pod branding. Pakiety od 4 500 zł, faktura VAT. Sprawdź wolne terminy.",
     path: "/live-painting-eventy",
     ogImage: "/og/eventy.png",
   });
@@ -172,28 +172,28 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
           </div>
           <div className="timeline">
             <div className="tl soak">
-              <h4>Termin</h4>
+              <h3>Termin</h3>
               <p>
                 Sprawdzacie datę w kalendarzu online i wysyłacie bezpłatne zapytanie. Wracam w
                 24 - 48 h z wyceną i propozycją formuły.
               </p>
             </div>
             <div className="tl soak d1">
-              <h4>Ustalenia</h4>
+              <h3>Ustalenia</h3>
               <p>
                 Papier pod branding, kolorystyka, godziny i miejsce kącika - wszystko domykamy
                 mailowo. Umowa i faktura VAT w standardzie.
               </p>
             </div>
             <div className="tl soak d2">
-              <h4>Event</h4>
+              <h3>Event</h3>
               <p>
                 Goście podchodzą do kącika na szybkie zdjęcie i wracają do rozmów. Maluję z
                 fotografii, a gotowe prace odbiera się z kącika.
               </p>
             </div>
             <div className="tl soak d3">
-              <h4>Po evencie</h4>
+              <h3>Po evencie</h3>
               <p>
                 Czego nie zdążę namalować na żywo, dokańczam w pracowni i dosyłam - komplet
                 pamiątek trafia do gości.

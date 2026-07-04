@@ -16,7 +16,7 @@ export function loader({ params }: Route.LoaderArgs) {
 export function meta({ data }: Route.MetaArgs) {
   if (!data) return [{ title: "Nie znaleziono wpisu | alesierysuje" }];
   return pageMeta({
-    title: `${data.post.title} | alesierysuje`,
+    title: data.post.title.length <= 45 ? `${data.post.title} | alesierysuje` : data.post.title,
     description: data.post.description,
     path: `/blog/${data.post.slug}`,
   });

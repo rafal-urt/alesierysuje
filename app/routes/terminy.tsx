@@ -13,7 +13,7 @@ import { JsonLd } from "~/components/JsonLd";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: "Wolne terminy live painting 2026 / 2027 - rezerwacja online | alesierysuje",
+    title: "Wolne terminy live painting 2026/2027 | alesierysuje",
     description:
       "Kalendarz dostępności live paintingu do końca 2027. Wybierz wolny dzień i wyślij bezpłatne zapytanie o termin - odpowiedź w 24 - 48 godzin.",
     path: "/terminy",

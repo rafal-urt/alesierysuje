@@ -32,7 +32,7 @@ export async function loader() {
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: "Cennik - live painting, malowanie na żywo, portrety | alesierysuje",
+    title: "Cennik - live painting i portrety | alesierysuje",
     description:
       "Jawne ceny live paintingu i portretów: pakiety weselne od 4 000 zł, eventy firmowe od 4 500 zł, portrety na zamówienie od 490 zł.",
     path: "/cennik",

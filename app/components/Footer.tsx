@@ -7,7 +7,7 @@ export function Footer() {
         <div className="fgrid">
           <div className="fcol">
             <Link className="logo" to="/">
-              <img src="/gfx/logo.png" alt="alesierysuje" />
+              <img src="/gfx/logo.png" alt="alesierysuje" width={453} height={120} />
             </Link>
             <p className="desc">
               Live painting i malowanie na żywo na weselach oraz eventach w całej Polsce.
