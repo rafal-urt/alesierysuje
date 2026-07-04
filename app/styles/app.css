@@ -589,7 +589,7 @@ section {
 }
 .door {
   position: relative;
-  height: 480px;
+  height: 580px;
   overflow: hidden;
   border-radius: 4px;
   cursor: pointer;
