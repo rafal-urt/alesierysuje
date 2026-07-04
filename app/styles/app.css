@@ -163,6 +163,15 @@ nav.sitenav.scrolled {
   align-items: center;
   gap: 8px;
 }
+.logo img {
+  height: 30px;
+  width: auto;
+  display: block;
+  transform: translateY(-2px); /* optyczne wyrownanie letteringu do kropki */
+}
+footer .logo img {
+  height: 26px;
+}
 .logo .dot {
   width: 11px;
   height: 11px;

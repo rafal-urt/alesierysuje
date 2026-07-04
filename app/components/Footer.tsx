@@ -8,7 +8,7 @@ export function Footer() {
           <div className="fcol">
             <Link className="logo" to="/">
               <span className="dot" />
-              alesierysuje
+              <img src="/gfx/logo.png" alt="alesierysuje" />
             </Link>
             <p className="desc">
               Live painting i malowanie na żywo na weselach oraz eventach w całej Polsce.
