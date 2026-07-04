@@ -21,7 +21,7 @@ export const Settings: GlobalConfig = {
       fields: [
         { name: "kameralny", type: "number", label: "Kameralny", required: true },
         { name: "klasyczny", type: "number", label: "Klasyczny", required: true },
-        { name: "prestizowy", type: "number", label: "Prestiżowy", required: true },
+        { name: "prestizowy", type: "number", label: "Premium", required: true },
       ],
     },
     {

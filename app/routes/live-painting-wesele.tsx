@@ -17,9 +17,9 @@ export async function loader() {
   ]);
   return {
     prices: {
-      kameralny: settings.weddingPackages?.kameralny ?? 3900,
-      klasyczny: settings.weddingPackages?.klasyczny ?? 5900,
-      prestizowy: settings.weddingPackages?.prestizowy ?? 8900,
+      kameralny: settings.weddingPackages?.kameralny ?? 4000,
+      klasyczny: settings.weddingPackages?.klasyczny ?? 6000,
+      prestizowy: settings.weddingPackages?.prestizowy ?? 9000,
     } as Record<string, number>,
     reviews: reviews.docs.map((r) => ({
       author: r.author,
@@ -34,7 +34,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Live painting na wesele - malowanie na żywo | alesierysuje",
     description:
-      "Kilkadziesiąt akwarelowych portretów gości i Pary Młodej malowanych podczas wesela. Bez pozowania i kolejki - zdjęcia robi artystka, gotowe ilustracje czekają na sztaludze. Pakiety od 3 900 zł.",
+      "Kilkadziesiąt akwarelowych portretów gości i Pary Młodej malowanych podczas wesela. Bez pozowania i kolejki - zdjęcia robi artystka, gotowe ilustracje czekają na sztaludze. Pakiety od 4 000 zł.",
     path: "/live-painting-wesele",
     ogImage: "/og/wesele.png",
   });
@@ -47,7 +47,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Ile trwa namalowanie jednego portretu?",
-    a: "Od 10 do 15 minut. Dzięki temu w jeden wieczór powstaje od 20 do 40 ilustracji - zależnie od pakietu i długości przyjęcia.",
+    a: "Od 10 do 15 minut. Na żywo powstaje do 30 ilustracji w jeden wieczór, a w pakietach Klasycznym i Premium kolejne maluję w pracowni i wysyłam po weselu.",
   },
   {
     q: "Co, jeśli chętnych będzie więcej, niż zakłada pakiet?",
@@ -149,8 +149,8 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         <div className="wrap">
           <div className="bstats b4">
             <div className="bstat soak">
-              <b>20 - 40</b>
-              <span>ilustracji gości powstaje podczas jednego wesela</span>
+              <b>do 60</b>
+              <span>ilustracji z jednego wesela - na żywo i z dosyłką z pracowni</span>
             </div>
             <div className="bstat soak d1">
               <b>10 - 15 min</b>

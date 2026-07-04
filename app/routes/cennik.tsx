@@ -11,9 +11,9 @@ export async function loader() {
   const s = await db.findGlobal({ slug: "settings" });
   return {
     wedding: {
-      kameralny: s.weddingPackages?.kameralny ?? 3900,
-      klasyczny: s.weddingPackages?.klasyczny ?? 5900,
-      prestizowy: s.weddingPackages?.prestizowy ?? 8900,
+      kameralny: s.weddingPackages?.kameralny ?? 4000,
+      klasyczny: s.weddingPackages?.klasyczny ?? 6000,
+      prestizowy: s.weddingPackages?.prestizowy ?? 9000,
     } as Record<string, number>,
     events: {
       portraits: s.eventPricing?.portraits ?? 3500,
@@ -33,7 +33,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Cennik - live painting, malowanie na żywo, portrety | alesierysuje",
     description:
-      "Jawne ceny live paintingu i portretów: pakiety weselne od 3 900 zł, eventy firmowe od 3 500 zł, portrety na zamówienie od 490 zł.",
+      "Jawne ceny live paintingu i portretów: pakiety weselne od 4 000 zł, eventy firmowe od 3 500 zł, portrety na zamówienie od 490 zł.",
     path: "/cennik",
     ogImage: "/og/cennik.png",
   });

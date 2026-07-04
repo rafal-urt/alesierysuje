@@ -43,11 +43,11 @@ export function meta({}: Route.MetaArgs) {
 const FAQ_ITEMS = [
   {
     q: "Ile kosztuje live painting na weselu?",
-    a: "Pakiety weselne zaczynają się od 3 900 zł, a najczęściej wybierany kosztuje 5 900 zł. Pełne zestawienie znajdziecie w cenniku - ceny są jawne, bez pisania po wycenę.",
+    a: "Pakiety weselne zaczynają się od 4 000 zł, a najczęściej wybierany kosztuje 6 000 zł. Pełne zestawienie znajdziecie w cenniku - ceny są jawne, bez pisania po wycenę.",
   },
   {
     q: "Czym różni się live painting od live artu?",
-    a: "To dwie nazwy tej samej idei - sztuki tworzonej na żywo, na oczach gości. U mnie to seria szybkich akwarelowych portretów gości: od 20 do 40 ilustracji A5 podczas jednego wesela lub eventu.",
+    a: "To dwie nazwy tej samej idei - sztuki tworzonej na żywo, na oczach gości. U mnie to seria szybkich akwarelowych portretów gości: do 30 ilustracji A5 malowanych na żywo, a w większych pakietach kolejne dosyłam z pracowni.",
   },
   {
     q: "Jak zamówić portret ze zdjęcia?",
@@ -136,7 +136,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <div className="txt">
                 <div className="kicker">wesela</div>
                 <h3>Live painting na weselu</h3>
-                <p>Akwarelowe ilustracje gości malowane na żywo - od 20 do 40 portretów w jeden wieczór.</p>
+                <p>Akwarelowe ilustracje gości malowane na żywo - do 60 portretów z jednego wesela.</p>
                 <span className="go">
                   Zobacz pakiety <span>&rarr;</span>
                 </span>
@@ -253,9 +253,9 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             Live painting, po polsku malowanie na żywo, to sztuka tworzona na oczach gości - na
             weselu, evencie firmowym, gali czy premierze. Zamawiacie proces: sztalugę na sali i
             kilka godzin, w których każdy gość może zobaczyć, jak powstaje jego akwarelowy portret.
-            Podczas jednego wydarzenia maluję od 20 do 40 ilustracji formatu A5 - każdą podpisaną i
-            gotową do zabrania jeszcze tego samego wieczoru, a czego nie zdążę namalować na żywo,
-            dokańczam w pracowni i dosyłam po evencie.
+            Podczas jednego wydarzenia maluję na żywo do 30 ilustracji formatu A5 - każdą podpisaną
+            i gotową do zabrania jeszcze tego samego wieczoru - a kolejne dokańczam w pracowni i
+            dosyłam po evencie.
           </p>
           <p className="soak d2">
             Obok ilustracji gości maluję również portrety na zamówienie ze zdjęcia - akwarelowe,
