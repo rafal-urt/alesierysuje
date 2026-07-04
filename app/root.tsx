@@ -16,6 +16,7 @@ import { JsonLd } from "~/components/JsonLd";
 import { localBusinessJsonLd } from "~/lib/seo";
 import { getDb } from "~/lib/payload.server";
 import { GtmScript, GtmNoScript, GaScript } from "~/components/Gtm";
+import { CookieBanner } from "~/components/CookieBanner";
 
 export async function loader() {
   const db = await getDb();
@@ -67,6 +68,7 @@ export default function App({ loaderData }: Route.ComponentProps) {
       <Nav />
       <Outlet />
       <Footer />
+      <CookieBanner />
       <SoakObserver />
     </>
   );

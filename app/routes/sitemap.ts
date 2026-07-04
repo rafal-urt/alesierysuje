@@ -9,6 +9,7 @@ const PATHS = [
   "/cennik",
   "/o-mnie",
   "/terminy",
+  "/polityka-prywatnosci",
 ];
 
 // sitemap.xml generowany na żądanie z listy tras (SPEC.md sekcja 2).

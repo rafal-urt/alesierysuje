@@ -9,6 +9,7 @@ export default [
   route("cennik", "routes/cennik.tsx"),
   route("o-mnie", "routes/o-mnie.tsx"),
   route("terminy", "routes/terminy.tsx"),
+  route("polityka-prywatnosci", "routes/polityka-prywatnosci.tsx"),
   route("media/*", "routes/media.ts"),
   route("sitemap.xml", "routes/sitemap.ts"),
 ] satisfies RouteConfig;

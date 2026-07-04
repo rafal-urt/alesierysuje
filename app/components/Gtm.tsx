@@ -6,14 +6,23 @@ export const GTM_ID = ""; // np. "GTM-XXXXXXX"
 // usuń GA_ID (inaczej odsłony liczyłyby się podwójnie).
 export const GA_ID = "G-K7VE32M4N8";
 
+// Klucz w localStorage z decyzją użytkownika: "granted" | "denied"
+export const CONSENT_KEY = "alesierysuje-cookie-zgoda";
+
 export function GaScript() {
   if (!GA_ID) return null;
+  // Consent Mode v2: start z odmową; wcześniejsza zgoda z localStorage
+  // jest przywracana zanim poleci config (GA bez zgody działa bezcookiesowo).
   return (
     <>
       <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
       <script
         dangerouslySetInnerHTML={{
-          __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${GA_ID}');`,
+          __html:
+            `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}` +
+            `gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});` +
+            `try{if(localStorage.getItem('${CONSENT_KEY}')==='granted'){gtag('consent','update',{analytics_storage:'granted'});}}catch(e){}` +
+            `gtag('js', new Date());gtag('config', '${GA_ID}');`,
         }}
       />
     </>

@@ -50,6 +50,9 @@ export function Footer() {
               <li>
                 <Link to="/o-mnie">O mnie</Link>
               </li>
+              <li>
+                <Link to="/polityka-prywatnosci">Polityka prywatności</Link>
+              </li>
             </ul>
           </div>
           <div className="fcol">

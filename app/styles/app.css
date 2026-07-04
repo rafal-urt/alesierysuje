@@ -1756,3 +1756,56 @@ footer {
   font-size: 0.8rem;
   color: var(--color-ink-faint);
 }
+
+/* ===== baner cookies ===== */
+.cookiebar {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 300;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  box-shadow: 0 16px 44px rgba(43, 43, 43, 0.16);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.cookiebar p {
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+  margin: 0;
+  flex: 1 1 320px;
+}
+.cookiebar p a {
+  border-bottom: 1px solid var(--color-ink);
+  color: var(--color-ink);
+}
+.cookiebar-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== strony formalne ===== */
+.legal {
+  max-width: 720px;
+}
+.legal h2 {
+  font-size: 1.35rem;
+  margin: 38px 0 12px;
+}
+.legal p {
+  color: var(--color-ink-soft);
+  font-size: 0.98rem;
+  margin-bottom: 14px;
+}
+.legal a {
+  border-bottom: 1px solid var(--color-ink);
+  color: var(--color-ink);
+}
