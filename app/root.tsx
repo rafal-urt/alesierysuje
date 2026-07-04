@@ -15,7 +15,7 @@ import { SoakObserver } from "~/components/Soak";
 import { JsonLd } from "~/components/JsonLd";
 import { localBusinessJsonLd } from "~/lib/seo";
 import { getDb } from "~/lib/payload.server";
-import { GtmScript, GtmNoScript } from "~/components/Gtm";
+import { GtmScript, GtmNoScript, GaScript } from "~/components/Gtm";
 
 export async function loader() {
   const db = await getDb();
@@ -48,6 +48,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
         <GtmScript />
+        <GaScript />
       </head>
       <body>
         <GtmNoScript />

@@ -2,6 +2,24 @@
 // (tagmanager.google.com) - bez ID komponenty nie renderują niczego.
 export const GTM_ID = ""; // np. "GTM-XXXXXXX"
 
+// GA4 podpięte bezpośrednio przez gtag.js. Jeśli kiedyś wejdzie GTM z tagiem GA4,
+// usuń GA_ID (inaczej odsłony liczyłyby się podwójnie).
+export const GA_ID = "G-K7VE32M4N8";
+
+export function GaScript() {
+  if (!GA_ID) return null;
+  return (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${GA_ID}');`,
+        }}
+      />
+    </>
+  );
+}
+
 export function GtmScript() {
   if (!GTM_ID) return null;
   return (
