@@ -6,21 +6,20 @@ import { WorksGallery } from "~/components/WorksGallery";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { getDb, mapWork } from "~/lib/payload.server";
-import { plMonthYear, plMonthYearGenitive } from "~/lib/dates";
-import { countFreeSaturdays } from "~/lib/availability.server";
+import { plMonthYear } from "~/lib/dates";
+import { countFreeWeekends } from "~/lib/availability.server";
 import { pageMeta, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 
 export async function loader() {
   const db = await getDb();
-  const [works, reviews, saturdays] = await Promise.all([
+  const [works, reviews, weekends] = await Promise.all([
     db.find({ collection: "works", sort: "order", limit: 6, depth: 1 }),
     db.find({ collection: "reviews", sort: "-date", limit: 6 }),
-    countFreeSaturdays(),
+    countFreeWeekends(),
   ]);
   return {
-    freeSaturdays: saturdays.count,
-    calendarEndLabel: plMonthYearGenitive(saturdays.end),
+    freeWeekends: weekends.count,
     works: works.docs.map(mapWork),
     reviews: reviews.docs.map((r) => ({
       author: r.author,
@@ -57,7 +56,7 @@ const FAQ_ITEMS = [
 ];
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  const { works, reviews, freeSaturdays, calendarEndLabel } = loaderData;
+  const { works, reviews, freeWeekends } = loaderData;
   return (
     <main className="page">
       <JsonLd
@@ -106,7 +105,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               </Link>
               <div className="season">
                 <span className="pulse" />
-                Wolnych sobót do {calendarEndLabel}: <b>{freeSaturdays}</b>
+                Wolnych weekendów w tym roku: <b>{freeWeekends}</b>
               </div>
             </div>
           </div>
@@ -309,7 +308,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap">
           <div className="banner soak">
             <WatercolorStain color="blue" width={420} height={380} style={{ top: -120, right: -80 }} />
-            <h2>Wasza sobota może być na tej ścianie.</h2>
+            <h2>Wasz wieczór może być na tej ścianie.</h2>
             <Link className="btn light" to="/terminy">
               Sprawdź wolne terminy
             </Link>

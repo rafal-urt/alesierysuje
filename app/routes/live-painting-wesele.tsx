@@ -294,7 +294,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         <div className="wrap">
           <div className="banner soak">
             <WatercolorStain color="rose" width={420} height={380} style={{ bottom: -140, left: -80 }} />
-            <h2>Soboty w sezonie znikają pierwsze.</h2>
+            <h2>Najlepsze terminy w sezonie znikają pierwsze.</h2>
             <Link className="btn light" to="/terminy">
               Zobacz kalendarz 2027
             </Link>
