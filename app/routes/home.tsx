@@ -213,7 +213,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Jak to działa</div>
-            <h2>Trzy kroki. Reszta to farba i woda.</h2>
+            <h2>Trzy kroki. Reszta to farba, woda i moja lewa ręka.</h2>
           </div>
           <div className="steps">
             <div className="step soak">
@@ -226,7 +226,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             </div>
             <div className="step soak d1">
               <div className="brush" style={{ background: "var(--color-wash-rose)" }} />
-              <h3>Ale przyjeżdża i maluje</h3>
+              <h3>Aleksandra przyjeżdża i maluje</h3>
               <p>
                 Sztaluga staje na sali w najlepszym momencie. Goście patrzą, jak biała kartka nabiera
                 koloru.

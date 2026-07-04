@@ -106,7 +106,7 @@ export async function action({ request }: Route.ActionArgs) {
           `Cześć${names ? " " + names : ""}!`,
           ``,
           `Wasze zapytanie o termin ${dateLabel} dotarło do pracowni.`,
-          `Ale sprawdzi dostępność i wróci do Was mailowo - zwykle w ciągu 24 - 48 godzin.`,
+          `Aleksandra sprawdzi dostępność i wróci do Was mailowo - zwykle w ciągu 24 - 48 godzin.`,
           `Zapytanie jest bezpłatne i do niczego nie zobowiązuje.`,
           ``,
           `do usłyszenia,`,
@@ -182,7 +182,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                 <div className="check">&#10003;</div>
                 <h3>Zapytanie wysłane.</h3>
                 <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem", marginTop: 8 }}>
-                  Ale sprawdzi dostępność terminu i wróci do Was mailowo z propozycją - zwykle w
+                  Aleksandra sprawdzi dostępność terminu i wróci do Was mailowo z propozycją - zwykle w
                   ciągu 24 - 48 godzin. Do niczego to nie zobowiązuje.
                 </p>
                 <span className="hand">

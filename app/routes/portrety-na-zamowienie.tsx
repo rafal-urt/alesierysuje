@@ -70,7 +70,7 @@ export async function action({ request }: Route.ActionArgs) {
           "",
           "Zapytanie o portret dotarło do pracowni.",
           `Wybrana konfiguracja: ${details}`,
-          "Ale odezwie się w 24 - 48 godzin z prośbą o zdjęcie referencyjne i potwierdzeniem terminu realizacji.",
+          "Aleksandra odezwie się w 24 - 48 godzin z prośbą o zdjęcie referencyjne i potwierdzeniem terminu realizacji.",
           "Zapytanie do niczego nie zobowiązuje.",
           "",
           "do usłyszenia,",
