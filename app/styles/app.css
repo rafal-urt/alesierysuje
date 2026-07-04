@@ -204,9 +204,15 @@ footer .logo img {
 .nav-cta {
   background: var(--color-ink);
   color: var(--color-paper) !important;
-  padding: 10px 20px !important;
-  border-radius: 2px;
+  padding: 10px 22px !important;
+  border-radius: 999px;
   border: none !important;
+  transition:
+    opacity 0.2s,
+    transform 0.18s;
+}
+.nav-cta:active {
+  transform: scale(0.97);
 }
 .nav-cta:hover {
   opacity: 0.85;
@@ -263,18 +269,30 @@ footer .logo img {
   background: var(--color-ink);
   color: var(--color-paper);
   border: 1px solid var(--color-ink);
-  padding: 15px 32px;
+  padding: 15px 36px;
+  min-height: 44px; /* touch target */
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  border-radius: 2px;
+  border-radius: 999px; /* pill */
   transition:
-    transform 0.15s,
-    box-shadow 0.2s;
+    transform 0.18s cubic-bezier(0.2, 0.6, 0.2, 1),
+    box-shadow 0.22s ease,
+    background 0.18s ease;
 }
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(43, 43, 43, 0.18);
+  box-shadow:
+    0 10px 26px rgba(43, 43, 43, 0.2),
+    0 3px 8px rgba(127, 168, 201, 0.18);
+}
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 3px 10px rgba(43, 43, 43, 0.16);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--color-wash-blue);
+  outline-offset: 3px;
 }
 .btn.ghost {
   background: transparent;
@@ -285,7 +303,7 @@ footer .logo img {
   color: var(--color-paper);
 }
 .btn.sm {
-  padding: 10px 20px;
+  padding: 10px 24px;
   font-size: 0.84rem;
 }
 .btn.light {
@@ -1163,11 +1181,19 @@ section {
 .opt {
   background: #fff;
   border: 1px solid var(--color-line);
-  border-radius: 2px;
-  padding: 12px 22px;
+  border-radius: 999px;
+  padding: 12px 24px;
+  min-height: 44px; /* touch target */
   font-size: 0.95rem;
   color: var(--color-ink-soft);
   transition: all 0.15s;
+}
+.opt:active {
+  transform: scale(0.96);
+}
+.opt:focus-visible {
+  outline: 2px solid var(--color-wash-blue);
+  outline-offset: 2px;
 }
 .opt:hover {
   border-color: var(--color-ink);
@@ -1364,11 +1390,11 @@ section {
   gap: 8px;
 }
 .macal-nav button {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border: 1px solid var(--color-line);
   background: var(--color-paper);
-  border-radius: 8px;
+  border-radius: 50%;
   font-size: 1.3rem;
   line-height: 1;
   color: var(--color-ink-soft);
