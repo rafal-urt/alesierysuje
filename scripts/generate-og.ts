@@ -17,7 +17,7 @@ const PAGES: { file: string; lines: string[]; sub: string }[] = [
   { file: "realizacje", lines: ["Realizacje - malowanie", "na żywo i portrety."], sub: "alesierysuje.pl/realizacje" },
   { file: "cennik", lines: ["Cennik - live painting", "i portrety na zamówienie."], sub: "alesierysuje.pl/cennik" },
   { file: "o-mnie", lines: ["Aleksandra Sienica -", "maluję na żywo."], sub: "alesierysuje.pl/o-mnie" },
-  { file: "terminy", lines: ["Wolne terminy live paintingu -", "kalendarz do końca 2027."], sub: "alesierysuje.pl/terminy" },
+  { file: "terminy", lines: ["Wolne terminy live paintingu -", "rezerwacja online."], sub: "alesierysuje.pl/terminy" },
 ];
 
 function ogSvg(lines: string[], sub: string): string {

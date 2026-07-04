@@ -142,7 +142,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
       <WatercolorStain color="green" width={460} height={420} style={{ top: 60, left: -160 }} />
       <section className="pageshero" style={{ paddingBottom: 30 }}>
         <div className="wrap">
-          <h1 className="soak d1">Wolne terminy live paintingu - kalendarz do końca 2027.</h1>
+          <h1 className="soak d1">Wolne terminy live paintingu.</h1>
           <p className="lead soak d2">
             Kalendarz jest prawdziwy w czasie rzeczywistym - to, co widzicie, jest dostępne teraz.
             Wybierzcie dzień i wyślijcie bezpłatne zapytanie o rezerwację - odpowiedź wraca w 24 - 48
@@ -153,6 +153,14 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
       <section style={{ paddingTop: 0 }}>
         <div className="wrap cal-wrap">
           <div className="soak">
+            <Calendar
+              takenDates={takenDates}
+              todayISO={todayISO}
+              minMonth={minMonth}
+              maxMonth={maxMonth}
+              selected={selected}
+              onPick={pick}
+            />
             <div className="legend">
               <span>
                 <span className="ldot free" />
@@ -163,14 +171,6 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                 termin zajęty
               </span>
             </div>
-            <Calendar
-              takenDates={takenDates}
-              todayISO={todayISO}
-              minMonth={minMonth}
-              maxMonth={maxMonth}
-              selected={selected}
-              onPick={pick}
-            />
           </div>
           <div className="bk soak d1" id="bkPanel">
             {sent ? (

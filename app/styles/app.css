@@ -1351,7 +1351,7 @@ section {
 /* ===== kalendarz ===== */
 .cal-wrap {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr 0.9fr;
   gap: 56px;
   align-items: start;
 }
@@ -1363,7 +1363,7 @@ section {
 .legend {
   display: flex;
   gap: 24px;
-  margin-bottom: 30px;
+  margin-top: 22px;
   font-size: 0.85rem;
   color: var(--color-ink-soft);
   flex-wrap: wrap;
@@ -1390,6 +1390,7 @@ section {
 }
 /* kalendarz w stylu macOS */
 .macal {
+  max-width: 540px;
   background: #fff;
   border: 1px solid var(--color-line-soft);
   border-radius: 12px;
