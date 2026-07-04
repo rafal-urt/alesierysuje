@@ -90,29 +90,31 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           bloom
           style={{ bottom: -120, left: -140, animationDelay: "0.4s" }}
         />
-        <div className="wrap">
-          <h1 className="soak d1">
-            Malowanie <span className="fill">na&nbsp;żywo</span>, które zostaje na zawsze.
-          </h1>
-          <p className="lead soak d2">
-            Live painting na weselach i eventach firmowych, szybkie portrety gości oraz portrety na
-            zamówienie ze zdjęcia. Aleksandra Sienica maluje Wasze najważniejsze chwile wtedy, kiedy
-            one trwają.
-          </p>
-          <div className="hero-cta soak d3">
-            <Link className="btn" to="/terminy">
-              Sprawdź swój termin
-            </Link>
-            <div className="season">
-              <span className="pulse" />
-              Wolnych sobót do {calendarEndLabel}: <b>{freeSaturdays}</b>
+        <div className="wrap hero-grid">
+          <div>
+            <h1 className="soak d1">
+              Malowanie <span className="fill">na&nbsp;żywo</span>, które zostaje na zawsze.
+            </h1>
+            <p className="lead soak d2">
+              Live painting na weselach i eventach firmowych, szybkie portrety gości oraz portrety
+              na zamówienie ze zdjęcia. Aleksandra Sienica maluje Wasze najważniejsze chwile wtedy,
+              kiedy one trwają.
+            </p>
+            <div className="hero-cta soak d3">
+              <Link className="btn" to="/terminy">
+                Sprawdź swój termin
+              </Link>
+              <div className="season">
+                <span className="pulse" />
+                Wolnych sobót do {calendarEndLabel}: <b>{freeSaturdays}</b>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="hero-frame soak d2">
-          <div className="frame">
-            <WatercolorPlaceholder seed={11} palette={0} width={300} height={380} />
-            <div className="cap">pierwszy taniec, sierpień</div>
+          <div className="hero-frame soak d2">
+            <div className="frame">
+              <WatercolorPlaceholder seed={11} palette={0} width={300} height={380} />
+              <div className="cap">pierwszy taniec, sierpień</div>
+            </div>
           </div>
         </div>
         <div className="hero-scroll">przewiń</div>
