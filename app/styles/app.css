@@ -988,6 +988,19 @@ section {
   background: var(--color-wash-blue);
   filter: blur(0.8px);
 }
+.pack li b {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.pack li.extra {
+  color: var(--color-ink);
+}
+.pack li.extra::before {
+  width: 16px;
+  height: 8px;
+  top: 14px;
+  filter: blur(0.5px);
+}
 .pack.p2 li::before {
   background: var(--color-wash-rose);
 }

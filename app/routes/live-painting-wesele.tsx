@@ -40,6 +40,15 @@ export function meta({}: Route.MetaArgs) {
   });
 }
 
+// "**tekst**" -> pogrubienie; prefiks "+ " -> cecha, której nie ma w niższym pakiecie
+function FeatureText({ text }: { text: string }) {
+  return (
+    <>
+      {text.split("**").map((part, i) => (i % 2 ? <b key={i}>{part}</b> : part))}
+    </>
+  );
+}
+
 const FAQ_ITEMS = [
   {
     q: "Czy goście muszą pozować albo stać w kolejce?",
@@ -233,9 +242,14 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
                   {formatZl(prices[p.key] ?? p.price).replace(" zł", "")} <span>zł</span>
                 </div>
                 <ul>
-                  {p.features.map((f) => (
-                    <li key={f}>{f}</li>
-                  ))}
+                  {p.features.map((f) => {
+                    const extra = f.startsWith("+ ");
+                    return (
+                      <li key={f} className={extra ? "extra" : undefined}>
+                        <FeatureText text={extra ? f.slice(2) : f} />
+                      </li>
+                    );
+                  })}
                 </ul>
                 <Link className={p.featured ? "btn" : "btn ghost"} to="/terminy">
                   Wybierz datę
