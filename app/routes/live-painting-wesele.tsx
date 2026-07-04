@@ -169,67 +169,6 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         </div>
       </section>
 
-
-      {/* dlaczego warto - jezyk korzysci */}
-      <section style={{ paddingTop: 40 }}>
-        <div className="wrap">
-          <div className="sec-head soak">
-            <div className="eyebrow">Dlaczego warto</div>
-            <h2>Sześć powodów, dla których to działa.</h2>
-          </div>
-          <div className="steps benefits">
-            <div className="step soak">
-              <div className="brush" style={{ background: "var(--color-wash-blue)" }} />
-              <h3>prawdziwa sztuka na żywo</h3>
-              <p>
-                Maluję odręcznie - pędzlem, farbą i wodą, bez tabletu i drukarki. Autentyczny
-                proces, który przyciąga gości jak magnes.
-              </p>
-            </div>
-            <div className="step soak d1">
-              <div className="brush" style={{ background: "var(--color-wash-rose)" }} />
-              <h3>tradycyjna akwarela</h3>
-              <p>
-                Lekkość, kolor i niepowtarzalny charakter. Każda ilustracja to małe dzieło sztuki,
-                które można oprawić i zachować na lata.
-              </p>
-            </div>
-            <div className="step soak d2">
-              <div className="brush" style={{ background: "var(--color-wash-ochre)" }} />
-              <h3>pamiątka z klasą</h3>
-              <p>
-                Zamiast gadżetu z automatu - spersonalizowany portret. Goście oprawiają je,
-                wieszają w domach i pamiętają, skąd są.
-              </p>
-            </div>
-            <div className="step soak">
-              <div className="brush" style={{ background: "var(--color-wash-green)" }} />
-              <h3>atrakcja i prezent w jednym</h3>
-              <p>
-                Jedna usługa, dwa efekty: angażująca atrakcja wieczoru i osobisty upominek, który
-                każdy gość zabiera do domu.
-              </p>
-            </div>
-            <div className="step soak d1">
-              <div className="brush" style={{ background: "var(--color-wash-blue)" }} />
-              <h3>rozmowa ze sztuką</h3>
-              <p>
-                Kącik live art tworzy ciepłą, kreatywną atmosferę - goście zaglądają, obserwują
-                proces, rozmawiają i wracają po więcej.
-              </p>
-            </div>
-            <div className="step soak d2">
-              <div className="brush" style={{ background: "var(--color-wash-rose)" }} />
-              <h3>estetyczny detal wesela</h3>
-              <p>
-                Sztaluga, piękne papiery i rosnąca ekspozycja portretów zdobią salę i świetnie
-                wypadają w kadrach fotografa.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* proces */}
       <section>
         <div className="wrap">

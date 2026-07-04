@@ -152,32 +152,6 @@ export default function LivePaintingEventy() {
               <span>maksymalny czas odpowiedzi na brief z gotową wyceną i propozycją formuły</span>
             </div>
           </div>
-          <div className="steps" style={{ marginBottom: 70 }}>
-            <div className="step soak">
-              <div className="brush" style={{ background: "var(--color-wash-ochre)" }} />
-              <h3>atrakcja, która angażuje</h3>
-              <p>
-                Goście nie stoją z boku - zaglądają do kącika, obserwują proces i wracają po swoją
-                ilustrację. To rozmowa ze sztuką, nie pokaz.
-              </p>
-            </div>
-            <div className="step soak d1">
-              <div className="brush" style={{ background: "var(--color-wash-blue)" }} />
-              <h3>branding w akwareli</h3>
-              <p>
-                Papier przygotowany pod identyfikację eventu - logo i kolory marki wtopione w
-                pamiątkę, którą goście naprawdę zatrzymają.
-              </p>
-            </div>
-            <div className="step soak d2">
-              <div className="brush" style={{ background: "var(--color-wash-rose)" }} />
-              <h3>upominek zamiast gadżetu</h3>
-              <p>
-                Spersonalizowany portret działa dłużej niż smycz czy kubek - wisi potem w domach i
-                przypomina o Waszym wydarzeniu.
-              </p>
-            </div>
-          </div>
           <div className="sec-head soak">
             <h2>Brief w pięciu polach.</h2>
             <p>Bez PDF-ów na start. Wystarczy zarys, resztę doprecyzujemy w rozmowie.</p>

@@ -136,7 +136,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <div className="txt">
                 <div className="kicker">wesela</div>
                 <h3>Live painting na weselu</h3>
-                <p>Atrakcja i prezent w jednym: goście bawią się, oglądają proces i wychodzą z własnym portretem - nawet 60 ilustracji z jednego wesela.</p>
+                <p>Akwarelowe ilustracje gości malowane na żywo - do 60 portretów z jednego wesela.</p>
                 <span className="go">
                   Zobacz pakiety <span>&rarr;</span>
                 </span>
@@ -150,7 +150,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <div className="txt">
                 <div className="kicker">eventy firmowe</div>
                 <h3>Live art na evencie</h3>
-                <p>Live art, który angażuje gości i zostaje z nimi długo po evencie - a przy okazji pięknie nosi Wasz branding.</p>
+                <p>Malowanie na żywo i szybkie portrety gości - atrakcja, przy której robi się kolejka.</p>
                 <span className="go">
                   Wyślij brief <span>&rarr;</span>
                 </span>
@@ -164,7 +164,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <div className="txt">
                 <div className="kicker">pracownia</div>
                 <h3>Portrety na zamówienie</h3>
-                <p>Małe dzieło sztuki z Waszego zdjęcia - prezent, który wzrusza bardziej niż kolejny gadżet. Zamawiasz online w 2 minuty.</p>
+                <p>Portret ze zdjęcia malowany ręcznie akwarelą. Skonfiguruj i zamów online.</p>
                 <span className="go">
                   Skonfiguruj portret <span>&rarr;</span>
                 </span>
@@ -220,24 +220,24 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <div className="brush" style={{ background: "var(--color-wash-blue)" }} />
               <h3>Wybieracie datę</h3>
               <p>
-                Kalendarz pokazuje dostępność od ręki - bez pisania po wycenę i czekania na odpowiedź.
-                Zapytanie jest bezpłatne i do niczego nie zobowiązuje.
+                Kalendarz pokazuje dostępność każdego dnia. Wybieracie termin i wysyłacie bezpłatne
+                zapytanie - bez zobowiązań.
               </p>
             </div>
             <div className="step soak d1">
               <div className="brush" style={{ background: "var(--color-wash-rose)" }} />
               <h3>Aleksandra przyjeżdża i maluje</h3>
               <p>
-                Kącik live art staje na sali i tworzy ciepłą, kreatywną atmosferę - goście oglądają,
-                jak biała kartka nabiera koloru, i rozmawiają ze sztuką.
+                Sztaluga staje na sali w najlepszym momencie. Goście patrzą, jak biała kartka nabiera
+                koloru.
               </p>
             </div>
             <div className="step soak d2">
               <div className="brush" style={{ background: "var(--color-wash-ochre)" }} />
               <h3>Ilustracje zostają z gośćmi</h3>
               <p>
-                Każdy wychodzi z osobistą pamiątką - podpisaną, zabezpieczoną, gotową do oprawienia.
-                Czego nie zdążę namalować na żywo, dokańczam w pracowni i dosyłam po weselu.
+                Każda podpisana i zabezpieczona - do zabrania jeszcze tego wieczoru. Czego nie
+                zdążę namalować na żywo, dokańczam w pracowni i dosyłam po weselu.
               </p>
             </div>
           </div>
@@ -251,16 +251,16 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <h2 className="soak d1">Malowanie na żywo to nie usługa. To scena.</h2>
           <p className="soak d2">
             Live painting, po polsku malowanie na żywo, to sztuka tworzona na oczach gości - na
-            weselu, evencie firmowym, gali czy premierze. Zamiast kolejnej atrakcji, którą się
-            ogląda i zapomina, zamawiacie doświadczenie: kącik live art, w którym każdy gość
-            widzi, jak powstaje jego akwarelowy portret - i zabiera go do domu jako osobistą
-            pamiątkę. W jeden wieczór maluję na żywo do 30 ilustracji A5, a kolejne dokańczam w
-            pracowni i dosyłam po evencie.
+            weselu, evencie firmowym, gali czy premierze. Zamawiacie proces: sztalugę na sali i
+            kilka godzin, w których każdy gość może zobaczyć, jak powstaje jego akwarelowy portret.
+            Podczas jednego wydarzenia maluję na żywo do 30 ilustracji formatu A5 - każdą podpisaną
+            i gotową do zabrania jeszcze tego samego wieczoru - a kolejne dokańczam w pracowni i
+            dosyłam po evencie.
           </p>
           <p className="soak d2">
-            Obok ilustracji gości maluję również portrety na zamówienie ze zdjęcia - małe dzieła
-            sztuki, które wzruszają mocniej niż jakikolwiek gadżet. Wszystko odręcznie, na papierze
-            akwarelowym 300 g, farbami, które nie wyblakną przez dekady.
+            Obok ilustracji gości maluję również portrety na zamówienie ze zdjęcia - akwarelowe,
+            ręczne, wysyłane pod drzwi. Każda praca powstaje na papierze akwarelowym 300 g, farbami,
+            które nie wyblakną przez dekady.
           </p>
           <div className="links soak d3">
             <Link to="/live-painting-wesele">Live painting na wesele</Link>
