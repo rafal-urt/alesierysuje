@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  /* kolory - sekcja 1 SPEC.md */
+  --color-paper: #faf7f2;
+  --color-paper-deep: #f3eee5;
+  --color-ink: #2b2b2b;
+  --color-ink-soft: #6b655c;
+  --color-ink-faint: #9a938a;
+  --color-wash-blue: #7fa8c9;
+  --color-wash-rose: #d98ba3;
+  --color-wash-ochre: #d9a85c;
+  --color-wash-green: #8fb08a;
+  --color-line: rgba(43, 43, 43, 0.14);
+  --color-line-soft: rgba(43, 43, 43, 0.08);
+
+  /* fonty */
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+}
+
+body {
+  @apply bg-paper font-sans text-ink antialiased;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-serif font-normal;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}

@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live painting na wesele i eventy - malowanie na żywo | alesierysuje</title>
+<meta name="description" content="Live painting i malowanie na żywo na weselach oraz eventach firmowych. Live art, szybkie portrety gości i portrety na zamówienie ze zdjęcia. Sprawdź wolne terminy i ceny.">
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"LocalBusiness",
+ "name":"alesierysuje - Aleksandra Sienica",
+ "description":"Live painting i malowanie na żywo na weselach i eventach. Portrety na zamówienie ze zdjęcia.",
+ "url":"https://alesierysuje.pl",
+ "areaServed":"PL",
+ "priceRange":"490 - 8900 PLN",
+ "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"6"}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAF7F2;
+  --paper-deep:#F3EEE5;
+  --ink:#2B2B2B;
+  --ink-soft:#6B655C;
+  --ink-faint:#9A938A;
+  --line:rgba(43,43,43,.14);
+  --line-soft:rgba(43,43,43,.08);
+  --wash-blue:#7FA8C9;
+  --wash-rose:#D98BA3;
+  --wash-ochre:#D9A85C;
+  --wash-green:#8FB08A;
+  --serif:'Fraunces',serif;
+  --sans:'Instrument Sans',sans-serif;
+  --hand:'Caveat',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23p)' opacity='0.05'/%3E%3C/svg%3E")}
+::selection{background:rgba(127,168,201,.35)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.1;letter-spacing:-0.015em}
+.hand{font-family:var(--hand);font-weight:500}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--sans);cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+/* soak reveal */
+.soak{opacity:0;filter:blur(10px);transform:translateY(14px);transition:opacity .75s ease,filter .75s ease,transform .75s ease}
+.soak.on{opacity:1;filter:blur(0);transform:none}
+.soak.d1{transition-delay:.12s}.soak.d2{transition-delay:.24s}.soak.d3{transition-delay:.36s}
+@media (prefers-reduced-motion:reduce){.soak{transition:none;opacity:1;filter:none;transform:none}*{animation:none!important}}
+
+.stain{position:absolute;pointer-events:none;filter:blur(46px);opacity:.3;border-radius:50%;z-index:0}
+@keyframes bloom{from{transform:scale(.55);opacity:0}to{transform:scale(1);opacity:.3}}
+.stain.bloom{animation:bloom 1.6s ease forwards}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:all .3s}
+nav.scrolled{background:rgba(250,247,242,.93);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line-soft);padding:12px 0}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--hand);font-size:1.7rem;font-weight:600;display:flex;align-items:center;gap:8px}
+.logo .dot{width:11px;height:11px;border-radius:50% 60% 55% 45%;background:var(--wash-blue);filter:blur(.6px)}
+.nav-links{display:flex;align-items:center;gap:26px;list-style:none}
+.nav-links a{font-size:.84rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);padding:4px 0;border-bottom:2px solid transparent;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);border-color:var(--ink)}
+.nav-cta{background:var(--ink);color:var(--paper)!important;padding:10px 20px!important;border-radius:2px;border:none!important}
+.nav-cta:hover{opacity:.85}
+.burger{display:none;background:none;border:none;font-size:1.5rem;color:var(--ink)}
+@media(max-width:1020px){
+  .burger{display:block}
+  .nav-links{position:fixed;top:60px;right:0;left:0;background:var(--paper);flex-direction:column;gap:0;padding:12px 0;box-shadow:0 12px 30px rgba(43,43,43,.08);transform:translateY(-140%);transition:transform .3s;z-index:99}
+  .nav-links.open{transform:none}
+  .nav-links li{width:100%;text-align:center}
+  .nav-links a{display:block;padding:14px}
+  .nav-cta{margin:8px 24px}
+}
+
+.page{display:none;min-height:100vh;padding-top:96px}
+.page.active{display:block}
+
+.btn{display:inline-block;background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:15px 32px;font-size:.92rem;font-weight:600;letter-spacing:.04em;border-radius:2px;transition:transform .15s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(43,43,43,.18)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.btn.sm{padding:10px 20px;font-size:.84rem}
+.btn.light{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.eyebrow{font-size:.76rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px}
+
+section{position:relative;padding:110px 0}
+.sec-head{max-width:680px;margin-bottom:56px}
+.sec-head h2{font-size:clamp(1.9rem,3.8vw,3rem);margin-bottom:16px}
+.sec-head p{color:var(--ink-soft);font-size:1.05rem}
+.sec-top{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:52px}
+.sec-top .sec-head{margin-bottom:0}
+
+/* ================= HOMEPAGE 2026 ================= */
+/* hero typograficzne */
+.hero{position:relative;min-height:calc(100vh - 96px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding-bottom:40px}
+.hero .eyebrow{display:flex;align-items:center;gap:14px}
+.hero .eyebrow::before{content:'';width:36px;height:1px;background:var(--ink-faint)}
+.hero h1{font-size:clamp(2.5rem,6.2vw,5rem);line-height:1.04;letter-spacing:-0.02em;margin:6px 0 30px;max-width:16ch}
+.hero h1 .fill{
+  background-image:
+    radial-gradient(220px 130px at 18% 45%, var(--wash-blue) 0%, transparent 62%),
+    radial-gradient(260px 150px at 55% 65%, var(--wash-rose) 0%, transparent 64%),
+    radial-gradient(240px 140px at 85% 35%, var(--wash-ochre) 0%, transparent 62%),
+    radial-gradient(200px 130px at 40% 20%, var(--wash-green) 0%, transparent 60%),
+    linear-gradient(var(--ink-soft),var(--ink-soft));
+  background-size:180% 180%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:drift 14s ease-in-out infinite alternate;
+  font-style:italic;font-weight:500;
+}
+@keyframes drift{from{background-position:0% 0%}to{background-position:100% 100%}}
+.hero .lead{font-size:clamp(1.05rem,1.5vw,1.25rem);color:var(--ink-soft);max-width:58ch;margin-bottom:40px}
+.hero-cta{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+.season{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--ink-soft)}
+.season b{color:var(--ink);font-weight:600}
+.season .pulse{width:8px;height:8px;border-radius:50%;background:var(--wash-green);box-shadow:0 0 0 0 rgba(143,176,138,.6);animation:pulse 2.2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(143,176,138,0)}100%{box-shadow:0 0 0 0 rgba(143,176,138,0)}}
+.hero-frame{position:absolute;right:4%;top:14%;width:min(280px,22vw);transform:rotate(2.5deg);animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:rotate(2.5deg) translateY(0)}50%{transform:rotate(2deg) translateY(-14px)}}
+@media(max-width:1100px){.hero-frame{display:none}}
+.frame{background:#fff;padding:14px;box-shadow:0 18px 50px rgba(43,43,43,.14),0 2px 6px rgba(43,43,43,.08);border:1px solid var(--line-soft)}
+.frame svg{display:block;width:100%;height:auto}
+.frame .cap{font-family:var(--hand);font-size:1.1rem;color:var(--ink-soft);text-align:center;padding-top:9px}
+.hero-scroll{position:absolute;bottom:26px;left:28px;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:10px}
+.hero-scroll::after{content:'';width:1px;height:34px;background:var(--ink-faint);animation:drip 1.8s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(.3);transform-origin:top}60%{transform:scaleY(1)}100%{transform:scaleY(.3);transform-origin:bottom}}
+
+/* marquee słów kluczowych */
+.mq{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:20px 0;overflow:hidden;background:rgba(255,255,255,.4)}
+.mq-track{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mq-track:hover{animation-play-state:paused}
+.mq .it{display:flex;align-items:center;gap:44px;padding-right:44px;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--ink-soft);white-space:nowrap}
+.mq .it::after{content:'';width:10px;height:10px;border-radius:50% 60% 55% 45%;background:var(--wash-blue);filter:blur(.8px);opacity:.7}
+.mq .it:nth-child(3n)::after{background:var(--wash-rose)}
+.mq .it:nth-child(3n+1)::after{background:var(--wash-ochre)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* drzwi - 3 wejścia */
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:920px){.doors{grid-template-columns:1fr}}
+.door{position:relative;height:480px;overflow:hidden;border-radius:4px;cursor:pointer;background:#fff;border:1px solid var(--line-soft);box-shadow:0 10px 34px rgba(43,43,43,.06)}
+.door .art{position:absolute;inset:-6%;transition:transform .7s cubic-bezier(.2,.6,.2,1)}
+.door .art svg{width:100%;height:100%}
+.door .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,247,242,0) 34%,rgba(250,247,242,.95) 76%)}
+.door .txt{position:absolute;left:30px;right:30px;bottom:28px;z-index:2}
+.door .kicker{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+.door h3{font-size:1.85rem;margin-bottom:8px}
+.door p{font-size:.94rem;color:var(--ink-soft);margin-bottom:16px}
+.door .go{font-size:.86rem;font-weight:600;letter-spacing:.06em;display:inline-flex;align-items:center;gap:8px}
+.door .go span{transition:transform .25s}
+.door:hover .art{transform:scale(1.07) rotate(.6deg)}
+.door:hover .go span{transform:translateX(7px)}
+
+/* pas realizacji */
+.strip{display:flex;gap:34px;overflow-x:auto;padding:16px 28px 44px;scroll-snap-type:x proximity;align-items:center}
+.strip::-webkit-scrollbar{height:6px}
+.strip::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+.strip .piece{min-width:280px;scroll-snap-align:center;cursor:pointer;transition:transform .25s}
+.strip .piece:nth-child(odd){transform:rotate(-1deg)}
+.strip .piece:nth-child(even){transform:rotate(1.1deg) translateY(14px)}
+.strip .piece:hover{transform:rotate(0) translateY(-6px)}
+.strip .piece.big{min-width:350px}
+.strip .cap{font-family:var(--hand);font-size:1.15rem;color:var(--ink-soft);text-align:center;padding-top:11px}
+
+/* pas liczb */
+.band{background:var(--ink);color:var(--paper);padding:78px 0;position:relative;overflow:hidden}
+.band .stain{opacity:.18}
+.bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px}
+@media(max-width:920px){.bgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.bgrid{grid-template-columns:1fr}}
+.bst{border-top:1px solid rgba(250,247,242,.22);padding-top:20px}
+.bst b{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:400;display:block;margin-bottom:8px}
+.bst span{color:rgba(250,247,242,.72);font-size:.92rem}
+
+/* proces */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
+@media(max-width:840px){.steps{grid-template-columns:1fr}}
+.step .brush{width:54px;height:10px;border-radius:6px;margin-bottom:20px;filter:blur(1.5px);opacity:.8}
+.step h3{font-size:1.3rem;margin-bottom:10px}
+.step p{color:var(--ink-soft);font-size:.97rem}
+
+/* manifest SEO */
+.manifesto{max-width:840px}
+.manifesto h2{font-size:clamp(1.8rem,3.4vw,2.7rem);margin-bottom:26px}
+.manifesto p{font-family:var(--serif);font-size:1.22rem;line-height:1.7;color:var(--ink-soft);margin-bottom:22px}
+.manifesto p:first-of-type::first-letter{font-size:3.4em;float:left;line-height:.85;padding-right:12px;color:var(--ink);font-style:italic}
+.manifesto .links{display:flex;gap:22px;flex-wrap:wrap;margin-top:8px}
+.manifesto .links a{font-size:.9rem;font-weight:600;border-bottom:1px solid var(--ink);padding-bottom:2px}
+
+/* opinie */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+@media(max-width:840px){.quotes{grid-template-columns:1fr}}
+.quote{border-top:1px solid var(--line);padding-top:24px}
+.quote p{font-family:var(--serif);font-style:italic;font-size:1.06rem;margin-bottom:16px}
+.quote .who{font-size:.85rem;color:var(--ink-faint)}
+.stars{color:var(--wash-ochre);letter-spacing:2px;margin-bottom:14px}
+
+/* FAQ */
+.faq{max-width:780px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item button{width:100%;background:none;border:none;text-align:left;padding:22px 40px 22px 0;font-size:1.08rem;font-family:var(--serif);color:var(--ink);position:relative}
+.faq-item button::after{content:'+';position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:1.5rem;color:var(--ink-faint);transition:transform .25s}
+.faq-item.open button::after{transform:translateY(-50%) rotate(45deg)}
+.faq-item .a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--ink-soft);font-size:.96rem}
+.faq-item.open .a{max-height:240px;padding-bottom:24px}
+
+/* CTA banner */
+.banner{background:var(--ink);color:var(--paper);border-radius:4px;padding:76px 60px;position:relative;overflow:hidden}
+.banner h2{font-size:clamp(1.9rem,3.6vw,2.9rem);max-width:20ch;margin-bottom:28px}
+.banner .stain{opacity:.22}
+@media(max-width:700px){.banner{padding:50px 30px}}
+
+/* ================= PODSTRONY ================= */
+.pageshero{padding:44px 0 24px}
+.pageshero h1{font-size:clamp(2.2rem,4.8vw,3.7rem);max-width:22ch;margin-bottom:20px}
+.pageshero .lead{font-size:1.1rem;color:var(--ink-soft);max-width:58ch}
+
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:stretch}
+@media(max-width:920px){.packs{grid-template-columns:1fr}}
+.pack{background:#fff;border:1px solid var(--line-soft);border-radius:3px;padding:38px 32px;display:flex;flex-direction:column;position:relative;box-shadow:0 6px 24px rgba(43,43,43,.05)}
+.pack.featured{border-color:var(--ink);box-shadow:0 16px 44px rgba(43,43,43,.12)}
+.pack .tag{position:absolute;top:-13px;left:32px;background:var(--ink);color:var(--paper);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:2px}
+.pack h3{font-size:1.5rem;margin-bottom:6px}
+.pack .for{font-size:.88rem;color:var(--ink-faint);margin-bottom:22px}
+.pack .price{font-family:var(--serif);font-size:2.3rem;margin-bottom:4px}
+.pack .price span{font-size:.95rem;font-family:var(--sans);color:var(--ink-faint)}
+.pack ul{list-style:none;margin:24px 0 30px;flex:1}
+.pack li{padding:9px 0 9px 26px;position:relative;font-size:.94rem;color:var(--ink-soft);border-bottom:1px dashed var(--line-soft)}
+.pack li::before{content:'';position:absolute;left:0;top:15px;width:12px;height:6px;border-radius:4px;background:var(--wash-blue);filter:blur(.8px)}
+.pack.p2 li::before{background:var(--wash-rose)}
+.pack.p3 li::before{background:var(--wash-ochre)}
+.deposit-note{margin-top:34px;font-size:.92rem;color:var(--ink-soft);border-left:2px solid var(--wash-blue);padding-left:16px}
+
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;counter-reset:tl}
+@media(max-width:840px){.timeline{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.timeline{grid-template-columns:1fr}}
+.tl{counter-increment:tl;border-top:1px solid var(--line);padding-top:20px}
+.tl::before{content:counter(tl,decimal-leading-zero);font-family:var(--serif);font-size:.95rem;color:var(--ink-faint);display:block;margin-bottom:10px}
+.tl h4{font-size:1.05rem;margin-bottom:8px;font-family:var(--serif);font-weight:500}
+.tl p{font-size:.9rem;color:var(--ink-soft)}
+
+/* ściana galerii */
+.wall-hint{display:flex;align-items:center;gap:12px;color:var(--ink-faint);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:28px}
+.wall-hint .arr{font-size:1.2rem;animation:nudge 1.8s infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+.wall{display:flex;gap:56px;overflow-x:auto;padding:30px 28px 60px;align-items:center;scroll-snap-type:x proximity}
+.wall::-webkit-scrollbar{height:6px}
+.wall::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+.wall .piece{min-width:300px;scroll-snap-align:center;cursor:pointer;transition:transform .25s}
+.wall .piece:nth-child(odd){transform:rotate(-1deg)}
+.wall .piece:nth-child(even){transform:rotate(1.2deg) translateY(18px)}
+.wall .piece:hover{transform:rotate(0) translateY(-6px)}
+.wall .piece.big{min-width:380px}
+.wall .cap{font-family:var(--hand);font-size:1.2rem;color:var(--ink-soft);text-align:center;padding-top:12px}
+
+.lb{position:fixed;inset:0;background:rgba(250,247,242,.96);z-index:200;display:none;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}
+.lb-inner{max-width:560px;width:100%;text-align:center}
+.lb-inner .frame{margin-bottom:22px}
+.lb-close{position:absolute;top:26px;right:32px;background:none;border:none;font-size:2rem;color:var(--ink)}
+.lb h3{font-size:1.6rem;margin-bottom:6px}
+.lb .meta{color:var(--ink-faint);margin-bottom:24px;font-family:var(--hand);font-size:1.25rem}
+
+/* konfigurator */
+.config{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+@media(max-width:920px){.config{grid-template-columns:1fr}}
+.cstep{margin-bottom:38px}
+.cstep .clabel{font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px}
+.optrow{display:flex;gap:12px;flex-wrap:wrap}
+.opt{background:#fff;border:1px solid var(--line);border-radius:2px;padding:12px 22px;font-size:.95rem;color:var(--ink-soft);transition:all .15s}
+.opt:hover{border-color:var(--ink)}
+.opt.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.upload{border:1.5px dashed var(--line);border-radius:3px;padding:30px;text-align:center;color:var(--ink-faint);font-size:.94rem;cursor:pointer;transition:border-color .2s}
+.upload:hover{border-color:var(--ink)}
+.upload.ok{border-color:var(--wash-green);color:var(--ink)}
+.upload .okmsg{color:#4d7a4d;font-weight:600;margin-top:8px;display:none}
+.upload.ok .okmsg{display:block}
+.room{background:linear-gradient(#EFE9DE 72%,#E2DACB 72%);border-radius:3px;height:360px;position:relative;overflow:hidden;border:1px solid var(--line-soft)}
+.room .sofa{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);width:230px;height:64px;background:#C9BFAE;border-radius:14px 14px 4px 4px}
+.room .sofa::before,.room .sofa::after{content:'';position:absolute;bottom:0;width:16px;height:74px;background:#C9BFAE;border-radius:8px}
+.room .sofa::before{left:-10px}.room .sofa::after{right:-10px}
+.room .rframe{position:absolute;left:50%;top:64px;transform:translateX(-50%);background:#fff;padding:6px;box-shadow:0 8px 22px rgba(43,43,43,.18);transition:width .35s,height .35s}
+.room .rframe svg{width:100%;height:100%;display:block}
+.room .scale-note{position:absolute;bottom:14px;right:16px;font-size:.75rem;color:var(--ink-faint)}
+.pricebox{background:#fff;border:1px solid var(--line-soft);border-radius:3px;padding:30px;margin-top:26px;box-shadow:0 8px 26px rgba(43,43,43,.06)}
+.pricebox .row{display:flex;justify-content:space-between;font-size:.92rem;color:var(--ink-soft);padding:7px 0;border-bottom:1px dashed var(--line-soft)}
+.pricebox .total{display:flex;justify-content:space-between;align-items:baseline;padding-top:18px}
+.pricebox .total b{font-family:var(--serif);font-size:2rem;font-weight:500}
+.pricebox .btn{width:100%;text-align:center;margin-top:20px}
+.pricebox .small{font-size:.8rem;color:var(--ink-faint);margin-top:12px;text-align:center}
+
+/* kalendarz */
+.cal-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start}
+@media(max-width:920px){.cal-wrap{grid-template-columns:1fr}}
+.legend{display:flex;gap:24px;margin-bottom:30px;font-size:.85rem;color:var(--ink-soft);flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:8px}
+.ldot{width:14px;height:14px;border-radius:50% 60% 55% 45%;filter:blur(.5px)}
+.ldot.free{background:var(--wash-green)}
+.ldot.taken{background:#D98B8B}
+.ldot.today{background:var(--ink)}
+/* kalendarz w stylu macOS */
+.macal{background:#fff;border:1px solid var(--line-soft);border-radius:12px;box-shadow:0 12px 40px rgba(43,43,43,.08);padding:28px}
+.macal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.macal-head h4{font-family:var(--serif);font-weight:500;font-size:1.6rem}
+.macal-nav{display:flex;gap:8px}
+.macal-nav button{width:36px;height:36px;border:1px solid var(--line);background:var(--paper);border-radius:8px;font-size:1.3rem;line-height:1;color:var(--ink-soft);transition:all .15s}
+.macal-nav button:hover:not(:disabled){border-color:var(--ink);color:var(--ink)}
+.macal-nav button:disabled{opacity:.25;cursor:default}
+.dow{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);padding-bottom:12px;border-bottom:1px solid var(--line-soft);margin-bottom:8px}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:10px;font-size:.98rem;color:var(--ink-soft);position:relative;user-select:none}
+.day.out{opacity:.22}
+.day.today{box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:700;color:var(--ink)}
+.day.free{background:rgba(143,176,138,.18);color:var(--ink);font-weight:600;cursor:pointer;transition:background .15s,transform .15s}
+.day.free::after{content:'';position:absolute;bottom:6px;width:5px;height:5px;border-radius:50%;background:var(--wash-green)}
+.day.free:hover{background:rgba(143,176,138,.4);transform:scale(1.06)}
+.day.taken{background:rgba(217,139,139,.12);color:var(--ink-faint);text-decoration:line-through}
+.day.taken::after{content:'';position:absolute;bottom:6px;width:5px;height:5px;border-radius:50%;background:#D98B8B}
+.day.sel{background:var(--ink)!important;color:var(--paper)!important;text-decoration:none;box-shadow:none}
+.day.sel::after{background:var(--paper)}
+.cal-note{margin-top:16px;font-size:.83rem;color:var(--ink-faint)}
+.bk{background:#fff;border:1px solid var(--line-soft);border-radius:3px;padding:34px;box-shadow:0 10px 34px rgba(43,43,43,.07);position:sticky;top:100px}
+.bk h3{font-size:1.4rem;margin-bottom:6px}
+.bk .picked{font-family:var(--hand);font-size:1.4rem;color:var(--wash-blue);filter:saturate(1.4);margin-bottom:20px}
+.bk .picked.none{color:var(--ink-faint);font-family:var(--sans);font-size:.92rem}
+.bk label{display:block;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin:16px 0 6px}
+.bk input,.bk select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:2px;font-family:var(--sans);font-size:.95rem;background:var(--paper);color:var(--ink)}
+.bk input:focus,.bk select:focus{outline:2px solid var(--ink);outline-offset:1px}
+.bk .btn{width:100%;text-align:center;margin-top:24px}
+.bk .fine{font-size:.79rem;color:var(--ink-faint);margin-top:14px;text-align:center}
+.payline{display:flex;justify-content:space-between;font-size:.94rem;padding:10px 0;border-bottom:1px dashed var(--line-soft);color:var(--ink-soft)}
+.payline.total{border:none;padding-top:16px;color:var(--ink);font-weight:600;font-size:1.05rem}
+.success{text-align:center;padding:20px 0}
+.success .check{width:64px;height:64px;border-radius:50%;background:rgba(143,176,138,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:1.8rem;color:#4d7a4d}
+.success .hand{font-size:1.5rem;color:var(--ink-soft);margin-top:14px;transform:rotate(-2deg);display:inline-block}
+
+/* eventy */
+.bstats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:50px 0}
+@media(max-width:700px){.bstats{grid-template-columns:1fr}}
+.bstat{border-top:1px solid var(--line);padding-top:18px}
+.bstat b{font-family:var(--serif);font-size:2.4rem;font-weight:500;display:block;margin-bottom:6px}
+.bstat span{color:var(--ink-soft);font-size:.92rem}
+.brief{background:#fff;border:1px solid var(--line-soft);border-radius:3px;padding:38px;max-width:640px;box-shadow:0 8px 26px rgba(43,43,43,.06)}
+.brief label{display:block;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin:16px 0 6px}
+.brief input,.brief select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:2px;font-family:var(--sans);font-size:.95rem;background:var(--paper)}
+.brief .btn{margin-top:24px}
+
+/* cennik */
+.ptable{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line-soft);border-radius:3px;overflow:hidden}
+.ptable th{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);text-align:left;padding:16px 20px;border-bottom:1px solid var(--line)}
+.ptable td{padding:16px 20px;border-bottom:1px dashed var(--line-soft);font-size:.96rem;color:var(--ink-soft)}
+.ptable td:first-child{font-family:var(--serif);color:var(--ink);font-size:1.05rem}
+.ptable td:last-child{text-align:right;font-family:var(--serif);font-size:1.15rem;color:var(--ink);white-space:nowrap}
+.ptable tr:last-child td{border-bottom:none}
+.pt-sec{margin-bottom:60px;max-width:860px}
+.pt-sec h2{font-size:1.7rem;margin-bottom:18px}
+.pt-sec .note{font-size:.88rem;color:var(--ink-faint);margin-top:14px}
+
+/* o mnie */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+@media(max-width:920px){.about{grid-template-columns:1fr}}
+.about .story p{font-size:1.08rem;color:var(--ink-soft);margin-bottom:22px;max-width:58ch}
+.about .story p:first-of-type{font-family:var(--serif);font-size:1.35rem;color:var(--ink)}
+.about .sig{font-family:var(--hand);font-size:2.2rem;margin-top:30px;transform:rotate(-3deg);display:inline-block}
+.easel{position:relative;transform:rotate(1.5deg)}
+
+/* footer SEO */
+footer{border-top:1px solid var(--line-soft);padding:70px 0 34px;margin-top:40px;background:rgba(255,255,255,.35)}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:50px}
+@media(max-width:920px){.fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.fgrid{grid-template-columns:1fr}}
+.fcol h5{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px;font-family:var(--sans);font-weight:600}
+.fcol ul{list-style:none}
+.fcol li{margin-bottom:11px}
+.fcol a{font-size:.92rem;color:var(--ink-soft)}
+.fcol a:hover{color:var(--ink);border-bottom:1px solid var(--ink)}
+.fcol .desc{font-size:.92rem;color:var(--ink-soft);max-width:32ch;margin-top:14px}
+.fbottom{border-top:1px solid var(--line-soft);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:var(--ink-faint)}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="#/" onclick="go('');return false"><span class="dot"></span>alesierysuje</a>
+    <button class="burger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#/live-painting-wesele" data-page="wesele">Wesela</a></li>
+      <li><a href="#/live-painting-eventy" data-page="eventy">Eventy</a></li>
+      <li><a href="#/portrety-na-zamowienie" data-page="portrety">Portrety</a></li>
+      <li><a href="#/realizacje" data-page="realizacje">Realizacje</a></li>
+      <li><a href="#/cennik" data-page="cennik">Cennik</a></li>
+      <li><a href="#/o-mnie" data-page="omnie">O mnie</a></li>
+      <li><a href="#/terminy" class="nav-cta" data-page="terminy">Sprawdź termin</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============ HOMEPAGE / -->
+<div class="page active" id="page-start">
+  <div class="hero">
+    <div class="stain bloom" style="width:680px;height:540px;background:radial-gradient(circle,var(--wash-blue),transparent 70%);top:-140px;right:-160px"></div>
+    <div class="stain bloom" style="width:440px;height:400px;background:radial-gradient(circle,var(--wash-rose),transparent 70%);bottom:-120px;left:-140px;animation-delay:.4s"></div>
+    <div class="wrap">
+      <h1 class="soak d1">Malowanie <span class="fill">na&nbsp;żywo</span>, które zostaje na zawsze.</h1>
+      <p class="lead soak d2">Live painting na weselach i eventach firmowych, szybkie portrety gości oraz portrety na zamówienie ze zdjęcia. Aleksandra Sienica maluje Wasze najważniejsze chwile wtedy, kiedy one trwają.</p>
+      <div class="hero-cta soak d3">
+        <a class="btn" href="#/terminy">Sprawdź swój termin</a>
+        <div class="season"><span class="pulse"></span>Wolnych sobót do sierpnia 2027: <b id="freeCount">&nbsp;</b></div>
+      </div>
+    </div>
+    <div class="hero-frame soak d2"><div class="frame"><div id="heroArt"></div><div class="cap">pierwszy taniec, sierpień</div></div></div>
+    <div class="hero-scroll">przewiń</div>
+  </div>
+
+  <div class="mq" aria-hidden="true">
+    <div class="mq-track" id="mqTrack"></div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head soak">
+        <div class="eyebrow">Od czego zaczynamy</div>
+        <h2>Trzy powody, dla których tu jesteście.</h2>
+      </div>
+      <div class="doors">
+        <a class="door soak" href="#/live-painting-wesele">
+          <div class="art" id="doorArt1"></div><div class="veil"></div>
+          <div class="txt"><div class="kicker">wesela</div><h3>Live painting na weselu</h3><p>Obraz Waszego przyjęcia malowany na żywo - pamiątka gotowa tego samego wieczoru.</p><span class="go">Zobacz pakiety <span>&rarr;</span></span></div>
+        </a>
+        <a class="door soak d1" href="#/live-painting-eventy">
+          <div class="art" id="doorArt2"></div><div class="veil"></div>
+          <div class="txt"><div class="kicker">eventy firmowe</div><h3>Live art na evencie</h3><p>Malowanie na żywo i szybkie portrety gości - atrakcja, przy której robi się kolejka.</p><span class="go">Wyślij brief <span>&rarr;</span></span></div>
+        </a>
+        <a class="door soak d2" href="#/portrety-na-zamowienie">
+          <div class="art" id="doorArt3"></div><div class="veil"></div>
+          <div class="txt"><div class="kicker">pracownia</div><h3>Portrety na zamówienie</h3><p>Portret ze zdjęcia malowany ręcznie akwarelą. Skonfiguruj i zamów online.</p><span class="go">Skonfiguruj portret <span>&rarr;</span></span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:20px;padding-bottom:0">
+    <div class="wrap sec-top soak">
+      <div class="sec-head">
+        <div class="eyebrow">Realizacje</div>
+        <h2>Ściana, która ciągle rośnie.</h2>
+      </div>
+      <a class="btn ghost sm" href="#/realizacje">Cała galeria &rarr;</a>
+    </div>
+    <div class="strip soak" id="homeStrip"></div>
+  </section>
+
+  <div class="band">
+    <div class="stain" style="width:460px;height:420px;background:radial-gradient(circle,var(--wash-blue),transparent 70%);top:-140px;right:-100px"></div>
+    <div class="wrap bgrid">
+      <div class="bst soak"><b>100+</b><span>wesel i eventów z malowaniem na żywo</span></div>
+      <div class="bst soak d1"><b>5.0</b><span>średnia ocen par i klientów firmowych</span></div>
+      <div class="bst soak d2"><b>40+</b><span>portretów gości w jeden wieczór eventowy</span></div>
+      <div class="bst soak d3"><b>0 dni</b><span>czekania - obraz z wesela zabieracie tej samej nocy</span></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head soak"><div class="eyebrow">Jak to działa</div><h2>Trzy kroki. Reszta to farba i woda.</h2></div>
+      <div class="steps">
+        <div class="step soak"><div class="brush" style="background:var(--wash-blue)"></div><h3>Wybieracie datę</h3><p>Kalendarz pokazuje dostępność każdego dnia. Wybieracie termin i wysyłacie bezpłatne zapytanie - bez zobowiązań.</p></div>
+        <div class="step soak d1"><div class="brush" style="background:var(--wash-rose)"></div><h3>Ale przyjeżdża i maluje</h3><p>Sztaluga staje na sali w najlepszym momencie. Goście patrzą, jak biała kartka nabiera koloru.</p></div>
+        <div class="step soak d2"><div class="brush" style="background:var(--wash-ochre)"></div><h3>Obraz zostaje z Wami</h3><p>Podpisany, zabezpieczony, gotowy do powieszenia - jeszcze tego samego wieczoru.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:10px">
+    <div class="stain" style="width:480px;height:420px;background:radial-gradient(circle,var(--wash-green),transparent 70%);top:40px;left:-160px"></div>
+    <div class="wrap manifesto">
+      <div class="eyebrow soak">Czym jest live painting</div>
+      <h2 class="soak d1">Malowanie na żywo to nie usługa. To scena.</h2>
+      <p class="soak d2">Live painting, po polsku malowanie na żywo, to sztuka tworzona na oczach gości - na weselu, evencie firmowym, gali czy premierze. Zamiast gotowego obrazu zamawiacie proces: sztalugę na sali, mokrą kartkę papieru i kilka godzin, w których wszyscy patrzą, jak powstaje scena z ich udziałem.</p>
+      <p class="soak d2">Obok obrazów całych wydarzeń maluję również szybkie portrety gości podczas eventów oraz portrety na zamówienie ze zdjęcia - akwarelowe, ręczne, wysyłane pod drzwi. Każda praca powstaje na papierze bawełnianym 300 g, farbami, które nie wyblakną przez dekady.</p>
+      <div class="links soak d3">
+        <a href="#/live-painting-wesele">Live painting na wesele</a>
+        <a href="#/live-painting-eventy">Live art na event</a>
+        <a href="#/portrety-na-zamowienie">Portret ze zdjęcia</a>
+        <a href="#/cennik">Cennik</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:40px">
+    <div class="wrap">
+      <div class="sec-head soak"><div class="eyebrow">Opinie</div><h2>Słowo od par i gości.</h2><p>Prawdziwe opinie z portalu Wesele z klasą - średnia 5,00 / 5 z 6 ocen.</p></div>
+      <div class="quotes">
+        <div class="quote soak"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Termin złapany półtora miesiąca przed ślubem, gdy poprzednia artystka odwołała w ostatniej chwili. Goście zachwyceni, a dojazd aż na Kaszuby nie był problemem.</p><div class="who">Klara &middot; wesele, Kaszuby &middot; kwiecień 2026</div></div>
+        <div class="quote soak d1"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Malowanie na żywo okazało się strzałem w dziesiątkę. Profesjonalizm, serdeczność i talent - wszystko przebiegło dokładnie tak, jak ustaliliśmy.</p><div class="who">Oliwia &middot; wesele, Zagruszany &middot; czerwiec 2026</div></div>
+        <div class="quote soak d2"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Dwa dni przed walentynkową imprezą uratowała nam event po odwołaniu innej artystki - prawie 30 ilustracji i pełne uszanowanie naszej prywatności. Dałabym 10 gwiazdek.</p><div class="who">Maria &middot; impreza, Warszawa &middot; luty 2026</div></div>
+        <div class="quote soak"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Portrety powstawały na żywo, jeden po drugim, a sam proces robił wrażenie. To nie jednorazowa atrakcja, tylko pamiątka, do której chce się wracać.</p><div class="who">Rafał &middot; event, Płock &middot; wrzesień 2025</div></div>
+        <div class="quote soak d1"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Event firmowy na 120 osób - jedna z najlepiej zapamiętanych części całego wydarzenia. Styl ilustracji i papier dopasowane do motywu przewodniego imprezy.</p><div class="who">Kasia &middot; event firmowy, Mielno &middot; sierpień 2025</div></div>
+        <div class="quote soak d2"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Nazwanie tego usługą nie jest adekwatne - to zdolności i możliwości. Włączenie live paintingu do programu było zaskoczeniem samym w sobie.</p><div class="who">Adam &middot; impreza firmowa, Kraków &middot; maj 2025</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head soak"><div class="eyebrow">FAQ</div><h2>Krótko o najważniejszym.</h2></div>
+      <div class="faq">
+        <div class="faq-item soak"><button onclick="toggleFaq(this.parentNode)">Ile kosztuje live painting na weselu?</button><div class="a">Pakiety weselne zaczynają się od 3 900 zł, a najczęściej wybierany kosztuje 5 900 zł. Pełne zestawienie znajdziecie w cenniku - ceny są jawne, bez pisania po wycenę.</div></div>
+        <div class="faq-item soak"><button onclick="toggleFaq(this.parentNode)">Czym różni się live painting od live artu?</button><div class="a">To dwie nazwy tej samej idei - sztuki tworzonej na żywo, na oczach gości. Na weselach zwykle powstaje jeden obraz sceny, na eventach częściej seria szybkich portretów gości.</div></div>
+        <div class="faq-item soak"><button onclick="toggleFaq(this.parentNode)">Jak zamówić portret ze zdjęcia?</button><div class="a">W Pracowni konfigurujecie portret w kilku krokach: liczba osób, format, zdjęcie. Cena układa się na bieżąco, płatność online, realizacja 10 - 14 dni z wysyłką w cenie.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:10px">
+    <div class="wrap">
+      <div class="banner soak">
+        <div class="stain" style="width:420px;height:380px;background:radial-gradient(circle,var(--wash-blue),transparent 70%);top:-120px;right:-80px"></div>
+        <h2>Wasza sobota może być na tej ścianie.</h2>
+        <a class="btn light" href="#/terminy">Sprawdź wolne terminy</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ /live-painting-wesele -->
+<div class="page" id="page-wesele">
+  <div class="stain" style="width:520px;height:460px;background:radial-gradient(circle,var(--wash-rose),transparent 70%);top:40px;right:-160px"></div>
+  <section class="pageshero">
+    <div class="wrap">
+      <div class="eyebrow soak">Wesela &middot; alesierysuje.pl/live-painting-wesele</div>
+      <h1 class="soak d1">Live painting na wesele - obraz malowany na żywo.</h1>
+      <p class="lead soak d2">Fotograf łapie ułamki sekund. Malowanie na żywo zbiera cały wieczór - światło sali, ruch sukni, moment, w którym wszyscy patrzyli tylko na Was. Ceny jawne, terminy widoczne, rezerwacja online.</p>
+    </div>
+  </section>
+  <section style="padding-top:30px">
+    <div class="wrap">
+      <div class="packs">
+        <div class="pack soak">
+          <h3>Kameralny</h3><div class="for">przyjęcia do 60 gości</div>
+          <div class="price">3 900 <span>zł</span></div>
+          <ul>
+            <li>obraz 40 &times; 60 cm, akwarela na papierze 300 g</li>
+            <li>3 godziny malowania na żywo</li>
+            <li>konsultacja sceny przed weselem</li>
+            <li>praca gotowa do zabrania tego wieczoru</li>
+          </ul>
+          <a class="btn ghost" href="#/terminy">Wybierz datę</a>
+        </div>
+        <div class="pack p2 featured soak d1">
+          <div class="tag">najczęściej wybierany</div>
+          <h3>Klasyczny</h3><div class="for">wesela do 120 gości</div>
+          <div class="price">5 900 <span>zł</span></div>
+          <ul>
+            <li>obraz 60 &times; 90 cm, akwarela na papierze 300 g</li>
+            <li>5 godzin malowania na żywo</li>
+            <li>konsultacja + wizyta techniczna online</li>
+            <li>timelapse powstawania obrazu</li>
+            <li>oprawa i zabezpieczenie pracy</li>
+          </ul>
+          <a class="btn" href="#/terminy">Wybierz datę</a>
+        </div>
+        <div class="pack p3 soak d2">
+          <h3>Prestiżowy</h3><div class="for">duże wesela i wieczory premium</div>
+          <div class="price">8 900 <span>zł</span></div>
+          <ul>
+            <li>obraz 80 &times; 120 cm lub dwie sceny</li>
+            <li>całe przyjęcie przy sztaludze</li>
+            <li>godzina szybkich portretów gości</li>
+            <li>timelapse + reportaż z procesu</li>
+            <li>dostawa oprawionej pracy po weselu</li>
+          </ul>
+          <a class="btn ghost" href="#/terminy">Wybierz datę</a>
+        </div>
+      </div>
+      <p class="deposit-note soak">Termin sprawdzacie w kalendarzu i rezerwujecie <b>bezpłatnym zapytaniem</b> - odpowiedź z potwierdzeniem dostępności wraca w 24 - 48 godzin. Dojazd na terenie Mazowsza w cenie, dalej - wyceniany przy potwierdzeniu.</p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="sec-head soak"><div class="eyebrow">Proces</div><h2>Od daty do obrazu na ścianie.</h2></div>
+      <div class="timeline">
+        <div class="tl soak"><h4>Zapytanie</h4><p>Wybieracie termin w kalendarzu i wysyłacie bezpłatne zapytanie. Potwierdzenie wraca w 24 - 48 h.</p></div>
+        <div class="tl soak d1"><h4>Rozmowa</h4><p>Ustalamy scenę: pierwszy taniec, sala, plener. Ale poznaje miejsce i światło.</p></div>
+        <div class="tl soak d2"><h4>Wesele</h4><p>Sztaluga staje dyskretnie, a potem robi się wokół niej najgęściej na całej sali.</p></div>
+        <div class="tl soak d3"><h4>Obraz</h4><p>Podpisana praca zostaje z Wami tej nocy. Timelapse dolatuje mailem po kilku dniach.</p></div>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="sec-head soak"><div class="eyebrow">FAQ</div><h2>Pytania, które padają najczęściej.</h2></div>
+      <div class="faq">
+        <div class="faq-item soak"><button onclick="toggleFaq(this.parentNode)">Ile miejsca potrzebuje sztaluga?</button><div class="a">Około 2 &times; 2 metry, najlepiej z widokiem na parkiet i dobrym światłem. Szczegóły dogadujemy bezpośrednio z salą.</div></div>
+        <div class="faq-item soak"><button onclick="toggleFaq(this.parentNode)">Czy farba zdąży wyschnąć przed końcem wesela?</button><div class="a">Tak - akwarela schnie szybko, a praca jest zabezpieczana i pakowana tak, żeby bezpiecznie dojechała do domu jeszcze tej nocy.</div></div>
+        <div class="faq-item soak"><button onclick="toggleFaq(this.parentNode)">Co jeśli zmienimy datę wesela?</button><div class="a">Piszecie i sprawdzamy nowy termin w kalendarzu. Zapytanie jest bezpłatne, więc przy zmianie z wyprzedzeniem zwykle udaje się bez problemu.</div></div>
+        <div class="faq-item soak"><button onclick="toggleFaq(this.parentNode)">Malujecie też poprawiny?</button><div class="a">Tak, przy rezerwacji dwóch dni z rzędu drugi dzień jest wyceniany z rabatem - koszt dojazdu dzielicie tylko raz.</div></div>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="banner soak">
+        <div class="stain" style="width:420px;height:380px;background:radial-gradient(circle,var(--wash-rose),transparent 70%);bottom:-140px;left:-80px"></div>
+        <h2>Soboty w sezonie znikają pierwsze.</h2>
+        <a class="btn light" href="#/terminy">Zobacz kalendarz 2027</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ /live-painting-eventy -->
+<div class="page" id="page-eventy">
+  <div class="stain" style="width:500px;height:440px;background:radial-gradient(circle,var(--wash-ochre),transparent 70%);top:60px;right:-140px"></div>
+  <section class="pageshero">
+    <div class="wrap">
+      <div class="eyebrow soak">Eventy firmowe &middot; alesierysuje.pl/live-painting-eventy</div>
+      <h1 class="soak d1">Live art na event firmowy - malowanie na żywo i portrety gości.</h1>
+      <p class="lead soak d2">Jeden obraz sceny wydarzenia albo seria szybkich portretów gości na papierze przygotowanym pod branding eventu. Faktura VAT, umowa, jedna osoba kontaktowa. Brief zajmuje minutę.</p>
+    </div>
+  </section>
+  <section style="padding-top:10px">
+    <div class="wrap">
+      <div class="bstats">
+        <div class="bstat soak"><b>40+</b><span>portretów gości w jeden wieczór - każdy podpisany i gotowy do zabrania</span></div>
+        <div class="bstat soak d1"><b>120</b><span>osób na największym dotąd obsłużonym evencie firmowym nad morzem</span></div>
+        <div class="bstat soak d2"><b>48 h</b><span>maksymalny czas odpowiedzi na brief z gotową wyceną i propozycją formuły</span></div>
+      </div>
+      <div class="sec-head soak"><h2>Brief w pięciu polach.</h2><p>Bez PDF-ów na start. Wystarczy zarys, resztę doprecyzujemy w rozmowie.</p></div>
+      <div class="brief soak">
+        <label>Firma / agencja</label><input type="text" placeholder="np. Studio Eventowe Północ">
+        <label>Data i miasto</label><input type="text" placeholder="np. 18 września 2027, Gdańsk">
+        <label>Liczba gości</label><select><option>do 50</option><option>50 - 120</option><option>120 - 250</option><option>250+</option></select>
+        <label>Formuła</label><select><option>Szybkie portrety gości</option><option>Jeden obraz sceny wydarzenia</option><option>Jeszcze nie wiemy - doradźcie</option></select>
+        <label>E-mail kontaktowy</label><input type="email" placeholder="imie@firma.pl">
+        <button class="btn" onclick="alert('Prototyp: brief zostałby wysłany, odpowiedź z wyceną w 48 h.')">Wyślij brief</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ /portrety-na-zamowienie -->
+<div class="page" id="page-portrety">
+  <div class="stain" style="width:480px;height:420px;background:radial-gradient(circle,var(--wash-green),transparent 70%);top:80px;left:-160px"></div>
+  <section class="pageshero">
+    <div class="wrap">
+      <div class="eyebrow soak">Pracownia &middot; alesierysuje.pl/portrety-na-zamowienie</div>
+      <h1 class="soak d1">Portrety na zamówienie - portret ze zdjęcia malowany ręcznie.</h1>
+      <p class="lead soak d2">Wgrywacie zdjęcie, wybieracie format, a cena układa się na Waszych oczach. Po zamówieniu dostajecie kartę realizacji - zdjęcia szkicu, warstw koloru i gotowej pracy, prosto z pracowni.</p>
+    </div>
+  </section>
+  <section style="padding-top:20px">
+    <div class="wrap config">
+      <div>
+        <div class="cstep soak"><div class="clabel">1 &middot; Ile osób na portrecie</div><div class="optrow" id="optOsoby"></div></div>
+        <div class="cstep soak d1"><div class="clabel">2 &middot; Format</div><div class="optrow" id="optFormat"></div></div>
+        <div class="cstep soak d2"><div class="clabel">3 &middot; Odręczna dedykacja na odwrocie</div><div class="optrow" id="optDedyk"></div></div>
+        <div class="cstep soak d3"><div class="clabel">4 &middot; Zdjęcie referencyjne</div>
+          <div class="upload" id="uploadBox" onclick="fakeUpload()">Kliknij, aby wgrać zdjęcie<br><small>ocenimy od razu, czy nada się do wybranego formatu</small>
+            <div class="okmsg">&#10003; portret-rodzice.jpg - rozdzielczość wystarczy nawet do formatu 50 &times; 70</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="room soak">
+          <div class="rframe" id="roomFrame"><div id="roomArt"></div></div>
+          <div class="sofa"></div>
+          <div class="scale-note">podgląd w skali - kanapa 220 cm</div>
+        </div>
+        <div class="pricebox soak d1">
+          <div class="row"><span id="prBase">Portret, format A4</span><span id="prBaseVal">490 zł</span></div>
+          <div class="row" id="prPeopleRow" style="display:none"><span id="prPeople"></span><span id="prPeopleVal"></span></div>
+          <div class="row" id="prDedykRow" style="display:none"><span>Odręczna dedykacja</span><span>90 zł</span></div>
+          <div class="total"><span>Razem</span><b id="prTotal">490 zł</b></div>
+          <button class="btn" onclick="alert('Prototyp: tu ruszyłby Stripe Checkout (BLIK / karta / Apple Pay).')">Zamów portret</button>
+          <div class="small">realizacja 10 - 14 dni &middot; wysyłka InPost w cenie &middot; karta realizacji na maila</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ /realizacje -->
+<div class="page" id="page-realizacje">
+  <section class="pageshero" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="eyebrow soak">Realizacje &middot; alesierysuje.pl/realizacje</div>
+      <h1 class="soak d1">Realizacje - malowanie na żywo i portrety.</h1>
+      <p class="lead soak d2">Każda rama to czyjeś wesele, event albo portret bliskiej osoby. Kliknij pracę, żeby zobaczyć ją z bliska.</p>
+    </div>
+  </section>
+  <section style="padding-top:34px">
+    <div class="wrap"><div class="wall-hint soak"><span>przewiń w prawo</span><span class="arr">&rarr;</span></div></div>
+    <div class="wall" id="wall"></div>
+    <div class="wrap" style="text-align:center;padding-top:20px">
+      <a class="btn" href="#/terminy">Chcę taki obraz na swoim weselu</a>
+    </div>
+  </section>
+</div>
+
+<!-- ============ /cennik -->
+<div class="page" id="page-cennik">
+  <div class="stain" style="width:480px;height:420px;background:radial-gradient(circle,var(--wash-blue),transparent 70%);top:80px;right:-160px"></div>
+  <section class="pageshero">
+    <div class="wrap">
+      <div class="eyebrow soak">Cennik &middot; alesierysuje.pl/cennik</div>
+      <h1 class="soak d1">Cennik - live painting i portrety na zamówienie.</h1>
+      <p class="lead soak d2">Ceny są jawne. Bez pisania po wycenę, bez "cena zależy". Jeśli coś wykracza poza tabelę, wyceniamy indywidualnie w 48 godzin.</p>
+    </div>
+  </section>
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="pt-sec soak">
+        <h2>Malowanie na żywo - wesela</h2>
+        <table class="ptable">
+          <tr><th>Pakiet</th><th>Zakres</th><th>Cena</th></tr>
+          <tr><td>Kameralny</td><td>do 60 gości &middot; obraz 40 &times; 60 cm &middot; 3 h malowania</td><td>3 900 zł</td></tr>
+          <tr><td>Klasyczny</td><td>do 120 gości &middot; obraz 60 &times; 90 cm &middot; 5 h &middot; timelapse</td><td>5 900 zł</td></tr>
+          <tr><td>Prestiżowy</td><td>duże wesela &middot; 80 &times; 120 cm lub 2 sceny &middot; portrety gości</td><td>8 900 zł</td></tr>
+        </table>
+        <div class="note">Termin sprawdzicie bezpłatnym zapytaniem w kalendarzu. Dojazd na Mazowszu w cenie.</div>
+      </div>
+      <div class="pt-sec soak d1">
+        <h2>Live art - eventy firmowe</h2>
+        <table class="ptable">
+          <tr><th>Formuła</th><th>Zakres</th><th>Cena</th></tr>
+          <tr><td>Szybkie portrety gości</td><td>do 4 h &middot; ok. 30 - 45 portretów &middot; papier pod branding</td><td>od 3 500 zł</td></tr>
+          <tr><td>Obraz sceny wydarzenia</td><td>gala, premiera, jubileusz &middot; format i czas pod event</td><td>od 4 500 zł</td></tr>
+        </table>
+        <div class="note">Faktura VAT, umowa, wycena briefu w 48 h.</div>
+      </div>
+      <div class="pt-sec soak d2">
+        <h2>Portrety na zamówienie ze zdjęcia</h2>
+        <table class="ptable">
+          <tr><th>Format</th><th>Zakres</th><th>Cena</th></tr>
+          <tr><td>A4</td><td>1 osoba &middot; akwarela &middot; wysyłka w cenie</td><td>490 zł</td></tr>
+          <tr><td>A3</td><td>1 osoba &middot; akwarela &middot; wysyłka w cenie</td><td>690 zł</td></tr>
+          <tr><td>50 &times; 70 cm</td><td>1 osoba &middot; akwarela &middot; wysyłka w cenie</td><td>990 zł</td></tr>
+          <tr><td>Dodatki</td><td>każda kolejna osoba +160 zł &middot; odręczna dedykacja +90 zł</td><td>-</td></tr>
+        </table>
+        <div class="note">Realizacja 10 - 14 dni. Cena układa się na żywo w <a href="#/portrety-na-zamowienie" style="border-bottom:1px solid var(--ink)">konfiguratorze portretu</a>.</div>
+      </div>
+      <a class="btn soak" href="#/terminy">Sprawdź wolne terminy</a>
+    </div>
+  </section>
+</div>
+
+<!-- ============ /o-mnie -->
+<div class="page" id="page-omnie">
+  <div class="stain" style="width:460px;height:420px;background:radial-gradient(circle,var(--wash-blue),transparent 70%);top:120px;right:-140px"></div>
+  <section class="pageshero">
+    <div class="wrap about">
+      <div class="soak">
+        <div class="easel"><div class="frame"><div id="aleArt"></div><div class="cap">autoportret, pracownia</div></div></div>
+      </div>
+      <div class="story">
+        <div class="eyebrow soak">O mnie &middot; alesierysuje.pl/o-mnie</div>
+        <h1 class="soak d1" style="font-size:clamp(2rem,4vw,3.2rem);margin-bottom:26px">Aleksandra Sienica - maluję na żywo.</h1>
+        <p class="soak d2">Maluję od zawsze, ale na żywo - odkąd zauważyłam, że proces ciekawi ludzi bardziej niż gotowy obraz.</p>
+        <p class="soak d2">Na weselu nikt nie pamięta, o której podano tort. Wszyscy pamiętają moment, w którym z mokrej, białej kartki zaczęła wyłaniać się ich sala, ich taniec, ich ludzie. To jest ta część mojej pracy, której nie widać na skanach - i dla której robię to dalej.</p>
+        <p class="soak d3">Pracuję na papierze bawełnianym 300 g, farbami, które przeżyją niejedną przeprowadzkę. Do każdego zlecenia podchodzę jak do jedynego - bo dla Was ono takie jest.</p>
+        <span class="sig soak d3">Aleksandra Sienica</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ /terminy -->
+<div class="page" id="page-terminy">
+  <div class="stain" style="width:460px;height:420px;background:radial-gradient(circle,var(--wash-green),transparent 70%);top:60px;left:-160px"></div>
+  <section class="pageshero" style="padding-bottom:30px">
+    <div class="wrap">
+      <div class="eyebrow soak">Terminy &middot; alesierysuje.pl/terminy</div>
+      <h1 class="soak d1">Wolne terminy live paintingu - kalendarz do sierpnia 2027.</h1>
+      <p class="lead soak d2">Kalendarz jest prawdziwy w czasie rzeczywistym - to, co widzicie, jest dostępne teraz. Wybierzcie dzień i wyślijcie bezpłatne zapytanie o rezerwację - odpowiedź wraca w 24 - 48 godzin.</p>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap cal-wrap">
+      <div class="soak">
+        <div class="legend">
+          <span><span class="ldot free"></span>termin wolny</span>
+          <span><span class="ldot taken"></span>termin zajęty</span>
+          <span><span class="ldot today"></span>dziś</span>
+        </div>
+        <div class="macal">
+          <div class="macal-head">
+            <h4 id="calTitle"></h4>
+            <div class="macal-nav">
+              <button id="calPrev" onclick="calShift(-1)" aria-label="Poprzedni miesiąc">&#8249;</button>
+              <button id="calNext" onclick="calShift(1)" aria-label="Następny miesiąc">&#8250;</button>
+            </div>
+          </div>
+          <div class="dow"><span>pon</span><span>wt</span><span>śr</span><span>czw</span><span>pt</span><span>sob</span><span>nie</span></div>
+          <div class="days" id="calDays"></div>
+        </div>
+      </div>
+      <div class="bk soak d1" id="bkPanel">
+        <div id="bkStep1">
+          <h3>Zapytanie o termin</h3>
+          <div class="picked none" id="pickedDate">Najpierw wybierzcie wolny dzień w kalendarzu.</div>
+          <div id="bkForm" style="display:none">
+            <label>Wasze imiona</label><input type="text" placeholder="np. Ania i Michał" id="bkNames">
+            <label>E-mail</label><input type="email" placeholder="ania@...">
+            <label>Miejscowość wydarzenia</label><input type="text" placeholder="np. Serock">
+            <label>Rodzaj wydarzenia</label>
+            <select><option>Wesele</option><option>Event firmowy</option><option>Urodziny / jubileusz</option><option>Inna okazja</option></select>
+            <button class="btn" onclick="bkSend()">Wyślij bezpłatne zapytanie</button>
+            <div class="fine">Zapytanie jest bezpłatne i do niczego nie zobowiązuje. Odpowiedź w 24 - 48 godzin.</div>
+          </div>
+        </div>
+        <div id="bkStep3" style="display:none">
+          <div class="success">
+            <div class="check">&#10003;</div>
+            <h3>Zapytanie wysłane.</h3>
+            <p style="color:var(--ink-soft);font-size:.95rem;margin-top:8px">Ale sprawdzi dostępność terminu i wróci do Was mailowo z propozycją - zwykle w ciągu 24 - 48 godzin. Do niczego to nie zobowiązuje.</p>
+            <span class="hand" id="doneNote">do usłyszenia!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- lightbox -->
+<div class="lb" id="lightbox" onclick="if(event.target===this)closeLb()">
+  <button class="lb-close" onclick="closeLb()" aria-label="Zamknij">&times;</button>
+  <div class="lb-inner">
+    <div class="frame"><div id="lbArt"></div></div>
+    <h3 id="lbTitle"></h3>
+    <div class="meta" id="lbMeta"></div>
+    <a class="btn" href="#/terminy" onclick="closeLb()">Chcę taki obraz na swoim weselu</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fcol">
+        <a class="logo" href="#/"><span class="dot"></span>alesierysuje</a>
+        <p class="desc">Live painting i malowanie na żywo na weselach oraz eventach w całej Polsce. Portrety na zamówienie ze zdjęcia - malowane ręcznie akwarelą.</p>
+      </div>
+      <div class="fcol">
+        <h5>Usługi</h5>
+        <ul>
+          <li><a href="#/live-painting-wesele">Live painting na wesele</a></li>
+          <li><a href="#/live-painting-eventy">Live art na event firmowy</a></li>
+          <li><a href="#/live-painting-eventy">Szybkie portrety gości</a></li>
+          <li><a href="#/portrety-na-zamowienie">Portrety na zamówienie</a></li>
+          <li><a href="#/portrety-na-zamowienie">Portret ze zdjęcia</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h5>Na skróty</h5>
+        <ul>
+          <li><a href="#/cennik">Cennik</a></li>
+          <li><a href="#/terminy">Wolne terminy 2027</a></li>
+          <li><a href="#/realizacje">Realizacje</a></li>
+          <li><a href="#/o-mnie">O mnie</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="#">kontakt@alesierysuje.pl</a></li>
+          <li><a href="#">Instagram / @alesierysuje</a></li>
+          <li><a href="#">Warszawa &middot; cała Polska</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>&copy; 2026 alesierysuje.pl &middot; Aleksandra Sienica</span>
+      <span>prototyp koncepcji &middot; wersja 2</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== generator akwareli ===== */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const PALETTES=[
+  ['#7FA8C9','#4A7BA6','#A8C6DD','#2E5E8A'],
+  ['#D98BA3','#C25E7E','#EBB7C5','#8E3A56'],
+  ['#D9A85C','#B77E33','#E8CB93','#8A5A22'],
+  ['#8FB08A','#5E8A5E','#BFD4B8','#3E6647'],
+  ['#9B8FC0','#6F5FA0','#C6BEDD','#4A3D78']
+];
+function wcSVG(seed,pi,w,h){
+  w=w||300;h=h||380;
+  const r=mulberry32(seed),pal=PALETTES[pi%PALETTES.length];
+  let blobs='';
+  const n=6+Math.floor(r()*4);
+  for(let i=0;i<n;i++){
+    const cx=w*(0.15+r()*0.7),cy=h*(0.12+r()*0.76);
+    const rx=w*(0.10+r()*0.24),ry=h*(0.07+r()*0.2);
+    const c=pal[Math.floor(r()*pal.length)];
+    const o=(0.18+r()*0.3).toFixed(2);
+    const rot=Math.floor(r()*360);
+    blobs+='<ellipse cx="'+cx.toFixed(0)+'" cy="'+cy.toFixed(0)+'" rx="'+rx.toFixed(0)+'" ry="'+ry.toFixed(0)+'" fill="'+c+'" fill-opacity="'+o+'" transform="rotate('+rot+' '+cx.toFixed(0)+' '+cy.toFixed(0)+')"/>';
+  }
+  const gl=pal[3];
+  blobs+='<rect x="'+(w*0.1)+'" y="'+(h*0.72)+'" width="'+(w*0.8)+'" height="3" fill="'+gl+'" fill-opacity="0.25"/>';
+  for(let i=0;i<3;i++){
+    const px=w*(0.3+r()*0.4);
+    blobs+='<ellipse cx="'+px.toFixed(0)+'" cy="'+(h*0.62).toFixed(0)+'" rx="'+(6+r()*5).toFixed(0)+'" ry="'+(20+r()*16).toFixed(0)+'" fill="'+gl+'" fill-opacity="0.35"/>';
+  }
+  const fid='f'+seed+'_'+w;
+  return '<svg viewBox="0 0 '+w+' '+h+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="akwarela - malowanie na żywo">'+
+    '<defs><filter id="'+fid+'" x="-20%" y="-20%" width="140%" height="140%">'+
+    '<feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="'+seed+'" result="t"/>'+
+    '<feDisplacementMap in="SourceGraphic" in2="t" scale="26"/>'+
+    '<feGaussianBlur stdDeviation="1.4"/></filter></defs>'+
+    '<rect width="'+w+'" height="'+h+'" fill="#FDFCF9"/>'+
+    '<g filter="url(#'+fid+')">'+blobs+'</g></svg>';
+}
+
+/* ===== routing hash → strona (slug = docelowy URL w wersji produkcyjnej) ===== */
+const ROUTES={
+  '':'start',
+  'live-painting-wesele':'wesele',
+  'live-painting-eventy':'eventy',
+  'portrety-na-zamowienie':'portrety',
+  'realizacje':'realizacje',
+  'cennik':'cennik',
+  'o-mnie':'omnie',
+  'terminy':'terminy'
+};
+const TITLES={
+  start:'Live painting na wesele i eventy - malowanie na żywo | alesierysuje',
+  wesele:'Live painting na wesele - malowanie na żywo | alesierysuje',
+  eventy:'Live art na event firmowy - malowanie na żywo | alesierysuje',
+  portrety:'Portrety na zamówienie - portret ze zdjęcia | alesierysuje',
+  realizacje:'Realizacje - live painting i portrety | alesierysuje',
+  cennik:'Cennik - live painting, malowanie na żywo, portrety | alesierysuje',
+  omnie:'Aleksandra Sienica - artystka live painting | alesierysuje',
+  terminy:'Wolne terminy live painting 2026 / 2027 - rezerwacja online | alesierysuje'
+};
+function showPage(slug){
+  const id=ROUTES[slug]!==undefined?ROUTES[slug]:'start';
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.title=TITLES[id];
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const na=document.querySelector('.nav-links a[data-page="'+id+'"]');
+  if(na&&!na.classList.contains('nav-cta'))na.classList.add('active');
+  window.scrollTo({top:0,behavior:'auto'});
+  document.getElementById('navLinks').classList.remove('open');
+  requestAnimationFrame(()=>setTimeout(revealVisible,60));
+}
+function route(){showPage((location.hash||'#/').replace(/^#\//,''))}
+function go(slug){
+  showPage(slug);
+  try{history.replaceState(null,'','#/'+slug)}catch(_){}
+}
+window.addEventListener('hashchange',route);
+/* nawigacja klikiem - dziala takze w piaskownicy podgladu, gdzie zmiana hasha bywa blokowana */
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a[href^="#/"]');
+  if(!a)return;
+  e.preventDefault();
+  go(a.getAttribute('href').replace(/^#\//,''));
+});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+function toggleFaq(el){el.classList.toggle('open')}
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40)});
+
+/* ===== soak reveal ===== */
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:0.1});
+function bindSoak(){document.querySelectorAll('.soak').forEach(el=>io.observe(el))}
+function revealVisible(){
+  document.querySelectorAll('.page.active .soak').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.top<window.innerHeight*0.95)el.classList.add('on');
+  });
+}
+
+/* ===== marquee ===== */
+const KEYWORDS=['live painting','malowanie na żywo','live art','portrety na zamówienie','portret ze zdjęcia','szybkie portrety gości','obraz z wesela','akwarela'];
+function buildMq(){
+  const t=document.getElementById('mqTrack');if(!t)return;
+  let html='';
+  for(let i=0;i<2;i++){KEYWORDS.forEach(k=>{html+='<div class="it">'+k+'</div>'})}
+  t.innerHTML=html;
+}
+
+/* ===== galeria ===== */
+const WORKS=[
+  {t:'Pierwszy taniec',m:'Marta i Paweł - Zamek Gniew, sierpień',p:0,s:11,big:1},
+  {t:'Sala pełna światła',m:'Karolina i Jan - Pałac Rozalin, czerwiec',p:1,s:23},
+  {t:'Plener nad jeziorem',m:'Ola i Tomek - Mazury, lipiec',p:3,s:37,big:1},
+  {t:'Wieczór firmowy',m:'event, 120 gości - Mielno',p:2,s:41},
+  {t:'Portret rodziców',m:'zamówienie z Pracowni - prezent na 40. rocznicę',p:4,s:53},
+  {t:'Oczepiny o północy',m:'Basia i Piotr - Serock, wrzesień',p:1,s:67,big:1},
+  {t:'Toast',m:'Magda i Adam - Warszawa, maj',p:0,s:71},
+  {t:'Szybkie portrety gości',m:'gala jubileuszowa - Płock',p:2,s:83}
+];
+function buildWall(){
+  const w=document.getElementById('wall');if(!w||w.children.length)return;
+  WORKS.forEach(it=>{
+    const d=document.createElement('div');
+    d.className='piece'+(it.big?' big':'');
+    d.innerHTML='<div class="frame">'+wcSVG(it.s,it.p,it.big?340:280,it.big?420:360)+'</div><div class="cap">'+it.t+'</div>';
+    d.onclick=()=>openLb(it);
+    w.appendChild(d);
+  });
+}
+function buildStrip(){
+  const s=document.getElementById('homeStrip');if(!s||s.children.length)return;
+  WORKS.slice(0,6).forEach(it=>{
+    const d=document.createElement('div');
+    d.className='piece'+(it.big?' big':'');
+    d.innerHTML='<div class="frame">'+wcSVG(it.s,it.p,260,320)+'</div><div class="cap">'+it.t+'</div>';
+    d.onclick=()=>openLb(it);
+    s.appendChild(d);
+  });
+}
+function openLb(it){
+  document.getElementById('lbArt').innerHTML=wcSVG(it.s,it.p,420,520);
+  document.getElementById('lbTitle').textContent=it.t;
+  document.getElementById('lbMeta').textContent=it.m;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLb(){document.getElementById('lightbox').classList.remove('open')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+
+/* ===== kalendarz - soboty 2027 ===== */
+const MONTH_NAMES=['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
+const MONTH_TITLES=['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
+/* zakres kalendarza: lipiec 2026 - sierpień 2027 */
+const CAL_MIN={y:2026,m:6},CAL_MAX={y:2027,m:7};
+let CALV={y:2026,m:6};
+const TAKEN={};
+function calKey(y,m,d){return y+'-'+m+'-'+d}
+function initCalData(){
+  const rnd=mulberry32(2027);
+  let freeSat=0;
+  for(let y=CAL_MIN.y;y<=CAL_MAX.y;y++){
+    const mFrom=(y===CAL_MIN.y?CAL_MIN.m:0),mTo=(y===CAL_MAX.y?CAL_MAX.m:11);
+    for(let m=mFrom;m<=mTo;m++){
+      const dim=new Date(y,m+1,0).getDate();
+      for(let d=1;d<=dim;d++){
+        const dow=new Date(y,m,d).getDay();
+        let p=0.15;
+        if(dow===6)p=0.6;else if(dow===5||dow===0)p=0.35;
+        const t=rnd()<p;
+        TAKEN[calKey(y,m,d)]=t;
+        if(dow===6&&!t)freeSat++;
+      }
+    }
+  }
+  const fc=document.getElementById('freeCount');if(fc)fc.textContent=freeSat;
+}
+let PICKED=null,SELKEY=null;
+const DOW_FULL=['niedziela','poniedziałek','wtorek','środa','czwartek','piątek','sobota'];
+function renderCal(){
+  const t=document.getElementById('calTitle');if(!t)return;
+  t.textContent=MONTH_TITLES[CALV.m]+' '+CALV.y;
+  document.getElementById('calPrev').disabled=(CALV.y===CAL_MIN.y&&CALV.m===CAL_MIN.m);
+  document.getElementById('calNext').disabled=(CALV.y===CAL_MAX.y&&CALV.m===CAL_MAX.m);
+  const box=document.getElementById('calDays');box.innerHTML='';
+  const offset=(new Date(CALV.y,CALV.m,1).getDay()+6)%7;
+  const dim=new Date(CALV.y,CALV.m+1,0).getDate();
+  const prevDim=new Date(CALV.y,CALV.m,0).getDate();
+  const now=new Date();
+  const cells=[];
+  for(let i=offset-1;i>=0;i--)cells.push({d:prevDim-i,out:true});
+  for(let d=1;d<=dim;d++)cells.push({d:d,out:false});
+  let nd=1;
+  while(cells.length%7!==0)cells.push({d:nd++,out:true});
+  cells.forEach(c=>{
+    const el=document.createElement('div');
+    let cls='day';
+    if(c.out){cls+=' out'}
+    else{
+      const key=calKey(CALV.y,CALV.m,c.d);
+      const isToday=(now.getFullYear()===CALV.y&&now.getMonth()===CALV.m&&now.getDate()===c.d);
+      if(isToday)cls+=' today';
+      if(TAKEN[key]){cls+=' taken'}
+      else{
+        cls+=' free';
+        el.onclick=()=>pickDate(CALV.y,CALV.m,c.d);
+      }
+      if(key===SELKEY)cls+=' sel';
+    }
+    el.className=cls;
+    el.textContent=c.d;
+    box.appendChild(el);
+  });
+}
+function calShift(dir){
+  let m=CALV.m+dir,y=CALV.y;
+  if(m<0){m=11;y--}
+  if(m>11){m=0;y++}
+  if(y<CAL_MIN.y||(y===CAL_MIN.y&&m<CAL_MIN.m))return;
+  if(y>CAL_MAX.y||(y===CAL_MAX.y&&m>CAL_MAX.m))return;
+  CALV={y:y,m:m};renderCal();
+}
+function pickDate(y,m,d){
+  SELKEY=calKey(y,m,d);
+  PICKED=DOW_FULL[new Date(y,m,d).getDay()]+', '+d+' '+MONTH_NAMES[m]+' '+y;
+  renderCal();
+  const p=document.getElementById('pickedDate');
+  p.textContent=PICKED;
+  p.classList.remove('none');
+  document.getElementById('bkForm').style.display='block';
+  document.getElementById('bkStep3').style.display='none';
+  document.getElementById('bkStep1').style.display='block';
+  if(window.innerWidth<920)document.getElementById('bkPanel').scrollIntoView({behavior:'smooth'});
+}
+function bkSend(){
+  if(!PICKED)return;
+  document.getElementById('bkStep1').style.display='none';
+  document.getElementById('bkStep3').style.display='block';
+  const n=document.getElementById('bkNames').value.trim();
+  document.getElementById('doneNote').textContent=n?('do usłyszenia, '+n+'!'):'do usłyszenia!';
+}
+
+/* ===== konfigurator ===== */
+const CFG={osoby:1,format:'A4',dedyk:false};
+const FMT={'A4':{price:490,w:60,h:84},'A3':{price:690,w:84,h:118},'50 x 70':{price:990,w:100,h:140}};
+const PER_PERSON=160,DEDYK=90;
+function buildConfig(){
+  const o=document.getElementById('optOsoby');if(!o||o.children.length)return;
+  [1,2,3,4,5].forEach(n=>{
+    const b=document.createElement('button');b.className='opt'+(n===1?' sel':'');b.textContent=n===5?'5+':n;
+    b.onclick=()=>{CFG.osoby=n;o.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');updPrice()};
+    o.appendChild(b);
+  });
+  const f=document.getElementById('optFormat');
+  Object.keys(FMT).forEach((k,i)=>{
+    const b=document.createElement('button');b.className='opt'+(i===0?' sel':'');
+    b.textContent=(k==='50 x 70')?'50 \u00D7 70 cm':k;
+    b.onclick=()=>{CFG.format=k;f.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');updPrice();updRoom()};
+    f.appendChild(b);
+  });
+  const d=document.getElementById('optDedyk');
+  [['Bez dedykacji',false],['Z dedykacją (+90 zł)',true]].forEach(([lbl,v],i)=>{
+    const b=document.createElement('button');b.className='opt'+(i===0?' sel':'');b.textContent=lbl;
+    b.onclick=()=>{CFG.dedyk=v;d.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');updPrice()};
+    d.appendChild(b);
+  });
+  document.getElementById('roomArt').innerHTML=wcSVG(53,4,200,280);
+  updRoom();updPrice();
+}
+function updRoom(){
+  const fr=document.getElementById('roomFrame'),f=FMT[CFG.format];
+  fr.style.width=f.w+'px';fr.style.height=f.h+'px';
+}
+function updPrice(){
+  const f=FMT[CFG.format];
+  let total=f.price;
+  document.getElementById('prBase').textContent='Portret, format '+(CFG.format==='50 x 70'?'50 \u00D7 70':CFG.format);
+  document.getElementById('prBaseVal').textContent=f.price+' zł';
+  const extra=(CFG.osoby-1)*PER_PERSON;
+  const pr=document.getElementById('prPeopleRow');
+  if(extra>0){pr.style.display='flex';
+    document.getElementById('prPeople').textContent='Dodatkowe osoby \u00D7 '+(CFG.osoby-1);
+    document.getElementById('prPeopleVal').textContent=extra+' zł';total+=extra;
+  }else pr.style.display='none';
+  const dr=document.getElementById('prDedykRow');
+  if(CFG.dedyk){dr.style.display='flex';total+=DEDYK}else dr.style.display='none';
+  document.getElementById('prTotal').textContent=total+' zł';
+}
+function fakeUpload(){document.getElementById('uploadBox').classList.add('ok')}
+
+/* ===== drzwi - grafiki ===== */
+function buildDoors(){
+  const map=[['doorArt1',0,31],['doorArt2',2,47],['doorArt3',4,59]];
+  map.forEach(([id,p,s])=>{const el=document.getElementById(id);if(el)el.innerHTML=wcSVG(s,p,400,560)});
+}
+
+/* ===== init ===== */
+window.addEventListener('load',()=>{
+  const h=document.getElementById('heroArt');if(h)h.innerHTML=wcSVG(11,0,300,380);
+  const a=document.getElementById('aleArt');if(a)a.innerHTML=wcSVG(97,1,320,400);
+  buildMq();buildDoors();buildStrip();buildWall();initCalData();renderCal();buildConfig();
+  bindSoak();route();
+});
+</script>
+</body>
+</html>
