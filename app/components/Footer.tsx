@@ -72,7 +72,7 @@ export function Footer() {
           </div>
         </div>
         <div className="fbottom">
-          <span>&copy; 2026 alesierysuje.pl &middot; Aleksandra Sienica</span>
+          <span>&copy; 2026 alesierysuje.pl &middot; Aleksandra Sienica &middot; NIP 1133135946</span>
           <span>live painting &middot; malowanie na żywo &middot; cała Polska</span>
         </div>
       </div>

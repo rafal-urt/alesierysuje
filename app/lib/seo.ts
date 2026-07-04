@@ -58,6 +58,8 @@ export function localBusinessJsonLd(reviewCount: number) {
     url: SITE_URL,
     areaServed: "PL",
     priceRange: "490 - 8900 PLN",
+    taxID: "1133135946",
+    vatID: "PL1133135946",
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5.0",
