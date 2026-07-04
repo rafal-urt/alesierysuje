@@ -64,7 +64,7 @@ export function Footer() {
                 <Link to="/kontakt">Formularz kontaktowy</Link>
               </li>
               <li>
-                <a href="mailto:kontakt@alesierysuje.pl">kontakt@alesierysuje.pl</a>
+                <a href="mailto:alesierysuje@gmail.com">alesierysuje@gmail.com</a>
               </li>
               <li>
                 <a href="https://www.instagram.com/alesierysuje" rel="noopener noreferrer" target="_blank">

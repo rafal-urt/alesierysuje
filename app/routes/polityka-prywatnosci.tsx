@@ -30,7 +30,7 @@ export default function PolitykaPrywatnosci() {
           <p>
             Administratorem danych osobowych jest Aleksandra Sienica, prowadząca działalność pod
             marką alesierysuje, NIP 1133135946. Kontakt:{" "}
-            <a href="mailto:kontakt@alesierysuje.pl">kontakt@alesierysuje.pl</a>.
+            <a href="mailto:alesierysuje@gmail.com">alesierysuje@gmail.com</a>.
           </p>
 
           <h2>2. Jakie dane zbieramy i po co</h2>
@@ -73,7 +73,7 @@ export default function PolitykaPrywatnosci() {
           <p>
             Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia
             przetwarzania, przenoszenia oraz sprzeciwu. Wystarczy e-mail na{" "}
-            <a href="mailto:kontakt@alesierysuje.pl">kontakt@alesierysuje.pl</a>. Masz też prawo
+            <a href="mailto:alesierysuje@gmail.com">alesierysuje@gmail.com</a>. Masz też prawo
             wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych (uodo.gov.pl).
           </p>
 

@@ -60,7 +60,7 @@ export async function seedIfEmpty(payload: Payload): Promise<void> {
     await payload.updateGlobal({
       slug: "settings",
       data: {
-        contactEmail: "kontakt@alesierysuje.pl",
+        contactEmail: "alesierysuje@gmail.com",
         instagram: "https://www.instagram.com/alesierysuje",
         calendarEnd: "2027-12-31",
         weddingPackages: { kameralny: 4000, klasyczny: 6000, prestizowy: 9000 },

@@ -210,7 +210,7 @@ export default function Kontakt() {
               </li>
               <li>
                 <span className="contact-label">E-mail</span>
-                <a href="mailto:kontakt@alesierysuje.pl">kontakt@alesierysuje.pl</a>
+                <a href="mailto:alesierysuje@gmail.com">alesierysuje@gmail.com</a>
               </li>
               <li>
                 <span className="contact-label">Działam</span>
