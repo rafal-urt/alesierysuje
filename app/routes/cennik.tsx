@@ -51,7 +51,6 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
       <WatercolorStain color="blue" width={480} height={420} style={{ top: 80, right: -160 }} />
       <section className="pageshero">
         <div className="wrap">
-          <div className="eyebrow soak">Cennik &middot; alesierysuje.pl/cennik</div>
           <h1 className="soak d1">Cennik - live painting i portrety na zamówienie.</h1>
           <p className="lead soak d2">
             Ceny są jawne. Bez pisania po wycenę, bez "cena zależy". Jeśli coś wykracza poza tabelę,

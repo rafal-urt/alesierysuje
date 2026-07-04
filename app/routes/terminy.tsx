@@ -142,7 +142,6 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
       <WatercolorStain color="green" width={460} height={420} style={{ top: 60, left: -160 }} />
       <section className="pageshero" style={{ paddingBottom: 30 }}>
         <div className="wrap">
-          <div className="eyebrow soak">Terminy &middot; alesierysuje.pl/terminy</div>
           <h1 className="soak d1">Wolne terminy live paintingu - kalendarz do sierpnia 2027.</h1>
           <p className="lead soak d2">
             Kalendarz jest prawdziwy w czasie rzeczywistym - to, co widzicie, jest dostępne teraz.

@@ -28,7 +28,6 @@ export default function Realizacje({ loaderData }: Route.ComponentProps) {
       <JsonLd data={breadcrumbJsonLd([{ name: "Realizacje", path: "/realizacje" }])} />
       <section className="pageshero" style={{ paddingBottom: 0 }}>
         <div className="wrap">
-          <div className="eyebrow soak">Realizacje &middot; alesierysuje.pl/realizacje</div>
           <h1 className="soak d1">Realizacje - malowanie na żywo i portrety.</h1>
           <p className="lead soak d2">
             Każda rama to czyjeś wesele, event albo portret bliskiej osoby. Kliknij pracę, żeby

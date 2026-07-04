@@ -18,7 +18,6 @@ export default function PolitykaPrywatnosci() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Polityka prywatności", path: "/polityka-prywatnosci" }])} />
       <section className="pageshero">
         <div className="wrap">
-          <div className="eyebrow soak">Formalności &middot; alesierysuje.pl/polityka-prywatnosci</div>
           <h1 className="soak d1">Polityka prywatności.</h1>
           <p className="lead soak d2">
             Krótko i po ludzku: jakie dane zbieramy, po co i jakie masz prawa.

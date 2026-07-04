@@ -127,7 +127,6 @@ export default function LivePaintingEventy() {
       <WatercolorStain color="ochre" width={500} height={440} style={{ top: 60, right: -140 }} />
       <section className="pageshero">
         <div className="wrap">
-          <div className="eyebrow soak">Eventy firmowe &middot; alesierysuje.pl/live-painting-eventy</div>
           <h1 className="soak d1">Live art na event firmowy - malowanie na żywo i portrety gości.</h1>
           <p className="lead soak d2">
             Seria szybkich akwarelowych portretów gości - od 20 do 40 ilustracji A5 podczas

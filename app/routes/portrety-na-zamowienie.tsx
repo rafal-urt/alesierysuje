@@ -119,7 +119,6 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
       <WatercolorStain color="green" width={480} height={420} style={{ top: 80, left: -160 }} />
       <section className="pageshero">
         <div className="wrap">
-          <div className="eyebrow soak">Pracownia &middot; alesierysuje.pl/portrety-na-zamowienie</div>
           <h1 className="soak d1">Portrety na zamówienie - portret ze zdjęcia malowany ręcznie.</h1>
           <p className="lead soak d2">
             Wybieracie liczbę osób i format, a cena układa się na Waszych oczach. Po zamówieniu

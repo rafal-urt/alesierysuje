@@ -46,7 +46,6 @@ export default function OMnie() {
             </div>
           </div>
           <div className="story">
-            <div className="eyebrow soak">O mnie &middot; alesierysuje.pl/o-mnie</div>
             <h1
               className="soak d1"
               style={{ fontSize: "clamp(2rem,4vw,3.2rem)", marginBottom: 26 }}
