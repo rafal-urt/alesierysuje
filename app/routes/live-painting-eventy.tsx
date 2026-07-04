@@ -1,116 +1,70 @@
-import { useFetcher } from "react-router";
 import type { Route } from "./+types/live-painting-eventy";
+import { Link } from "react-router";
+import { Faq } from "~/components/Faq";
 import { WatercolorStain } from "~/components/WatercolorStain";
+import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
+import { EVENT_PRICING, EXTRA_ILLUSTRATION_PLN, formatZl } from "~/data/prices";
 import { getDb } from "~/lib/payload.server";
-import { sendMail } from "~/lib/email.server";
-import { clientIp, rateLimit } from "~/lib/rateLimit.server";
+import { plMonthYear } from "~/lib/dates";
 import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 
-const GUESTS = [
-  { label: "do 50", value: "do-50" },
-  { label: "50 - 120", value: "50-120" },
-  { label: "120 - 250", value: "120-250" },
-  { label: "250+", value: "250-plus" },
-] as const;
-const FORMATS = [
-  { label: "Portrety gości na żywo", value: "portrety" },
-  { label: "Portrety na żywo + dosyłka reszty po evencie", value: "dosylka" },
-  { label: "Jeszcze nie wiemy - doradźcie", value: "doradzcie" },
-] as const;
-
-export async function action({ request }: Route.ActionArgs) {
-  const form = await request.formData();
-
-  if (String(form.get("website") ?? "").length > 0) {
-    return { ok: true as const };
-  }
-  if (!rateLimit(`brief:${clientIp(request)}`)) {
-    return { error: "Za dużo zgłoszeń z tego adresu. Spróbujcie ponownie za kilka minut." };
-  }
-
-  const company = String(form.get("company") ?? "").trim();
-  const dateCity = String(form.get("dateCity") ?? "").trim();
-  const guests = String(form.get("guests") ?? "");
-  const format = String(form.get("format") ?? "");
-  const email = String(form.get("email") ?? "").trim();
-
-  if (!company) return { error: "Podajcie nazwę firmy lub agencji." };
-  if (!dateCity) return { error: "Podajcie datę i miasto wydarzenia." };
-  if (!GUESTS.some((g) => g.value === guests)) return { error: "Wybierzcie liczbę gości." };
-  if (!FORMATS.some((f) => f.value === format)) return { error: "Wybierzcie formułę." };
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { error: "Podajcie poprawny adres e-mail." };
-
+export async function loader() {
   const db = await getDb();
-  await db.create({
-    collection: "briefs",
-    data: {
-      company,
-      dateCity,
-      guests: guests as "do-50",
-      format: format as "portrety",
-      email,
-      status: "nowe",
-    },
-  });
-
-  const settings = await db.findGlobal({ slug: "settings" });
-  const guestsLabel = GUESTS.find((g) => g.value === guests)?.label ?? guests;
-  const formatLabel = FORMATS.find((f) => f.value === format)?.label ?? format;
-  try {
-    await Promise.all([
-      sendMail({
-        to: settings.contactEmail,
-        subject: `Nowy brief eventowy - ${company}`,
-        text: [
-          "Nowy brief z alesierysuje.pl/live-painting-eventy",
-          "",
-          `Firma / agencja: ${company}`,
-          `Data i miasto: ${dateCity}`,
-          `Liczba gości: ${guestsLabel}`,
-          `Formuła: ${formatLabel}`,
-          `E-mail: ${email}`,
-          "",
-          "Szczegóły w panelu: /admin (kolekcja Briefy)",
-        ].join("\n"),
-        replyTo: email,
-      }),
-      sendMail({
-        to: email,
-        subject: "Brief dotarł - alesierysuje",
-        text: [
-          "Dzień dobry!",
-          "",
-          `Brief dla ${company} dotarł do pracowni.`,
-          "Wycena i propozycja formuły wrócą na ten adres najpóźniej w 48 godzin.",
-          "",
-          "pozdrawiam,",
-          "Aleksandra Sienica - alesierysuje.pl",
-        ].join("\n"),
-      }),
-    ]);
-  } catch (err) {
-    console.error("Błąd wysyłki maila briefu:", err);
-  }
-
-  return { ok: true as const };
+  const [settings, reviews] = await Promise.all([
+    db.findGlobal({ slug: "settings" }),
+    db.find({ collection: "reviews", sort: "-date", limit: 20 }),
+  ]);
+  const eventReviews = reviews.docs
+    .filter((r) => /event|imprez|firmow|gal/i.test(r.location ?? ""))
+    .slice(0, 3)
+    .map((r) => ({
+      author: r.author,
+      text: r.text,
+      where: r.location ?? "",
+      when: plMonthYear(r.date),
+    }));
+  return {
+    priceFrom: settings.eventPricing?.portraits ?? 3500,
+    reviews: eventReviews,
+  };
 }
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Live art na event firmowy - malowanie na żywo | alesierysuje",
     description:
-      "Live art na eventy firmowe - malowanie na żywo i szybkie portrety gości na papierze pod branding. Faktura VAT, umowa, odpowiedź na brief z wyceną w 48 h.",
+      "Live art na eventy firmowe - seria akwarelowych portretów gości malowanych na żywo. 20 - 40 ilustracji A5, papier pod branding, faktura VAT. Sprawdź wolne terminy online.",
     path: "/live-painting-eventy",
     ogImage: "/og/eventy.png",
   });
 }
 
-export default function LivePaintingEventy() {
-  const fetcher = useFetcher<typeof action>();
-  const sent = fetcher.data && "ok" in fetcher.data && fetcher.data.ok;
-  const error = fetcher.data && "error" in fetcher.data ? fetcher.data.error : null;
-  const sending = fetcher.state !== "idle";
+const FAQ_ITEMS = [
+  {
+    q: "Czy goście muszą pozować albo stać w kolejce?",
+    a: "Nie - goście podchodzą do kącika live art tylko na szybkie zdjęcie i wracają do rozmów, a ja maluję z fotografii. Gotowe ilustracje czekają w kąciku, każdy odbiera swoją w dogodnym momencie.",
+  },
+  {
+    q: "Ile ilustracji powstanie na naszym evencie?",
+    a: "Na żywo od 20 do 40 ilustracji A5 - jeden portret to 10 - 15 minut malowania. Jeśli chętnych będzie więcej, każda kolejna ilustracja to 100 zł, a czego nie zdążę namalować na żywo, dokańczam w pracowni i dosyłam po evencie.",
+  },
+  {
+    q: "Czy papier może być przygotowany pod nasz branding?",
+    a: "Tak - papier przygotowuję indywidualnie pod identyfikację wydarzenia: logo, kolory, motyw przewodni. Pamiątka nosi Waszą markę, a mimo to goście naprawdę chcą ją zatrzymać.",
+  },
+  {
+    q: "Czy wystawiacie fakturę VAT?",
+    a: "Tak - faktura VAT i umowa to standard. Po Waszej stronie jest jedna osoba kontaktowa, po mojej też: wszystko domykamy mailowo, bez łańcuszków.",
+  },
+  {
+    q: "Nasz event trwa krócej albo dłużej niż standard - co wtedy?",
+    a: "Nic straconego - formaty nietypowe (krótkie gale, całodniowe konferencje, dwa dni targów) wyceniam indywidualnie w 48 godzin od zapytania.",
+  },
+];
+
+export default function LivePaintingEventy({ loaderData }: Route.ComponentProps) {
+  const { priceFrom, reviews } = loaderData;
   return (
     <main className="page">
       <JsonLd data={breadcrumbJsonLd([{ name: "Live art na event firmowy", path: "/live-painting-eventy" }])} />
@@ -119,91 +73,252 @@ export default function LivePaintingEventy() {
           "@context": "https://schema.org",
           "@type": "Service",
           name: "Live art na event firmowy",
-          serviceType: "Malowanie na żywo i szybkie portrety gości na evencie",
+          serviceType: "Akwarelowe portrety gości malowane na żywo podczas eventów firmowych",
           provider: { "@id": SITE_URL + "#business" },
           areaServed: "PL",
+          offers: {
+            "@type": "Offer",
+            price: String(priceFrom),
+            priceCurrency: "PLN",
+          },
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
         }}
       />
       <WatercolorStain color="ochre" width={500} height={440} style={{ top: 60, right: -140 }} />
+
+      {/* hero: obietnica + wachlarz ilustracji */}
       <section className="pageshero">
-        <div className="wrap">
-          <h1 className="soak d1">Live art na event firmowy - malowanie na żywo i portrety gości</h1>
-          <p className="lead soak d2">
-            Seria szybkich akwarelowych portretów gości - od 20 do 40 ilustracji A5 podczas
-            jednego wydarzenia, na papierze przygotowanym pod branding eventu. Czego nie zdążę
-            namalować na żywo, dosyłam po evencie. Faktura VAT, umowa, jedna osoba kontaktowa.
-            Brief zajmuje minutę.
-          </p>
+        <div className="wrap split-hero">
+          <div>
+            <h1 className="soak d1">Live art na event firmowy - malowanie na żywo i portrety gości</h1>
+            <p className="lead soak d2">
+              Seria akwarelowych portretów gości malowanych w trakcie wydarzenia - od 20 do 40
+              ilustracji A5 na papierze przygotowanym pod branding eventu. Goście wpadają do kącika
+              live art na szybkie zdjęcie, wracają do rozmów, a wychodzą z pamiątką, którą naprawdę
+              zatrzymają. Faktura VAT, umowa, jedna osoba kontaktowa.
+            </p>
+            <div className="hero-cta soak d3">
+              <Link className="btn" to="/terminy">
+                Sprawdź termin
+              </Link>
+              <a className="btn ghost" href="#cennik-eventy">
+                Zobacz ceny
+              </a>
+            </div>
+          </div>
+          <div className="a5-stack soak d2" aria-hidden="true">
+            <div className="frame">
+              <WatercolorPlaceholder seed={41} palette={2} width={210} height={296} />
+              <div className="cap">zespół projektowy</div>
+            </div>
+            <div className="frame">
+              <WatercolorPlaceholder seed={83} palette={0} width={210} height={296} />
+              <div className="cap">gość specjalny</div>
+            </div>
+            <div className="frame">
+              <WatercolorPlaceholder seed={47} palette={4} width={210} height={296} />
+              <div className="cap">prezes zarządu</div>
+            </div>
+          </div>
         </div>
       </section>
-      <section style={{ paddingTop: 10 }}>
+
+      {/* liczby */}
+      <section style={{ paddingTop: 20, paddingBottom: 0 }}>
         <div className="wrap">
-          <div className="bstats">
+          <div className="bstats b4">
             <div className="bstat soak">
-              <b>40+</b>
-              <span>portretów gości w jeden wieczór - każdy podpisany i gotowy do zabrania</span>
+              <b>20 - 40</b>
+              <span>ilustracji gości powstaje podczas jednego wydarzenia</span>
             </div>
             <div className="bstat soak d1">
               <b>120</b>
-              <span>osób na największym dotąd obsłużonym evencie firmowym nad morzem</span>
+              <span>osób na największym dotąd obsłużonym evencie firmowym</span>
             </div>
             <div className="bstat soak d2">
+              <b>10 - 15 min</b>
+              <span>tyle trwa namalowanie jednego akwarelowego portretu</span>
+            </div>
+            <div className="bstat soak d3">
               <b>48 h</b>
-              <span>maksymalny czas odpowiedzi na brief z gotową wyceną i propozycją formuły</span>
+              <span>maksymalny czas odpowiedzi na zapytanie z wyceną</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* proces */}
+      <section>
+        <div className="wrap">
           <div className="sec-head soak">
-            <h2>Brief w pięciu polach</h2>
-            <p>Bez PDF-ów na start. Wystarczy zarys, resztę doprecyzujemy w rozmowie.</p>
+            <div className="eyebrow">Jak to działa</div>
+            <h2>Od zapytania do pamiątek w cztery kroki</h2>
           </div>
-          {sent ? (
-            <div className="brief soak">
-              <div className="success">
-                <div className="check">&#10003;</div>
-                <h3>Brief wysłany</h3>
-                <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem", marginTop: 8 }}>
-                  Wycena i propozycja formuły wrócą na podany adres najpóźniej w 48 godzin.
-                </p>
-              </div>
+          <div className="timeline">
+            <div className="tl soak">
+              <h4>Termin</h4>
+              <p>
+                Sprawdzacie datę w kalendarzu online i wysyłacie bezpłatne zapytanie. Wracam w
+                24 - 48 h z wyceną i propozycją formuły.
+              </p>
             </div>
-          ) : (
-            <fetcher.Form method="post" className="brief soak">
-              <input
-                type="text"
-                name="website"
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-                style={{ position: "absolute", left: -9999, width: 1, height: 1, opacity: 0 }}
-              />
-              <label htmlFor="brief-company">Firma / agencja</label>
-              <input id="brief-company" name="company" type="text" placeholder="np. Studio Eventowe Północ" required />
-              <label htmlFor="brief-datecity">Data i miasto</label>
-              <input id="brief-datecity" name="dateCity" type="text" placeholder="np. 18 września 2027, Gdańsk" required />
-              <label htmlFor="brief-guests">Liczba gości</label>
-              <select id="brief-guests" name="guests" defaultValue="do-50">
-                {GUESTS.map((g) => (
-                  <option key={g.value} value={g.value}>
-                    {g.label}
-                  </option>
+            <div className="tl soak d1">
+              <h4>Ustalenia</h4>
+              <p>
+                Papier pod branding, kolorystyka, godziny i miejsce kącika - wszystko domykamy
+                mailowo. Umowa i faktura VAT w standardzie.
+              </p>
+            </div>
+            <div className="tl soak d2">
+              <h4>Event</h4>
+              <p>
+                Goście podchodzą do kącika na szybkie zdjęcie i wracają do rozmów. Maluję z
+                fotografii, a gotowe prace odbiera się z kącika.
+              </p>
+            </div>
+            <div className="tl soak d3">
+              <h4>Po evencie</h4>
+              <p>
+                Czego nie zdążę namalować na żywo, dokańczam w pracowni i dosyłam - komplet
+                pamiątek trafia do gości.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* dla kogo */}
+      <section style={{ paddingTop: 10 }}>
+        <WatercolorStain color="blue" width={460} height={400} style={{ top: 60, left: -150 }} />
+        <div className="wrap">
+          <div className="sec-head soak">
+            <div className="eyebrow">Dla kogo</div>
+            <h2>Formaty, na których to gra najlepiej</h2>
+          </div>
+          <div className="steps">
+            <div className="step soak">
+              <div className="brush" style={{ background: "var(--color-wash-ochre)" }} />
+              <h3>Gale i jubileusze</h3>
+              <p>
+                Wieczory, na których liczy się klasa - portrety gości dołączają do eleganckiej
+                oprawy i zostają po evencie jako pamiątka z wydarzenia.
+              </p>
+            </div>
+            <div className="step soak d1">
+              <div className="brush" style={{ background: "var(--color-wash-blue)" }} />
+              <h3>Eventy integracyjne</h3>
+              <p>
+                Kącik live art naturalnie zbiera ludzi i daje temat do rozmów - a każdy wraca z
+                imprezy z własnym portretem zamiast służbowego gadżetu.
+              </p>
+            </div>
+            <div className="step soak d2">
+              <div className="brush" style={{ background: "var(--color-wash-rose)" }} />
+              <h3>Premiery i konferencje</h3>
+              <p>
+                Papier pod branding sprawia, że logo wydarzenia wisi potem w domach gości - to
+                zasięg, którego nie da żadna smycz ani kubek.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* cennik */}
+      <section id="cennik-eventy" style={{ paddingTop: 10 }}>
+        <div className="wrap">
+          <div className="sec-head soak">
+            <div className="eyebrow">Ceny</div>
+            <h2>Jawne stawki, zero "napisz po wycenę"</h2>
+          </div>
+          <div className="pt-sec soak">
+            <table className="ptable">
+              <tbody>
+                <tr>
+                  <th>Formuła</th>
+                  <th>Zakres</th>
+                  <th>Cena</th>
+                </tr>
+                {EVENT_PRICING.map((e) => (
+                  <tr key={e.name}>
+                    <td>{e.name}</td>
+                    <td>{e.scope}</td>
+                    <td>od {formatZl(priceFrom)}</td>
+                  </tr>
                 ))}
-              </select>
-              <label htmlFor="brief-format">Formuła</label>
-              <select id="brief-format" name="format" defaultValue="portrety">
-                {FORMATS.map((f) => (
-                  <option key={f.value} value={f.value}>
-                    {f.label}
-                  </option>
-                ))}
-              </select>
-              <label htmlFor="brief-email">E-mail kontaktowy</label>
-              <input id="brief-email" name="email" type="email" placeholder="imie@firma.pl" required />
-              {error && <p style={{ color: "#a33", fontSize: "0.88rem", marginTop: 14 }}>{error}</p>}
-              <button className="btn" type="submit" disabled={sending}>
-                {sending ? "Wysyłanie..." : "Wyślij brief"}
-              </button>
-            </fetcher.Form>
-          )}
+                <tr>
+                  <td>Dodatkowa ilustracja</td>
+                  <td>każda praca ponad pakiet · na żywo albo z dosyłką po evencie</td>
+                  <td>{formatZl(EXTRA_ILLUSTRATION_PLN)}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div className="note">
+              Formaty nietypowe wyceniam indywidualnie w 48 h. Faktura VAT i umowa w standardzie.
+            </div>
+          </div>
+          <Link className="btn ghost soak" to="/cennik">
+            Zobacz pełny cennik
+          </Link>
+        </div>
+      </section>
+
+      {/* opinie */}
+      {reviews.length > 0 && (
+        <section style={{ paddingTop: 20 }}>
+          <div className="wrap">
+            <div className="sec-head soak">
+              <div className="eyebrow">Opinie</div>
+              <h2>Organizatorzy o swoich eventach</h2>
+            </div>
+            <div className="quotes">
+              {reviews.map((r, i) => (
+                <div className={`quote soak${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} key={r.author}>
+                  <div className="stars" aria-label="5 gwiazdek">
+                    &#9733;&#9733;&#9733;&#9733;&#9733;
+                  </div>
+                  <p>{r.text}</p>
+                  <div className="who">
+                    {r.author} &middot; {r.where} &middot; {r.when}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ */}
+      <section style={{ paddingTop: 20 }}>
+        <div className="wrap">
+          <div className="sec-head soak">
+            <div className="eyebrow">FAQ</div>
+            <h2>Pytania, które padają najczęściej</h2>
+          </div>
+          <Faq items={FAQ_ITEMS} />
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="banner soak">
+            <WatercolorStain color="ochre" width={420} height={380} style={{ bottom: -140, left: -80 }} />
+            <h2>Wasi goście zapamiętają ten wieczór</h2>
+            <Link className="btn light" to="/terminy">
+              Sprawdź termin
+            </Link>
+          </div>
         </div>
       </section>
     </main>
