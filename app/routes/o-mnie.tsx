@@ -1,6 +1,5 @@
 import type { Route } from "./+types/o-mnie";
 import { WatercolorStain } from "~/components/WatercolorStain";
-import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 
@@ -24,8 +23,25 @@ export default function OMnie() {
           <div className="soak">
             <div className="easel">
               <div className="frame">
-                <WatercolorPlaceholder seed={97} palette={1} width={320} height={400} />
-                <div className="cap">autoportret, pracownia</div>
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet="/gfx/aleksandra-sienica-live-painting-500.avif 500w, /gfx/aleksandra-sienica-live-painting-1000.avif 1000w"
+                    sizes="(max-width: 920px) 90vw, 450px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet="/gfx/aleksandra-sienica-live-painting-500.webp 500w, /gfx/aleksandra-sienica-live-painting-1000.webp 1000w"
+                    sizes="(max-width: 920px) 90vw, 450px"
+                  />
+                  <img
+                    src="/gfx/aleksandra-sienica-live-painting-1000.jpg"
+                    alt="Aleksandra Sienica maluje akwarelę na żywo podczas wesela"
+                    width={1000}
+                    height={1500}
+                  />
+                </picture>
+                <div className="cap">live painting, wesele</div>
               </div>
             </div>
           </div>
