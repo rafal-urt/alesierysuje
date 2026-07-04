@@ -610,13 +610,13 @@ section {
   object-fit: cover;
   display: block;
 }
-/* wariant: cale zdjecie widoczne, bez przyblizenia i docinania */
+/* wariant: zdjecie bez dodatkowego przyblizenia, dosuniete do gory, na pelna wysokosc */
 .door .art.art-contain {
   inset: 0;
 }
 .door .art.art-contain img {
-  object-fit: contain;
-  background: #fff;
+  object-fit: cover;
+  object-position: center top;
 }
 .door .veil {
   position: absolute;
