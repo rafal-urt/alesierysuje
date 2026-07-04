@@ -3,6 +3,19 @@ import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WEDDING_PACKAGES, formatZl } from "~/data/prices";
+import { getDb } from "~/lib/payload.server";
+
+export async function loader() {
+  const db = await getDb();
+  const s = await db.findGlobal({ slug: "settings" });
+  return {
+    prices: {
+      kameralny: s.weddingPackages?.kameralny ?? 3900,
+      klasyczny: s.weddingPackages?.klasyczny ?? 5900,
+      prestizowy: s.weddingPackages?.prestizowy ?? 8900,
+    } as Record<string, number>,
+  };
+}
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -34,7 +47,8 @@ const FAQ_ITEMS = [
   },
 ];
 
-export default function LivePaintingWesele() {
+export default function LivePaintingWesele({ loaderData }: Route.ComponentProps) {
+  const { prices } = loaderData;
   return (
     <main className="page">
       <WatercolorStain color="rose" width={520} height={460} style={{ top: 40, right: -160 }} />
@@ -61,7 +75,7 @@ export default function LivePaintingWesele() {
                 <h3>{p.name}</h3>
                 <div className="for">{p.forWho}</div>
                 <div className="price">
-                  {formatZl(p.price).replace(" zł", "")} <span>zł</span>
+                  {formatZl(prices[p.key] ?? p.price).replace(" zł", "")} <span>zł</span>
                 </div>
                 <ul>
                   {p.features.map((f) => (

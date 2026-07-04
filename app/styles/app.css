@@ -442,7 +442,8 @@ section {
     0 2px 6px rgba(43, 43, 43, 0.08);
   border: 1px solid var(--color-line-soft);
 }
-.frame svg {
+.frame svg,
+.frame img {
   display: block;
   width: 100%;
   height: auto;

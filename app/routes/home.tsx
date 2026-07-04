@@ -5,8 +5,24 @@ import { Faq } from "~/components/Faq";
 import { WorksGallery } from "~/components/WorksGallery";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { WatercolorStain } from "~/components/WatercolorStain";
-import { WORKS } from "~/data/works";
-import { REVIEWS } from "~/data/reviews";
+import { getDb, mapWork, plMonthYear } from "~/lib/payload.server";
+
+export async function loader() {
+  const db = await getDb();
+  const [works, reviews] = await Promise.all([
+    db.find({ collection: "works", sort: "order", limit: 6, depth: 1 }),
+    db.find({ collection: "reviews", sort: "-date", limit: 6 }),
+  ]);
+  return {
+    works: works.docs.map(mapWork),
+    reviews: reviews.docs.map((r) => ({
+      author: r.author,
+      text: r.text,
+      where: r.location ?? "",
+      when: plMonthYear(r.date),
+    })),
+  };
+}
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -34,7 +50,8 @@ const FAQ_ITEMS = [
   },
 ];
 
-export default function Home() {
+export default function Home({ loaderData }: Route.ComponentProps) {
+  const { works, reviews } = loaderData;
   return (
     <main className="page">
       <div className="hero">
@@ -139,7 +156,7 @@ export default function Home() {
             Cała galeria &rarr;
           </Link>
         </div>
-        <WorksGallery works={WORKS.slice(0, 6)} variant="strip" />
+        <WorksGallery works={works} variant="strip" />
       </section>
 
       <div className="band">
@@ -229,7 +246,7 @@ export default function Home() {
             <p>Prawdziwe opinie z portalu Wesele z klasą - średnia 5,00 / 5 z 6 ocen.</p>
           </div>
           <div className="quotes">
-            {REVIEWS.map((r, i) => (
+            {reviews.map((r, i) => (
               <div className={`quote soak${i % 3 === 1 ? " d1" : i % 3 === 2 ? " d2" : ""}`} key={r.author}>
                 <div className="stars" aria-label="5 gwiazdek">
                   &#9733;&#9733;&#9733;&#9733;&#9733;

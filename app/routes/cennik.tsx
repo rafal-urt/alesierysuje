@@ -2,6 +2,30 @@ import type { Route } from "./+types/cennik";
 import { Link } from "react-router";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WEDDING_PACKAGES, EVENT_PRICING, PORTRAIT_PRICING, formatZl } from "~/data/prices";
+import { getDb } from "~/lib/payload.server";
+
+export async function loader() {
+  const db = await getDb();
+  const s = await db.findGlobal({ slug: "settings" });
+  return {
+    wedding: {
+      kameralny: s.weddingPackages?.kameralny ?? 3900,
+      klasyczny: s.weddingPackages?.klasyczny ?? 5900,
+      prestizowy: s.weddingPackages?.prestizowy ?? 8900,
+    } as Record<string, number>,
+    events: {
+      portraits: s.eventPricing?.portraits ?? 3500,
+      scene: s.eventPricing?.scene ?? 4500,
+    },
+    portraits: {
+      a4: s.portraits?.a4 ?? 490,
+      a3: s.portraits?.a3 ?? 690,
+      b50x70: s.portraits?.b50x70 ?? 990,
+      extraPerson: s.portraits?.extraPerson ?? 160,
+      dedication: s.portraits?.dedication ?? 90,
+    },
+  };
+}
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,8 +38,13 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Cennik() {
+export default function Cennik({ loaderData }: Route.ComponentProps) {
+  const { wedding, events, portraits } = loaderData;
   const pf = PORTRAIT_PRICING.formats;
+  const eventPrices: Record<string, number> = {
+    "Szybkie portrety gości": events.portraits,
+    "Obraz sceny wydarzenia": events.scene,
+  };
   return (
     <main className="page">
       <WatercolorStain color="blue" width={480} height={420} style={{ top: 80, right: -160 }} />
@@ -44,7 +73,7 @@ export default function Cennik() {
                   <tr key={p.key}>
                     <td>{p.name}</td>
                     <td>{p.scope}</td>
-                    <td>{formatZl(p.price)}</td>
+                    <td>{formatZl(wedding[p.key] ?? p.price)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -66,7 +95,7 @@ export default function Cennik() {
                   <tr key={e.name}>
                     <td>{e.name}</td>
                     <td>{e.scope}</td>
-                    <td>{e.price}</td>
+                    <td>od {formatZl(eventPrices[e.name])}</td>
                   </tr>
                 ))}
               </tbody>
@@ -85,23 +114,23 @@ export default function Cennik() {
                 <tr>
                   <td>{pf.A4.label}</td>
                   <td>1 osoba &middot; akwarela &middot; wysyłka w cenie</td>
-                  <td>{formatZl(pf.A4.price)}</td>
+                  <td>{formatZl(portraits.a4)}</td>
                 </tr>
                 <tr>
                   <td>{pf.A3.label}</td>
                   <td>1 osoba &middot; akwarela &middot; wysyłka w cenie</td>
-                  <td>{formatZl(pf.A3.price)}</td>
+                  <td>{formatZl(portraits.a3)}</td>
                 </tr>
                 <tr>
                   <td>{pf["50x70"].label}</td>
                   <td>1 osoba &middot; akwarela &middot; wysyłka w cenie</td>
-                  <td>{formatZl(pf["50x70"].price)}</td>
+                  <td>{formatZl(portraits.b50x70)}</td>
                 </tr>
                 <tr>
                   <td>Dodatki</td>
                   <td>
-                    każda kolejna osoba +{PORTRAIT_PRICING.perExtraPerson} zł &middot; odręczna
-                    dedykacja +{PORTRAIT_PRICING.dedication} zł
+                    każda kolejna osoba +{portraits.extraPerson} zł &middot; odręczna
+                    dedykacja +{portraits.dedication} zł
                   </td>
                   <td>-</td>
                 </tr>

@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import type { Work } from "~/data/works";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 
-function Lightbox({ work, onClose }: { work: Work | null; onClose: () => void }) {
+export type GalleryWork = {
+  title: string;
+  meta: string;
+  seed: number;
+  palette: number;
+  big?: boolean;
+  imageUrl?: string;
+  imageAlt?: string;
+};
+
+function Lightbox({ work, onClose }: { work: GalleryWork | null; onClose: () => void }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -29,7 +38,11 @@ function Lightbox({ work, onClose }: { work: Work | null; onClose: () => void })
         {work && (
           <>
             <div className="frame">
-              <WatercolorPlaceholder seed={work.seed} palette={work.palette} width={420} height={520} />
+              {work.imageUrl ? (
+                <img src={work.imageUrl} alt={work.imageAlt ?? work.title} />
+              ) : (
+                <WatercolorPlaceholder seed={work.seed} palette={work.palette} width={420} height={520} />
+              )}
             </div>
             <h3>{work.title}</h3>
             <div className="meta">{work.meta}</div>
@@ -44,8 +57,8 @@ function Lightbox({ work, onClose }: { work: Work | null; onClose: () => void })
 }
 
 // Galeria prac: variant "strip" (pas na homepage) lub "wall" (ściana na /realizacje).
-export function WorksGallery({ works, variant }: { works: Work[]; variant: "strip" | "wall" }) {
-  const [selected, setSelected] = useState<Work | null>(null);
+export function WorksGallery({ works, variant }: { works: GalleryWork[]; variant: "strip" | "wall" }) {
+  const [selected, setSelected] = useState<GalleryWork | null>(null);
   const sizes =
     variant === "wall"
       ? { w: 340, h: 420, wSmall: 280, hSmall: 360 }
@@ -70,12 +83,16 @@ export function WorksGallery({ works, variant }: { works: Work[]; variant: "stri
             aria-label={`Powiększ: ${it.title}`}
           >
             <div className="frame">
-              <WatercolorPlaceholder
-                seed={it.seed}
-                palette={it.palette}
-                width={it.big ? sizes.w : sizes.wSmall}
-                height={it.big ? sizes.h : sizes.hSmall}
-              />
+              {it.imageUrl ? (
+                <img src={it.imageUrl} alt={it.imageAlt ?? it.title} loading="lazy" />
+              ) : (
+                <WatercolorPlaceholder
+                  seed={it.seed}
+                  palette={it.palette}
+                  width={it.big ? sizes.w : sizes.wSmall}
+                  height={it.big ? sizes.h : sizes.hSmall}
+                />
+              )}
             </div>
             <div className="cap">{it.title}</div>
           </div>

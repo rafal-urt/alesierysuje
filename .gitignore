@@ -9,3 +9,11 @@
 # Payload / SQLite
 /dev.db
 *.db
+
+# Next admin
+/admin/.next/
+/admin/.env
+next-env.d.ts
+
+# media uploads
+/media/

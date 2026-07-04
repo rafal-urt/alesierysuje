@@ -2,6 +2,21 @@ import type { Route } from "./+types/portrety-na-zamowienie";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { PORTRAIT_PRICING, formatZl } from "~/data/prices";
+import { getDb } from "~/lib/payload.server";
+
+export async function loader() {
+  const db = await getDb();
+  const s = await db.findGlobal({ slug: "settings" });
+  return {
+    portraits: {
+      a4: s.portraits?.a4 ?? 490,
+      a3: s.portraits?.a3 ?? 690,
+      b50x70: s.portraits?.b50x70 ?? 990,
+      extraPerson: s.portraits?.extraPerson ?? 160,
+      dedication: s.portraits?.dedication ?? 90,
+    },
+  };
+}
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,7 +29,8 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function PortretyNaZamowienie() {
+export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProps) {
+  const { portraits } = loaderData;
   return (
     <main className="page">
       <WatercolorStain color="green" width={480} height={420} style={{ top: 80, left: -160 }} />
@@ -57,7 +73,7 @@ export default function PortretyNaZamowienie() {
               <div className="clabel">3 &middot; Odręczna dedykacja na odwrocie</div>
               <div className="optrow">
                 <span className="opt sel">Bez dedykacji</span>
-                <span className="opt">Z dedykacją (+{PORTRAIT_PRICING.dedication} zł)</span>
+                <span className="opt">Z dedykacją (+{portraits.dedication} zł)</span>
               </div>
             </div>
           </div>
@@ -72,11 +88,11 @@ export default function PortretyNaZamowienie() {
             <div className="pricebox soak d1">
               <div className="row">
                 <span>Portret, format A4</span>
-                <span>{formatZl(PORTRAIT_PRICING.formats.A4.price)}</span>
+                <span>{formatZl(portraits.a4)}</span>
               </div>
               <div className="total">
                 <span>Razem</span>
-                <b>{formatZl(PORTRAIT_PRICING.formats.A4.price)}</b>
+                <b>{formatZl(portraits.a4)}</b>
               </div>
               <div className="small">
                 realizacja 10 - 14 dni &middot; wysyłka InPost w cenie &middot; karta realizacji na

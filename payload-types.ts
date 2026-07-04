@@ -67,16 +67,28 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    'payload-kv': PayloadKv;
     users: User;
+    media: Media;
+    works: Work;
+    reviews: Review;
+    availability: Availability;
+    inquiries: Inquiry;
+    briefs: Brief;
+    'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
-    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    works: WorksSelect<false> | WorksSelect<true>;
+    reviews: ReviewsSelect<false> | ReviewsSelect<true>;
+    availability: AvailabilitySelect<false> | AvailabilitySelect<true>;
+    inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
+    briefs: BriefsSelect<false> | BriefsSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -85,8 +97,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    settings: Setting;
+  };
+  globalsSelect: {
+    settings: SettingsSelect<false> | SettingsSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -117,23 +133,6 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "payload-kv".
- */
-export interface PayloadKv {
-  id: number;
-  key: string;
-  data:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -159,14 +158,176 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumb?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    card?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    large?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "works".
+ */
+export interface Work {
+  id: number;
+  title: string;
+  caption: string;
+  category: 'wesele' | 'event' | 'portret';
+  image?: (number | null) | Media;
+  bigFormat?: boolean | null;
+  order?: number | null;
+  seed?: number | null;
+  palette?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews".
+ */
+export interface Review {
+  id: number;
+  author: string;
+  text: string;
+  source: 'wesele-z-klasa' | 'google';
+  date: string;
+  location?: string | null;
+  rating?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "availability".
+ */
+export interface Availability {
+  id: number;
+  date: string;
+  status: 'wolny' | 'zajety' | 'zablokowany';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inquiries".
+ */
+export interface Inquiry {
+  id: number;
+  eventDate: string;
+  names: string;
+  email: string;
+  city?: string | null;
+  eventType: 'wesele' | 'event-firmowy' | 'urodziny-jubileusz' | 'portret' | 'inne';
+  status: 'nowe' | 'odpowiedziane' | 'potwierdzone' | 'odrzucone';
+  details?: string | null;
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "briefs".
+ */
+export interface Brief {
+  id: number;
+  company: string;
+  dateCity: string;
+  guests: 'do-50' | '50-120' | '120-250' | '250-plus';
+  format: 'portrety' | 'scena' | 'doradzcie';
+  email: string;
+  status: 'nowe' | 'wycenione' | 'potwierdzone' | 'odrzucone';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv".
+ */
+export interface PayloadKv {
+  id: number;
+  key: string;
+  data:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
   id: number;
-  document?: {
-    relationTo: 'users';
-    value: number | User;
-  } | null;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'works';
+        value: number | Work;
+      } | null)
+    | ({
+        relationTo: 'reviews';
+        value: number | Review;
+      } | null)
+    | ({
+        relationTo: 'availability';
+        value: number | Availability;
+      } | null)
+    | ({
+        relationTo: 'inquiries';
+        value: number | Inquiry;
+      } | null)
+    | ({
+        relationTo: 'briefs';
+        value: number | Brief;
+      } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
@@ -211,14 +372,6 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "payload-kv_select".
- */
-export interface PayloadKvSelect<T extends boolean = true> {
-  key?: T;
-  data?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
@@ -238,6 +391,136 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumb?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        card?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        large?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "works_select".
+ */
+export interface WorksSelect<T extends boolean = true> {
+  title?: T;
+  caption?: T;
+  category?: T;
+  image?: T;
+  bigFormat?: T;
+  order?: T;
+  seed?: T;
+  palette?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews_select".
+ */
+export interface ReviewsSelect<T extends boolean = true> {
+  author?: T;
+  text?: T;
+  source?: T;
+  date?: T;
+  location?: T;
+  rating?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "availability_select".
+ */
+export interface AvailabilitySelect<T extends boolean = true> {
+  date?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inquiries_select".
+ */
+export interface InquiriesSelect<T extends boolean = true> {
+  eventDate?: T;
+  names?: T;
+  email?: T;
+  city?: T;
+  eventType?: T;
+  status?: T;
+  details?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "briefs_select".
+ */
+export interface BriefsSelect<T extends boolean = true> {
+  company?: T;
+  dateCity?: T;
+  guests?: T;
+  format?: T;
+  email?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv_select".
+ */
+export interface PayloadKvSelect<T extends boolean = true> {
+  key?: T;
+  data?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -270,6 +553,68 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings".
+ */
+export interface Setting {
+  id: number;
+  contactEmail: string;
+  instagram?: string | null;
+  calendarEnd: string;
+  weddingPackages: {
+    kameralny: number;
+    klasyczny: number;
+    prestizowy: number;
+  };
+  eventPricing: {
+    portraits: number;
+    scene: number;
+  };
+  portraits: {
+    a4: number;
+    a3: number;
+    b50x70: number;
+    extraPerson: number;
+    dedication: number;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings_select".
+ */
+export interface SettingsSelect<T extends boolean = true> {
+  contactEmail?: T;
+  instagram?: T;
+  calendarEnd?: T;
+  weddingPackages?:
+    | T
+    | {
+        kameralny?: T;
+        klasyczny?: T;
+        prestizowy?: T;
+      };
+  eventPricing?:
+    | T
+    | {
+        portraits?: T;
+        scene?: T;
+      };
+  portraits?:
+    | T
+    | {
+        a4?: T;
+        a3?: T;
+        b50x70?: T;
+        extraPerson?: T;
+        dedication?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

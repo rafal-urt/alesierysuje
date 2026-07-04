@@ -1,7 +1,13 @@
 import type { Route } from "./+types/realizacje";
 import { Link } from "react-router";
 import { WorksGallery } from "~/components/WorksGallery";
-import { WORKS } from "~/data/works";
+import { getDb, mapWork } from "~/lib/payload.server";
+
+export async function loader() {
+  const db = await getDb();
+  const works = await db.find({ collection: "works", sort: "order", limit: 100, depth: 1 });
+  return { works: works.docs.map(mapWork) };
+}
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,7 +20,8 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Realizacje() {
+export default function Realizacje({ loaderData }: Route.ComponentProps) {
+  const { works } = loaderData;
   return (
     <main className="page">
       <section className="pageshero" style={{ paddingBottom: 0 }}>
@@ -34,7 +41,7 @@ export default function Realizacje() {
             <span className="arr">&rarr;</span>
           </div>
         </div>
-        <WorksGallery works={WORKS} variant="wall" />
+        <WorksGallery works={works} variant="wall" />
         <div className="wrap" style={{ textAlign: "center", paddingTop: 20 }}>
           <Link className="btn" to="/terminy">
             Chcę taki obraz na swoim weselu
