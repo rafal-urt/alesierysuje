@@ -1843,3 +1843,72 @@ footer {
   border-bottom: 1px solid var(--color-ink);
   color: var(--color-ink);
 }
+
+/* ===== hero podstrony wesela: tekst + wachlarz ilustracji A5 ===== */
+.split-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(300px, 30vw, 420px);
+  gap: clamp(40px, 6vw, 90px);
+  align-items: center;
+}
+.a5-stack {
+  position: relative;
+  height: 380px;
+}
+.a5-stack .frame {
+  position: absolute;
+  width: 210px;
+  padding: 10px;
+}
+.a5-stack .frame:nth-child(1) {
+  left: 0;
+  top: 44px;
+  transform: rotate(-7deg);
+}
+.a5-stack .frame:nth-child(2) {
+  left: 100px;
+  top: 0;
+  transform: rotate(2.5deg);
+  z-index: 2;
+}
+.a5-stack .frame:nth-child(3) {
+  left: 196px;
+  top: 58px;
+  transform: rotate(8deg);
+}
+.a5-stack .frame .cap {
+  font-size: 0.95rem;
+  padding-top: 6px;
+}
+@media (max-width: 1020px) {
+  .split-hero {
+    grid-template-columns: 1fr;
+  }
+  .a5-stack {
+    display: none;
+  }
+}
+.trust-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
+}
+.trust-line .stars {
+  margin-bottom: 0;
+}
+.bstats.b4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 920px) {
+  .bstats.b4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .bstats.b4 {
+    grid-template-columns: 1fr;
+  }
+}

@@ -2,20 +2,31 @@ import type { Route } from "./+types/live-painting-wesele";
 import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
 import { WatercolorStain } from "~/components/WatercolorStain";
+import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN, formatZl } from "~/data/prices";
 import { getDb } from "~/lib/payload.server";
+import { plMonthYear } from "~/lib/dates";
 import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 
 export async function loader() {
   const db = await getDb();
-  const s = await db.findGlobal({ slug: "settings" });
+  const [settings, reviews] = await Promise.all([
+    db.findGlobal({ slug: "settings" }),
+    db.find({ collection: "reviews", sort: "-date", limit: 3 }),
+  ]);
   return {
     prices: {
-      kameralny: s.weddingPackages?.kameralny ?? 3900,
-      klasyczny: s.weddingPackages?.klasyczny ?? 5900,
-      prestizowy: s.weddingPackages?.prestizowy ?? 8900,
+      kameralny: settings.weddingPackages?.kameralny ?? 3900,
+      klasyczny: settings.weddingPackages?.klasyczny ?? 5900,
+      prestizowy: settings.weddingPackages?.prestizowy ?? 8900,
     } as Record<string, number>,
+    reviews: reviews.docs.map((r) => ({
+      author: r.author,
+      text: r.text,
+      where: r.location ?? "",
+      when: plMonthYear(r.date),
+    })),
   };
 }
 
@@ -23,7 +34,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Live painting na wesele - malowanie na żywo | alesierysuje",
     description:
-      "Akwarelowe portrety gości malowane na żywo podczas wesela - od 20 do 40 ilustracji A5 w jeden wieczór. Pakiety z jawnymi cenami od 3 900 zł i bezpłatna rezerwacja online.",
+      "Kilkadziesiąt akwarelowych portretów gości i Pary Młodej malowanych podczas wesela. Bez pozowania i kolejki - zdjęcia robi artystka, gotowe ilustracje czekają na sztaludze. Pakiety od 3 900 zł.",
     path: "/live-painting-wesele",
     ogImage: "/og/wesele.png",
   });
@@ -31,16 +42,20 @@ export function meta({}: Route.MetaArgs) {
 
 const FAQ_ITEMS = [
   {
-    q: "Ile miejsca potrzebuje sztaluga?",
-    a: "Około 2 × 2 metry, najlepiej z widokiem na parkiet i dobrym światłem. Szczegóły dogadujemy bezpośrednio z salą.",
+    q: "Czy goście muszą pozować albo stać w kolejce?",
+    a: "Nie - i to największa różnica względem klasycznych karykatur. W trakcie zabawy robię gościom zdjęcia w naturalnych momentach i maluję z nich. Gotowe ilustracje czekają na sztaludze, więc każdy odbiera swoją wtedy, kiedy mu wygodnie.",
   },
   {
-    q: "Czy farba zdąży wyschnąć przed końcem wesela?",
-    a: "Tak - ilustracja A5 schnie kilka minut, a każda praca jest podpisywana, zabezpieczana i pakowana tak, żeby bezpiecznie dojechała do domu jeszcze tej nocy.",
+    q: "Ile trwa namalowanie jednego portretu?",
+    a: "Od 10 do 15 minut. Dzięki temu w jeden wieczór powstaje od 20 do 40 ilustracji - zależnie od pakietu i długości przyjęcia.",
   },
   {
     q: "Co, jeśli chętnych będzie więcej, niż zakłada pakiet?",
     a: "Nic straconego - każda kolejna ilustracja ponad pakiet kosztuje 100 zł. A jeśli nie zdążę namalować wszystkich na żywo, dokańczam je w pracowni na podstawie zdjęć i dosyłam po weselu.",
+  },
+  {
+    q: "Ile miejsca potrzebuje stanowisko?",
+    a: "Około 2 × 2 metry na stolik i sztalugę z ekspozycją prac, najlepiej z widokiem na parkiet i dobrym światłem. Szczegóły dogaduję bezpośrednio z salą.",
   },
   {
     q: "Co jeśli zmienimy datę wesela?",
@@ -53,7 +68,7 @@ const FAQ_ITEMS = [
 ];
 
 export default function LivePaintingWesele({ loaderData }: Route.ComponentProps) {
-  const { prices } = loaderData;
+  const { prices, reviews } = loaderData;
   return (
     <main className="page">
       <JsonLd data={breadcrumbJsonLd([{ name: "Live painting na wesele", path: "/live-painting-wesele" }])} />
@@ -62,7 +77,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
           "@context": "https://schema.org",
           "@type": "Service",
           name: "Live painting na wesele",
-          serviceType: "Malowanie na żywo na weselu",
+          serviceType: "Akwarelowe portrety gości malowane na żywo podczas wesela",
           provider: { "@id": SITE_URL + "#business" },
           areaServed: "PL",
           offers: WEDDING_PACKAGES.map((p) => ({
@@ -85,19 +100,127 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         }}
       />
       <WatercolorStain color="rose" width={520} height={460} style={{ top: 40, right: -160 }} />
+
+      {/* hero: obietnica + wachlarz ilustracji A5 */}
       <section className="pageshero">
-        <div className="wrap">
-          <div className="eyebrow soak">Wesela &middot; alesierysuje.pl/live-painting-wesele</div>
-          <h1 className="soak d1">Live painting na wesele - portrety gości malowane na żywo.</h1>
-          <p className="lead soak d2">
-            Fotograf łapie ułamki sekund. Ja zbieram Waszych gości - twarz po twarzy, na
-            akwarelowych ilustracjach A5 malowanych, gdy wesele trwa. Od 20 do 40 portretów w jeden
-            wieczór, każdy do zabrania od ręki. Ceny jawne, terminy widoczne, rezerwacja online.
-          </p>
+        <div className="wrap split-hero">
+          <div>
+            <div className="eyebrow soak">Wesela &middot; alesierysuje.pl/live-painting-wesele</div>
+            <h1 className="soak d1">Live painting na wesele - portrety gości malowane na żywo.</h1>
+            <p className="lead soak d2">
+              Nie jeden wielki obraz, a kilkadziesiąt małych wspomnień: akwarelowe portrety Waszych
+              gości i Wasz własny, malowane w trakcie przyjęcia. Bez pozowania i bez kolejki - robię
+              zdjęcia na sali, maluję przy sztaludze, a goście zabierają swoje ilustracje do domu
+              jeszcze tej nocy.
+            </p>
+            <div className="hero-cta soak d3">
+              <Link className="btn" to="/terminy">
+                Sprawdź swój termin
+              </Link>
+              <Link className="btn ghost" to="/cennik">
+                Zobacz cennik
+              </Link>
+            </div>
+            <div className="trust-line soak d3">
+              <span className="stars" aria-hidden="true">
+                &#9733;&#9733;&#9733;&#9733;&#9733;
+              </span>
+              5,00 / 5 &middot; opinie par z portalu Wesele z klasą
+            </div>
+          </div>
+          <div className="a5-stack soak d2" aria-hidden="true">
+            <div className="frame">
+              <WatercolorPlaceholder seed={23} palette={1} width={210} height={296} />
+              <div className="cap">świadkowa</div>
+            </div>
+            <div className="frame">
+              <WatercolorPlaceholder seed={11} palette={0} width={210} height={296} />
+              <div className="cap">Para Młoda</div>
+            </div>
+            <div className="frame">
+              <WatercolorPlaceholder seed={71} palette={3} width={210} height={296} />
+              <div className="cap">dziadek Staszek</div>
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* liczby wieczoru */}
+      <section style={{ paddingTop: 20, paddingBottom: 0 }}>
+        <div className="wrap">
+          <div className="bstats b4">
+            <div className="bstat soak">
+              <b>20 - 40</b>
+              <span>ilustracji gości powstaje podczas jednego wesela</span>
+            </div>
+            <div className="bstat soak d1">
+              <b>10 - 15 min</b>
+              <span>tyle trwa namalowanie jednego akwarelowego portretu</span>
+            </div>
+            <div className="bstat soak d2">
+              <b>0 minut</b>
+              <span>w kolejce - maluję ze zdjęć, które sama robię na sali</span>
+            </div>
+            <div className="bstat soak d3">
+              <b>A5 &middot; 300 g</b>
+              <span>format ilustracji - akwarela na papierze bawełnianym</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* proces */}
+      <section>
+        <div className="wrap">
+          <div className="sec-head soak">
+            <div className="eyebrow">Jak to działa</div>
+            <h2>Wieczór krok po kroku.</h2>
+            <p>
+              Goście bawią się dalej, a sztaluga sama przyciąga - najpierw ciekawskich, potem
+              wszystkich.
+            </p>
+          </div>
+          <div className="timeline">
+            <div className="tl soak">
+              <h4>Zapytanie</h4>
+              <p>
+                Wybieracie termin w kalendarzu i wysyłacie bezpłatne zapytanie. Odpowiedź wraca w
+                24 - 48 h, potem ustalamy szczegóły.
+              </p>
+            </div>
+            <div className="tl soak d1">
+              <h4>Zdjęcia na sali</h4>
+              <p>
+                Krążę po sali i łapię gości aparatem w naturalnych momentach - nikt nie pozuje,
+                nikt nie przerywa zabawy.
+              </p>
+            </div>
+            <div className="tl soak d2">
+              <h4>Akwarela przy sztaludze</h4>
+              <p>
+                Każdy portret to 10 - 15 minut malowania. Gotowe prace wiszą na sztaludze - goście
+                podchodzą i odbierają swoje, kiedy chcą.
+              </p>
+            </div>
+            <div className="tl soak d3">
+              <h4>Pamiątki na lata</h4>
+              <p>
+                Podpisane ilustracje jadą do domów jeszcze tej nocy. Czego nie zdążę namalować,
+                dokańczam w pracowni i dosyłam po weselu.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* pakiety */}
       <section style={{ paddingTop: 30 }}>
         <div className="wrap">
+          <div className="sec-head soak">
+            <div className="eyebrow">Pakiety</div>
+            <h2>Trzy pakiety, jawne ceny.</h2>
+            <p>Każdy zawiera portret Pary Młodej i podpisane, zabezpieczone prace dla gości.</p>
+          </div>
           <div className="packs">
             {WEDDING_PACKAGES.map((p, i) => (
               <div
@@ -122,46 +245,41 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             ))}
           </div>
           <p className="deposit-note soak">
-            Termin sprawdzacie w kalendarzu i rezerwujecie <b>bezpłatnym zapytaniem</b> - odpowiedź z
-            potwierdzeniem dostępności wraca w 24 - 48 godzin. Gdy chętnych jest więcej, niż zakłada
-            pakiet, każda kolejna ilustracja to <b>{EXTRA_ILLUSTRATION_PLN} zł</b> - a czego nie
-            zdążę namalować na żywo, dokańczam w pracowni i dosyłam po weselu. Dojazd na terenie
-            Mazowsza w cenie, dalej - wyceniany przy potwierdzeniu.
+            Termin sprawdzacie w kalendarzu i rezerwujecie <b>bezpłatnym zapytaniem</b> - odpowiedź
+            wraca w 24 - 48 godzin. Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna
+            ilustracja to <b>{EXTRA_ILLUSTRATION_PLN} zł</b> - a czego nie zdążę namalować na żywo,
+            dokańczam w pracowni i dosyłam po weselu. Dojazd na terenie Mazowsza w cenie, dalej -
+            wyceniany przy potwierdzeniu.
           </p>
         </div>
       </section>
-      <section>
-        <div className="wrap">
-          <div className="sec-head soak">
-            <div className="eyebrow">Proces</div>
-            <h2>Od daty do obrazu na ścianie.</h2>
-          </div>
-          <div className="timeline">
-            <div className="tl soak">
-              <h4>Zapytanie</h4>
-              <p>
-                Wybieracie termin w kalendarzu i wysyłacie bezpłatne zapytanie. Potwierdzenie wraca w
-                24 - 48 h.
-              </p>
+
+      {/* opinie */}
+      {reviews.length > 0 && (
+        <section style={{ paddingTop: 20 }}>
+          <div className="wrap">
+            <div className="sec-head soak">
+              <div className="eyebrow">Opinie</div>
+              <h2>Pary o swoich wieczorach.</h2>
             </div>
-            <div className="tl soak d1">
-              <h4>Rozmowa</h4>
-              <p>Ustalamy scenę: pierwszy taniec, sala, plener. Ale poznaje miejsce i światło.</p>
-            </div>
-            <div className="tl soak d2">
-              <h4>Wesele</h4>
-              <p>Sztaluga staje dyskretnie, a potem robi się wokół niej najgęściej na całej sali.</p>
-            </div>
-            <div className="tl soak d3">
-              <h4>Ilustracje</h4>
-              <p>
-                Goście zabierają podpisane prace jeszcze tej nocy, a reszta dolatuje z pracowni po
-                weselu.
-              </p>
+            <div className="quotes">
+              {reviews.map((r, i) => (
+                <div className={`quote soak${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} key={r.author}>
+                  <div className="stars" aria-label="5 gwiazdek">
+                    &#9733;&#9733;&#9733;&#9733;&#9733;
+                  </div>
+                  <p>{r.text}</p>
+                  <div className="who">
+                    {r.author} &middot; {r.where} &middot; {r.when}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* FAQ */}
       <section style={{ paddingTop: 20 }}>
         <div className="wrap">
           <div className="sec-head soak">
@@ -171,6 +289,8 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
           <Faq items={FAQ_ITEMS} />
         </div>
       </section>
+
+      {/* CTA */}
       <section style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="banner soak">
