@@ -10,4 +10,5 @@ export default [
   route("o-mnie", "routes/o-mnie.tsx"),
   route("terminy", "routes/terminy.tsx"),
   route("media/*", "routes/media.ts"),
+  route("sitemap.xml", "routes/sitemap.ts"),
 ] satisfies RouteConfig;

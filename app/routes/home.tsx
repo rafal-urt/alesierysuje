@@ -8,6 +8,8 @@ import { WatercolorStain } from "~/components/WatercolorStain";
 import { getDb, mapWork } from "~/lib/payload.server";
 import { plMonthYear, plMonthYearGenitive } from "~/lib/dates";
 import { countFreeSaturdays } from "~/lib/availability.server";
+import { pageMeta, SITE_URL } from "~/lib/seo";
+import { JsonLd } from "~/components/JsonLd";
 
 export async function loader() {
   const db = await getDb();
@@ -30,14 +32,13 @@ export async function loader() {
 }
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Live painting na wesele i eventy - malowanie na żywo | alesierysuje" },
-    {
-      name: "description",
-      content:
-        "Live painting i malowanie na żywo na weselach oraz eventach firmowych. Live art, szybkie portrety gości i portrety na zamówienie ze zdjęcia. Sprawdź wolne terminy i ceny.",
-    },
-  ];
+  return pageMeta({
+    title: "Live painting na wesele i eventy - malowanie na żywo | alesierysuje",
+    description:
+      "Live painting i malowanie na żywo na weselach oraz eventach firmowych. Live art, szybkie portrety gości i portrety na zamówienie ze zdjęcia. Sprawdź wolne terminy i ceny.",
+    path: "/",
+    ogImage: "/og/home.png",
+  });
 }
 
 const FAQ_ITEMS = [
@@ -59,6 +60,27 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const { works, reviews, freeSaturdays, calendarEndLabel } = loaderData;
   return (
     <main className="page">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }}
+      />
+      <JsonLd
+        data={reviews.map((r) => ({
+          "@context": "https://schema.org",
+          "@type": "Review",
+          itemReviewed: { "@id": SITE_URL + "#business" },
+          author: { "@type": "Person", name: r.author },
+          reviewBody: r.text,
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+        }))}
+      />
       <div className="hero">
         <WatercolorStain color="blue" width={680} height={540} bloom style={{ top: -140, right: -160 }} />
         <WatercolorStain

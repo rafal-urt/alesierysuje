@@ -4,6 +4,8 @@ import { PortraitConfigurator } from "~/components/PortraitConfigurator";
 import { getDb } from "~/lib/payload.server";
 import { sendMail } from "~/lib/email.server";
 import { clientIp, rateLimit } from "~/lib/rateLimit.server";
+import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
+import { JsonLd } from "~/components/JsonLd";
 
 export async function loader() {
   const db = await getDb();
@@ -84,20 +86,36 @@ export async function action({ request }: Route.ActionArgs) {
 }
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Portrety na zamówienie - portret ze zdjęcia | alesierysuje" },
-    {
-      name: "description",
-      content:
-        "Portret ze zdjęcia malowany ręcznie akwarelą. Konfigurator online z ceną na żywo od 490 zł, realizacja 10 - 14 dni, wysyłka w cenie.",
-    },
-  ];
+  return pageMeta({
+    title: "Portrety na zamówienie - portret ze zdjęcia | alesierysuje",
+    description:
+      "Portret ze zdjęcia malowany ręcznie akwarelą. Konfigurator online z ceną na żywo od 490 zł, realizacja 10 - 14 dni, wysyłka w cenie.",
+    path: "/portrety-na-zamowienie",
+    ogImage: "/og/portrety.png",
+  });
 }
 
 export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProps) {
   const { portraits } = loaderData;
   return (
     <main className="page">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Portrety na zamówienie", path: "/portrety-na-zamowienie" }])} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: "Portret na zamówienie ze zdjęcia",
+          description: "Portret akwarelowy malowany ręcznie na podstawie zdjęcia, formaty A4 - 50 × 70 cm.",
+          brand: { "@type": "Brand", name: "alesierysuje" },
+          offers: {
+            "@type": "AggregateOffer",
+            lowPrice: String(portraits.a4),
+            highPrice: String(portraits.b50x70 + 4 * portraits.extraPerson + portraits.dedication),
+            priceCurrency: "PLN",
+            availability: "https://schema.org/InStock",
+          },
+        }}
+      />
       <WatercolorStain color="green" width={480} height={420} style={{ top: 80, left: -160 }} />
       <section className="pageshero">
         <div className="wrap">

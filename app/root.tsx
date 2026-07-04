@@ -12,6 +12,15 @@ import "./styles/app.css";
 import { Nav } from "~/components/Nav";
 import { Footer } from "~/components/Footer";
 import { SoakObserver } from "~/components/Soak";
+import { JsonLd } from "~/components/JsonLd";
+import { localBusinessJsonLd } from "~/lib/seo";
+import { getDb } from "~/lib/payload.server";
+
+export async function loader() {
+  const db = await getDb();
+  const reviews = await db.count({ collection: "reviews" });
+  return { reviewCount: reviews.totalDocs };
+}
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -44,9 +53,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
+export default function App({ loaderData }: Route.ComponentProps) {
   return (
     <>
+      <JsonLd data={localBusinessJsonLd(loaderData.reviewCount)} />
       <Nav />
       <Outlet />
       <Footer />

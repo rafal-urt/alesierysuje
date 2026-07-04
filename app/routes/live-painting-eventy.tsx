@@ -4,6 +4,8 @@ import { WatercolorStain } from "~/components/WatercolorStain";
 import { getDb } from "~/lib/payload.server";
 import { sendMail } from "~/lib/email.server";
 import { clientIp, rateLimit } from "~/lib/rateLimit.server";
+import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
+import { JsonLd } from "~/components/JsonLd";
 
 const GUESTS = [
   { label: "do 50", value: "do-50" },
@@ -95,14 +97,13 @@ export async function action({ request }: Route.ActionArgs) {
 }
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Live art na event firmowy - malowanie na żywo | alesierysuje" },
-    {
-      name: "description",
-      content:
-        "Live art na eventy firmowe - malowanie na żywo i szybkie portrety gości na papierze pod branding. Faktura VAT, umowa, odpowiedź na brief z wyceną w 48 h.",
-    },
-  ];
+  return pageMeta({
+    title: "Live art na event firmowy - malowanie na żywo | alesierysuje",
+    description:
+      "Live art na eventy firmowe - malowanie na żywo i szybkie portrety gości na papierze pod branding. Faktura VAT, umowa, odpowiedź na brief z wyceną w 48 h.",
+    path: "/live-painting-eventy",
+    ogImage: "/og/eventy.png",
+  });
 }
 
 export default function LivePaintingEventy() {
@@ -112,6 +113,17 @@ export default function LivePaintingEventy() {
   const sending = fetcher.state !== "idle";
   return (
     <main className="page">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Live art na event firmowy", path: "/live-painting-eventy" }])} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Live art na event firmowy",
+          serviceType: "Malowanie na żywo i szybkie portrety gości na evencie",
+          provider: { "@id": SITE_URL + "#business" },
+          areaServed: "PL",
+        }}
+      />
       <WatercolorStain color="ochre" width={500} height={440} style={{ top: 60, right: -140 }} />
       <section className="pageshero">
         <div className="wrap">

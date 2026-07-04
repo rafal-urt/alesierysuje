@@ -2,6 +2,8 @@ import type { Route } from "./+types/realizacje";
 import { Link } from "react-router";
 import { WorksGallery } from "~/components/WorksGallery";
 import { getDb, mapWork } from "~/lib/payload.server";
+import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
+import { JsonLd } from "~/components/JsonLd";
 
 export async function loader() {
   const db = await getDb();
@@ -10,20 +12,20 @@ export async function loader() {
 }
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Realizacje - live painting i portrety | alesierysuje" },
-    {
-      name: "description",
-      content:
-        "Galeria prac alesierysuje - obrazy z wesel i eventów malowane na żywo oraz portrety na zamówienie ze zdjęcia.",
-    },
-  ];
+  return pageMeta({
+    title: "Realizacje - live painting i portrety | alesierysuje",
+    description:
+      "Galeria prac alesierysuje - obrazy z wesel i eventów malowane na żywo oraz portrety na zamówienie ze zdjęcia.",
+    path: "/realizacje",
+    ogImage: "/og/realizacje.png",
+  });
 }
 
 export default function Realizacje({ loaderData }: Route.ComponentProps) {
   const { works } = loaderData;
   return (
     <main className="page">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Realizacje", path: "/realizacje" }])} />
       <section className="pageshero" style={{ paddingBottom: 0 }}>
         <div className="wrap">
           <div className="eyebrow soak">Realizacje &middot; alesierysuje.pl/realizacje</div>

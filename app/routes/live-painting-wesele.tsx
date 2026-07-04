@@ -4,6 +4,8 @@ import { Faq } from "~/components/Faq";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WEDDING_PACKAGES, formatZl } from "~/data/prices";
 import { getDb } from "~/lib/payload.server";
+import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
+import { JsonLd } from "~/components/JsonLd";
 
 export async function loader() {
   const db = await getDb();
@@ -18,14 +20,13 @@ export async function loader() {
 }
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Live painting na wesele - malowanie na żywo | alesierysuje" },
-    {
-      name: "description",
-      content:
-        "Live painting na weselu - obraz malowany na żywo podczas przyjęcia. Pakiety z jawnymi cenami od 3 900 zł, wolne terminy w kalendarzu i bezpłatna rezerwacja online.",
-    },
-  ];
+  return pageMeta({
+    title: "Live painting na wesele - malowanie na żywo | alesierysuje",
+    description:
+      "Live painting na weselu - obraz malowany na żywo podczas przyjęcia. Pakiety z jawnymi cenami od 3 900 zł, wolne terminy w kalendarzu i bezpłatna rezerwacja online.",
+    path: "/live-painting-wesele",
+    ogImage: "/og/wesele.png",
+  });
 }
 
 const FAQ_ITEMS = [
@@ -51,6 +52,34 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
   const { prices } = loaderData;
   return (
     <main className="page">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Live painting na wesele", path: "/live-painting-wesele" }])} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Live painting na wesele",
+          serviceType: "Malowanie na żywo na weselu",
+          provider: { "@id": SITE_URL + "#business" },
+          areaServed: "PL",
+          offers: WEDDING_PACKAGES.map((p) => ({
+            "@type": "Offer",
+            name: `Pakiet ${p.name}`,
+            price: String(prices[p.key] ?? p.price),
+            priceCurrency: "PLN",
+          })),
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }}
+      />
       <WatercolorStain color="rose" width={520} height={460} style={{ top: 40, right: -160 }} />
       <section className="pageshero">
         <div className="wrap">

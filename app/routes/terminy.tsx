@@ -8,16 +8,17 @@ import { getTakenDates, getCalendarEnd } from "~/lib/availability.server";
 import { plFullDate, todayWarsaw } from "~/lib/dates";
 import { sendMail } from "~/lib/email.server";
 import { clientIp, rateLimit } from "~/lib/rateLimit.server";
+import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
+import { JsonLd } from "~/components/JsonLd";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Wolne terminy live painting 2026 / 2027 - rezerwacja online | alesierysuje" },
-    {
-      name: "description",
-      content:
-        "Kalendarz dostępności live paintingu do sierpnia 2027. Wybierz wolny dzień i wyślij bezpłatne zapytanie o termin - odpowiedź w 24 - 48 godzin.",
-    },
-  ];
+  return pageMeta({
+    title: "Wolne terminy live painting 2026 / 2027 - rezerwacja online | alesierysuje",
+    description:
+      "Kalendarz dostępności live paintingu do sierpnia 2027. Wybierz wolny dzień i wyślij bezpłatne zapytanie o termin - odpowiedź w 24 - 48 godzin.",
+    path: "/terminy",
+    ogImage: "/og/terminy.png",
+  });
 }
 
 export async function loader() {
@@ -137,6 +138,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
 
   return (
     <main className="page">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Wolne terminy", path: "/terminy" }])} />
       <WatercolorStain color="green" width={460} height={420} style={{ top: 60, left: -160 }} />
       <section className="pageshero" style={{ paddingBottom: 30 }}>
         <div className="wrap">

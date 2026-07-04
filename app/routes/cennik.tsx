@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WEDDING_PACKAGES, EVENT_PRICING, PORTRAIT_PRICING, formatZl } from "~/data/prices";
 import { getDb } from "~/lib/payload.server";
+import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
+import { JsonLd } from "~/components/JsonLd";
 
 export async function loader() {
   const db = await getDb();
@@ -28,14 +30,13 @@ export async function loader() {
 }
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Cennik - live painting, malowanie na żywo, portrety | alesierysuje" },
-    {
-      name: "description",
-      content:
-        "Jawne ceny live paintingu i portretów: pakiety weselne od 3 900 zł, eventy firmowe od 3 500 zł, portrety na zamówienie od 490 zł.",
-    },
-  ];
+  return pageMeta({
+    title: "Cennik - live painting, malowanie na żywo, portrety | alesierysuje",
+    description:
+      "Jawne ceny live paintingu i portretów: pakiety weselne od 3 900 zł, eventy firmowe od 3 500 zł, portrety na zamówienie od 490 zł.",
+    path: "/cennik",
+    ogImage: "/og/cennik.png",
+  });
 }
 
 export default function Cennik({ loaderData }: Route.ComponentProps) {
@@ -47,6 +48,7 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
   };
   return (
     <main className="page">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Cennik", path: "/cennik" }])} />
       <WatercolorStain color="blue" width={480} height={420} style={{ top: 80, right: -160 }} />
       <section className="pageshero">
         <div className="wrap">

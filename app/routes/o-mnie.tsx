@@ -1,21 +1,23 @@
 import type { Route } from "./+types/o-mnie";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
+import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
+import { JsonLd } from "~/components/JsonLd";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Aleksandra Sienica - artystka live painting | alesierysuje" },
-    {
-      name: "description",
-      content:
-        "Aleksandra Sienica - artystka malująca na żywo wesela i eventy w całej Polsce. Poznaj historię alesierysuje.",
-    },
-  ];
+  return pageMeta({
+    title: "Aleksandra Sienica - artystka live painting | alesierysuje",
+    description:
+      "Aleksandra Sienica - artystka malująca na żywo wesela i eventy w całej Polsce. Poznaj historię alesierysuje.",
+    path: "/o-mnie",
+    ogImage: "/og/o-mnie.png",
+  });
 }
 
 export default function OMnie() {
   return (
     <main className="page">
+      <JsonLd data={breadcrumbJsonLd([{ name: "O mnie", path: "/o-mnie" }])} />
       <WatercolorStain color="blue" width={460} height={420} style={{ top: 120, right: -140 }} />
       <section className="pageshero">
         <div className="wrap about">
