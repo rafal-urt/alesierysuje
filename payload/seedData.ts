@@ -23,6 +23,15 @@ const REVIEWS = [
   { author: "Adam", location: "impreza firmowa, Kraków", date: "2025-05-17", text: "Nazwanie tego usługą nie jest adekwatne - to zdolności i możliwości. Włączenie live paintingu do programu było zaskoczeniem samym w sobie." },
 ] as const;
 
+// Zajęte terminy 2026 (stan na lipiec 2026) - dni bez rekordu pozostają wolne.
+export const TAKEN_DATES = [
+  "2026-07-10", "2026-07-11", "2026-07-12",
+  "2026-07-24", "2026-07-25",
+  "2026-08-08", "2026-08-09",
+  "2026-09-05", "2026-09-06",
+  "2026-09-12", "2026-09-13",
+] as const;
+
 // Idempotentny seed: uzupełnia tylko puste kolekcje/ustawienia.
 export async function seedIfEmpty(payload: Payload): Promise<void> {
   const worksCount = await payload.count({ collection: "works" });
@@ -58,6 +67,14 @@ export async function seedIfEmpty(payload: Payload): Promise<void> {
       },
     });
     payload.logger.info("Seed: ustawienia zapisane");
+  }
+
+  const availabilityCount = await payload.count({ collection: "availability" });
+  if (availabilityCount.totalDocs === 0) {
+    for (const date of TAKEN_DATES) {
+      await payload.create({ collection: "availability", data: { date, status: "zajety" } });
+    }
+    payload.logger.info(`Seed: oznaczono ${TAKEN_DATES.length} zajętych dni`);
   }
 
   const usersCount = await payload.count({ collection: "users" });
