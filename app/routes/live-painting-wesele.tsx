@@ -3,7 +3,8 @@ import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
-import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN, formatZl } from "~/data/prices";
+import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN } from "~/data/prices";
+import { PackagesAccordion } from "~/components/PackagesAccordion";
 import { getDb } from "~/lib/payload.server";
 import { plMonthYear } from "~/lib/dates";
 import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
@@ -38,15 +39,6 @@ export function meta({}: Route.MetaArgs) {
     path: "/live-painting-wesele",
     ogImage: "/og/wesele.png",
   });
-}
-
-// "**tekst**" -> pogrubienie; prefiks "+ " -> cecha, której nie ma w niższym pakiecie
-function FeatureText({ text }: { text: string }) {
-  return (
-    <>
-      {text.split("**").map((part, i) => (i % 2 ? <b key={i}>{part}</b> : part))}
-    </>
-  );
 }
 
 const FAQ_ITEMS = [
@@ -229,33 +221,8 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             <h2>Trzy pakiety, jawne ceny.</h2>
             <p>Każdy zawiera portret Pary Młodej i podpisane, zabezpieczone prace dla gości.</p>
           </div>
-          <div className="packs">
-            {WEDDING_PACKAGES.map((p, i) => (
-              <div
-                key={p.key}
-                className={`pack${i === 1 ? " p2" : i === 2 ? " p3" : ""}${p.featured ? " featured" : ""} soak${i === 1 ? " d1" : i === 2 ? " d2" : ""}`}
-              >
-                {p.featured && <div className="tag">najczęściej wybierany</div>}
-                <h3>{p.name}</h3>
-                <div className="for">{p.forWho}</div>
-                <div className="price">
-                  {formatZl(prices[p.key] ?? p.price).replace(" zł", "")} <span>zł</span>
-                </div>
-                <ul>
-                  {p.features.map((f) => {
-                    const extra = f.startsWith("+ ");
-                    return (
-                      <li key={f} className={extra ? "extra" : undefined}>
-                        <FeatureText text={extra ? f.slice(2) : f} />
-                      </li>
-                    );
-                  })}
-                </ul>
-                <Link className={p.featured ? "btn" : "btn ghost"} to="/terminy">
-                  Wybierz datę
-                </Link>
-              </div>
-            ))}
+          <div className="soak d1">
+            <PackagesAccordion prices={prices} />
           </div>
           <p className="deposit-note soak">
             Termin sprawdzacie w kalendarzu i rezerwujecie <b>bezpłatnym zapytaniem</b> - odpowiedź
