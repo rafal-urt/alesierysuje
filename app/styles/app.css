@@ -31,6 +31,10 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /* sticky footer: krotkie strony nie sa sztucznie rozciagane */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 /* tekstura papieru akwarelowego */
 body::before {
@@ -263,7 +267,7 @@ footer .logo img {
 }
 
 .page {
-  min-height: 100vh;
+  flex: 1 0 auto;
   padding-top: 96px;
 }
 
