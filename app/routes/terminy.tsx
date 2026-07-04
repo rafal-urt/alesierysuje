@@ -40,7 +40,23 @@ const EVENT_TYPES = [
   { label: "Inna okazja", value: "inne" },
 ] as const;
 
-export async function action({ request }: Route.ActionArgs) {
+const GUEST_OPTIONS = [
+  { label: "do 60", value: "do-60" },
+  { label: "60 - 100", value: "60-100" },
+  { label: "ponad 100", value: "100-plus" },
+  { label: "Jeszcze nie wiemy", value: "nie-wiemy" },
+] as const;
+
+const PACKAGE_OPTIONS = [
+  { label: "Kameralny", value: "kameralny" },
+  { label: "Klasyczny", value: "klasyczny" },
+  { label: "Premium", value: "premium" },
+  { label: "Doradźcie mi", value: "doradzcie" },
+] as const;
+
+type ActionResult = { ok: true; names: string } | { error: string; field?: string };
+
+export async function action({ request }: Route.ActionArgs): Promise<ActionResult> {
   const form = await request.formData();
 
   // honeypot - boty wypełniają ukryte pole; udajemy sukces
@@ -57,11 +73,19 @@ export async function action({ request }: Route.ActionArgs) {
   const email = String(form.get("email") ?? "").trim();
   const city = String(form.get("city") ?? "").trim();
   const eventType = String(form.get("eventType") ?? "wesele");
+  const guests = String(form.get("guests") ?? "");
+  const preferredPackage = String(form.get("preferredPackage") ?? "doradzcie");
 
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return { error: "Wybierzcie dzień w kalendarzu." };
-  if (!names) return { error: "Podajcie swoje imiona." };
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { error: "Podajcie poprawny adres e-mail." };
-  if (!EVENT_TYPES.some((t) => t.value === eventType)) return { error: "Nieprawidłowy rodzaj wydarzenia." };
+  if (!EVENT_TYPES.some((t) => t.value === eventType))
+    return { error: "Nieprawidłowy rodzaj wydarzenia.", field: "eventType" };
+  if (!GUEST_OPTIONS.some((g) => g.value === guests))
+    return { error: "Wybierzcie przybliżoną liczbę gości.", field: "guests" };
+  if (!PACKAGE_OPTIONS.some((p) => p.value === preferredPackage))
+    return { error: "Nieprawidłowy pakiet.", field: "preferredPackage" };
+  if (!names) return { error: "Podajcie swoje imiona.", field: "names" };
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    return { error: "Podajcie poprawny adres e-mail.", field: "email" };
 
   const today = todayWarsaw();
   const end = await getCalendarEnd();
@@ -73,12 +97,24 @@ export async function action({ request }: Route.ActionArgs) {
   const db = await getDb();
   await db.create({
     collection: "inquiries",
-    data: { eventDate: date, names, email, city, eventType: eventType as "wesele", status: "nowe" },
+    data: {
+      eventDate: date,
+      names,
+      email,
+      city,
+      eventType: eventType as "wesele",
+      guests: guests as "do-60",
+      preferredPackage: preferredPackage as "doradzcie",
+      status: "nowe",
+    },
   });
 
   const settings = await db.findGlobal({ slug: "settings" });
   const dateLabel = plFullDate(date);
   const typeLabel = EVENT_TYPES.find((t) => t.value === eventType)?.label ?? eventType;
+  const guestsLabel = GUEST_OPTIONS.find((g) => g.value === guests)?.label ?? guests;
+  const packageLabel =
+    PACKAGE_OPTIONS.find((p) => p.value === preferredPackage)?.label ?? preferredPackage;
 
   // maile nie mogą wywrócić zapisu - błędy tylko logujemy
   try {
@@ -94,6 +130,8 @@ export async function action({ request }: Route.ActionArgs) {
           `E-mail: ${email}`,
           `Miejscowość: ${city || "-"}`,
           `Rodzaj: ${typeLabel}`,
+          `Liczba gości: ${guestsLabel}`,
+          `Preferowany pakiet: ${packageLabel}`,
           ``,
           `Szczegóły w panelu: /admin (kolekcja Zapytania)`,
         ].join("\n"),
@@ -121,12 +159,61 @@ export async function action({ request }: Route.ActionArgs) {
   return { ok: true as const, names };
 }
 
+// Chipy jednokrotnego wyboru (radiogroup) - wg Baymard szybsze i czytelniejsze niż dropdown
+function ChipGroup({
+  label,
+  name,
+  options,
+  value,
+  onChange,
+  error,
+}: {
+  label: string;
+  name: string;
+  options: readonly { label: string; value: string }[];
+  value: string | null;
+  onChange: (v: string) => void;
+  error?: string | null;
+}) {
+  return (
+    <div className="chipset">
+      <span className="chipset-label" id={`${name}-label`}>
+        {label}
+      </span>
+      <div className="optrow" role="radiogroup" aria-labelledby={`${name}-label`}>
+        {options.map((o) => (
+          <button
+            type="button"
+            key={o.value}
+            role="radio"
+            aria-checked={value === o.value}
+            className={`opt chip${value === o.value ? " sel" : ""}`}
+            onClick={() => onChange(o.value)}
+          >
+            {o.label}
+          </button>
+        ))}
+      </div>
+      {error && (
+        <p className="field-error" role="alert">
+          {error}
+        </p>
+      )}
+      <input type="hidden" name={name} value={value ?? ""} />
+    </div>
+  );
+}
+
 export default function Terminy({ loaderData }: Route.ComponentProps) {
   const { takenDates, todayISO, minMonth, maxMonth } = loaderData;
   const [selected, setSelected] = useState<string | null>(null);
+  const [eventType, setEventType] = useState<string>("wesele");
+  const [guests, setGuests] = useState<string | null>(null);
+  const [pkg, setPkg] = useState<string>("doradzcie");
+  const [guestsError, setGuestsError] = useState<string | null>(null);
   const fetcher = useFetcher<typeof action>();
   const sent = fetcher.data && "ok" in fetcher.data && fetcher.data.ok;
-  const error = fetcher.data && "error" in fetcher.data ? fetcher.data.error : null;
+  const serverError = fetcher.data && "error" in fetcher.data ? fetcher.data : null;
   const sending = fetcher.state !== "idle";
 
   function pick(iso: string) {
@@ -153,6 +240,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
       <section style={{ paddingTop: 0 }}>
         <div className="wrap cal-wrap">
           <div className="soak">
+            <div className="krok">Krok 1 &middot; wybierzcie wolny dzień</div>
             <Calendar
               takenDates={takenDates}
               todayISO={todayISO}
@@ -178,8 +266,8 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                 <div className="check">&#10003;</div>
                 <h3>Zapytanie wysłane.</h3>
                 <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem", marginTop: 8 }}>
-                  Aleksandra sprawdzi dostępność terminu i wróci do Was mailowo z propozycją - zwykle w
-                  ciągu 24 - 48 godzin. Do niczego to nie zobowiązuje.
+                  Aleksandra sprawdzi dostępność terminu i wróci do Was mailowo z propozycją -
+                  zwykle w ciągu 24 - 48 godzin. Do niczego to nie zobowiązuje.
                 </p>
                 <span className="hand">
                   {fetcher.data && "names" in fetcher.data && fetcher.data.names
@@ -189,14 +277,29 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
               </div>
             ) : (
               <>
+                <div className="krok">Krok 2 &middot; kilka szczegółów</div>
                 <h3>Zapytanie o termin</h3>
                 {selected ? (
-                  <div className="picked">{plFullDate(selected)}</div>
+                  <>
+                    <div className="picked">{plFullDate(selected)}</div>
+                    <p className="picked-hint">Chcecie inny dzień? Kliknijcie go w kalendarzu.</p>
+                  </>
                 ) : (
-                  <div className="picked none">Najpierw wybierzcie wolny dzień w kalendarzu.</div>
+                  <div className="picked none">
+                    Najpierw wybierzcie wolny dzień w kalendarzu - formularz zajmie Wam mniej niż
+                    minutę.
+                  </div>
                 )}
                 {selected && (
-                  <fetcher.Form method="post">
+                  <fetcher.Form
+                    method="post"
+                    onSubmit={(e) => {
+                      if (!guests) {
+                        e.preventDefault();
+                        setGuestsError("Wybierzcie przybliżoną liczbę gości.");
+                      }
+                    }}
+                  >
                     <input type="hidden" name="date" value={selected} />
                     {/* honeypot - pole niewidoczne dla ludzi */}
                     <input
@@ -207,29 +310,81 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                       aria-hidden="true"
                       style={{ position: "absolute", left: -9999, width: 1, height: 1, opacity: 0 }}
                     />
+                    <ChipGroup
+                      label="Rodzaj wydarzenia"
+                      name="eventType"
+                      options={EVENT_TYPES}
+                      value={eventType}
+                      onChange={setEventType}
+                      error={serverError?.field === "eventType" ? serverError.error : null}
+                    />
+                    <ChipGroup
+                      label="Przybliżona liczba gości"
+                      name="guests"
+                      options={GUEST_OPTIONS}
+                      value={guests}
+                      onChange={(v) => {
+                        setGuests(v);
+                        setGuestsError(null);
+                      }}
+                      error={
+                        guestsError ?? (serverError?.field === "guests" ? serverError.error : null)
+                      }
+                    />
+                    <ChipGroup
+                      label="Preferowany pakiet"
+                      name="preferredPackage"
+                      options={PACKAGE_OPTIONS}
+                      value={pkg}
+                      onChange={setPkg}
+                      error={serverError?.field === "preferredPackage" ? serverError.error : null}
+                    />
                     <label htmlFor="bk-names">Wasze imiona</label>
-                    <input id="bk-names" name="names" type="text" placeholder="np. Ania i Michał" required />
+                    <input
+                      id="bk-names"
+                      name="names"
+                      type="text"
+                      placeholder="np. Ania i Michał"
+                      autoComplete="name"
+                      required
+                      aria-invalid={serverError?.field === "names" || undefined}
+                    />
+                    {serverError?.field === "names" && (
+                      <p className="field-error" role="alert">
+                        {serverError.error}
+                      </p>
+                    )}
                     <label htmlFor="bk-email">E-mail</label>
-                    <input id="bk-email" name="email" type="email" placeholder="ania@..." required />
-                    <label htmlFor="bk-city">Miejscowość wydarzenia</label>
+                    <input
+                      id="bk-email"
+                      name="email"
+                      type="email"
+                      placeholder="ania@..."
+                      autoComplete="email"
+                      inputMode="email"
+                      required
+                      aria-invalid={serverError?.field === "email" || undefined}
+                    />
+                    {serverError?.field === "email" && (
+                      <p className="field-error" role="alert">
+                        {serverError.error}
+                      </p>
+                    )}
+                    <label htmlFor="bk-city">
+                      Miejscowość wydarzenia <span className="optional">(opcjonalnie)</span>
+                    </label>
                     <input id="bk-city" name="city" type="text" placeholder="np. Serock" />
-                    <label htmlFor="bk-type">Rodzaj wydarzenia</label>
-                    <select id="bk-type" name="eventType" defaultValue="wesele">
-                      {EVENT_TYPES.map((t) => (
-                        <option key={t.value} value={t.value}>
-                          {t.label}
-                        </option>
-                      ))}
-                    </select>
-                    {error && (
-                      <p style={{ color: "#a33", fontSize: "0.88rem", marginTop: 14 }}>{error}</p>
+                    {serverError && !serverError.field && (
+                      <p className="field-error" role="alert" style={{ marginTop: 14 }}>
+                        {serverError.error}
+                      </p>
                     )}
                     <button className="btn" type="submit" disabled={sending}>
                       {sending ? "Wysyłanie..." : "Wyślij bezpłatne zapytanie"}
                     </button>
                     <div className="fine">
-                      Zapytanie jest bezpłatne i do niczego nie zobowiązuje. Odpowiedź w 24 - 48
-                      godzin.
+                      Bezpłatne i niezobowiązujące - to początek rozmowy, nie rezerwacja. Odpowiedź
+                      w 24 - 48 godzin.
                     </div>
                   </fetcher.Form>
                 )}

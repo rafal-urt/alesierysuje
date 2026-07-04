@@ -255,6 +255,8 @@ export interface Inquiry {
   email: string;
   city?: string | null;
   eventType: 'wesele' | 'event-firmowy' | 'urodziny-jubileusz' | 'portret' | 'inne';
+  guests?: ('do-60' | '60-100' | '100-plus' | 'nie-wiemy') | null;
+  preferredPackage?: ('kameralny' | 'klasyczny' | 'premium' | 'doradzcie') | null;
   status: 'nowe' | 'odpowiedziane' | 'potwierdzone' | 'odrzucone';
   details?: string | null;
   notes?: string | null;
@@ -494,6 +496,8 @@ export interface InquiriesSelect<T extends boolean = true> {
   email?: T;
   city?: T;
   eventType?: T;
+  guests?: T;
+  preferredPackage?: T;
   status?: T;
   details?: T;
   notes?: T;

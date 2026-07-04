@@ -39,6 +39,28 @@ export const Inquiries: CollectionConfig = {
       ],
     },
     {
+      name: "guests",
+      type: "select",
+      label: "Liczba gości",
+      options: [
+        { label: "do 60", value: "do-60" },
+        { label: "60 - 100", value: "60-100" },
+        { label: "ponad 100", value: "100-plus" },
+        { label: "Jeszcze nie wiemy", value: "nie-wiemy" },
+      ],
+    },
+    {
+      name: "preferredPackage",
+      type: "select",
+      label: "Preferowany pakiet",
+      options: [
+        { label: "Kameralny", value: "kameralny" },
+        { label: "Klasyczny", value: "klasyczny" },
+        { label: "Premium", value: "premium" },
+        { label: "Do doradzenia", value: "doradzcie" },
+      ],
+    },
+    {
       name: "status",
       type: "select",
       label: "Status",
