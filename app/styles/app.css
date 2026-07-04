@@ -989,11 +989,8 @@ section {
   filter: blur(0.8px);
 }
 .pack li b {
-  color: var(--color-ink);
+  color: inherit;
   font-weight: 600;
-}
-.pack li.extra {
-  color: var(--color-ink);
 }
 .pack li.extra::before {
   width: 16px;

@@ -34,7 +34,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Live painting na wesele - malowanie na żywo | alesierysuje",
     description:
-      "Kilkadziesiąt akwarelowych portretów gości i Pary Młodej malowanych podczas wesela. Bez pozowania i kolejki - zdjęcia robi artystka, gotowe ilustracje czekają na sztaludze. Pakiety od 4 000 zł.",
+      "Kilkadziesiąt akwarelowych portretów gości i Pary Młodej malowanych podczas wesela. Szybkie zdjęcie w kąciku live art, akwarela z fotografii, odbiór ze sztalugi. Pakiety od 4 000 zł.",
     path: "/live-painting-wesele",
     ogImage: "/og/wesele.png",
   });
@@ -52,7 +52,7 @@ function FeatureText({ text }: { text: string }) {
 const FAQ_ITEMS = [
   {
     q: "Czy goście muszą pozować albo stać w kolejce?",
-    a: "Nie - i to największa różnica względem klasycznych karykatur. W trakcie zabawy robię gościom zdjęcia w naturalnych momentach i maluję z nich. Gotowe ilustracje czekają na sztaludze, więc każdy odbiera swoją wtedy, kiedy mu wygodnie.",
+    a: "Nie - i to największa różnica względem klasycznych karykatur. Goście podchodzą do kącika live art tylko na szybkie zdjęcie i wracają do zabawy, a ja maluję z fotografii. Gotowe ilustracje czekają na sztaludze, więc każdy odbiera swoją wtedy, kiedy mu wygodnie.",
   },
   {
     q: "Ile trwa namalowanie jednego portretu?",
@@ -117,9 +117,9 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             <h1 className="soak d1">Live painting na wesele - portrety gości malowane na żywo.</h1>
             <p className="lead soak d2">
               Nie jeden wielki obraz, a kilkadziesiąt małych wspomnień: akwarelowe portrety Waszych
-              gości i Wasz własny, malowane w trakcie przyjęcia. Bez pozowania i bez kolejki - robię
-              zdjęcia na sali, maluję przy sztaludze, a goście zabierają swoje ilustracje do domu
-              jeszcze tej nocy.
+              gości i Wasz własny, malowane w trakcie przyjęcia. Goście wpadają do kącika live art
+              na szybkie zdjęcie i wracają do zabawy - ja maluję z fotografii, a gotowe ilustracje
+              odbierają ze sztalugi i zabierają do domu jeszcze tej nocy.
             </p>
             <div className="hero-cta soak d3">
               <Link className="btn" to="/terminy">
@@ -167,7 +167,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             </div>
             <div className="bstat soak d2">
               <b>0 minut</b>
-              <span>w kolejce - maluję ze zdjęć, które sama robię na sali</span>
+              <span>w kolejce - szybkie zdjęcie w kąciku i wracacie do zabawy</span>
             </div>
             <div className="bstat soak d3">
               <b>A5 &middot; 300 g</b>
@@ -197,10 +197,10 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
               </p>
             </div>
             <div className="tl soak d1">
-              <h4>Zdjęcia na sali</h4>
+              <h4>Zdjęcie w kąciku</h4>
               <p>
-                Krążę po sali i łapię gości aparatem w naturalnych momentach - nikt nie pozuje,
-                nikt nie przerywa zabawy.
+                Goście podchodzą do kącika live art, robię im na miejscu szybkie zdjęcie i wracają
+                do zabawy - bez pozowania i czekania.
               </p>
             </div>
             <div className="tl soak d2">
