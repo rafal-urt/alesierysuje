@@ -105,7 +105,6 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
       <section className="pageshero">
         <div className="wrap split-hero">
           <div>
-            <div className="eyebrow soak">Wesela &middot; alesierysuje.pl/live-painting-wesele</div>
             <h1 className="soak d1">Live painting na wesele - portrety gości malowane na żywo.</h1>
             <p className="lead soak d2">
               Nie jeden wielki obraz, a kilkadziesiąt małych wspomnień: akwarelowe portrety Waszych
@@ -117,15 +116,15 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
               <Link className="btn" to="/terminy">
                 Sprawdź swój termin
               </Link>
-              <Link className="btn ghost" to="/cennik">
-                Zobacz cennik
-              </Link>
+              <a className="btn ghost" href="#pakiety">
+                Zobacz pakiety i ceny
+              </a>
             </div>
             <div className="trust-line soak d3">
               <span className="stars" aria-hidden="true">
                 &#9733;&#9733;&#9733;&#9733;&#9733;
               </span>
-              5,00 / 5 &middot; opinie par z portalu Wesele z klasą
+              5/5 &middot; opinie par z portalu Wesele z klasą
             </div>
           </div>
           <div className="a5-stack soak d2" aria-hidden="true">
@@ -214,7 +213,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
       </section>
 
       {/* pakiety */}
-      <section style={{ paddingTop: 30 }}>
+      <section id="pakiety" style={{ paddingTop: 30 }}>
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Pakiety</div>

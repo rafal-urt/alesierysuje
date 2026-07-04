@@ -1888,6 +1888,9 @@ footer {
     display: none;
   }
 }
+.split-hero .hero-cta {
+  margin-top: 40px;
+}
 .trust-line {
   display: flex;
   align-items: center;
