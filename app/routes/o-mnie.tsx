@@ -50,7 +50,7 @@ export default function OMnie() {
               className="soak d1"
               style={{ fontSize: "clamp(2rem,4vw,3.2rem)", marginBottom: 26 }}
             >
-              Aleksandra Sienica - maluję na żywo.
+              Aleksandra Sienica - maluję na żywo
             </h1>
             <p className="soak d2">
               Maluję od zawsze, ale na żywo - odkąd zauważyłam, że proces ciekawi ludzi bardziej niż

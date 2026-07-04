@@ -106,7 +106,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
       <section className="pageshero">
         <div className="wrap split-hero">
           <div>
-            <h1 className="soak d1">Live painting na wesele - portrety gości malowane na żywo.</h1>
+            <h1 className="soak d1">Live painting na wesele - portrety gości malowane na żywo</h1>
             <p className="lead soak d2">
               Nie jeden wielki obraz, a kilkadziesiąt małych wspomnień: akwarelowe portrety Waszych
               gości i Wasz własny, malowane w trakcie przyjęcia. Goście wpadają do kącika live art
@@ -174,7 +174,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Jak to działa</div>
-            <h2>Wieczór krok po kroku.</h2>
+            <h2>Wieczór krok po kroku</h2>
             <p>
               Goście bawią się dalej, a sztaluga sama przyciąga - najpierw ciekawskich, potem
               wszystkich.
@@ -218,7 +218,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Pakiety</div>
-            <h2>Trzy pakiety, jawne ceny.</h2>
+            <h2>Trzy pakiety, jawne ceny</h2>
             <p>Każdy zawiera portret Pary Młodej i podpisane, zabezpieczone prace dla gości.</p>
           </div>
           <div className="soak d1">
@@ -240,7 +240,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
           <div className="wrap">
             <div className="sec-head soak">
               <div className="eyebrow">Opinie</div>
-              <h2>Pary o swoich wieczorach.</h2>
+              <h2>Pary o swoich wieczorach</h2>
             </div>
             <div className="quotes">
               {reviews.map((r, i) => (
@@ -264,7 +264,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">FAQ</div>
-            <h2>Pytania, które padają najczęściej.</h2>
+            <h2>Pytania, które padają najczęściej</h2>
           </div>
           <Faq items={FAQ_ITEMS} />
         </div>
@@ -275,7 +275,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         <div className="wrap">
           <div className="banner soak">
             <WatercolorStain color="rose" width={420} height={380} style={{ bottom: -140, left: -80 }} />
-            <h2>Najlepsze terminy w sezonie znikają pierwsze.</h2>
+            <h2>Najlepsze terminy w sezonie znikają pierwsze</h2>
             <Link className="btn light" to="/terminy">
               Zobacz kalendarz 2027
             </Link>

@@ -139,7 +139,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
           {sent ? (
             <div className="success">
               <div className="check">&#10003;</div>
-              <h3>Zapytanie wysłane.</h3>
+              <h3>Zapytanie wysłane</h3>
               <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem", marginTop: 8 }}>
                 Aleksandra odezwie się mailowo w 24 - 48 godzin z prośbą o zdjęcie i potwierdzeniem
                 terminu realizacji.

@@ -51,7 +51,7 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
       <WatercolorStain color="blue" width={480} height={420} style={{ top: 80, right: -160 }} />
       <section className="pageshero">
         <div className="wrap">
-          <h1 className="soak d1">Cennik - live painting i portrety na zamówienie.</h1>
+          <h1 className="soak d1">Cennik - live painting i portrety na zamówienie</h1>
           <p className="lead soak d2">
             Ceny są jawne. Bez pisania po wycenę, bez "cena zależy". Jeśli coś wykracza poza tabelę,
             wyceniamy indywidualnie w 48 godzin.

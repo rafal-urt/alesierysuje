@@ -92,7 +92,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap hero-grid">
           <div>
             <h1 className="soak d1">
-              Malowanie <span className="fill">na&nbsp;żywo</span>, które zostaje na zawsze.
+              Malowanie <span className="fill">na&nbsp;żywo</span>, które zostaje na zawsze
             </h1>
             <p className="lead soak d2">
               Live painting na weselach i eventach firmowych, szybkie portrety gości oraz portrety
@@ -125,7 +125,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Od czego zaczynamy</div>
-            <h2>Trzy powody, dla których tu jesteście.</h2>
+            <h2>Trzy powody, dla których tu jesteście</h2>
           </div>
           <div className="doors">
             <Link className="door soak" to="/live-painting-wesele">
@@ -178,7 +178,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap sec-top soak">
           <div className="sec-head">
             <div className="eyebrow">Realizacje</div>
-            <h2>Ściana, która ciągle rośnie.</h2>
+            <h2>Ściana, która ciągle rośnie</h2>
           </div>
           <Link className="btn ghost sm" to="/realizacje">
             Cała galeria &rarr;
@@ -213,7 +213,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Jak to działa</div>
-            <h2>Trzy kroki. Reszta to farba, woda i moja lewa ręka.</h2>
+            <h2>Trzy kroki. Reszta to farba, woda i moja lewa ręka</h2>
           </div>
           <div className="steps">
             <div className="step soak">
@@ -248,7 +248,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <WatercolorStain color="green" width={480} height={420} style={{ top: 40, left: -160 }} />
         <div className="wrap manifesto">
           <div className="eyebrow soak">Czym jest live painting</div>
-          <h2 className="soak d1">Malowanie na żywo to nie usługa. To scena.</h2>
+          <h2 className="soak d1">Malowanie na żywo to nie usługa. To scena</h2>
           <p className="soak d2">
             Live painting, po polsku malowanie na żywo, to sztuka tworzona na oczach gości - na
             weselu, evencie firmowym, gali czy premierze. Zamawiacie proces: sztalugę na sali i
@@ -275,7 +275,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Opinie</div>
-            <h2>Słowo od par i gości.</h2>
+            <h2>Słowo od par i gości</h2>
             <p>Prawdziwe opinie z portalu Wesele z klasą - średnia 5,00 / 5 z 6 ocen.</p>
           </div>
           <div className="quotes">
@@ -298,7 +298,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">FAQ</div>
-            <h2>Krótko o najważniejszym.</h2>
+            <h2>Krótko o najważniejszym</h2>
           </div>
           <Faq items={FAQ_ITEMS} />
         </div>
@@ -308,7 +308,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap">
           <div className="banner soak">
             <WatercolorStain color="blue" width={420} height={380} style={{ top: -120, right: -80 }} />
-            <h2>Wasz wieczór może być na tej ścianie.</h2>
+            <h2>Wasz wieczór może być na tej ścianie</h2>
             <Link className="btn light" to="/terminy">
               Sprawdź wolne terminy
             </Link>

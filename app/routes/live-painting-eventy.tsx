@@ -127,7 +127,7 @@ export default function LivePaintingEventy() {
       <WatercolorStain color="ochre" width={500} height={440} style={{ top: 60, right: -140 }} />
       <section className="pageshero">
         <div className="wrap">
-          <h1 className="soak d1">Live art na event firmowy - malowanie na żywo i portrety gości.</h1>
+          <h1 className="soak d1">Live art na event firmowy - malowanie na żywo i portrety gości</h1>
           <p className="lead soak d2">
             Seria szybkich akwarelowych portretów gości - od 20 do 40 ilustracji A5 podczas
             jednego wydarzenia, na papierze przygotowanym pod branding eventu. Czego nie zdążę
@@ -153,14 +153,14 @@ export default function LivePaintingEventy() {
             </div>
           </div>
           <div className="sec-head soak">
-            <h2>Brief w pięciu polach.</h2>
+            <h2>Brief w pięciu polach</h2>
             <p>Bez PDF-ów na start. Wystarczy zarys, resztę doprecyzujemy w rozmowie.</p>
           </div>
           {sent ? (
             <div className="brief soak">
               <div className="success">
                 <div className="check">&#10003;</div>
-                <h3>Brief wysłany.</h3>
+                <h3>Brief wysłany</h3>
                 <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem", marginTop: 8 }}>
                   Wycena i propozycja formuły wrócą na podany adres najpóźniej w 48 godzin.
                 </p>

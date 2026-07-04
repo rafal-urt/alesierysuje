@@ -21,7 +21,7 @@ export default function Blog() {
       <WatercolorStain color="ochre" width={460} height={420} style={{ top: 80, right: -150 }} />
       <section className="pageshero">
         <div className="wrap">
-          <h1 className="soak d1">Blog - z pracowni i sprzed sztalugi.</h1>
+          <h1 className="soak d1">Blog - z pracowni i sprzed sztalugi</h1>
           <p className="lead soak d2">
             Aktualności o zapisach, kulisy malowania na żywo i portretów na zamówienie.
           </p>
