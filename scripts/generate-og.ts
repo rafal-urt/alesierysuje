@@ -11,7 +11,7 @@ const OUT = path.resolve(dirname, "../public/og");
 const PAGES: { file: string; lines: string[]; sub: string }[] = [
   { file: "default", lines: ["Malowanie na żywo,", "które zostaje na zawsze."], sub: "alesierysuje.pl" },
   { file: "home", lines: ["Malowanie na żywo,", "które zostaje na zawsze."], sub: "alesierysuje.pl" },
-  { file: "wesele", lines: ["Live painting na wesele -", "obraz malowany na żywo."], sub: "alesierysuje.pl/live-painting-wesele" },
+  { file: "wesele", lines: ["Live painting na wesele -", "portrety gości na żywo."], sub: "alesierysuje.pl/live-painting-wesele" },
   { file: "eventy", lines: ["Live art na event firmowy -", "malowanie na żywo."], sub: "alesierysuje.pl/live-painting-eventy" },
   { file: "portrety", lines: ["Portrety na zamówienie -", "portret ze zdjęcia."], sub: "alesierysuje.pl/portrety-na-zamowienie" },
   { file: "realizacje", lines: ["Realizacje - malowanie", "na żywo i portrety."], sub: "alesierysuje.pl/realizacje" },

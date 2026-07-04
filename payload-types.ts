@@ -270,7 +270,7 @@ export interface Brief {
   company: string;
   dateCity: string;
   guests: 'do-50' | '50-120' | '120-250' | '250-plus';
-  format: 'portrety' | 'scena' | 'doradzcie';
+  format: 'portrety' | 'dosylka' | 'doradzcie';
   email: string;
   status: 'nowe' | 'wycenione' | 'potwierdzone' | 'odrzucone';
   updatedAt: string;

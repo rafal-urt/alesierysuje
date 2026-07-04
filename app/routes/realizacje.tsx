@@ -46,7 +46,7 @@ export default function Realizacje({ loaderData }: Route.ComponentProps) {
         <WorksGallery works={works} variant="wall" />
         <div className="wrap" style={{ textAlign: "center", paddingTop: 20 }}>
           <Link className="btn" to="/terminy">
-            Chcę taki obraz na swoim weselu
+            Chcę takie ilustracje na swoim weselu
           </Link>
         </div>
       </section>

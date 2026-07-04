@@ -47,7 +47,7 @@ function Lightbox({ work, onClose }: { work: GalleryWork | null; onClose: () => 
             <h3>{work.title}</h3>
             <div className="meta">{work.meta}</div>
             <Link className="btn" to="/terminy" onClick={onClose}>
-              Chcę taki obraz na swoim weselu
+              Chcę takie ilustracje na swoim weselu
             </Link>
           </>
         )}

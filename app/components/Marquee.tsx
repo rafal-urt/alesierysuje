@@ -5,7 +5,7 @@ const KEYWORDS = [
   "portrety na zamówienie",
   "portret ze zdjęcia",
   "szybkie portrety gości",
-  "obraz z wesela",
+  "ilustracje gości z wesela",
   "akwarela",
 ];
 

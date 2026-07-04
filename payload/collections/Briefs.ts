@@ -33,8 +33,8 @@ export const Briefs: CollectionConfig = {
       label: "Formuła",
       required: true,
       options: [
-        { label: "Szybkie portrety gości", value: "portrety" },
-        { label: "Jeden obraz sceny wydarzenia", value: "scena" },
+        { label: "Portrety gości na żywo", value: "portrety" },
+        { label: "Portrety na żywo + dosyłka reszty po evencie", value: "dosylka" },
         { label: "Jeszcze nie wiemy - doradźcie", value: "doradzcie" },
       ],
     },

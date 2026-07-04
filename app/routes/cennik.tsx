@@ -1,7 +1,7 @@
 import type { Route } from "./+types/cennik";
 import { Link } from "react-router";
 import { WatercolorStain } from "~/components/WatercolorStain";
-import { WEDDING_PACKAGES, EVENT_PRICING, PORTRAIT_PRICING, formatZl } from "~/data/prices";
+import { WEDDING_PACKAGES, EVENT_PRICING, EXTRA_ILLUSTRATION_PLN, PORTRAIT_PRICING, formatZl } from "~/data/prices";
 import { getDb } from "~/lib/payload.server";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
@@ -44,7 +44,6 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
   const pf = PORTRAIT_PRICING.formats;
   const eventPrices: Record<string, number> = {
     "Szybkie portrety gości": events.portraits,
-    "Obraz sceny wydarzenia": events.scene,
   };
   return (
     <main className="page">
@@ -78,10 +77,17 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
                     <td>{formatZl(wedding[p.key] ?? p.price)}</td>
                   </tr>
                 ))}
+                <tr>
+                  <td>Dodatkowa ilustracja</td>
+                  <td>każda praca ponad pakiet · na żywo albo z dosyłką po weselu</td>
+                  <td>{formatZl(EXTRA_ILLUSTRATION_PLN)}</td>
+                </tr>
               </tbody>
             </table>
             <div className="note">
-              Termin sprawdzicie bezpłatnym zapytaniem w kalendarzu. Dojazd na Mazowszu w cenie.
+              Termin sprawdzicie bezpłatnym zapytaniem w kalendarzu. Ilustracje, których nie zdążę
+              namalować na żywo, dokańczam w pracowni i dosyłam po weselu. Dojazd na Mazowszu w
+              cenie.
             </div>
           </div>
           <div className="pt-sec soak d1">
@@ -100,6 +106,11 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
                     <td>od {formatZl(eventPrices[e.name])}</td>
                   </tr>
                 ))}
+                <tr>
+                  <td>Dodatkowa ilustracja</td>
+                  <td>każda praca ponad pakiet · na żywo albo z dosyłką po evencie</td>
+                  <td>{formatZl(EXTRA_ILLUSTRATION_PLN)}</td>
+                </tr>
               </tbody>
             </table>
             <div className="note">Faktura VAT, umowa, wycena briefu w 48 h.</div>

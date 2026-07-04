@@ -14,8 +14,8 @@ const GUESTS = [
   { label: "250+", value: "250-plus" },
 ] as const;
 const FORMATS = [
-  { label: "Szybkie portrety gości", value: "portrety" },
-  { label: "Jeden obraz sceny wydarzenia", value: "scena" },
+  { label: "Portrety gości na żywo", value: "portrety" },
+  { label: "Portrety na żywo + dosyłka reszty po evencie", value: "dosylka" },
   { label: "Jeszcze nie wiemy - doradźcie", value: "doradzcie" },
 ] as const;
 
@@ -130,9 +130,10 @@ export default function LivePaintingEventy() {
           <div className="eyebrow soak">Eventy firmowe &middot; alesierysuje.pl/live-painting-eventy</div>
           <h1 className="soak d1">Live art na event firmowy - malowanie na żywo i portrety gości.</h1>
           <p className="lead soak d2">
-            Jeden obraz sceny wydarzenia albo seria szybkich portretów gości na papierze
-            przygotowanym pod branding eventu. Faktura VAT, umowa, jedna osoba kontaktowa. Brief
-            zajmuje minutę.
+            Seria szybkich akwarelowych portretów gości - od 20 do 40 ilustracji A5 podczas
+            jednego wydarzenia, na papierze przygotowanym pod branding eventu. Czego nie zdążę
+            namalować na żywo, dosyłam po evencie. Faktura VAT, umowa, jedna osoba kontaktowa.
+            Brief zajmuje minutę.
           </p>
         </div>
       </section>
