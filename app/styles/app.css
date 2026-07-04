@@ -1713,8 +1713,9 @@ section {
 /* ===== o mnie ===== */
 .about {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 64px;
+  /* wezsza kolumna zdjecia (pionowy kadr = nizsza calosc), tresc szerzej */
+  grid-template-columns: clamp(260px, 28%, 360px) 1fr;
+  gap: 56px;
   align-items: start;
 }
 @media (max-width: 920px) {
