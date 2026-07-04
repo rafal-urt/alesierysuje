@@ -259,7 +259,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           </p>
           <p className="soak d2">
             Obok ilustracji gości maluję również portrety na zamówienie ze zdjęcia - akwarelowe,
-            ręczne, wysyłane pod drzwi. Każda praca powstaje na papierze bawełnianym 300 g, farbami,
+            ręczne, wysyłane pod drzwi. Każda praca powstaje na papierze akwarelowym 300 g, farbami,
             które nie wyblakną przez dekady.
           </p>
           <div className="links soak d3">

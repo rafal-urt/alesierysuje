@@ -163,7 +163,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             </div>
             <div className="bstat soak d3">
               <b>A5 &middot; 300 g</b>
-              <span>format ilustracji - akwarela na papierze bawełnianym</span>
+              <span>format ilustracji - akwarela na papierze 300 g</span>
             </div>
           </div>
         </div>

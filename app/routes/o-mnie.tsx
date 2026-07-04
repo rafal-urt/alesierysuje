@@ -62,7 +62,7 @@ export default function OMnie() {
               część mojej pracy, której nie widać na skanach - i dla której robię to dalej.
             </p>
             <p className="soak d3">
-              Pracuję na papierze bawełnianym 300 g, farbami, które przeżyją niejedną przeprowadzkę.
+              Pracuję na papierze akwarelowym 300 g, farbami, które przeżyją niejedną przeprowadzkę.
               Do każdego zlecenia podchodzę jak do jedynego - bo dla Was ono takie jest.
             </p>
             <span className="sig soak d3">Aleksandra Sienica</span>
