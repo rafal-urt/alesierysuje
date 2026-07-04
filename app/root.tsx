@@ -15,6 +15,7 @@ import { SoakObserver } from "~/components/Soak";
 import { JsonLd } from "~/components/JsonLd";
 import { localBusinessJsonLd } from "~/lib/seo";
 import { getDb } from "~/lib/payload.server";
+import { GtmScript, GtmNoScript } from "~/components/Gtm";
 
 export async function loader() {
   const db = await getDb();
@@ -46,8 +47,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <GtmScript />
       </head>
       <body>
+        <GtmNoScript />
         {children}
         <ScrollRestoration />
         <Scripts />
