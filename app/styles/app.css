@@ -103,6 +103,10 @@ button {
     filter: none;
     transform: none;
   }
+  .faq-item .a,
+  .faq-item .a-inner {
+    transition: none;
+  }
   * {
     animation: none !important;
   }
@@ -857,15 +861,29 @@ section {
   transform: translateY(-50%) rotate(45deg);
 }
 .faq-item .a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
   color: var(--color-ink-soft);
   font-size: 0.96rem;
 }
+.faq-item .a-inner {
+  overflow: hidden;
+  min-height: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 .faq-item.open .a {
-  max-height: 240px;
-  padding-bottom: 24px;
+  grid-template-rows: 1fr;
+}
+.faq-item.open .a-inner {
+  opacity: 1;
+  transition: opacity 0.35s ease 0.1s;
+}
+.faq-item .a-inner::after {
+  content: "";
+  display: block;
+  height: 24px;
 }
 
 /* ===== CTA banner ===== */

@@ -12,7 +12,9 @@ function FaqItem({ q, a }: FaqEntry) {
         <button onClick={() => setOpen((o) => !o)} aria-expanded={open}>
           {q}
         </button>
-        <div className="a">{a}</div>
+        <div className="a">
+        <div className="a-inner">{a}</div>
+      </div>
       </div>
     </div>
   );
