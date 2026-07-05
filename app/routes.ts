@@ -19,6 +19,7 @@ export default [
   route("polityka-prywatnosci", "routes/polityka-prywatnosci.tsx"),
   route("blog", "routes/blog.tsx"),
   route("blog/:slug", "routes/blog-post.tsx"),
+  route("test-tla", "routes/test-tla.tsx"),
   route("media/*", "routes/media.ts"),
   route("sitemap.xml", "routes/sitemap.ts"),
 ] satisfies RouteConfig;
