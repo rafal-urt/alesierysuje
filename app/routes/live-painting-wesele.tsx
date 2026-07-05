@@ -2,6 +2,8 @@ import type { Route } from "./+types/live-painting-wesele";
 import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
 import { CardFan } from "~/components/CardFan";
+import { WorksGallery } from "~/components/WorksGallery";
+import { CARD_WORKS } from "~/data/works-static";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN } from "~/data/prices";
 import { PackagesAccordion } from "~/components/PackagesAccordion";
@@ -197,6 +199,20 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* galeria kartek */}
+      <section style={{ paddingTop: 10, paddingBottom: 10 }}>
+        <div className="wrap sec-top soak">
+          <div className="sec-head">
+            <div className="eyebrow">Galeria</div>
+            <h2>Kartki prosto z kącika live art</h2>
+            <p>Dziesięć ilustracji z jednego wesela - przewińcie i kliknijcie, żeby przyjrzeć się z bliska.</p>
+          </div>
+        </div>
+        <div className="cards-strip">
+          <WorksGallery works={CARD_WORKS} variant="strip" />
         </div>
       </section>
 

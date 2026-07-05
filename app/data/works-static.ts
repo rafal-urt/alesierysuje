@@ -133,3 +133,17 @@ export const STATIC_WORKS: StaticWork[] = [
     palette: 1,
   },
 ];
+
+// Wyciete biale kartki A5 (perspektywa skorygowana) - galeria na /live-painting-wesele.
+export const CARD_WORKS: GalleryWork[] = [
+  { seed: 101, palette: 0, title: "Para gości", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-para.webp", imageAlt: "Akwarelowa ilustracja pary gości weselnych", imageWidth: 560, imageHeight: 790, big: true },
+  { seed: 102, palette: 1, title: "Grupa gości", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-grupa.webp", imageAlt: "Akwarelowa ilustracja grupy sześciu gości", imageWidth: 560, imageHeight: 790 },
+  { seed: 103, palette: 2, title: "Dziewczynki", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-dziewczynki.webp", imageAlt: "Akwarelowa ilustracja dziewczynek w odświętnych sukienkach", imageWidth: 560, imageHeight: 790 },
+  { seed: 104, palette: 3, title: "Trzy pokolenia", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-rodzina-roz.webp", imageAlt: "Akwarelowa ilustracja babć z wnuczkami", imageWidth: 560, imageHeight: 790 },
+  { seed: 105, palette: 4, title: "Przyjaciele", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-dwaj-panowie.webp", imageAlt: "Akwarelowa ilustracja dwóch panów w garniturach", imageWidth: 560, imageHeight: 790, big: true },
+  { seed: 106, palette: 0, title: "Trójka gości", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-trojka.webp", imageAlt: "Akwarelowa ilustracja trójki gości", imageWidth: 560, imageHeight: 790 },
+  { seed: 107, palette: 1, title: "Przyjaciółki", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-przyjaciolki.webp", imageAlt: "Akwarelowa ilustracja dwóch pań w czerwieni", imageWidth: 560, imageHeight: 790 },
+  { seed: 108, palette: 2, title: "Rodzina", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-rodzina-zielen.webp", imageAlt: "Akwarelowa ilustracja rodziny czterech osób", imageWidth: 560, imageHeight: 790 },
+  { seed: 109, palette: 3, title: "Rodzina z maleństwem", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-rodzina-czern.webp", imageAlt: "Akwarelowa ilustracja rodziny z niemowlęciem", imageWidth: 560, imageHeight: 790, big: true },
+  { seed: 110, palette: 4, title: "Czwórka gości", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-czworka.webp", imageAlt: "Akwarelowa ilustracja czwórki gości", imageWidth: 560, imageHeight: 790 },
+];

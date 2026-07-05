@@ -531,6 +531,10 @@ section {
   width: 100%;
   height: auto;
 }
+/* pas kartek na /live-painting-wesele: naturalna proporcja A5, bez kadrowania */
+.cards-strip .strip .piece > img {
+  aspect-ratio: auto;
+}
 /* kafelki galerii: gole zdjecia z delikatnym cieniem, wspolna proporcja 3:4 */
 .strip .piece > img,
 .wall .piece > img {
