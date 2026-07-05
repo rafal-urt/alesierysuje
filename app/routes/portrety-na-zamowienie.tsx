@@ -123,7 +123,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Czy mogę zgłosić poprawki?",
-    a: "Tak. Najpierw dostajecie szkic kompozycji do akceptacji - to moment na zmiany układu, kadru czy liczby osób. W trakcie malowania dostajecie zdjęcia w karcie realizacji, a drobne uwagi do detali zgłaszacie na bieżąco.",
+    a: "Tak. Najpierw dostajecie szkic kompozycji do akceptacji - to moment na zmiany układu, kadru czy liczby osób. Przed wysyłką pokazuję zdjęcie gotowej pracy i wtedy można zgłosić drobne uwagi do detali.",
   },
   {
     q: "Jak pakowana jest przesyłka?",
@@ -233,15 +233,15 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
         </div>
       </section>
 
-      {/* jak to dziala + karta realizacji */}
+      {/* jak to dziala */}
       <section>
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Jak to działa</div>
-            <h2>Karta realizacji - patrzycie, jak powstaje Wasz obraz</h2>
+            <h2>Od zdjęcia do gotowej pracy w czterech krokach</h2>
             <p>
-              Do każdego zamówienia prowadzę kartę realizacji: dostajecie zdjęcia z pracowni na
-              każdym etapie, od szkicu po gotową pracę.
+              Zanim sięgnę po farby, zawsze dostajecie szkic do akceptacji - malujemy dopiero
+              wtedy, gdy kompozycja Wam się podoba.
             </p>
           </div>
           <div className="timeline">
@@ -255,15 +255,15 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
             <div className="tl soak d1">
               <h3>Szkic do akceptacji</h3>
               <p>
-                Zaczynam od ołówkowego szkicu kompozycji. Dostajecie jego zdjęcie w karcie
-                realizacji i możecie zgłosić uwagi, zanim sięgnę po farby.
+                Zaczynam od ołówkowego szkicu kompozycji i wysyłam Wam jego zdjęcie. Uwagi do
+                układu czy kadru zgłaszacie, zanim sięgnę po farby.
               </p>
             </div>
             <div className="tl soak d2">
               <h3>Warstwy akwareli</h3>
               <p>
-                Maluję warstwami - od świateł po detale. Karta realizacji rośnie o kolejne
-                zdjęcia, więc widzicie, jak portret nabiera koloru.
+                Maluję warstwami - od świateł po detale. Akwarela nie wybacza skrótów, dlatego
+                każda warstwa musi wyschnąć, zanim położę kolejną.
               </p>
             </div>
             <div className="tl soak d3">

@@ -224,8 +224,8 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
             </button>
           )}
           <div className="small">
-            realizacja 10 - 14 dni &middot; wysyłka InPost w cenie &middot; karta realizacji na
-            maila
+            realizacja 10 - 14 dni &middot; wysyłka w cenie &middot; szkic do akceptacji przed
+            malowaniem
           </div>
         </div>
       </div>
