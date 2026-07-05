@@ -26,6 +26,23 @@ export function PaintEasterEgg() {
   const ref = useRef<HTMLCanvasElement>(null);
   const [dirty, setDirty] = useState(false);
   const [clearing, setClearing] = useState(false);
+  const [hint, setHint] = useState(false);
+
+  // delikatna podpowiedz - raz na sesje, znika sama albo przy malowaniu
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    if (sessionStorage.getItem("as-paint-hint")) return;
+    const show = window.setTimeout(() => {
+      setHint(true);
+      sessionStorage.setItem("as-paint-hint", "1");
+    }, 3500);
+    const hide = window.setTimeout(() => setHint(false), 14500);
+    return () => {
+      clearTimeout(show);
+      clearTimeout(hide);
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = ref.current;
@@ -92,6 +109,7 @@ export function PaintEasterEgg() {
           t: 0,
         };
         setDirty(true);
+        setHint(false);
         raf = requestAnimationFrame(grow);
       }, 250);
     };
@@ -139,6 +157,12 @@ export function PaintEasterEgg() {
   return (
     <>
       <canvas ref={ref} className="paint-canvas" aria-hidden="true" />
+      {hint && !dirty && (
+        <button type="button" className="paint-clear paint-hint" onClick={() => setHint(false)}>
+          <span className="paint-clear-dot" aria-hidden="true" />
+          Wciśnij i przytrzymaj lewy przycisk myszy na tle strony, żeby malować razem ze mną
+        </button>
+      )}
       {dirty && (
         <button type="button" className="paint-clear" onClick={clear} disabled={clearing}>
           <span className="paint-clear-dot" aria-hidden="true" />
