@@ -156,7 +156,7 @@ export async function action({ request }: Route.ActionArgs): Promise<ActionResul
           `Cześć${names ? " " + names : ""}!`,
           ``,
           `Wasze zapytanie o termin ${dateLabel} dotarło do pracowni.`,
-          `Aleksandra sprawdzi dostępność i wróci do Was mailowo - zwykle w ciągu 24 - 48 godzin.`,
+          `Sprawdzę dostępność i wrócę do Was mailowo - zwykle w ciągu 24 - 48 godzin.`,
           `Zapytanie jest bezpłatne i do niczego nie zobowiązuje.`,
           ``,
           `do usłyszenia,`,
@@ -282,8 +282,8 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                 <div className="check">&#10003;</div>
                 <h2 style={{ fontSize: "1.4rem" }}>Zapytanie wysłane</h2>
                 <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem", marginTop: 8 }}>
-                  Aleksandra sprawdzi dostępność terminu i wróci do Was mailowo z propozycją -
-                  zwykle w ciągu 24 - 48 godzin. Do niczego to nie zobowiązuje.
+                  Sprawdzę dostępność terminu i wrócę do Was mailowo z propozycją - zwykle w
+                  ciągu 24 - 48 godzin. Do niczego to nie zobowiązuje.
                 </p>
                 <span className="hand">
                   {fetcher.data && "names" in fetcher.data && fetcher.data.names

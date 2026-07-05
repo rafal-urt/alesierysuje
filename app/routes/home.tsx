@@ -269,7 +269,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             </div>
             <div className="step soak d1">
               <div className="brush" style={{ background: "var(--color-wash-rose)" }} />
-              <h3>Aleksandra przyjeżdża i maluje</h3>
+              <h3>Przyjeżdżam i maluję</h3>
               <p>
                 Sztaluga staje na sali w najlepszym momencie. Goście patrzą, jak biała kartka nabiera
                 koloru.

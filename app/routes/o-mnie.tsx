@@ -7,7 +7,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Aleksandra Sienica - artystka live painting | alesierysuje",
     description:
-      "Aleksandra Sienica - artystka malująca na żywo wesela i eventy w całej Polsce. Poznaj historię alesierysuje.",
+      "Jestem Aleksandra Sienica - maluję na żywo wesela i eventy w całej Polsce. Poznaj moją historię i pracownię alesierysuje.",
     path: "/o-mnie",
     ogImage: "/og/o-mnie.png",
   });
