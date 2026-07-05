@@ -1994,6 +1994,11 @@ footer {
   margin-top: 20px;
   padding: 11px 24px;
   font-size: 0.84rem;
+  color: var(--color-paper); /* .fcol a nadpisywal kolor buttona */
+}
+.fbrand .btn.sm:hover {
+  color: var(--color-paper);
+  text-decoration: none;
 }
 .fmuted {
   font-size: 0.92rem;
