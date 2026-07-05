@@ -12,8 +12,9 @@ export function Footer() {
               <img src="/gfx/logo.png" alt="alesierysuje" width={453} height={120} />
             </Link>
             <p className="desc">
-              Jestem Aleksandra - maluję na żywo na weselach i eventach w całej Polsce, a w
-              pracowni portrety ze zdjęć.
+              Kilkanaście minut, pędzel i papier 300 g - tyle wystarczy, żeby gość zabrał z
+              Waszego wesela portret samego siebie. Maluję na żywo w całej Polsce, a w pracowni -
+              ze zdjęć.
             </p>
             <Link className="btn sm" to="/terminy">
               Sprawdź swój termin
