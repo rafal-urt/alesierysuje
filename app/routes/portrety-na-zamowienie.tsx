@@ -217,13 +217,6 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
       {/* konfigurator */}
       <section id="konfigurator" style={{ paddingTop: 20 }}>
         <PortraitConfigurator prices={portraits} />
-        <div className="wrap">
-          <p className="deposit-note soak" style={{ marginTop: 18 }}>
-            Formularz niczego nie przedpłaca i do niczego nie zobowiązuje. Po zamówieniu odezwę
-            się mailowo po zdjęcie referencyjne, potwierdzimy termin i szczegóły - płatność
-            ustalamy dopiero po obustronnej akceptacji.
-          </p>
-        </div>
       </section>
 
       {/* intro SEO */}
