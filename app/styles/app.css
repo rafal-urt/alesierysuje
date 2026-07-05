@@ -746,12 +746,11 @@ section {
   scroll-snap-type: x proximity;
   align-items: center;
 }
-.strip::-webkit-scrollbar {
-  height: 6px;
+.strip {
+  scrollbar-width: none; /* Firefox */
 }
-.strip::-webkit-scrollbar-thumb {
-  background: var(--color-line);
-  border-radius: 3px;
+.strip::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 .strip .piece {
   min-width: 280px;
@@ -1184,12 +1183,11 @@ section {
   align-items: center;
   scroll-snap-type: x proximity;
 }
-.wall::-webkit-scrollbar {
-  height: 6px;
+.wall {
+  scrollbar-width: none; /* Firefox */
 }
-.wall::-webkit-scrollbar-thumb {
-  background: var(--color-line);
-  border-radius: 3px;
+.wall::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 .wall .piece {
   min-width: 300px;
