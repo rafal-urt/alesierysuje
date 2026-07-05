@@ -318,6 +318,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <div className="links soak d3">
             <Link to="/live-painting-wesele">Live painting na wesele</Link>
             <Link to="/live-painting-eventy">Live art na event</Link>
+            <Link to="/live-painting-warszawa">Live painting Warszawa</Link>
+            <Link to="/live-painting-trojmiasto">Live painting Trójmiasto</Link>
             <Link to="/portrety-na-zamowienie">Portret ze zdjęcia</Link>
             <Link to="/cennik">Cennik</Link>
           </div>

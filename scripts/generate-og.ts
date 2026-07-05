@@ -13,6 +13,8 @@ const PAGES: { file: string; lines: string[]; sub: string }[] = [
   { file: "home", lines: ["Malowanie na żywo,", "które zostaje na zawsze."], sub: "alesierysuje.pl" },
   { file: "wesele", lines: ["Live painting na wesele -", "portrety gości na żywo."], sub: "alesierysuje.pl/live-painting-wesele" },
   { file: "eventy", lines: ["Live art na event firmowy -", "malowanie na żywo."], sub: "alesierysuje.pl/live-painting-eventy" },
+  { file: "warszawa", lines: ["Live painting Warszawa -", "malowanie na żywo."], sub: "alesierysuje.pl/live-painting-warszawa" },
+  { file: "trojmiasto", lines: ["Live painting Trójmiasto -", "Gdańsk · Gdynia · Sopot."], sub: "alesierysuje.pl/live-painting-trojmiasto" },
   { file: "portrety", lines: ["Portrety na zamówienie -", "portret ze zdjęcia."], sub: "alesierysuje.pl/portrety-na-zamowienie" },
   { file: "realizacje", lines: ["Realizacje - malowanie", "na żywo i portrety."], sub: "alesierysuje.pl/realizacje" },
   { file: "cennik", lines: ["Cennik - live painting", "i portrety na zamówienie."], sub: "alesierysuje.pl/cennik" },

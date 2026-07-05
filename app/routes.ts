@@ -4,6 +4,8 @@ export default [
   index("routes/home.tsx"),
   route("live-painting-wesele", "routes/live-painting-wesele.tsx"),
   route("live-painting-eventy", "routes/live-painting-eventy.tsx"),
+  route("live-painting-warszawa", "routes/live-painting-warszawa.tsx"),
+  route("live-painting-trojmiasto", "routes/live-painting-trojmiasto.tsx"),
   route("portrety-na-zamowienie", "routes/portrety-na-zamowienie.tsx"),
   route("realizacje", "routes/realizacje.tsx"),
   route("cennik", "routes/cennik.tsx"),

@@ -32,6 +32,12 @@ export function Footer() {
               <li>
                 <Link to="/portrety-na-zamowienie">Portret ze zdjęcia</Link>
               </li>
+              <li>
+                <Link to="/live-painting-warszawa">Live painting Warszawa</Link>
+              </li>
+              <li>
+                <Link to="/live-painting-trojmiasto">Live painting Trójmiasto</Link>
+              </li>
             </ul>
           </div>
           <div className="fcol">

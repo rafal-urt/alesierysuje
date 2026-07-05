@@ -255,7 +255,9 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
             Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna ilustracja to{" "}
             <b>{EXTRA_ILLUSTRATION_B2B_PLN} zł</b> - a czego nie zdążę namalować na żywo, dokańczam
             w pracowni i dosyłam po evencie. Formaty nietypowe (wielodniowe targi, krótkie gale)
-            wyceniam indywidualnie w 48 godzin.
+            wyceniam indywidualnie w 48 godzin. Najczęściej maluję na eventach{" "}
+            <Link to="/live-painting-warszawa">w Warszawie</Link> i{" "}
+            <Link to="/live-painting-trojmiasto">Trójmieście</Link>.
           </p>
         </div>
       </section>

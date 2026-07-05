@@ -1,90 +1,38 @@
-import type { Route } from "./+types/live-painting-wesele";
 import { Link } from "react-router";
+import type { City } from "~/data/cities";
 import { Faq } from "~/components/Faq";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
-import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN } from "~/data/prices";
 import { PackagesAccordion } from "~/components/PackagesAccordion";
-import { getDb } from "~/lib/payload.server";
-import { plMonthYear } from "~/lib/dates";
-import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN, formatZl } from "~/data/prices";
+import { breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 
-export async function loader() {
-  const db = await getDb();
-  const [settings, reviews] = await Promise.all([
-    db.findGlobal({ slug: "settings" }),
-    db.find({ collection: "reviews", sort: "-date", limit: 3 }),
-  ]);
-  return {
-    prices: {
-      kameralny: settings.weddingPackages?.kameralny ?? 4000,
-      klasyczny: settings.weddingPackages?.klasyczny ?? 6000,
-      prestizowy: settings.weddingPackages?.prestizowy ?? 9000,
-    } as Record<string, number>,
-    reviews: reviews.docs.map((r) => ({
-      author: r.author,
-      text: r.text,
-      where: r.location ?? "",
-      when: plMonthYear(r.date),
-    })),
-  };
-}
+export type CityPageData = {
+  weddingPrices: Record<string, number>;
+  eventFrom: number;
+  reviews: { author: string; text: string; where: string; when: string }[];
+};
 
-export function meta({}: Route.MetaArgs) {
-  return pageMeta({
-    title: "Live painting na wesele - malowanie na żywo | alesierysuje",
-    description:
-      "Akwarelowe portrety gości i Pary Młodej malowane podczas wesela - bez pozowania i kolejki. Pakiety z jawnymi cenami od 4 000 zł, rezerwacja online.",
-    path: "/live-painting-wesele",
-    ogImage: "/og/wesele.png",
-  });
-}
-
-const FAQ_ITEMS = [
-  {
-    q: "Czy goście muszą pozować albo stać w kolejce?",
-    a: "Nie - i to największa różnica względem klasycznych karykatur. Goście podchodzą do kącika live art tylko na szybkie zdjęcie i wracają do zabawy, a ja maluję z fotografii. Gotowe ilustracje czekają w kąciku live art, więc każdy odbiera swoją wtedy, kiedy mu wygodnie.",
-  },
-  {
-    q: "Ile trwa namalowanie jednego portretu?",
-    a: "Od 10 do 15 minut. Na żywo powstaje do 30 ilustracji w jeden wieczór, a w pakietach Klasycznym i Premium kolejne maluję w pracowni i wysyłam po weselu.",
-  },
-  {
-    q: "Co, jeśli chętnych będzie więcej, niż zakłada pakiet?",
-    a: "Nic straconego - każda kolejna ilustracja ponad pakiet kosztuje 100 zł. A jeśli nie zdążę namalować wszystkich na żywo, dokańczam je w pracowni na podstawie zdjęć i dosyłam po weselu.",
-  },
-  {
-    q: "Ile miejsca potrzebuje stanowisko?",
-    a: "Około 2 × 2 metry na stolik i sztalugę z ekspozycją prac, najlepiej z widokiem na parkiet i dobrym światłem. Szczegóły dogaduję bezpośrednio z salą.",
-  },
-  {
-    q: "Co jeśli zmienimy datę wesela?",
-    a: "Piszecie i sprawdzamy nowy termin w kalendarzu. Zapytanie jest bezpłatne, więc przy zmianie z wyprzedzeniem zwykle udaje się bez problemu.",
-  },
-  {
-    q: "Malujecie też poprawiny?",
-    a: "Tak, przy rezerwacji dwóch dni z rzędu drugi dzień jest wyceniany z rabatem - koszt dojazdu dzielicie tylko raz.",
-  },
-];
-
-export default function LivePaintingWesele({ loaderData }: Route.ComponentProps) {
-  const { prices, reviews } = loaderData;
+// Szablon strony lokalnej SEO - treść (hero, intro, FAQ) przychodzi z cities.ts,
+// ceny i opinie z Payload przez loader konkretnej trasy.
+export function CityPage({ city, data }: { city: City; data: CityPageData }) {
+  const { weddingPrices, eventFrom, reviews } = data;
   return (
     <main className="page">
-      <JsonLd data={breadcrumbJsonLd([{ name: "Live painting na wesele", path: "/live-painting-wesele" }])} />
+      <JsonLd data={breadcrumbJsonLd([{ name: `Live painting ${city.name}`, path: `/${city.slug}` }])} />
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "Service",
-          name: "Live painting na wesele",
-          serviceType: "Akwarelowe portrety gości malowane na żywo podczas wesela",
+          name: `Live painting ${city.name}`,
+          serviceType: `Akwarelowe portrety gości malowane na żywo na weselach i eventach ${city.inCity}`,
           provider: { "@id": SITE_URL + "#business" },
-          areaServed: "PL",
+          areaServed: city.areaServed,
           offers: WEDDING_PACKAGES.map((p) => ({
             "@type": "Offer",
             name: `Pakiet ${p.name}`,
-            price: String(prices[p.key] ?? p.price),
+            price: String(weddingPrices[p.key] ?? p.price),
             priceCurrency: "PLN",
           })),
         }}
@@ -93,26 +41,21 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         data={{
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: FAQ_ITEMS.map((f) => ({
+          mainEntity: city.faq.map((f) => ({
             "@type": "Question",
             name: f.q,
             acceptedAnswer: { "@type": "Answer", text: f.a },
           })),
         }}
       />
-      <WatercolorStain color="rose" width={520} height={460} style={{ top: 40, right: -160 }} />
+      <WatercolorStain color="blue" width={500} height={440} style={{ top: 60, right: -140 }} />
 
-      {/* hero: obietnica + wachlarz ilustracji A5 */}
+      {/* hero */}
       <section className="pageshero">
         <div className="wrap split-hero">
           <div>
-            <h1 className="soak d1">Live painting na wesele - portrety gości malowane na żywo</h1>
-            <p className="lead soak d2">
-              Nie jeden wielki obraz, a kilkadziesiąt małych wspomnień: akwarelowe portrety Waszych
-              gości i Wasz własny, malowane w trakcie przyjęcia. Goście wpadają do kącika live art
-              na szybkie zdjęcie i wracają do zabawy - ja maluję z fotografii, a gotowe ilustracje
-              odbierają z kącika i zabierają do domu jeszcze tej nocy.
-            </p>
+            <h1 className="soak d1">{city.h1}</h1>
+            <p className="lead soak d2">{city.lead}</p>
             <div className="hero-cta soak d3">
               <Link className="btn" to="/terminy">
                 Sprawdź swój termin
@@ -138,15 +81,36 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
               <div className="cap">Para Młoda</div>
             </div>
             <div className="frame">
-              <WatercolorPlaceholder seed={71} palette={3} width={210} height={296} />
-              <div className="cap">dziadek Staszek</div>
+              <WatercolorPlaceholder seed={83} palette={2} width={210} height={296} />
+              <div className="cap">goście</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* liczby wieczoru */}
-      <section style={{ paddingTop: 20, paddingBottom: 0 }}>
+      {/* intro lokalne */}
+      <section style={{ paddingTop: 30, paddingBottom: 20 }}>
+        <div className="wrap manifesto">
+          <div className="eyebrow soak">Live painting {city.inCity.replace(/^w /, "")}</div>
+          {city.intro.map((par) => (
+            <p className="soak d1" key={par.slice(0, 32)}>
+              {par}
+            </p>
+          ))}
+          <p className="soak d2" style={{ fontFamily: "var(--font-sans)", fontSize: "0.9rem", color: "var(--color-ink-faint)" }}>
+            {city.areas}
+          </p>
+          <div className="links soak d2">
+            <Link to="/live-painting-wesele">Live painting na wesele</Link>
+            <Link to="/live-painting-eventy">Live art na event</Link>
+            <Link to="/realizacje">Realizacje</Link>
+            <Link to="/cennik">Cennik</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* liczby */}
+      <section style={{ paddingTop: 0, paddingBottom: 0 }}>
         <div className="wrap">
           <div className="bstats b4">
             <div className="bstat soak">
@@ -175,17 +139,13 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
           <div className="sec-head soak">
             <div className="eyebrow">Jak to działa</div>
             <h2>Wieczór krok po kroku</h2>
-            <p>
-              Goście bawią się dalej, a sztaluga sama przyciąga - najpierw ciekawskich, potem
-              wszystkich.
-            </p>
           </div>
           <div className="timeline">
             <div className="tl soak">
               <h3>Zapytanie</h3>
               <p>
-                Wybieracie termin w kalendarzu i wysyłacie bezpłatne zapytanie. Odpowiedź wraca w
-                24 - 48 h, potem ustalamy szczegóły.
+                Wybieracie termin w kalendarzu online i wysyłacie bezpłatne zapytanie. Odpowiedź
+                wraca w 24 - 48 h.
               </p>
             </div>
             <div className="tl soak d1">
@@ -213,25 +173,56 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         </div>
       </section>
 
-      {/* pakiety */}
-      <section id="pakiety" style={{ paddingTop: 30 }}>
+      {/* pakiety weselne */}
+      <section id="pakiety" style={{ paddingTop: 10 }}>
         <div className="wrap">
           <div className="sec-head soak">
-            <div className="eyebrow">Pakiety</div>
+            <div className="eyebrow">Pakiety weselne</div>
             <h2>Trzy pakiety, jawne ceny</h2>
-            <p>Każdy zawiera portret Pary Młodej i podpisane, zabezpieczone prace dla gości.</p>
+            <p>Ceny są takie same w całej Polsce - różni się tylko koszt dojazdu.</p>
           </div>
           <div className="soak d1">
-            <PackagesAccordion packages={WEDDING_PACKAGES} prices={prices} />
+            <PackagesAccordion packages={WEDDING_PACKAGES} prices={weddingPrices} />
           </div>
           <p className="deposit-note soak">
-            Termin sprawdzacie w kalendarzu i rezerwujecie <b>bezpłatnym zapytaniem</b> - odpowiedź
-            wraca w 24 - 48 godzin. Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna
-            ilustracja to <b>{EXTRA_ILLUSTRATION_PLN} zł</b> - a czego nie zdążę namalować na żywo,
-            dokańczam w pracowni i dosyłam po weselu. Dojazd na terenie Mazowsza w cenie, dalej -
-            wyceniany przy potwierdzeniu. Maluję w całej Polsce - najczęściej{" "}
-            <Link to="/live-painting-warszawa">w Warszawie</Link> i{" "}
-            <Link to="/live-painting-trojmiasto">Trójmieście</Link>.
+            Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna ilustracja to{" "}
+            <b>{EXTRA_ILLUSTRATION_PLN} zł</b>. Termin sprawdzacie w kalendarzu i rezerwujecie
+            bezpłatnym zapytaniem - odpowiedź wraca w 24 - 48 godzin.
+          </p>
+        </div>
+      </section>
+
+      {/* eventy firmowe */}
+      <section style={{ paddingTop: 20 }}>
+        <WatercolorStain color="ochre" width={440} height={380} style={{ top: 40, left: -150 }} />
+        <div className="wrap">
+          <div className="sec-head soak">
+            <div className="eyebrow">Eventy firmowe</div>
+            <h2>Live art na eventach {city.inCity.replace(/^w /, "")}</h2>
+            <p>
+              Gale, premiery, integracje i konferencje - portrety gości na papierze przygotowanym
+              pod branding wydarzenia. Pakiety eventowe od {formatZl(eventFrom)}, faktura VAT i
+              umowa w standardzie.
+            </p>
+          </div>
+          <Link className="btn ghost soak" to="/live-painting-eventy">
+            Zobacz ofertę dla firm &rarr;
+          </Link>
+        </div>
+      </section>
+
+      {/* live painting vs karykaturzysta */}
+      <section style={{ paddingTop: 40 }}>
+        <div className="wrap manifesto">
+          <div className="eyebrow soak">Live painting czy karykaturzysta?</div>
+          <h2 className="soak d1">To nie karykatury - to portrety</h2>
+          <p className="soak d2">
+            Szukając rysownika na wesele, traficie też na karykaturzystów - to pokrewna, ale inna
+            usługa. Karykatura gra przerysowaniem i żartem, akwarelowy portret zostaje na ścianie
+            na lata. U mnie goście nie pozują i nie stoją w kolejce: maluję z fotografii, które
+            robię na miejscu, a każda ilustracja jest podpisana i zabezpieczona jak mała praca z
+            pracowni. Jeśli więc wahacie się między karykaturzystą a malowaniem na żywo - różnica
+            jest mniej więcej taka, jak między gadżetem a pamiątką.
           </p>
         </div>
       </section>
@@ -242,7 +233,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
           <div className="wrap">
             <div className="sec-head soak">
               <div className="eyebrow">Opinie</div>
-              <h2>Pary o swoich wieczorach</h2>
+              <h2>Pary i organizatorzy z regionu</h2>
             </div>
             <div className="quotes">
               {reviews.map((r, i) => (
@@ -261,14 +252,14 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         </section>
       )}
 
-      {/* FAQ */}
+      {/* FAQ lokalne */}
       <section style={{ paddingTop: 20 }}>
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">FAQ</div>
-            <h2>Pytania, które padają najczęściej</h2>
+            <h2>Pytania par z regionu</h2>
           </div>
-          <Faq items={FAQ_ITEMS} />
+          <Faq items={city.faq} />
         </div>
       </section>
 
@@ -276,10 +267,10 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
       <section style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="banner soak">
-            <WatercolorStain color="rose" width={420} height={380} style={{ bottom: -140, left: -80 }} />
+            <WatercolorStain color="blue" width={420} height={380} style={{ bottom: -140, left: -80 }} />
             <h2>Najlepsze terminy w sezonie znikają pierwsze</h2>
             <Link className="btn light" to="/terminy">
-              Zobacz kalendarz 2027
+              Sprawdź wolne terminy
             </Link>
           </div>
         </div>

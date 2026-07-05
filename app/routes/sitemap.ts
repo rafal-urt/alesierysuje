@@ -5,6 +5,8 @@ const PATHS = [
   "/",
   "/live-painting-wesele",
   "/live-painting-eventy",
+  "/live-painting-warszawa",
+  "/live-painting-trojmiasto",
   "/portrety-na-zamowienie",
   "/realizacje",
   "/cennik",
