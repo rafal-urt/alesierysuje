@@ -1,7 +1,7 @@
 import type { Route } from "./+types/live-painting-wesele";
 import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
-import { A5Stack } from "~/components/A5Stack";
+import { CardFan } from "~/components/CardFan";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN } from "~/data/prices";
 import { PackagesAccordion } from "~/components/PackagesAccordion";
@@ -128,7 +128,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
               5/5 &middot; opinie par z portalu Wesele z klasą
             </div>
           </div>
-          <A5Stack caps={["Para Młoda", "świadkowa", "dziadek Staszek"]} />
+          <CardFan />
         </div>
       </section>
 
