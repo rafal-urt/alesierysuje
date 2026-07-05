@@ -150,19 +150,21 @@ nav.sitenav {
   z-index: 100;
   width: min(1184px, calc(100% - 56px));
   border-radius: 999px;
-  background: rgba(250, 247, 242, 0.78);
+  /* akwarelowy wash pod bialym woalem + szklany blur */
+  background-image:
+    linear-gradient(rgba(250, 247, 242, 0.8), rgba(250, 247, 242, 0.8)),
+    url("/gfx/tla/tlo-roz.webp");
+  background-size: cover;
+  background-position: center 30%;
   backdrop-filter: blur(16px) saturate(1.5);
   -webkit-backdrop-filter: blur(16px) saturate(1.5);
   border: 1px solid rgba(43, 43, 43, 0.09);
   box-shadow:
     0 6px 24px rgba(43, 43, 43, 0.08),
     0 1px 2px rgba(43, 43, 43, 0.05);
-  transition:
-    background 0.3s,
-    box-shadow 0.3s;
+  transition: box-shadow 0.3s;
 }
 nav.sitenav.scrolled {
-  background: rgba(250, 247, 242, 0.92);
   box-shadow:
     0 10px 34px rgba(43, 43, 43, 0.13),
     0 2px 6px rgba(43, 43, 43, 0.06);
@@ -259,7 +261,11 @@ footer .logo img {
     flex-direction: column;
     gap: 2px;
     padding: 10px;
-    background: rgba(250, 247, 242, 0.96);
+    background-image:
+      linear-gradient(rgba(250, 247, 242, 0.93), rgba(250, 247, 242, 0.93)),
+      url("/gfx/tla/tlo-roz.webp");
+    background-size: cover;
+    background-position: center;
     backdrop-filter: blur(16px) saturate(1.5);
     -webkit-backdrop-filter: blur(16px) saturate(1.5);
     border: 1px solid rgba(43, 43, 43, 0.09);
@@ -1930,7 +1936,11 @@ footer {
   border-top: 1px solid var(--color-line-soft);
   padding: 70px 0 34px;
   margin-top: 40px;
-  background: rgba(255, 255, 255, 0.35);
+  background-image:
+    linear-gradient(rgba(250, 247, 242, 0.78), rgba(250, 247, 242, 0.78)),
+    url("/gfx/tla/tlo-roz.webp");
+  background-size: cover;
+  background-position: center bottom;
 }
 .fgrid {
   display: grid;
