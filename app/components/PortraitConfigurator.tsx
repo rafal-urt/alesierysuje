@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useFetcher } from "react-router";
-import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { formatZl } from "~/data/prices";
 
 export type PortraitPrices = {
@@ -109,7 +108,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
       <div>
         <div className="room soak">
           <div className="rframe" style={{ width: fmt.w, height: fmt.h }}>
-            <WatercolorPlaceholder seed={53} palette={4} width={200} height={280} />
+            <img src="/gfx/portret-podglad.webp" alt="" width={300} height={420} />
           </div>
           <div className="sofa" />
           <div className="scale-note">podgląd w skali - kanapa 220 cm</div>

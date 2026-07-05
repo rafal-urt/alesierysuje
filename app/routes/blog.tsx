@@ -31,6 +31,13 @@ export default function Blog() {
         <div className="wrap legal">
           {POSTS.map((p) => (
             <article key={p.slug} className="soak" style={{ marginBottom: 40 }}>
+              {p.image && (
+                <Link to={`/blog/${p.slug}`} style={{ display: "block", maxWidth: 260, marginBottom: 18 }}>
+                  <span className="frame" style={{ display: "block" }}>
+                    <img src={p.image} alt={p.imageAlt ?? p.title} width={675} height={1200} loading="lazy" />
+                  </span>
+                </Link>
+              )}
               <h2>
                 <Link to={`/blog/${p.slug}`} style={{ borderBottom: "1px solid transparent" }}>
                   {p.title}

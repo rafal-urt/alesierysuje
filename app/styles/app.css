@@ -1369,10 +1369,12 @@ section {
     width 0.35s,
     height 0.35s;
 }
-.room .rframe svg {
+.room .rframe svg,
+.room .rframe img {
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: cover;
 }
 .room .scale-note {
   position: absolute;

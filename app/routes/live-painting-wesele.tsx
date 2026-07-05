@@ -1,6 +1,7 @@
 import type { Route } from "./+types/live-painting-wesele";
 import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
+import { A5Stack } from "~/components/A5Stack";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN } from "~/data/prices";
@@ -128,20 +129,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
               5/5 &middot; opinie par z portalu Wesele z klasą
             </div>
           </div>
-          <div className="a5-stack soak d2" aria-hidden="true">
-            <div className="frame">
-              <WatercolorPlaceholder seed={23} palette={1} width={210} height={296} />
-              <div className="cap">świadkowa</div>
-            </div>
-            <div className="frame">
-              <WatercolorPlaceholder seed={11} palette={0} width={210} height={296} />
-              <div className="cap">Para Młoda</div>
-            </div>
-            <div className="frame">
-              <WatercolorPlaceholder seed={71} palette={3} width={210} height={296} />
-              <div className="cap">dziadek Staszek</div>
-            </div>
-          </div>
+          <A5Stack caps={["Para Młoda", "świadkowa", "dziadek Staszek"]} />
         </div>
       </section>
 

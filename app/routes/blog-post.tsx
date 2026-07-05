@@ -58,6 +58,11 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
       </section>
       <section style={{ paddingTop: 10 }}>
         <div className="wrap legal">
+          {post.image && (
+            <div className="frame" style={{ maxWidth: 420, marginBottom: 34 }}>
+              <img src={post.image} alt={post.imageAlt ?? post.title} width={675} height={1200} />
+            </div>
+          )}
           {post.body.map((paragraph) => (
             <p key={paragraph.slice(0, 40)} style={{ fontSize: "1.05rem", lineHeight: 1.7 }}>
               {paragraph}

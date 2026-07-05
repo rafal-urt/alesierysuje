@@ -6,6 +6,8 @@ export type Post = {
   date: string; // YYYY-MM-DD
   dateLabel: string;
   excerpt: string;
+  image?: string;
+  imageAlt?: string;
   body: string[];
 };
 
@@ -19,6 +21,8 @@ export const POSTS: Post[] = [
     dateLabel: "4 lipca 2026",
     excerpt:
       "Zapisy oraz cennik na malowanie gości na żywo na 2027 właśnie ruszyły - wszystkie wolne terminy znajdziecie w moim kalendarzu online.",
+    image: "/gfx/prace/wesele-sciana-ilustracji-gosci.webp",
+    imageAlt: "Kilkadziesiąt akwarelowych ilustracji gości z jednego wesela",
     body: [
       "Zapisy oraz cennik na malowanie gości na żywo na 2027 właśnie ruszyły. Wszystkie wolne terminy - od dziś aż do końca 2027 roku - znajdziecie w moim kalendarzu online. To, co widzicie w kalendarzu, jest dostępne naprawdę: zajęte daty oznaczam na bieżąco.",
       "Rezerwacja działa tak jak lubicie: wybieracie dzień, wysyłacie bezpłatne zapytanie i w ciągu 24 - 48 godzin wracam do Was z potwierdzeniem dostępności. Zapytanie do niczego nie zobowiązuje - to po prostu początek rozmowy o Waszym weselu albo evencie.",

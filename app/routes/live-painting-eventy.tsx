@@ -1,6 +1,7 @@
 import type { Route } from "./+types/live-painting-eventy";
 import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
+import { A5Stack } from "~/components/A5Stack";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { EVENT_PACKAGES, EXTRA_ILLUSTRATION_B2B_PLN } from "~/data/prices";
@@ -122,20 +123,7 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
               </a>
             </div>
           </div>
-          <div className="a5-stack soak d2" aria-hidden="true">
-            <div className="frame">
-              <WatercolorPlaceholder seed={41} palette={2} width={210} height={296} />
-              <div className="cap">zespół projektowy</div>
-            </div>
-            <div className="frame">
-              <WatercolorPlaceholder seed={83} palette={0} width={210} height={296} />
-              <div className="cap">gość specjalny</div>
-            </div>
-            <div className="frame">
-              <WatercolorPlaceholder seed={47} palette={4} width={210} height={296} />
-              <div className="cap">prezes zarządu</div>
-            </div>
-          </div>
+          <A5Stack caps={["zespół projektowy", "gość specjalny", "prezes zarządu"]} />
         </div>
       </section>
 
