@@ -217,19 +217,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <section style={{ paddingTop: 20, paddingBottom: 56 }}>
-        <div className="wrap sec-top soak">
-          <div className="sec-head">
-            <div className="eyebrow">Realizacje</div>
-            <h2>Ściana, która ciągle rośnie</h2>
-          </div>
-          <Link className="btn ghost sm" to="/realizacje">
-            Cała galeria &rarr;
-          </Link>
-        </div>
-        <WorksGallery works={works} variant="strip" />
-      </section>
-
       <div className="band">
         <WatercolorStain color="blue" width={460} height={420} style={{ top: -140, right: -100 }} />
         <div className="wrap bgrid">
@@ -335,7 +322,20 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <section style={{ paddingTop: 0 }}>
+      <section style={{ paddingTop: 20, paddingBottom: 56 }}>
+        <div className="wrap sec-top soak">
+          <div className="sec-head">
+            <div className="eyebrow">Realizacje</div>
+            <h2>Ściana, która ciągle rośnie</h2>
+          </div>
+          <Link className="btn ghost sm" to="/realizacje">
+            Cała galeria &rarr;
+          </Link>
+        </div>
+        <WorksGallery works={works} variant="strip" />
+      </section>
+
+      <section style={{ paddingTop: 20 }}>
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">FAQ</div>
