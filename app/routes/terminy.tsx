@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFetcher, useSearchParams } from "react-router";
 import type { Route } from "./+types/terminy";
 import { Calendar } from "~/components/Calendar";
@@ -9,6 +9,7 @@ import { plFullDate, todayWarsaw } from "~/lib/dates";
 import { sendMail } from "~/lib/email.server";
 import { clientIp, rateLimit } from "~/lib/rateLimit.server";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
+import { track } from "~/lib/track";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 
@@ -232,6 +233,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
     : "doradzcie";
   const [eventType, setEventType] = useState<string>(initialType);
   const [pkg, setPkg] = useState<string>(initialPkg);
+
   const packageOptions =
     eventType === "event-firmowy"
       ? EVENT_PACKAGE_OPTIONS
@@ -240,6 +242,10 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
         : null;
   const fetcher = useFetcher<typeof action>();
   const sent = fetcher.data && "ok" in fetcher.data && fetcher.data.ok;
+
+  useEffect(() => {
+    if (sent) track("zapytanie_termin", { event_type: eventType, pakiet: pkg });
+  }, [sent, eventType, pkg]);
   const serverError = fetcher.data && "error" in fetcher.data ? fetcher.data : null;
   const sending = fetcher.state !== "idle";
 

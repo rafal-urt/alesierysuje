@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { track } from "~/lib/track";
 
 export function Footer() {
   return (
@@ -70,7 +71,7 @@ export function Footer() {
                 <Link to="/kontakt">Formularz kontaktowy</Link>
               </li>
               <li>
-                <a href="mailto:alesierysuje@gmail.com">alesierysuje@gmail.com</a>
+                <a href="mailto:alesierysuje@gmail.com" onClick={() => track("klik_mailto", { miejsce: "stopka" })}>alesierysuje@gmail.com</a>
               </li>
               <li>
                 <a href="https://www.instagram.com/alesierysuje" rel="noopener noreferrer" target="_blank">

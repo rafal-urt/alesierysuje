@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useFetcher } from "react-router";
 import type { Route } from "./+types/kontakt";
 import { Link } from "react-router";
@@ -6,6 +7,7 @@ import { getDb } from "~/lib/payload.server";
 import { sendMail } from "~/lib/email.server";
 import { clientIp, rateLimit } from "~/lib/rateLimit.server";
 import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
+import { track } from "~/lib/track";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 
@@ -84,6 +86,10 @@ export async function action({ request }: Route.ActionArgs) {
 export default function Kontakt() {
   const fetcher = useFetcher<typeof action>();
   const sent = fetcher.data && "ok" in fetcher.data && fetcher.data.ok;
+
+  useEffect(() => {
+    if (sent) track("wiadomosc_kontakt");
+  }, [sent]);
   const err = fetcher.data && "error" in fetcher.data ? fetcher.data : null;
   const sending = fetcher.state !== "idle";
 
@@ -212,7 +218,7 @@ export default function Kontakt() {
               </li>
               <li>
                 <span className="contact-label">E-mail</span>
-                <a href="mailto:alesierysuje@gmail.com">alesierysuje@gmail.com</a>
+                <a href="mailto:alesierysuje@gmail.com" onClick={() => track("klik_mailto", { miejsce: "kontakt" })}>alesierysuje@gmail.com</a>
               </li>
               <li>
                 <span className="contact-label">Działam</span>

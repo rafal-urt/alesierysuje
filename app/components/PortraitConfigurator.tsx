@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFetcher } from "react-router";
+import { track } from "~/lib/track";
 import { formatZl } from "~/data/prices";
 
 export type PortraitPrices = {
@@ -33,12 +34,17 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
   const fetcher = useFetcher<{ ok?: boolean; error?: string; names?: string }>();
   const sent = Boolean(fetcher.data?.ok);
   const error = fetcher.data?.error ?? null;
+
   const sending = fetcher.state !== "idle";
 
   const fmt = FORMATS.find((f) => f.key === format)!;
   const base = formatPrice(prices, format);
   const extra = (people - 1) * prices.extraPerson;
   const total = base + extra + (dedication ? prices.dedication : 0);
+
+  useEffect(() => {
+    if (sent) track("zamowienie_portret", { format, osoby: people, cena: total });
+  }, [sent, format, people, total]);
   const formatLabel = format === "50x70" ? "50 × 70" : format;
   const summary = `Portret ${formatLabel}, osoby: ${people === 5 ? "5+" : people}, ${
     dedication ? "z dedykacją" : "bez dedykacji"
@@ -108,7 +114,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
       <div>
         <div className="room soak">
           <div className="rframe" style={{ width: fmt.w, height: fmt.h }}>
-            <img src="/gfx/portret-podglad.webp" alt="" width={300} height={420} />
+            <img src="/gfx/portret-podglad.webp" alt="" width={300} height={420} loading="lazy" />
           </div>
           <div className="sofa" />
           <div className="scale-note">podgląd w skali - kanapa 220 cm</div>
