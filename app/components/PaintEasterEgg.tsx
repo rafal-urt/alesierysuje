@@ -3,7 +3,24 @@ import { useEffect, useRef, useState } from "react";
 // Easter egg: przytrzymanie myszy na pustym tle zostawia rozlewajaca sie
 // plame akwareli (malujemy "papier" strony - plamy leza pod trescia).
 // Tylko desktop (pointer: fine), wylaczone przy prefers-reduced-motion.
-const STAIN_COLORS = ["127,168,201", "201,124,149", "224,178,106", "138,166,141"];
+// 15 akwarelowych barw - od blekitow po terakote (kazde przytrzymanie = losowa)
+const STAIN_COLORS = [
+  "127,168,201", // błękit
+  "46,94,138", // indygo
+  "122,187,197", // turkus
+  "120,150,170", // szaroniebieski
+  "138,166,141", // szałwia
+  "96,138,105", // zieleń butelkowa
+  "201,124,149", // róż
+  "217,158,175", // róż pudrowy
+  "190,102,120", // malina
+  "230,150,130", // koral
+  "224,178,106", // ochra
+  "226,200,140", // piasek
+  "205,140,100", // terakota
+  "155,143,192", // fiolet
+  "176,160,210", // lawenda
+];
 
 export function PaintEasterEgg() {
   const ref = useRef<HTMLCanvasElement>(null);
