@@ -4,7 +4,8 @@ import { Marquee } from "~/components/Marquee";
 import { Faq } from "~/components/Faq";
 import { WorksGallery } from "~/components/WorksGallery";
 import { WatercolorStain } from "~/components/WatercolorStain";
-import { getDb, mapWork } from "~/lib/payload.server";
+import { getDb } from "~/lib/payload.server";
+import { STATIC_WORKS } from "~/data/works-static";
 import { plMonthYear } from "~/lib/dates";
 import { countFreeWeekends } from "~/lib/availability.server";
 import { pageMeta, SITE_URL } from "~/lib/seo";
@@ -12,14 +13,13 @@ import { JsonLd } from "~/components/JsonLd";
 
 export async function loader() {
   const db = await getDb();
-  const [works, reviews, weekends] = await Promise.all([
-    db.find({ collection: "works", sort: "order", limit: 6, depth: 1 }),
+  const [reviews, weekends] = await Promise.all([
     db.find({ collection: "reviews", sort: "-date", limit: 6 }),
     countFreeWeekends(),
   ]);
   return {
     freeWeekends: weekends.count,
-    works: works.docs.map(mapWork),
+    works: STATIC_WORKS.slice(0, 6),
     reviews: reviews.docs.map((r) => ({
       author: r.author,
       text: r.text,

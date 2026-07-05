@@ -1,14 +1,12 @@
 import type { Route } from "./+types/realizacje";
 import { Link } from "react-router";
 import { WorksGallery } from "~/components/WorksGallery";
-import { getDb, mapWork } from "~/lib/payload.server";
+import { STATIC_WORKS } from "~/data/works-static";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 
 export async function loader() {
-  const db = await getDb();
-  const works = await db.find({ collection: "works", sort: "order", limit: 100, depth: 1 });
-  return { works: works.docs.map(mapWork) };
+  return { works: STATIC_WORKS };
 }
 
 export function meta({}: Route.MetaArgs) {

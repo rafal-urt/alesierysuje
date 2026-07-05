@@ -10,6 +10,8 @@ export type GalleryWork = {
   big?: boolean;
   imageUrl?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 };
 
 function Lightbox({ work, onClose }: { work: GalleryWork | null; onClose: () => void }) {
@@ -39,7 +41,7 @@ function Lightbox({ work, onClose }: { work: GalleryWork | null; onClose: () => 
           <>
             <div className="frame">
               {work.imageUrl ? (
-                <img src={work.imageUrl} alt={work.imageAlt ?? work.title} />
+                <img src={work.imageUrl} alt={work.imageAlt ?? work.title} width={work.imageWidth} height={work.imageHeight} />
               ) : (
                 <WatercolorPlaceholder seed={work.seed} palette={work.palette} width={420} height={520} />
               )}
@@ -84,7 +86,7 @@ export function WorksGallery({ works, variant }: { works: GalleryWork[]; variant
           >
             <div className="frame">
               {it.imageUrl ? (
-                <img src={it.imageUrl} alt={it.imageAlt ?? it.title} loading="lazy" />
+                <img src={it.imageUrl} alt={it.imageAlt ?? it.title} width={it.imageWidth} height={it.imageHeight} loading="lazy" />
               ) : (
                 <WatercolorPlaceholder
                   seed={it.seed}
