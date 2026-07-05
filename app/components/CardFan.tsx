@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 // Wachlarz prawdziwych kartek A5 - bez ramek i tla, sam papier z cieniem.
-// Najechana kartka delikatnie sie wysuwa.
+// Najechana kartka wysuwa sie do gory i po opuszczeniu kursora
+// zostaje na wierzchu stosu (do czasu najechania innej).
 const CARDS = [
   {
     src: "/gfx/prace/karta-wesele-grupa.webp",
@@ -15,11 +18,23 @@ const CARDS = [
   },
 ];
 
+const BASE_Z = [1, 2, 1];
+
 export function CardFan() {
+  const [top, setTop] = useState<number | null>(null);
   return (
     <div className="card-fan soak d2" aria-hidden="true">
-      {CARDS.map((c) => (
-        <img key={c.src} src={c.src} alt={c.alt} width={560} height={790} loading="lazy" />
+      {CARDS.map((c, i) => (
+        <img
+          key={c.src}
+          src={c.src}
+          alt={c.alt}
+          width={560}
+          height={790}
+          loading="lazy"
+          style={{ zIndex: top === i ? 5 : BASE_Z[i] }}
+          onMouseEnter={() => setTop(i)}
+        />
       ))}
     </div>
   );

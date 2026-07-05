@@ -2387,22 +2387,18 @@ footer {
   left: 0;
   top: 46px;
   transform: rotate(-7.5deg);
-  z-index: 1;
 }
 .card-fan img:nth-child(2) {
   left: 104px;
   top: 0;
   transform: rotate(2deg);
-  z-index: 2;
 }
 .card-fan img:nth-child(3) {
   left: 206px;
   top: 54px;
   transform: rotate(8.5deg);
-  z-index: 1;
 }
 .card-fan img:hover {
-  z-index: 5;
   box-shadow:
     0 28px 56px rgba(43, 43, 43, 0.3),
     0 6px 14px rgba(43, 43, 43, 0.14);
