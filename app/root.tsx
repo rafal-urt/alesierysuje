@@ -17,6 +17,7 @@ import { JsonLd } from "~/components/JsonLd";
 import { localBusinessJsonLd } from "~/lib/seo";
 import { GtmScript, GtmNoScript, GaScript } from "~/components/Gtm";
 import { CookieBanner } from "~/components/CookieBanner";
+import { PaintEasterEgg } from "~/components/PaintEasterEgg";
 
 export async function loader({ request }: Route.LoaderArgs) {
   // kanoniczny host: duplikaty (www, adres vercel.app) -> 301 na domene glowna
@@ -77,6 +78,7 @@ export default function App({ loaderData }: Route.ComponentProps) {
       <Outlet />
       <Footer />
       <CookieBanner />
+      <PaintEasterEgg />
       <SoakObserver />
     </>
   );

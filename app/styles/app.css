@@ -2720,3 +2720,65 @@ footer {
   margin-top: 8px;
   line-height: 1.55;
 }
+
+/* ===== easter egg: zamaluj sobie strone ===== */
+.paint-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* plamy pod trescia - malujemy papier, nie strone */
+  pointer-events: none;
+}
+.paint-clear {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 18px 10px 15px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--color-line-soft);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-soft);
+  box-shadow: 0 6px 20px rgba(43, 43, 43, 0.09);
+  cursor: pointer;
+  animation: paint-clear-in 0.35s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.paint-clear:hover {
+  color: var(--color-ink);
+  border-color: var(--color-line);
+  box-shadow: 0 10px 26px rgba(43, 43, 43, 0.13);
+}
+.paint-clear:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+.paint-clear-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50% 60% 55% 45%;
+  background: var(--color-wash-blue);
+  filter: blur(0.4px);
+}
+@keyframes paint-clear-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
