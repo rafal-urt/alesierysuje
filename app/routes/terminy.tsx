@@ -40,19 +40,23 @@ const EVENT_TYPES = [
   { label: "Inna okazja", value: "inne" },
 ] as const;
 
-const GUEST_OPTIONS = [
-  { label: "do 60", value: "do-60" },
-  { label: "60 - 100", value: "60-100" },
-  { label: "ponad 100", value: "100-plus" },
-  { label: "Jeszcze nie wiemy", value: "nie-wiemy" },
-] as const;
-
-const PACKAGE_OPTIONS = [
+const WEDDING_PACKAGE_OPTIONS = [
   { label: "Kameralny", value: "kameralny" },
   { label: "Klasyczny", value: "klasyczny" },
   { label: "Premium", value: "premium" },
   { label: "Doradźcie mi", value: "doradzcie" },
 ] as const;
+
+const EVENT_PACKAGE_OPTIONS = [
+  { label: "Networking", value: "networking" },
+  { label: "Gala", value: "gala" },
+  { label: "Konferencja", value: "konferencja" },
+  { label: "Doradźcie mi", value: "doradzcie" },
+] as const;
+
+const ALL_PACKAGE_VALUES = [
+  "kameralny", "klasyczny", "premium", "networking", "gala", "konferencja", "doradzcie",
+];
 
 type ActionResult = { ok: true; names: string } | { error: string; field?: string };
 
@@ -73,17 +77,22 @@ export async function action({ request }: Route.ActionArgs): Promise<ActionResul
   const email = String(form.get("email") ?? "").trim();
   const city = String(form.get("city") ?? "").trim();
   const eventType = String(form.get("eventType") ?? "wesele");
-  const guests = String(form.get("guests") ?? "");
+  const guestsRaw = String(form.get("guests") ?? "").trim();
+  const company = String(form.get("company") ?? "").trim();
   const preferredPackage = String(form.get("preferredPackage") ?? "doradzcie");
 
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return { error: "Wybierzcie dzień w kalendarzu." };
   if (!EVENT_TYPES.some((t) => t.value === eventType))
     return { error: "Nieprawidłowy rodzaj wydarzenia.", field: "eventType" };
-  if (!GUEST_OPTIONS.some((g) => g.value === guests))
-    return { error: "Wybierzcie przybliżoną liczbę gości.", field: "guests" };
-  if (!PACKAGE_OPTIONS.some((p) => p.value === preferredPackage))
+  const guests = Number.parseInt(guestsRaw, 10);
+  if (!guestsRaw || Number.isNaN(guests) || guests < 1 || guests > 2000)
+    return { error: "Podajcie przybliżoną liczbę gości.", field: "guests" };
+  if (eventType === "event-firmowy" && !company)
+    return { error: "Podajcie nazwę firmy.", field: "company" };
+  if (!ALL_PACKAGE_VALUES.includes(preferredPackage))
     return { error: "Nieprawidłowy pakiet.", field: "preferredPackage" };
   if (!names) return { error: "Podajcie swoje imiona.", field: "names" };
+  if (!city) return { error: "Podajcie miejscowość wydarzenia.", field: "city" };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
     return { error: "Podajcie poprawny adres e-mail.", field: "email" };
 
@@ -103,7 +112,8 @@ export async function action({ request }: Route.ActionArgs): Promise<ActionResul
       email,
       city,
       eventType: eventType as "wesele",
-      guests: guests as "do-60",
+      guests,
+      company: company || undefined,
       preferredPackage: preferredPackage as "doradzcie",
       status: "nowe",
     },
@@ -112,9 +122,10 @@ export async function action({ request }: Route.ActionArgs): Promise<ActionResul
   const settings = await db.findGlobal({ slug: "settings" });
   const dateLabel = plFullDate(date);
   const typeLabel = EVENT_TYPES.find((t) => t.value === eventType)?.label ?? eventType;
-  const guestsLabel = GUEST_OPTIONS.find((g) => g.value === guests)?.label ?? guests;
   const packageLabel =
-    PACKAGE_OPTIONS.find((p) => p.value === preferredPackage)?.label ?? preferredPackage;
+    [...WEDDING_PACKAGE_OPTIONS, ...EVENT_PACKAGE_OPTIONS].find(
+      (p) => p.value === preferredPackage,
+    )?.label ?? preferredPackage;
 
   // maile nie mogą wywrócić zapisu - błędy tylko logujemy
   try {
@@ -130,7 +141,8 @@ export async function action({ request }: Route.ActionArgs): Promise<ActionResul
           `E-mail: ${email}`,
           `Miejscowość: ${city || "-"}`,
           `Rodzaj: ${typeLabel}`,
-          `Liczba gości: ${guestsLabel}`,
+          ...(company ? [`Firma: ${company}`] : []),
+          `Liczba gości: ${guests}`,
           `Preferowany pakiet: ${packageLabel}`,
           ``,
           `Szczegóły w panelu: /admin (kolekcja Zapytania)`,
@@ -208,9 +220,13 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
   const { takenDates, todayISO, minMonth, maxMonth } = loaderData;
   const [selected, setSelected] = useState<string | null>(null);
   const [eventType, setEventType] = useState<string>("wesele");
-  const [guests, setGuests] = useState<string | null>(null);
   const [pkg, setPkg] = useState<string>("doradzcie");
-  const [guestsError, setGuestsError] = useState<string | null>(null);
+  const packageOptions =
+    eventType === "event-firmowy"
+      ? EVENT_PACKAGE_OPTIONS
+      : eventType === "wesele"
+        ? WEDDING_PACKAGE_OPTIONS
+        : null;
   const fetcher = useFetcher<typeof action>();
   const sent = fetcher.data && "ok" in fetcher.data && fetcher.data.ok;
   const serverError = fetcher.data && "error" in fetcher.data ? fetcher.data : null;
@@ -291,15 +307,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                   </div>
                 )}
                 {selected && (
-                  <fetcher.Form
-                    method="post"
-                    onSubmit={(e) => {
-                      if (!guests) {
-                        e.preventDefault();
-                        setGuestsError("Wybierzcie przybliżoną liczbę gości.");
-                      }
-                    }}
-                  >
+                  <fetcher.Form method="post">
                     <input type="hidden" name="date" value={selected} />
                     {/* honeypot - pole niewidoczne dla ludzi */}
                     <input
@@ -315,30 +323,59 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                       name="eventType"
                       options={EVENT_TYPES}
                       value={eventType}
-                      onChange={setEventType}
+                      onChange={(v) => {
+                        setEventType(v);
+                        setPkg("doradzcie");
+                      }}
                       error={serverError?.field === "eventType" ? serverError.error : null}
                     />
-                    <ChipGroup
-                      label="Przybliżona liczba gości"
+                    {eventType === "event-firmowy" && (
+                      <>
+                        <label htmlFor="bk-company">Nazwa firmy</label>
+                        <input
+                          id="bk-company"
+                          name="company"
+                          type="text"
+                          placeholder="np. Studio Eventowe Północ"
+                          autoComplete="organization"
+                          required
+                          aria-invalid={serverError?.field === "company" || undefined}
+                        />
+                        {serverError?.field === "company" && (
+                          <p className="field-error" role="alert">
+                            {serverError.error}
+                          </p>
+                        )}
+                      </>
+                    )}
+                    <label htmlFor="bk-guests">Przybliżona liczba gości</label>
+                    <input
+                      id="bk-guests"
                       name="guests"
-                      options={GUEST_OPTIONS}
-                      value={guests}
-                      onChange={(v) => {
-                        setGuests(v);
-                        setGuestsError(null);
-                      }}
-                      error={
-                        guestsError ?? (serverError?.field === "guests" ? serverError.error : null)
-                      }
+                      type="number"
+                      inputMode="numeric"
+                      min={1}
+                      max={2000}
+                      placeholder="np. 80"
+                      required
+                      aria-invalid={serverError?.field === "guests" || undefined}
                     />
-                    <ChipGroup
-                      label="Preferowany pakiet"
-                      name="preferredPackage"
-                      options={PACKAGE_OPTIONS}
-                      value={pkg}
-                      onChange={setPkg}
-                      error={serverError?.field === "preferredPackage" ? serverError.error : null}
-                    />
+                    {serverError?.field === "guests" && (
+                      <p className="field-error" role="alert">
+                        {serverError.error}
+                      </p>
+                    )}
+                    {packageOptions && (
+                      <ChipGroup
+                        label="Preferowany pakiet"
+                        name="preferredPackage"
+                        options={packageOptions}
+                        value={pkg}
+                        onChange={setPkg}
+                        error={serverError?.field === "preferredPackage" ? serverError.error : null}
+                      />
+                    )}
+                    {!packageOptions && <input type="hidden" name="preferredPackage" value="doradzcie" />}
                     <label htmlFor="bk-names">Wasze imiona</label>
                     <input
                       id="bk-names"
@@ -370,10 +407,20 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                         {serverError.error}
                       </p>
                     )}
-                    <label htmlFor="bk-city">
-                      Miejscowość wydarzenia <span className="optional">(opcjonalnie)</span>
-                    </label>
-                    <input id="bk-city" name="city" type="text" placeholder="np. Serock" />
+                    <label htmlFor="bk-city">Miejscowość wydarzenia</label>
+                    <input
+                      id="bk-city"
+                      name="city"
+                      type="text"
+                      placeholder="np. Serock"
+                      required
+                      aria-invalid={serverError?.field === "city" || undefined}
+                    />
+                    {serverError?.field === "city" && (
+                      <p className="field-error" role="alert">
+                        {serverError.error}
+                      </p>
+                    )}
                     {serverError && !serverError.field && (
                       <p className="field-error" role="alert" style={{ marginTop: 14 }}>
                         {serverError.error}
