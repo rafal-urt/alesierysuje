@@ -104,11 +104,11 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
           </div>
         </div>
         <div className="cstep soak d3">
-          <div className="clabel">4 &middot; Zdjęcie referencyjne</div>
+          <div className="clabel">4 &middot; Zdjęcia referencyjne</div>
           <div className="upload" style={{ cursor: "default" }}>
-            Zdjęcie prześlecie mailem po wysłaniu zapytania.
+            Zdjęcia (do 6) dodacie w formularzu zamówienia obok.
             <br />
-            <small>Upload online i płatność w przygotowaniu - na razie bez zobowiązań.</small>
+            <small>Można je też dosłać później mailem - płatność dopiero po ustaleniu szczegółów.</small>
           </div>
         </div>
       </div>
