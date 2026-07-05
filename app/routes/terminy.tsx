@@ -48,9 +48,9 @@ const WEDDING_PACKAGE_OPTIONS = [
 ] as const;
 
 const EVENT_PACKAGE_OPTIONS = [
-  { label: "Networking", value: "networking" },
-  { label: "Gala", value: "gala" },
-  { label: "Konferencja", value: "konferencja" },
+  { label: "Akcent", value: "networking" },
+  { label: "Atelier", value: "gala" },
+  { label: "Galeria", value: "konferencja" },
   { label: "Doradźcie mi", value: "doradzcie" },
 ] as const;
 

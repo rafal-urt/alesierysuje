@@ -67,8 +67,8 @@ export const WEDDING_PACKAGES = [
 export const EVENT_PACKAGES = [
   {
     key: "networking",
-    name: "Networking",
-    forWho: "spotkania firmowe do 60 gości",
+    name: "Akcent",
+    forWho: "wydarzenia do 60 gości",
     price: 4500,
     scope: "do 60 gości · 3 h malowania · do 15 ilustracji na żywo",
     features: [
@@ -83,8 +83,8 @@ export const EVENT_PACKAGES = [
   },
   {
     key: "gala",
-    name: "Gala",
-    forWho: "gale, jubileusze i premiery do 120 gości",
+    name: "Atelier",
+    forWho: "wydarzenia do 120 gości",
     price: 7000,
     scope: "do 120 gości · 5 h malowania · do 25 na żywo + do 10 z pracowni",
     features: [
@@ -101,10 +101,10 @@ export const EVENT_PACKAGES = [
   },
   {
     key: "konferencja",
-    name: "Konferencja",
-    forWho: "konferencje, targi i całodniowe wydarzenia",
+    name: "Galeria",
+    forWho: "duże i całodniowe wydarzenia",
     price: 11500,
-    scope: "konferencje i targi · do 8 h · do 30 na żywo + do 30 z pracowni",
+    scope: "całodniowe · do 8 h · do 30 na żywo + do 30 z pracowni",
     features: [
       "**do 8 godzin** malowania na żywo",
       "**do 30 ilustracji** gości malowanych na żywo - akwarela A5, papier 300 g",

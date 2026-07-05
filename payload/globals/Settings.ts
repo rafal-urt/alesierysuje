@@ -38,9 +38,9 @@ export const Settings: GlobalConfig = {
       type: "group",
       label: "Ceny pakietów eventowych (zł)",
       fields: [
-        { name: "networking", type: "number", label: "Networking" },
-        { name: "gala", type: "number", label: "Gala" },
-        { name: "konferencja", type: "number", label: "Konferencja" },
+        { name: "networking", type: "number", label: "Akcent" },
+        { name: "gala", type: "number", label: "Atelier" },
+        { name: "konferencja", type: "number", label: "Galeria" },
       ],
     },
     {
