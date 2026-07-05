@@ -18,13 +18,13 @@ export function Footer() {
             <h5>Usługi</h5>
             <ul>
               <li>
-                <Link to="/live-painting-wesele">Live painting na wesele</Link>
+                <Link to="/malowanie-na-zywo-wesele">Live painting na wesele</Link>
               </li>
               <li>
-                <Link to="/live-painting-eventy">Live art na event firmowy</Link>
+                <Link to="/malowanie-na-zywo-eventy">Live art na event firmowy</Link>
               </li>
               <li>
-                <Link to="/live-painting-eventy">Szybkie portrety gości</Link>
+                <Link to="/malowanie-na-zywo-eventy">Szybkie portrety gości</Link>
               </li>
               <li>
                 <Link to="/portrety-na-zamowienie">Portrety na zamówienie</Link>
@@ -33,10 +33,10 @@ export function Footer() {
                 <Link to="/portrety-na-zamowienie">Portret ze zdjęcia</Link>
               </li>
               <li>
-                <Link to="/live-painting-warszawa">Live painting Warszawa</Link>
+                <Link to="/malowanie-na-zywo-warszawa">Live painting Warszawa</Link>
               </li>
               <li>
-                <Link to="/live-painting-trojmiasto">Live painting Trójmiasto</Link>
+                <Link to="/malowanie-na-zywo-trojmiasto">Live painting Trójmiasto</Link>
               </li>
             </ul>
           </div>

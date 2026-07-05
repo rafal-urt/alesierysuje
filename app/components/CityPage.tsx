@@ -88,8 +88,8 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
             {city.areas}
           </p>
           <div className="links soak d2">
-            <Link to="/live-painting-wesele">Live painting na wesele</Link>
-            <Link to="/live-painting-eventy">Live art na event</Link>
+            <Link to="/malowanie-na-zywo-wesele">Live painting na wesele</Link>
+            <Link to="/malowanie-na-zywo-eventy">Live art na event</Link>
             <Link to="/realizacje">Realizacje</Link>
             <Link to="/cennik">Cennik</Link>
           </div>
@@ -192,7 +192,7 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
               umowa w standardzie.
             </p>
           </div>
-          <Link className="btn ghost soak" to="/live-painting-eventy">
+          <Link className="btn ghost soak" to="/malowanie-na-zywo-eventy">
             Zobacz ofertę dla firm &rarr;
           </Link>
         </div>

@@ -134,7 +134,7 @@ export const STATIC_WORKS: StaticWork[] = [
   },
 ];
 
-// Wyciete biale kartki A5 (perspektywa skorygowana) - galeria na /live-painting-wesele.
+// Wyciete biale kartki A5 (perspektywa skorygowana) - galeria na /malowanie-na-zywo-wesele.
 export const CARD_WORKS: GalleryWork[] = [
   { seed: 101, palette: 0, title: "Para gości", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-para.webp", imageAlt: "Akwarelowa ilustracja pary gości weselnych", imageWidth: 560, imageHeight: 790, big: true },
   { seed: 102, palette: 1, title: "Grupa gości", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-grupa.webp", imageAlt: "Akwarelowa ilustracja grupy sześciu gości", imageWidth: 560, imageHeight: 790 },

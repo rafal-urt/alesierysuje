@@ -1,4 +1,4 @@
-import type { Route } from "./+types/live-painting-wesele";
+import type { Route } from "./+types/malowanie-na-zywo-wesele";
 import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
 import { CardFan } from "~/components/CardFan";
@@ -35,10 +35,10 @@ export async function loader() {
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: "Live painting na wesele - malowanie na żywo | alesierysuje",
+    title: "Malowanie na żywo na weselu - live painting | alesierysuje",
     description:
       "Akwarelowe portrety gości i Pary Młodej malowane podczas wesela - bez pozowania i kolejki. Pakiety z jawnymi cenami od 4 000 zł, rezerwacja online.",
-    path: "/live-painting-wesele",
+    path: "/malowanie-na-zywo-wesele",
     ogImage: "/og/wesele.png",
   });
 }
@@ -74,7 +74,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
   const { prices, reviews } = loaderData;
   return (
     <main className="page">
-      <JsonLd data={breadcrumbJsonLd([{ name: "Live painting na wesele", path: "/live-painting-wesele" }])} />
+      <JsonLd data={breadcrumbJsonLd([{ name: "Live painting na wesele", path: "/malowanie-na-zywo-wesele" }])} />
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -233,8 +233,8 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             ilustracja to <b>{EXTRA_ILLUSTRATION_PLN} zł</b> - a czego nie zdążę namalować na żywo,
             dokańczam w pracowni i dosyłam po weselu. Dojazd na terenie Mazowsza w cenie, dalej -
             wyceniany przy potwierdzeniu. Maluję w całej Polsce - najczęściej{" "}
-            <Link to="/live-painting-warszawa">w Warszawie</Link> i{" "}
-            <Link to="/live-painting-trojmiasto">Trójmieście</Link>.
+            <Link to="/malowanie-na-zywo-warszawa">w Warszawie</Link> i{" "}
+            <Link to="/malowanie-na-zywo-trojmiasto">Trójmieście</Link>.
           </p>
         </div>
       </section>

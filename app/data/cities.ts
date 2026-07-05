@@ -1,4 +1,4 @@
-// Strony lokalne SEO (/live-painting-{miasto}). Każde miasto = w pełni
+// Strony lokalne SEO (/malowanie-na-zywo-{miasto}). Każde miasto = w pełni
 // unikalna treść: hero, intro, FAQ, obszar działania. Dodanie miasta =
 // nowy wpis tutaj + thin route + obraz OG (scripts/generate-og.ts).
 
@@ -26,13 +26,13 @@ export type City = {
 
 export const CITIES: City[] = [
   {
-    slug: "live-painting-warszawa",
+    slug: "malowanie-na-zywo-warszawa",
     name: "Warszawa",
     inCity: "w Warszawie i okolicach",
-    title: "Live painting Warszawa - malowanie na żywo | alesierysuje",
+    title: "Malowanie na żywo Warszawa - live painting | alesierysuje",
     description:
-      "Live painting w Warszawie: akwarelowe portrety gości malowane na żywo na weselach i eventach. Pracownia na miejscu, dojazd w cenie. Pakiety od 4 000 zł.",
-    h1: "Live painting Warszawa - malowanie na żywo na weselu i evencie",
+      "Malowanie na żywo w Warszawie: akwarelowe portrety gości na weselach i eventach (live painting). Pracownia na miejscu, dojazd w cenie. Pakiety od 4 000 zł.",
+    h1: "Malowanie na żywo Warszawa - live painting na weselu i evencie",
     lead:
       "Akwarelowe portrety gości malowane w trakcie przyjęcia - od 20 do 60 ilustracji z jednego wieczoru. Pracownię mam w Warszawie, więc dojazd na sale w mieście i okolicach jest w cenie każdego pakietu.",
     intro: [
@@ -68,13 +68,13 @@ export const CITIES: City[] = [
     areaServed: ["Warszawa", "Mazowsze"],
   },
   {
-    slug: "live-painting-trojmiasto",
+    slug: "malowanie-na-zywo-trojmiasto",
     name: "Trójmiasto",
     inCity: "w Trójmieście - Gdańsku, Gdyni i Sopocie",
-    title: "Live painting Trójmiasto - Gdańsk, Gdynia, Sopot | alesierysuje",
+    title: "Malowanie na żywo Trójmiasto - Gdańsk, Gdynia, Sopot | alesierysuje",
     description:
-      "Live painting w Trójmieście: akwarelowe portrety gości na weselach i eventach w Gdańsku, Gdyni i Sopocie. Malowanie na żywo, pakiety od 4 000 zł.",
-    h1: "Live painting Trójmiasto - malowanie na żywo w Gdańsku, Gdyni i Sopocie",
+      "Malowanie na żywo w Trójmieście: akwarelowe portrety gości na weselach i eventach w Gdańsku, Gdyni i Sopocie (live painting). Pakiety od 4 000 zł.",
+    h1: "Malowanie na żywo Trójmiasto - live painting w Gdańsku, Gdyni i Sopocie",
     lead:
       "Akwarelowe portrety gości malowane w trakcie przyjęcia - od 20 do 60 ilustracji z jednego wieczoru. Regularnie maluję na Pomorzu: wesela nad morzem, w trójmiejskich hotelach i na Kaszubach.",
     intro: [

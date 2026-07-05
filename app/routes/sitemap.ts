@@ -3,10 +3,10 @@ import { POSTS } from "~/data/posts";
 
 const PATHS = [
   "/",
-  "/live-painting-wesele",
-  "/live-painting-eventy",
-  "/live-painting-warszawa",
-  "/live-painting-trojmiasto",
+  "/malowanie-na-zywo-wesele",
+  "/malowanie-na-zywo-eventy",
+  "/malowanie-na-zywo-warszawa",
+  "/malowanie-na-zywo-trojmiasto",
   "/portrety-na-zamowienie",
   "/realizacje",
   "/cennik",

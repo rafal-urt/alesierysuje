@@ -1,11 +1,11 @@
-import type { Route } from "./+types/live-painting-trojmiasto";
+import type { Route } from "./+types/malowanie-na-zywo-warszawa";
 import { CityPage } from "~/components/CityPage";
 import { getCity } from "~/data/cities";
 import { getDb } from "~/lib/payload.server";
 import { plMonthYear } from "~/lib/dates";
 import { pageMeta } from "~/lib/seo";
 
-const city = getCity("live-painting-trojmiasto")!;
+const city = getCity("malowanie-na-zywo-warszawa")!;
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
@@ -42,6 +42,6 @@ export async function loader() {
   };
 }
 
-export default function LivePaintingTrojmiasto(props: Route.ComponentProps) {
+export default function LivePaintingWarszawa(props: Route.ComponentProps) {
   return <CityPage city={city} data={props.loaderData} />;
 }

@@ -1,4 +1,4 @@
-import type { Route } from "./+types/live-painting-eventy";
+import type { Route } from "./+types/malowanie-na-zywo-eventy";
 import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
 import { CardFan } from "~/components/CardFan";
@@ -37,10 +37,10 @@ export async function loader() {
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: "Live art na event firmowy - malowanie na żywo | alesierysuje",
+    title: "Malowanie na żywo na eventach - live art | alesierysuje",
     description:
       "Live art na event firmowy: akwarelowe portrety gości na papierze pod branding. Pakiety od 4 500 zł, faktura VAT. Sprawdź wolne terminy.",
-    path: "/live-painting-eventy",
+    path: "/malowanie-na-zywo-eventy",
     ogImage: "/og/eventy.png",
   });
 }
@@ -72,7 +72,7 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
   const { prices, reviews } = loaderData;
   return (
     <main className="page">
-      <JsonLd data={breadcrumbJsonLd([{ name: "Live art na event firmowy", path: "/live-painting-eventy" }])} />
+      <JsonLd data={breadcrumbJsonLd([{ name: "Live art na event firmowy", path: "/malowanie-na-zywo-eventy" }])} />
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -258,8 +258,8 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
             <b>{EXTRA_ILLUSTRATION_B2B_PLN} zł</b> - a czego nie zdążę namalować na żywo, dokańczam
             w pracowni i dosyłam po evencie. Formaty nietypowe (wielodniowe targi, krótkie gale)
             wyceniam indywidualnie w 48 godzin. Najczęściej maluję na eventach{" "}
-            <Link to="/live-painting-warszawa">w Warszawie</Link> i{" "}
-            <Link to="/live-painting-trojmiasto">Trójmieście</Link>.
+            <Link to="/malowanie-na-zywo-warszawa">w Warszawie</Link> i{" "}
+            <Link to="/malowanie-na-zywo-trojmiasto">Trójmieście</Link>.
           </p>
         </div>
       </section>

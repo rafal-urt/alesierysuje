@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 
 const LINKS = [
-  { to: "/live-painting-wesele", label: "Wesela" },
-  { to: "/live-painting-eventy", label: "Eventy" },
+  { to: "/malowanie-na-zywo-wesele", label: "Wesela" },
+  { to: "/malowanie-na-zywo-eventy", label: "Eventy" },
   { to: "/portrety-na-zamowienie", label: "Portrety" },
   { to: "/realizacje", label: "Realizacje" },
   { to: "/cennik", label: "Cennik" },

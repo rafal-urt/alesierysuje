@@ -31,7 +31,7 @@ export async function loader() {
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: "Live painting na wesele i eventy | alesierysuje",
+    title: "Malowanie na żywo na wesele i eventy | alesierysuje",
     description:
       "Malowanie na żywo na weselach i eventach: akwarelowe portrety gości do zabrania jeszcze tego wieczoru. Sprawdź wolne terminy i jawne ceny.",
     path: "/",
@@ -117,21 +117,21 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             <h2>Trzy powody, dla których tu jesteście</h2>
           </div>
           <div className="doors">
-            <Link className="door soak" to="/live-painting-wesele">
+            <Link className="door soak" to="/malowanie-na-zywo-wesele">
               <div className="art art-contain">
                 <picture>
                   <source
                     type="image/avif"
-                    srcSet="/gfx/live-painting-wesele-ilustracje-gosci-600.avif 600w, /gfx/live-painting-wesele-ilustracje-gosci-1000.avif 1000w"
+                    srcSet="/gfx/malowanie-na-zywo-wesele-ilustracje-gosci-600.avif 600w, /gfx/malowanie-na-zywo-wesele-ilustracje-gosci-1000.avif 1000w"
                     sizes="(max-width: 920px) 100vw, 430px"
                   />
                   <source
                     type="image/webp"
-                    srcSet="/gfx/live-painting-wesele-ilustracje-gosci-600.webp 600w, /gfx/live-painting-wesele-ilustracje-gosci-1000.webp 1000w"
+                    srcSet="/gfx/malowanie-na-zywo-wesele-ilustracje-gosci-600.webp 600w, /gfx/malowanie-na-zywo-wesele-ilustracje-gosci-1000.webp 1000w"
                     sizes="(max-width: 920px) 100vw, 430px"
                   />
                   <img
-                    src="/gfx/live-painting-wesele-ilustracje-gosci-1000.jpg"
+                    src="/gfx/malowanie-na-zywo-wesele-ilustracje-gosci-1000.jpg"
                     alt="Dziesiątki akwarelowych ilustracji gości namalowanych podczas jednego wesela"
                     width={1000}
                     height={1778}
@@ -149,7 +149,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                 </span>
               </div>
             </Link>
-            <Link className="door soak d1" to="/live-painting-eventy">
+            <Link className="door soak d1" to="/malowanie-na-zywo-eventy">
               <div className="art art-bottom">
                 <picture>
                   <source
@@ -289,10 +289,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             które nie wyblakną przez dekady.
           </p>
           <div className="links soak d3">
-            <Link to="/live-painting-wesele">Live painting na wesele</Link>
-            <Link to="/live-painting-eventy">Live art na event</Link>
-            <Link to="/live-painting-warszawa">Live painting Warszawa</Link>
-            <Link to="/live-painting-trojmiasto">Live painting Trójmiasto</Link>
+            <Link to="/malowanie-na-zywo-wesele">Live painting na wesele</Link>
+            <Link to="/malowanie-na-zywo-eventy">Live art na event</Link>
+            <Link to="/malowanie-na-zywo-warszawa">Live painting Warszawa</Link>
+            <Link to="/malowanie-na-zywo-trojmiasto">Live painting Trójmiasto</Link>
             <Link to="/portrety-na-zamowienie">Portret ze zdjęcia</Link>
             <Link to="/cennik">Cennik</Link>
           </div>

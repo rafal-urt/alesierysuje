@@ -2,10 +2,14 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
   index("routes/home.tsx"),
-  route("live-painting-wesele", "routes/live-painting-wesele.tsx"),
-  route("live-painting-eventy", "routes/live-painting-eventy.tsx"),
-  route("live-painting-warszawa", "routes/live-painting-warszawa.tsx"),
-  route("live-painting-trojmiasto", "routes/live-painting-trojmiasto.tsx"),
+  route("malowanie-na-zywo-wesele", "routes/malowanie-na-zywo-wesele.tsx"),
+  route("live-painting-wesele", "routes/legacy-redirect.ts", { id: "legacy-wesele" }),
+  route("live-painting-eventy", "routes/legacy-redirect.ts", { id: "legacy-eventy" }),
+  route("live-painting-warszawa", "routes/legacy-redirect.ts", { id: "legacy-warszawa" }),
+  route("live-painting-trojmiasto", "routes/legacy-redirect.ts", { id: "legacy-trojmiasto" }),
+  route("malowanie-na-zywo-eventy", "routes/malowanie-na-zywo-eventy.tsx"),
+  route("malowanie-na-zywo-warszawa", "routes/malowanie-na-zywo-warszawa.tsx"),
+  route("malowanie-na-zywo-trojmiasto", "routes/malowanie-na-zywo-trojmiasto.tsx"),
   route("portrety-na-zamowienie", "routes/portrety-na-zamowienie.tsx"),
   route("realizacje", "routes/realizacje.tsx"),
   route("cennik", "routes/cennik.tsx"),
