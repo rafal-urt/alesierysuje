@@ -318,109 +318,133 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                       aria-hidden="true"
                       style={{ position: "absolute", left: -9999, width: 1, height: 1, opacity: 0 }}
                     />
-                    <ChipGroup
-                      label="Rodzaj wydarzenia"
-                      name="eventType"
-                      options={EVENT_TYPES}
-                      value={eventType}
-                      onChange={(v) => {
-                        setEventType(v);
-                        setPkg("doradzcie");
-                      }}
-                      error={serverError?.field === "eventType" ? serverError.error : null}
-                    />
-                    {eventType === "event-firmowy" && (
-                      <>
-                        <label htmlFor="bk-company">Nazwa firmy</label>
-                        <input
-                          id="bk-company"
-                          name="company"
-                          type="text"
-                          placeholder="np. Studio Eventowe Północ"
-                          autoComplete="organization"
-                          required
-                          aria-invalid={serverError?.field === "company" || undefined}
-                        />
-                        {serverError?.field === "company" && (
-                          <p className="field-error" role="alert">
-                            {serverError.error}
-                          </p>
-                        )}
-                      </>
-                    )}
-                    <label htmlFor="bk-guests">Przybliżona liczba gości</label>
-                    <input
-                      id="bk-guests"
-                      name="guests"
-                      type="number"
-                      inputMode="numeric"
-                      min={1}
-                      max={2000}
-                      placeholder="np. 80"
-                      required
-                      aria-invalid={serverError?.field === "guests" || undefined}
-                    />
-                    {serverError?.field === "guests" && (
-                      <p className="field-error" role="alert">
-                        {serverError.error}
-                      </p>
-                    )}
-                    {packageOptions && (
+                    <div className="form-section" style={{ marginTop: 4 }}>
+                      <div className="form-section-label">Wydarzenie</div>
                       <ChipGroup
-                        label="Preferowany pakiet"
-                        name="preferredPackage"
-                        options={packageOptions}
-                        value={pkg}
-                        onChange={setPkg}
-                        error={serverError?.field === "preferredPackage" ? serverError.error : null}
+                        label="Rodzaj wydarzenia"
+                        name="eventType"
+                        options={EVENT_TYPES}
+                        value={eventType}
+                        onChange={(v) => {
+                          setEventType(v);
+                          setPkg("doradzcie");
+                        }}
+                        error={serverError?.field === "eventType" ? serverError.error : null}
                       />
+                      <label htmlFor="bk-city">Miejscowość wydarzenia</label>
+                      <input
+                        id="bk-city"
+                        name="city"
+                        type="text"
+                        placeholder={eventType === "event-firmowy" ? "np. Gdańsk" : "np. Serock"}
+                        required
+                        aria-invalid={serverError?.field === "city" || undefined}
+                      />
+                      {serverError?.field === "city" && (
+                        <p className="field-error" role="alert">
+                          {serverError.error}
+                        </p>
+                      )}
+                      <label htmlFor="bk-guests">Przybliżona liczba gości</label>
+                      <input
+                        id="bk-guests"
+                        name="guests"
+                        type="number"
+                        inputMode="numeric"
+                        min={1}
+                        max={2000}
+                        placeholder="np. 80"
+                        required
+                        aria-invalid={serverError?.field === "guests" || undefined}
+                      />
+                      {serverError?.field === "guests" && (
+                        <p className="field-error" role="alert">
+                          {serverError.error}
+                        </p>
+                      )}
+                    </div>
+
+                    {packageOptions ? (
+                      <div className="form-section">
+                        <div className="form-section-label">Pakiet</div>
+                        <ChipGroup
+                          label="Preferowany pakiet"
+                          name="preferredPackage"
+                          options={packageOptions}
+                          value={pkg}
+                          onChange={setPkg}
+                          error={serverError?.field === "preferredPackage" ? serverError.error : null}
+                        />
+                      </div>
+                    ) : (
+                      <input type="hidden" name="preferredPackage" value="doradzcie" />
                     )}
-                    {!packageOptions && <input type="hidden" name="preferredPackage" value="doradzcie" />}
-                    <label htmlFor="bk-names">Wasze imiona</label>
-                    <input
-                      id="bk-names"
-                      name="names"
-                      type="text"
-                      placeholder="np. Ania i Michał"
-                      autoComplete="name"
-                      required
-                      aria-invalid={serverError?.field === "names" || undefined}
-                    />
-                    {serverError?.field === "names" && (
-                      <p className="field-error" role="alert">
-                        {serverError.error}
-                      </p>
-                    )}
-                    <label htmlFor="bk-email">E-mail</label>
-                    <input
-                      id="bk-email"
-                      name="email"
-                      type="email"
-                      placeholder="ania@..."
-                      autoComplete="email"
-                      inputMode="email"
-                      required
-                      aria-invalid={serverError?.field === "email" || undefined}
-                    />
-                    {serverError?.field === "email" && (
-                      <p className="field-error" role="alert">
-                        {serverError.error}
-                      </p>
-                    )}
-                    <label htmlFor="bk-city">Miejscowość wydarzenia</label>
-                    <input
-                      id="bk-city"
-                      name="city"
-                      type="text"
-                      placeholder="np. Serock"
-                      required
-                      aria-invalid={serverError?.field === "city" || undefined}
-                    />
-                    {serverError?.field === "city" && (
-                      <p className="field-error" role="alert">
-                        {serverError.error}
-                      </p>
-                    )}
+
+                    <div className="form-section">
+                      <div className="form-section-label">Kontakt</div>
+                      {eventType === "event-firmowy" && (
+                        <>
+                          <label htmlFor="bk-company">Nazwa firmy</label>
+                          <input
+                            id="bk-company"
+                            name="company"
+                            type="text"
+                            placeholder="np. Studio Eventowe Północ"
+                            autoComplete="organization"
+                            required
+                            aria-invalid={serverError?.field === "company" || undefined}
+                          />
+                          {serverError?.field === "company" && (
+                            <p className="field-error" role="alert">
+                              {serverError.error}
+                            </p>
+                          )}
+                        </>
+                      )}
+                      <label htmlFor="bk-names">
+                        {eventType === "wesele"
+                          ? "Wasze imiona"
+                          : eventType === "event-firmowy"
+                            ? "Osoba kontaktowa"
+                            : "Imię i nazwisko"}
+                      </label>
+                      <input
+                        id="bk-names"
+                        name="names"
+                        type="text"
+                        placeholder={
+                          eventType === "wesele"
+                            ? "np. Ania i Michał"
+                            : eventType === "event-firmowy"
+                              ? "np. Jan Kowalski"
+                              : "np. Anna Kowalska"
+                        }
+                        autoComplete="name"
+                        required
+                        aria-invalid={serverError?.field === "names" || undefined}
+                      />
+                      {serverError?.field === "names" && (
+                        <p className="field-error" role="alert">
+                          {serverError.error}
+                        </p>
+                      )}
+                      <label htmlFor="bk-email">E-mail</label>
+                      <input
+                        id="bk-email"
+                        name="email"
+                        type="email"
+                        placeholder={eventType === "event-firmowy" ? "jan@firma.pl" : "ania@..."}
+                        autoComplete="email"
+                        inputMode="email"
+                        required
+                        aria-invalid={serverError?.field === "email" || undefined}
+                      />
+                      {serverError?.field === "email" && (
+                        <p className="field-error" role="alert">
+                          {serverError.error}
+                        </p>
+                      )}
+                    </div>
                     {serverError && !serverError.field && (
                       <p className="field-error" role="alert" style={{ marginTop: 14 }}>
                         {serverError.error}

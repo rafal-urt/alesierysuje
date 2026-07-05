@@ -2250,6 +2250,26 @@ footer {
   min-height: 0;
   font-size: 0.86rem;
 }
+.form-section {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--color-line-soft);
+}
+.form-section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+.form-section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: 2px;
+}
+.form-section .chipset {
+  margin-top: 12px;
+}
 .field-error {
   color: #a33;
   font-size: 0.82rem;
