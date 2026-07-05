@@ -229,7 +229,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Jak to działa</div>
-            <h2>Trzy kroki. Reszta to farba, woda i moja lewa ręka</h2>
+            <h2>Trzy kroki. Reszta to farby, woda i moja lewa ręka</h2>
           </div>
           <div className="steps">
             <div className="step soak">
