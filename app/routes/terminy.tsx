@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useFetcher } from "react-router";
+import { useFetcher, useSearchParams } from "react-router";
 import type { Route } from "./+types/terminy";
 import { Calendar } from "~/components/Calendar";
 import { WatercolorStain } from "~/components/WatercolorStain";
@@ -219,8 +219,18 @@ function ChipGroup({
 export default function Terminy({ loaderData }: Route.ComponentProps) {
   const { takenDates, todayISO, minMonth, maxMonth } = loaderData;
   const [selected, setSelected] = useState<string | null>(null);
-  const [eventType, setEventType] = useState<string>("wesele");
-  const [pkg, setPkg] = useState<string>("doradzcie");
+  const [searchParams] = useSearchParams();
+  // wstepne zaznaczenie z linku "Wybierz date" przy pakiecie na landing pages
+  const typParam = searchParams.get("typ") ?? "";
+  const pakietParam = searchParams.get("pakiet") ?? "";
+  const initialType = EVENT_TYPES.some((t) => t.value === typParam) ? typParam : "wesele";
+  const initialPkgOptions =
+    initialType === "event-firmowy" ? EVENT_PACKAGE_OPTIONS : WEDDING_PACKAGE_OPTIONS;
+  const initialPkg = initialPkgOptions.some((o) => o.value === pakietParam)
+    ? pakietParam
+    : "doradzcie";
+  const [eventType, setEventType] = useState<string>(initialType);
+  const [pkg, setPkg] = useState<string>(initialPkg);
   const packageOptions =
     eventType === "event-firmowy"
       ? EVENT_PACKAGE_OPTIONS

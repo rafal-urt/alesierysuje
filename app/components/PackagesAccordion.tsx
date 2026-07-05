@@ -24,12 +24,15 @@ export function PackagesAccordion({
   prices,
   ctaLabel = "Wybierz datę",
   palette = "w",
+  eventTypeParam = "wesele",
 }: {
   packages: PackageDef[];
   prices: Record<string, number>;
   ctaLabel?: string;
   /** "w" = wesela (blekit/roz/ochra), "e" = eventy (ziele/fiolet/morski) */
   palette?: "w" | "e";
+  /** rodzaj wydarzenia przekazywany do formularza /terminy */
+  eventTypeParam?: "wesele" | "event-firmowy";
 }) {
   const [active, setActive] = useState(packages.find((p) => p.featured)?.key ?? packages[0].key);
 
@@ -70,7 +73,7 @@ export function PackagesAccordion({
               </ul>
               <Link
                 className={p.featured ? "btn" : "btn ghost"}
-                to="/terminy"
+                to={`/terminy?typ=${eventTypeParam}&pakiet=${p.key === "prestizowy" ? "premium" : p.key}`}
                 tabIndex={open ? 0 : -1}
                 onClick={(e) => e.stopPropagation()}
               >
