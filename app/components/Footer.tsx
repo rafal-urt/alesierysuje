@@ -34,9 +34,6 @@ export function Footer() {
               <li>
                 <Link to="/cennik">Cennik</Link>
               </li>
-              <li>
-                <Link to="/terminy">Wolne terminy</Link>
-              </li>
             </ul>
           </div>
           <div className="fcol">
