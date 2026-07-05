@@ -147,3 +147,15 @@ export const CARD_WORKS: GalleryWork[] = [
   { seed: 109, palette: 3, title: "Rodzina z maleństwem", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-rodzina-czern.webp", imageAlt: "Akwarelowa ilustracja rodziny z niemowlęciem", imageWidth: 560, imageHeight: 790, big: true },
   { seed: 110, palette: 4, title: "Czwórka gości", meta: "wesele K + P - kwiecień 2026", imageUrl: "/gfx/prace/karta-wesele-czworka.webp", imageAlt: "Akwarelowa ilustracja czwórki gości", imageWidth: 560, imageHeight: 790 },
 ];
+
+// Galeria na /portrety-na-zamowienie - alt-teksty pod frazy SEO portretowe.
+export const PORTRAIT_WORKS: GalleryWork[] = [
+  { seed: 201, palette: 0, title: "Portret rodzinny w ramie", meta: "portret na zamówienie ze zdjęcia", imageUrl: "/gfx/portrety-na-zamowienie-akwarela-1000.webp", imageAlt: "Portret rodzinny na zamówienie - akwarela ze zdjęcia w drewnianej ramie", imageWidth: 1000, imageHeight: 1400, big: true },
+  { seed: 202, palette: 1, title: "Portret pary", meta: "akwarela ze zdjęcia", imageUrl: "/gfx/prace/karta-wesele-para.webp", imageAlt: "Portret akwarelowy ze zdjęcia - para w strojach wieczorowych", imageWidth: 560, imageHeight: 790 },
+  { seed: 203, palette: 2, title: "Portret we dwoje", meta: "akwarela ze zdjęcia", imageUrl: "/gfx/prace/karta-event-duet.webp", imageAlt: "Ręcznie malowany portret pary - prezent na rocznicę", imageWidth: 560, imageHeight: 790 },
+  { seed: 204, palette: 3, title: "Portret indywidualny", meta: "akwarela ze zdjęcia", imageUrl: "/gfx/prace/karta-event-solo.webp", imageAlt: "Portret akwarelowy jednej osoby malowany ze zdjęcia", imageWidth: 560, imageHeight: 790, big: true },
+  { seed: 205, palette: 4, title: "Portret w różu", meta: "akwarela ze zdjęcia", imageUrl: "/gfx/prace/karta-event-roz.webp", imageAlt: "Obraz ze zdjęcia na zamówienie - kobieta w różowej sukience", imageWidth: 560, imageHeight: 790 },
+  { seed: 206, palette: 0, title: "Portret sióstr", meta: "akwarela ze zdjęcia", imageUrl: "/gfx/prace/karta-wesele-dziewczynki.webp", imageAlt: "Portret dzieci na zamówienie - dwie dziewczynki w sukienkach", imageWidth: 560, imageHeight: 790 },
+  { seed: 207, palette: 1, title: "Portret przyjaciółek", meta: "akwarela ze zdjęcia", imageUrl: "/gfx/prace/karta-wesele-przyjaciolki.webp", imageAlt: "Portret akwarelowy dwóch przyjaciółek malowany ręcznie", imageWidth: 560, imageHeight: 790 },
+  { seed: 208, palette: 2, title: "Portret rodzinny z maleństwem", meta: "akwarela ze zdjęcia", imageUrl: "/gfx/prace/karta-wesele-rodzina-czern.webp", imageAlt: "Portret rodzinny ze zdjęcia - rodzice z niemowlęciem", imageWidth: 560, imageHeight: 790, big: true },
+];

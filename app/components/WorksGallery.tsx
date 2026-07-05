@@ -19,11 +19,13 @@ function Lightbox({
   onClose,
   onPrev,
   onNext,
+  cta,
 }: {
   work: GalleryWork | null;
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
+  cta: { label: string; to: string };
 }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -78,8 +80,8 @@ function Lightbox({
                 <WatercolorPlaceholder seed={work.seed} palette={work.palette} width={420} height={520} />
               </div>
             )}
-            <Link className="btn" to="/terminy" onClick={onClose}>
-              Chcę takie ilustracje na swoim weselu
+            <Link className="btn" to={cta.to} onClick={onClose}>
+              {cta.label}
             </Link>
           </>
         )}
@@ -89,7 +91,15 @@ function Lightbox({
 }
 
 // Galeria prac: variant "strip" (pas na homepage) lub "wall" (ściana na /realizacje).
-export function WorksGallery({ works, variant }: { works: GalleryWork[]; variant: "strip" | "wall" }) {
+export function WorksGallery({
+  works,
+  variant,
+  cta = { label: "Chcę takie ilustracje na swoim weselu", to: "/terminy" },
+}: {
+  works: GalleryWork[];
+  variant: "strip" | "wall";
+  cta?: { label: string; to: string };
+}) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const selected = selectedIndex === null ? null : works[selectedIndex];
   const prev = () =>
@@ -133,7 +143,7 @@ export function WorksGallery({ works, variant }: { works: GalleryWork[]; variant
           </div>
         ))}
       </div>
-      <Lightbox work={selected} onClose={() => setSelectedIndex(null)} onPrev={prev} onNext={next} />
+      <Lightbox work={selected} onClose={() => setSelectedIndex(null)} onPrev={prev} onNext={next} cta={cta} />
     </>
   );
 }

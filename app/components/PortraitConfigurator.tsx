@@ -138,7 +138,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
           {sent ? (
             <div className="success">
               <div className="check">&#10003;</div>
-              <h3>Zapytanie wysłane</h3>
+              <h3>Zamówienie przyjęte</h3>
               <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem", marginTop: 8 }}>
                 Odezwę się mailowo w 24 - 48 godzin z prośbą o zdjęcie i potwierdzeniem terminu
                 realizacji.
@@ -215,7 +215,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
                 <p style={{ color: "#a33", fontSize: "0.88rem", marginTop: 14 }}>{error}</p>
               )}
               <button className="btn" type="submit" disabled={sending}>
-                {sending ? "Wysyłanie..." : "Wyślij zapytanie o portret"}
+                {sending ? "Wysyłanie..." : "Zamawiam - bez płatności online"}
               </button>
             </fetcher.Form>
           ) : (
