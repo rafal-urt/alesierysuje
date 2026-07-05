@@ -1,25 +1,29 @@
 import { Link } from "react-router";
-import { Faq } from "~/components/Faq";
 
-// Poligon testowy tekstur papieru akwarelowego - TYLKO lokalnie.
-// Na Vercelu zwraca 404; nie ma go w sitemapie, do tego noindex.
+// Poligon testowy: zastosowania wariantu B (tekstura akwareli + bialy woal)
+// w realnych elementach strony. TYLKO lokalnie - na Vercelu 404.
 export function loader() {
   if (process.env.VERCEL) throw new Response("Not Found", { status: 404 });
   return null;
 }
 
 export function meta() {
-  return [{ title: "TEST: tekstury tła (localhost)" }, { name: "robots", content: "noindex" }];
+  return [
+    { title: "TEST: wash + woal w elementach strony (localhost)" },
+    { name: "robots", content: "noindex" },
+  ];
 }
 
-const TLA = {
-  roz: "/gfx/tla/tlo-roz.webp",
-  morski: "/gfx/tla/tlo-morski.webp",
-  blekit: "/gfx/tla/tlo-blekit.webp",
-  brzoskwinia: "/gfx/tla/tlo-brzoskwinia.webp",
-  gladki: "/gfx/tla/tlo-papier-gladki.webp",
-  ziarno: "/gfx/tla/tlo-papier-ziarno.webp",
-};
+const ROZ = "/gfx/tla/tlo-roz.webp";
+const BLEKIT = "/gfx/tla/tlo-blekit.webp";
+const BRZOSKW = "/gfx/tla/tlo-brzoskwinia.webp";
+
+/** wash + bialy woal o zadanej mocy */
+const washBg = (src: string, veil: number, pos = "center") => ({
+  backgroundImage: `linear-gradient(rgba(250,247,242,${veil}), rgba(250,247,242,${veil})), url(${src})`,
+  backgroundSize: "cover",
+  backgroundPosition: pos,
+});
 
 function Tag({ children }: { children: string }) {
   return (
@@ -43,71 +47,139 @@ function Tag({ children }: { children: string }) {
   );
 }
 
-const bg = (src: string, extra?: string) => ({
-  backgroundImage: `${extra ? extra + ", " : ""}url(${src})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-});
-
 export default function TestTla() {
   return (
-    <main className="page" style={{ paddingTop: 76 }}>
-      {/* ===== A: hero na rozowym washu ===== */}
-      <section style={{ position: "relative", padding: "110px 0 90px", ...bg(TLA.roz) }}>
-        <Tag>A · hero na tlo-roz (pełna moc)</Tag>
+    <main className="page">
+      {/* ===== 1. HEADER: wyspa z washem ===== */}
+      <section style={{ position: "relative", padding: "40px 0 30px" }}>
+        <Tag>1 · wyspa nav z washem + woal 80%</Tag>
         <div className="wrap">
-          <h1 style={{ maxWidth: 700 }}>
-            Malowanie <span style={{ fontStyle: "italic" }}>na żywo</span>, które zostaje na
-            zawsze.
-          </h1>
-          <p className="lead" style={{ maxWidth: 560 }}>
-            Live painting na weselach i eventach firmowych, szybkie portrety gości oraz portrety
-            na zamówienie ze zdjęcia.
+          <p style={{ margin: "26px 0 18px", color: "var(--color-ink-faint)", fontSize: ".9rem" }}>
+            Makieta headera (prawdziwy zostaje bez zmian do decyzji):
           </p>
-          <div className="hero-cta" style={{ marginTop: 26 }}>
-            <Link className="btn" to="/terminy">
-              Sprawdź swój termin
-            </Link>
+          <div
+            style={{
+              borderRadius: 999,
+              border: "1px solid rgba(43,43,43,0.09)",
+              boxShadow: "0 6px 24px rgba(43,43,43,0.08)",
+              padding: "12px 14px 12px 32px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              ...washBg(ROZ, 0.8),
+            }}
+          >
+            <img src="/gfx/logo.png" alt="alesierysuje" style={{ height: 32, width: "auto" }} />
+            <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+              {["Wesela", "Eventy", "Portrety", "Cennik"].map((l) => (
+                <span
+                  key={l}
+                  style={{
+                    fontSize: ".82rem",
+                    fontWeight: 500,
+                    letterSpacing: ".04em",
+                    textTransform: "uppercase",
+                    color: "var(--color-ink-soft)",
+                    padding: "9px 13px",
+                  }}
+                >
+                  {l}
+                </span>
+              ))}
+              <span className="btn" style={{ padding: "11px 22px", fontSize: ".82rem" }}>
+                Sprawdź termin
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ===== B: hero na rozowym washu wyciszonym bialym woalem ===== */}
-      <section
-        style={{
-          position: "relative",
-          padding: "110px 0 90px",
-          ...bg(TLA.roz, "linear-gradient(rgba(250,247,242,0.72), rgba(250,247,242,0.72))"),
-        }}
-      >
-        <Tag>B · to samo tło + biały woal 72%</Tag>
+      {/* ===== 2. HERO PODSTRONY ===== */}
+      <section style={{ position: "relative", padding: "90px 0 70px", ...washBg(ROZ, 0.72) }}>
+        <Tag>2 · hero podstrony (np. wesela) - woal 72%</Tag>
         <div className="wrap">
-          <h1 style={{ maxWidth: 700 }}>Ten sam róż, ale wyciszony woalem</h1>
+          <div style={{ fontSize: ".78rem", color: "var(--color-ink-faint)", marginBottom: 20 }}>
+            Strona główna &rsaquo; Wesela
+          </div>
+          <h1 style={{ maxWidth: 680 }}>Dziesiątki akwarel z jednego wesela</h1>
           <p className="lead" style={{ maxWidth: 560 }}>
-            Tekstura zostaje w tle, typografia i przyciski odzyskują pełny kontrast. Tak
-            najczęściej używa się papierowych tekstur w brandach premium.
+            Zamiast jednego obrazu - kącik live art, z którego każdy gość zabiera swój portret.
+            Tekstura gra w tle, treść zostaje w pełni czytelna.
           </p>
           <div className="hero-cta" style={{ marginTop: 26 }}>
-            <Link className="btn" to="/terminy">
-              Sprawdź swój termin
-            </Link>
+            <span className="btn">Sprawdź swój termin</span>
+            <span className="btn ghost">Zobacz pakiety i ceny</span>
           </div>
         </div>
       </section>
 
-      {/* ===== C: sekcja z panelami na brzoskwini ===== */}
-      <section style={{ position: "relative", padding: "90px 0", ...bg(TLA.brzoskwinia) }}>
-        <Tag>C · sekcja opinii na tlo-brzoskwinia</Tag>
+      {/* ===== 3. PANELE PAKIETOW ===== */}
+      <section style={{ position: "relative", padding: "80px 0" }}>
+        <Tag>3 · panele pakietów: wash zamiast plaskiej mgielki</Tag>
+        <div className="wrap">
+          <div className="sec-head">
+            <div className="eyebrow">Pakiety</div>
+            <h2>Każdy pakiet w swojej akwareli</h2>
+            <p>Dziś panele mają płaskie pastelowe tła - tu wersja z teksturą + woal 85%.</p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
+            {[
+              { n: "Kameralny", p: "4 000 zł", src: BLEKIT, pos: "right top" },
+              { n: "Klasyczny", p: "6 000 zł", src: ROZ, pos: "left center" },
+              { n: "Premium", p: "9 000 zł", src: BRZOSKW, pos: "left bottom" },
+            ].map((x) => (
+              <div
+                key={x.n}
+                style={{
+                  borderRadius: 18,
+                  border: "1px solid var(--color-line-soft)",
+                  padding: "28px 26px",
+                  ...washBg(x.src, 0.85, x.pos),
+                }}
+              >
+                <h3 style={{ fontSize: "1.2rem", marginBottom: 6 }}>{x.n}</h3>
+                <div style={{ fontFamily: "var(--font-serif)", fontSize: "1.9rem" }}>{x.p}</div>
+                <p style={{ color: "var(--color-ink-soft)", fontSize: ".9rem", marginTop: 10 }}>
+                  6 h malowania na żywo, 20 ilustracji A5, kącik live art i konsultacja online.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 4. BANNER CTA ===== */}
+      <section style={{ position: "relative", padding: "10px 0 60px" }}>
+        <Tag>4 · jasny banner CTA (zamiast ciemnego)</Tag>
+        <div className="wrap">
+          <div
+            style={{
+              borderRadius: 26,
+              border: "1px solid var(--color-line-soft)",
+              padding: "64px 40px",
+              textAlign: "center",
+              ...washBg(BLEKIT, 0.68, "right center"),
+            }}
+          >
+            <h2 style={{ marginBottom: 22 }}>Wasz wieczór może być na tej ścianie</h2>
+            <span className="btn">Sprawdź wolne terminy</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 5. KARTY OPINII ===== */}
+      <section style={{ position: "relative", padding: "60px 0", ...washBg(BRZOSKW, 0.88) }}>
+        <Tag>5 · cala sekcja opinii pod woalem 88%</Tag>
         <div className="wrap">
           <div className="sec-head">
             <div className="eyebrow">Opinie</div>
-            <h2>Słowo od par i gości</h2>
+            <h2>Sekcja na ledwo widocznym washu</h2>
           </div>
           <div className="quotes">
             {[
-              "Aleksandra to złoto, a jej prace to najpiękniejsza pamiątka z naszego wesela.",
-              "Goście ustawiali się do kącika cały wieczór - a portrety wisiały u nich w domach tydzień później.",
-              "Profesjonalizm, spokój i talent. Polecamy każdej parze.",
+              "Najpiękniejsza pamiątka z naszego wesela - goście do dziś wspominają kącik.",
+              "Aleksandra namalowała 34 portrety w jeden wieczór. Magia.",
+              "Profesjonalizm i spokój, a prace wiszą u nas w salonie.",
             ].map((t, i) => (
               <div className="quote" key={i}>
                 <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -119,146 +191,70 @@ export default function TestTla() {
         </div>
       </section>
 
-      {/* ===== D: banner CTA na niebieskim splashu ===== */}
-      <section style={{ padding: "60px 0" }}>
-        <div className="wrap">
-          <div
-            className="banner"
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              background: "#fff",
-              color: "var(--color-ink)",
-              border: "1px solid var(--color-line-soft)",
-              ...bg(TLA.blekit),
-            }}
-          >
-            <Tag>D · banner na tlo-blekit (zamiast ciemnego)</Tag>
-            <h2 style={{ color: "var(--color-ink)" }}>Wasz wieczór może być na tej ścianie</h2>
-            <Link className="btn" to="/terminy">
-              Sprawdź wolne terminy
-            </Link>
+      {/* ===== 6. STOPKA ===== */}
+      <section style={{ position: "relative", padding: "60px 0 0" }}>
+        <Tag>6 · stopka z washem u dolu strony</Tag>
+        <div
+          style={{
+            marginTop: 20,
+            borderTop: "1px solid var(--color-line-soft)",
+            padding: "56px 0 40px",
+            ...washBg(ROZ, 0.78, "center bottom"),
+          }}
+        >
+          <div className="wrap" style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 40 }}>
+            <div>
+              <img src="/gfx/logo.png" alt="" style={{ height: 30, width: "auto" }} />
+              <p style={{ color: "var(--color-ink-soft)", fontSize: ".9rem", marginTop: 14, maxWidth: 320 }}>
+                Malowanie na żywo na weselach i eventach. Portrety na zamówienie ze zdjęcia.
+              </p>
+            </div>
+            <div>
+              <b style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".1em" }}>Usługi</b>
+              <p style={{ fontSize: ".9rem", color: "var(--color-ink-soft)", marginTop: 10 }}>
+                Wesela<br />Eventy<br />Portrety
+              </p>
+            </div>
+            <div>
+              <b style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".1em" }}>Kontakt</b>
+              <p style={{ fontSize: ".9rem", color: "var(--color-ink-soft)", marginTop: 10 }}>
+                alesierysuje@gmail.com<br />@alesierysuje
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ===== E: morski wash dolem sekcji FAQ ===== */}
-      <section
-        style={{
-          position: "relative",
-          padding: "90px 0 130px",
-          backgroundImage: `url(${TLA.morski})`,
-          backgroundSize: "100% auto",
-          backgroundPosition: "bottom center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <Tag>E · FAQ z morskim washem przy dolnej krawędzi</Tag>
+      {/* ===== 7. TLO GLOBALNE ===== */}
+      <section style={{ position: "relative", padding: "80px 0 100px", ...washBg(ROZ, 0.9) }}>
+        <Tag>7 · tlo globalne pod woal 90% - wersja "wszedzie"</Tag>
         <div className="wrap">
           <div className="sec-head">
-            <div className="eyebrow">FAQ</div>
-            <h2>Krótko o najważniejszym</h2>
-          </div>
-          <Faq
-            items={[
-              {
-                q: "Czy tekstura nie gryzie się z treścią?",
-                a: "Wash siedzi tylko przy krawędzi sekcji, treść zostaje na czystym papierze.",
-              },
-              {
-                q: "A na mobile?",
-                a: "Tekstury skalują się przez background-size, a najcięższa waży 271 kB w WebP.",
-              },
-            ]}
-          />
-        </div>
-      </section>
-
-      {/* ===== F: papier z ziarnem jako tlo calej strony ===== */}
-      <section
-        style={{
-          position: "relative",
-          padding: "90px 0",
-          backgroundImage: `url(${TLA.ziarno})`,
-          backgroundSize: "900px auto",
-          backgroundRepeat: "repeat",
-        }}
-      >
-        <Tag>F · tlo-papier-ziarno jako tło globalne (kafelkowane)</Tag>
-        <div className="wrap">
-          <div className="sec-head">
-            <div className="eyebrow">Papier zamiast gładkiego tła</div>
-            <h2>Tak wyglądałoby tło całej strony</h2>
+            <div className="eyebrow">Najcichszy wariant</div>
+            <h2>Woal 90% - kolor prawie znika, zostaje "cieplo"</h2>
             <p>
-              Delikatne ziarno papieru akwarelowego zamiast jednolitego koloru - na tym tle stoją
-              wszystkie sekcje, panele i karty.
+              Tak mógłby wyglądać podkład całych stron: zamiast płaskiego #FAF7F2 delikatna
+              różowa poświata z teksturą papieru. Panele i karty stoją na tym bez zmian.
             </p>
           </div>
-          <div className="panel" style={{ maxWidth: 520 }}>
-            <h2 style={{ fontSize: "1.3rem", marginBottom: 10 }}>Biała karta na papierze</h2>
-            <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem" }}>
-              Panele i formularze łapią wtedy naturalny kontrast - jak kartka położona na
-              fakturowanym blacie.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== G: papier gladki jako tlo globalne ===== */}
-      <section
-        style={{
-          position: "relative",
-          padding: "90px 0",
-          backgroundImage: `url(${TLA.gladki})`,
-          backgroundSize: "1100px auto",
-          backgroundRepeat: "repeat",
-        }}
-      >
-        <Tag>G · tlo-papier-gladki jako tło globalne (subtelniejsze)</Tag>
-        <div className="wrap">
-          <div className="sec-head">
-            <div className="eyebrow">Wariant cichszy</div>
-            <h2>Gładki tynk/papier - ledwo widoczna faktura</h2>
-            <p>Bezpieczniejsza opcja: faktura widoczna dopiero przy uważnym spojrzeniu.</p>
-          </div>
-          <div className="panel" style={{ maxWidth: 520 }}>
-            <h2 style={{ fontSize: "1.3rem", marginBottom: 10 }}>Ta sama karta, cichsze tło</h2>
-            <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem" }}>
-              Różnica względem obecnego jednolitego #FAF7F2 jest subtelna, ale dodaje "papieru".
+          <div className="panel" style={{ maxWidth: 480 }}>
+            <h2 style={{ fontSize: "1.25rem", marginBottom: 8 }}>Biała karta kontrolna</h2>
+            <p style={{ color: "var(--color-ink-soft)", fontSize: ".92rem" }}>
+              Sprawdź, czy karta dalej "siedzi" na tle i nie zlewa się z nim.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ===== H: hero z washem tylko w rogu (jak nasze plamy, ale foto) ===== */}
-      <section
-        style={{
-          position: "relative",
-          padding: "110px 0 90px",
-          backgroundImage: `url(${TLA.blekit})`,
-          backgroundSize: "cover",
-          backgroundPosition: "right top",
-        }}
-      >
-        <Tag>H · tlo-blekit: splash w rogu, treść na czystej części</Tag>
+      <section style={{ padding: "40px 0" }}>
         <div className="wrap">
-          <h1 style={{ maxWidth: 640 }}>Splash tylko w rogu kadru</h1>
-          <p className="lead" style={{ maxWidth: 520 }}>
-            Zdjęciowa wersja naszych proceduralnych plam - kolor wchodzi z prawego górnego rogu,
-            copy zostaje na białym.
+          <p style={{ color: "var(--color-ink-faint)", fontSize: ".9rem" }}>
+            Siła woalu rośnie z numerem: banner 68% &rarr; hero 72% &rarr; stopka 78% &rarr; wyspa
+            80% &rarr; panele 85% &rarr; opinie 88% &rarr; tło globalne 90%. Im więcej treści na
+            teksturze, tym mocniejszy woal.
           </p>
-          <Link className="btn" to="/terminy">
-            Sprawdź swój termin
-          </Link>
-        </div>
-      </section>
-
-      <section style={{ padding: "50px 0" }}>
-        <div className="wrap">
-          <p style={{ color: "var(--color-ink-faint)", fontSize: "0.9rem" }}>
-            Strona testowa - dostępna tylko lokalnie (na produkcji 404). Warianty: A/B hero z
-            różem, C sekcja na brzoskwini, D banner na błękicie, E morski wash przy krawędzi, F/G
-            papier jako tło globalne, H splash w rogu.
+          <p style={{ color: "var(--color-ink-faint)", fontSize: ".9rem" }}>
+            <Link to="/">&larr; wróć na stronę</Link>
           </p>
         </div>
       </section>
