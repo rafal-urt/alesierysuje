@@ -96,7 +96,6 @@ export function WorksGallery({ works, variant }: { works: GalleryWork[]; variant
                 />
               )}
             </div>
-            <div className="cap">{it.title}</div>
           </div>
         ))}
       </div>

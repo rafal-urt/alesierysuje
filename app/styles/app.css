@@ -529,6 +529,12 @@ section {
   width: 100%;
   height: auto;
 }
+/* kafelki galerii: wspolna proporcja 3:4 niezaleznie od zrodla */
+.strip .piece .frame img,
+.wall .piece .frame img {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
 .frame .cap {
   font-family: var(--font-hand);
   font-size: 1.1rem;
@@ -1217,9 +1223,15 @@ section {
   display: flex;
 }
 .lb-inner {
-  max-width: 560px;
+  max-width: 400px;
   width: 100%;
   text-align: center;
+}
+.lb-inner .frame img {
+  max-height: 60vh;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
 }
 .lb-inner .frame {
   margin-bottom: 22px;
