@@ -79,7 +79,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="hero-veil" aria-hidden="true" />
         <div className="wrap">
           <h1 className="soak d1">
-            Malowanie <span className="fill">na&nbsp;żywo</span>, które zostaje na zawsze.
+            Malowanie <span className="fill">na&nbsp;żywo</span>, które zostaje na zawsze
           </h1>
           <p className="lead soak d2">
             Live painting na weselach i eventach firmowych, szybkie portrety gości oraz portrety
