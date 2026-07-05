@@ -271,6 +271,7 @@ footer .logo img {
 .page {
   flex: 1 0 auto;
   padding-top: 96px;
+  position: relative;
   overflow-x: clip;
 }
 
