@@ -31,6 +31,8 @@ export async function loader({ request }: Route.LoaderArgs) {
 }
 
 export const links: Route.LinksFunction = () => [
+  // LCP na mobile to poster hero (wideo ukryte < 720px) - preload go przyspiesza
+  { rel: "preload", as: "image", href: "/gfx/hero-poster.jpg", media: "(max-width: 720px)" },
   { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
   { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
   { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
