@@ -93,7 +93,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           </h1>
           <p className="lead soak d2">
             Live painting na weselach i eventach firmowych, szybkie portrety gości oraz portrety
-            na zamówienie ze zdjęcia. Aleksandra Sienica maluje Wasze najważniejsze chwile wtedy,
+            na zamówienie ze zdjęcia. Jestem Aleksandra - maluję Wasze najważniejsze chwile wtedy,
             kiedy one trwają.
           </p>
           <div className="hero-cta soak d3">
