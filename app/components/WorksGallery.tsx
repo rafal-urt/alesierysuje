@@ -14,14 +14,26 @@ export type GalleryWork = {
   imageHeight?: number;
 };
 
-function Lightbox({ work, onClose }: { work: GalleryWork | null; onClose: () => void }) {
+function Lightbox({
+  work,
+  onClose,
+  onPrev,
+  onNext,
+}: {
+  work: GalleryWork | null;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+}) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  }, [onClose, onPrev, onNext]);
 
   return (
     <div
@@ -36,6 +48,26 @@ function Lightbox({ work, onClose }: { work: GalleryWork | null; onClose: () => 
       <button className="lb-close" onClick={onClose} aria-label="Zamknij">
         &times;
       </button>
+      <button
+        className="lb-arrow lb-prev"
+        onClick={(e) => {
+          e.stopPropagation();
+          onPrev();
+        }}
+        aria-label="Poprzednia praca"
+      >
+        &#8249;
+      </button>
+      <button
+        className="lb-arrow lb-next"
+        onClick={(e) => {
+          e.stopPropagation();
+          onNext();
+        }}
+        aria-label="Następna praca"
+      >
+        &#8250;
+      </button>
       <div className="lb-inner">
         {work && (
           <>
@@ -46,8 +78,6 @@ function Lightbox({ work, onClose }: { work: GalleryWork | null; onClose: () => 
                 <WatercolorPlaceholder seed={work.seed} palette={work.palette} width={420} height={520} />
               )}
             </div>
-            <h3>{work.title}</h3>
-            <div className="meta">{work.meta}</div>
             <Link className="btn" to="/terminy" onClick={onClose}>
               Chcę takie ilustracje na swoim weselu
             </Link>
@@ -60,7 +90,11 @@ function Lightbox({ work, onClose }: { work: GalleryWork | null; onClose: () => 
 
 // Galeria prac: variant "strip" (pas na homepage) lub "wall" (ściana na /realizacje).
 export function WorksGallery({ works, variant }: { works: GalleryWork[]; variant: "strip" | "wall" }) {
-  const [selected, setSelected] = useState<GalleryWork | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const selected = selectedIndex === null ? null : works[selectedIndex];
+  const prev = () =>
+    setSelectedIndex((i) => (i === null ? null : (i - 1 + works.length) % works.length));
+  const next = () => setSelectedIndex((i) => (i === null ? null : (i + 1) % works.length));
   const sizes =
     variant === "wall"
       ? { w: 340, h: 420, wSmall: 280, hSmall: 360 }
@@ -69,17 +103,17 @@ export function WorksGallery({ works, variant }: { works: GalleryWork[]; variant
   return (
     <>
       <div className={`${variant} soak`}>
-        {works.map((it) => (
+        {works.map((it, idx) => (
           <div
             key={it.seed}
             className={`piece${it.big ? " big" : ""}`}
-            onClick={() => setSelected(it)}
+            onClick={() => setSelectedIndex(idx)}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
-                setSelected(it);
+                setSelectedIndex(idx);
               }
             }}
             aria-label={`Powiększ: ${it.title}`}
@@ -99,7 +133,7 @@ export function WorksGallery({ works, variant }: { works: GalleryWork[]; variant
           </div>
         ))}
       </div>
-      <Lightbox work={selected} onClose={() => setSelected(null)} />
+      <Lightbox work={selected} onClose={() => setSelectedIndex(null)} onPrev={prev} onNext={next} />
     </>
   );
 }
