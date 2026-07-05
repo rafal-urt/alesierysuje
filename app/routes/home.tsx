@@ -8,7 +8,7 @@ import { getDb } from "~/lib/payload.server";
 import { STATIC_WORKS } from "~/data/works-static";
 import { plMonthYear } from "~/lib/dates";
 import { countFreeWeekends } from "~/lib/availability.server";
-import { pageMeta, SITE_URL } from "~/lib/seo";
+import { pageMeta, SITE_URL, WZK_PROFILE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 
 export async function loader() {
@@ -68,16 +68,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             acceptedAnswer: { "@type": "Answer", text: f.a },
           })),
         }}
-      />
-      <JsonLd
-        data={reviews.map((r) => ({
-          "@context": "https://schema.org",
-          "@type": "Review",
-          itemReviewed: { "@id": SITE_URL + "#business" },
-          author: { "@type": "Person", name: r.author },
-          reviewBody: r.text,
-          reviewRating: { "@type": "Rating", ratingValue: "5" },
-        }))}
       />
       <div className="hero">
         <div className="hero-video" aria-hidden="true">
@@ -304,7 +294,13 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <div className="sec-head soak">
             <div className="eyebrow">Opinie</div>
             <h2>Słowo od par i gości</h2>
-            <p>Prawdziwe opinie z portalu Wesele z klasą - średnia 5,00 / 5 z 6 ocen.</p>
+            <p>
+              Prawdziwe opinie par - wszystkie możecie zweryfikować na{" "}
+              <a href={WZK_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+                moim profilu w serwisie Wesele z klasą
+              </a>
+              .
+            </p>
           </div>
           <div className="quotes">
             {reviews.map((r, i) => (

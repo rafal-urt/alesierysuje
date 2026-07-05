@@ -10,6 +10,7 @@ import { sendMail } from "~/lib/email.server";
 import { clientIp, rateLimit } from "~/lib/rateLimit.server";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
@@ -255,6 +256,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
       <WatercolorStain color="green" width={460} height={420} style={{ top: 60, left: -160 }} />
       <section className="pageshero" style={{ paddingBottom: 30 }}>
         <div className="wrap">
+          <Crumbs items={[{ name: "Terminy" }]} />
           <h1 className="soak d1">Zapytaj o swój termin</h1>
           <p className="lead soak d2">
             Kalendarz jest prawdziwy w czasie rzeczywistym - to, co widzicie, jest dostępne teraz.

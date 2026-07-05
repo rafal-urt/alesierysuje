@@ -5,8 +5,9 @@ import { A5Stack } from "~/components/A5Stack";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { PackagesAccordion } from "~/components/PackagesAccordion";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN, formatZl } from "~/data/prices";
-import { breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
+import { breadcrumbJsonLd, SITE_URL, WZK_PROFILE_URL } from "~/lib/seo";
 
 export type CityPageData = {
   weddingPrices: Record<string, number>;
@@ -20,7 +21,7 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
   const { weddingPrices, eventFrom, reviews } = data;
   return (
     <main className="page">
-      <JsonLd data={breadcrumbJsonLd([{ name: `Live painting ${city.name}`, path: `/${city.slug}` }])} />
+      <JsonLd data={breadcrumbJsonLd([{ name: `Malowanie na żywo ${city.name}`, path: `/${city.slug}` }])} />
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -54,6 +55,7 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
       <section className="pageshero">
         <div className="wrap split-hero">
           <div>
+            <Crumbs items={[{ name: `Malowanie na żywo ${city.name}` }]} />
             <h1 className="soak d1">{city.h1}</h1>
             <p className="lead soak d2">{city.lead}</p>
             <div className="hero-cta soak d3">
@@ -68,7 +70,10 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
               <span className="stars" aria-hidden="true">
                 &#9733;&#9733;&#9733;&#9733;&#9733;
               </span>
-              5/5 &middot; opinie par z portalu Wesele z klasą
+              5/5 &middot;{" "}
+              <a href={WZK_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+                opinie par z portalu Wesele z klasą
+              </a>
             </div>
           </div>
           <A5Stack caps={["Para Młoda", "świadkowa", "goście"]} />

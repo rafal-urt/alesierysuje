@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 import { getPost } from "~/data/posts";
 
 export function loader({ params }: Route.LoaderArgs) {
@@ -51,6 +52,7 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
           <p style={{ fontSize: "0.85rem", color: "var(--color-ink-faint)", marginBottom: 10 }}>
             <Link to="/blog">Blog</Link> &middot; {post.dateLabel}
           </p>
+          <Crumbs items={[{ name: "Blog", path: "/blog" }, { name: post.title }]} />
           <h1 className="soak d1" style={{ fontSize: "clamp(1.9rem,3.6vw,2.8rem)" }}>
             {post.title}
           </h1>

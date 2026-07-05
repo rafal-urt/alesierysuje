@@ -7,6 +7,7 @@ import { sendMail } from "~/lib/email.server";
 import { clientIp, rateLimit } from "~/lib/rateLimit.server";
 import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
@@ -101,6 +102,7 @@ export default function Kontakt() {
       <WatercolorStain color="blue" width={460} height={420} style={{ top: 60, right: -150 }} />
       <section className="pageshero" style={{ paddingBottom: 30 }}>
         <div className="wrap">
+          <Crumbs items={[{ name: "Kontakt" }]} />
           <h1 className="soak d1">Kontakt - napisz do mnie</h1>
           <p className="lead soak d2">
             Pytanie o wolny termin najszybciej załatwisz w{" "}

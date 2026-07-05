@@ -4,8 +4,9 @@ import { PortraitConfigurator } from "~/components/PortraitConfigurator";
 import { getDb } from "~/lib/payload.server";
 import { sendMail } from "~/lib/email.server";
 import { clientIp, rateLimit } from "~/lib/rateLimit.server";
-import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
+import { pageMeta, breadcrumbJsonLd, SITE_URL, WZK_PROFILE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 import { Faq } from "~/components/Faq";
 import { WorksGallery } from "~/components/WorksGallery";
 import { PORTRAIT_WORKS } from "~/data/works-static";
@@ -172,6 +173,7 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
       {/* hero */}
       <section className="pageshero">
         <div className="wrap">
+          <Crumbs items={[{ name: "Portrety na zamówienie" }]} />
           <h1 className="soak d1">Portrety na zamówienie - portret ze zdjęcia malowany ręcznie</h1>
           <p className="lead soak d2">
             Wybieracie liczbę osób i format, cena układa się na Waszych oczach, a zamówienie
@@ -354,7 +356,13 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
             <div className="sec-head soak">
               <div className="eyebrow">Opinie</div>
               <h2>Słowo od zamawiających</h2>
-              <p>Opinie klientek i klientów alesierysuje - z wesel i zamówień z pracowni.</p>
+              <p>
+              Opinie klientek i klientów alesierysuje - źródło:{" "}
+              <a href={WZK_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+                profil Wesele z klasą
+              </a>
+              .
+            </p>
             </div>
             <div className="quotes">
               {reviews.map((r, i) => (

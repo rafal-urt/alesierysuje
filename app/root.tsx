@@ -15,7 +15,6 @@ import { Footer } from "~/components/Footer";
 import { SoakObserver } from "~/components/Soak";
 import { JsonLd } from "~/components/JsonLd";
 import { localBusinessJsonLd } from "~/lib/seo";
-import { getDb } from "~/lib/payload.server";
 import { GtmScript, GtmNoScript, GaScript } from "~/components/Gtm";
 import { CookieBanner } from "~/components/CookieBanner";
 
@@ -28,9 +27,7 @@ export async function loader({ request }: Route.LoaderArgs) {
     url.port = "";
     throw redirect(url.toString(), 301);
   }
-  const db = await getDb();
-  const reviews = await db.count({ collection: "reviews" });
-  return { reviewCount: reviews.totalDocs };
+  return null;
 }
 
 export const links: Route.LinksFunction = () => [
@@ -73,7 +70,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App({ loaderData }: Route.ComponentProps) {
   return (
     <>
-      <JsonLd data={localBusinessJsonLd(loaderData.reviewCount)} />
+      <JsonLd data={localBusinessJsonLd()} />
       <Nav />
       <Outlet />
       <Footer />

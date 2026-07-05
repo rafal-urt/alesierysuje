@@ -5,6 +5,7 @@ import { WEDDING_PACKAGES, EVENT_PACKAGES, EXTRA_ILLUSTRATION_PLN, EXTRA_ILLUSTR
 import { getDb } from "~/lib/payload.server";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 
 export async function loader() {
   const db = await getDb();
@@ -49,6 +50,7 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
       <WatercolorStain color="blue" width={480} height={420} style={{ top: 80, right: -160 }} />
       <section className="pageshero">
         <div className="wrap">
+          <Crumbs items={[{ name: "Cennik" }]} />
           <h1 className="soak d1">Cennik - live painting i portrety na zamówienie</h1>
           <p className="lead soak d2">
             Ceny są jawne. Bez pisania po wycenę, bez "cena zależy". Jeśli coś wykracza poza tabelę,

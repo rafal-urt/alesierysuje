@@ -2509,3 +2509,22 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== breadcrumbs ===== */
+.crumbs {
+  font-size: 0.78rem;
+  color: var(--color-ink-faint);
+  margin-bottom: 20px;
+}
+.crumbs a {
+  color: var(--color-ink-faint);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+.crumbs a:hover {
+  color: var(--color-ink);
+  border-color: var(--color-line);
+}
+.crumbs-sep {
+  margin: 0 8px;
+}

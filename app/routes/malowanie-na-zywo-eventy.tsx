@@ -9,6 +9,7 @@ import { getDb } from "~/lib/payload.server";
 import { plMonthYear } from "~/lib/dates";
 import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 
 export async function loader() {
   const db = await getDb();
@@ -106,6 +107,7 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
       <section className="pageshero">
         <div className="wrap split-hero">
           <div>
+            <Crumbs items={[{ name: "Eventy" }]} />
             <h1 className="soak d1">Live art na event firmowy - malowanie na żywo i portrety gości</h1>
             <p className="lead soak d2">
               Seria akwarelowych portretów gości malowanych w trakcie wydarzenia - od 20 do 40

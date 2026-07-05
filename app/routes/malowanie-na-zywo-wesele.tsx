@@ -9,8 +9,9 @@ import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN } from "~/data/prices";
 import { PackagesAccordion } from "~/components/PackagesAccordion";
 import { getDb } from "~/lib/payload.server";
 import { plMonthYear } from "~/lib/dates";
-import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
+import { pageMeta, breadcrumbJsonLd, SITE_URL, WZK_PROFILE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 
 export async function loader() {
   const db = await getDb();
@@ -108,6 +109,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
       <section className="pageshero">
         <div className="wrap split-hero">
           <div>
+            <Crumbs items={[{ name: "Wesela" }]} />
             <h1 className="soak d1">Live painting na wesele - portrety gości malowane na żywo</h1>
             <p className="lead soak d2">
               Nie jeden wielki obraz, a kilkadziesiąt małych wspomnień: akwarelowe portrety Waszych
@@ -127,7 +129,10 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
               <span className="stars" aria-hidden="true">
                 &#9733;&#9733;&#9733;&#9733;&#9733;
               </span>
-              5/5 &middot; opinie par z portalu Wesele z klasą
+              5/5 &middot;{" "}
+              <a href={WZK_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+                opinie par z portalu Wesele z klasą
+              </a>
             </div>
           </div>
           <CardFan />

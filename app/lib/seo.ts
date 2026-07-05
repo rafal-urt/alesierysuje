@@ -47,23 +47,30 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   };
 }
 
-export function localBusinessJsonLd(reviewCount: number) {
+// Profil z opiniami w serwisie Wesele z klasą - jedyne (zewnętrzne) źródło ocen.
+// Self-serving AggregateRating/Review na własnej stronie są niezgodne z wytycznymi
+// Google - ocen NIE dodajemy do JSON-LD, tylko linkujemy widocznie do źródła.
+export const WZK_PROFILE_URL = "https://www.weselezklasa.pl/ogloszenia-weselne/alesierysuje,60334/";
+export const INSTAGRAM_URL = "https://www.instagram.com/alesierysuje";
+
+export function localBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "ProfessionalService",
     "@id": SITE_URL + "#business",
     name: "alesierysuje - Aleksandra Sienica",
     description:
-      "Live painting i malowanie na żywo na weselach i eventach. Portrety na zamówienie ze zdjęcia.",
+      "Malowanie na żywo (live painting) na weselach i eventach. Portrety na zamówienie ze zdjęcia.",
     url: SITE_URL,
+    logo: SITE_URL + "/gfx/logo.png",
+    image: SITE_URL + "/og/home.png",
+    email: "alesierysuje@gmail.com",
+    address: { "@type": "PostalAddress", addressLocality: "Warszawa", addressCountry: "PL" },
     areaServed: "PL",
     priceRange: "490 - 11500 PLN",
     taxID: "1133135946",
     vatID: "PL1133135946",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: String(Math.max(reviewCount, 1)),
-    },
+    founder: { "@type": "Person", name: "Aleksandra Sienica" },
+    sameAs: [INSTAGRAM_URL, WZK_PROFILE_URL],
   };
 }

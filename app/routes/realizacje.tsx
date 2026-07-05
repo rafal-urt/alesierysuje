@@ -4,6 +4,7 @@ import { WorksGallery } from "~/components/WorksGallery";
 import { STATIC_WORKS } from "~/data/works-static";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 
 export async function loader() {
   return { works: STATIC_WORKS };
@@ -26,6 +27,7 @@ export default function Realizacje({ loaderData }: Route.ComponentProps) {
       <JsonLd data={breadcrumbJsonLd([{ name: "Realizacje", path: "/realizacje" }])} />
       <section className="pageshero" style={{ paddingBottom: 0 }}>
         <div className="wrap">
+          <Crumbs items={[{ name: "Realizacje" }]} />
           <h1 className="soak d1">Realizacje - malowanie na żywo i portrety</h1>
           <p className="lead soak d2">
             Każda rama to czyjeś wesele, event albo portret bliskiej osoby. Kliknij pracę, żeby

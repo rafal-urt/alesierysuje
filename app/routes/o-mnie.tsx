@@ -2,6 +2,7 @@ import type { Route } from "./+types/o-mnie";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
@@ -46,6 +47,7 @@ export default function OMnie() {
             </div>
           </div>
           <div className="story">
+            <Crumbs items={[{ name: "O mnie" }]} />
             <h1
               className="soak d1"
               style={{ fontSize: "clamp(2rem,4vw,3.2rem)", marginBottom: 26 }}

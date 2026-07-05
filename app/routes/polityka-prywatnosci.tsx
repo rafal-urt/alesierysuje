@@ -1,6 +1,7 @@
 import type { Route } from "./+types/polityka-prywatnosci";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { Crumbs } from "~/components/Crumbs";
 import { ConsentResetButton } from "~/components/CookieBanner";
 
 export function meta({}: Route.MetaArgs) {
@@ -18,6 +19,7 @@ export default function PolitykaPrywatnosci() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Polityka prywatności", path: "/polityka-prywatnosci" }])} />
       <section className="pageshero">
         <div className="wrap">
+          <Crumbs items={[{ name: "Polityka prywatności" }]} />
           <h1 className="soak d1">Polityka prywatności</h1>
           <p className="lead soak d2">
             Krótko i po ludzku: jakie dane zbieramy, po co i jakie masz prawa.
