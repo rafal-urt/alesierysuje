@@ -217,7 +217,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <section style={{ paddingTop: 20, paddingBottom: 0 }}>
+      <section style={{ paddingTop: 20, paddingBottom: 56 }}>
         <div className="wrap sec-top soak">
           <div className="sec-head">
             <div className="eyebrow">Realizacje</div>
@@ -234,18 +234,14 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <WatercolorStain color="blue" width={460} height={420} style={{ top: -140, right: -100 }} />
         <div className="wrap bgrid">
           <div className="bst soak">
-            <b>100+</b>
-            <span>wesel i eventów z malowaniem na żywo</span>
-          </div>
-          <div className="bst soak d1">
             <b>5.0</b>
             <span>średnia ocen par i klientów firmowych</span>
           </div>
-          <div className="bst soak d2">
+          <div className="bst soak d1">
             <b>40+</b>
             <span>portretów gości w jeden wieczór eventowy</span>
           </div>
-          <div className="bst soak d3">
+          <div className="bst soak d2">
             <b>0 dni</b>
             <span>czekania - goście zabierają swoje ilustracje jeszcze tej samej nocy</span>
           </div>

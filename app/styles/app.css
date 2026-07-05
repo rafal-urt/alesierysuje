@@ -791,7 +791,7 @@ section {
 }
 .bgrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 36px;
 }
 @media (max-width: 920px) {
