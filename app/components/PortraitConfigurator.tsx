@@ -28,6 +28,7 @@ function formatPrice(prices: PortraitPrices, key: FormatKey): number {
 
 export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
   const [people, setPeople] = useState(1);
+  const [photoError, setPhotoError] = useState<string | null>(null);
   const [format, setFormat] = useState<FormatKey>("A4");
   const [dedication, setDedication] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -151,7 +152,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
               </p>
             </div>
           ) : showForm ? (
-            <fetcher.Form method="post">
+            <fetcher.Form method="post" encType="multipart/form-data">
               <input type="hidden" name="details" value={summary} />
               <input
                 type="text"
@@ -217,8 +218,53 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
                   background: "var(--color-paper)",
                 }}
               />
-              {error && (
-                <p style={{ color: "#a33", fontSize: "0.88rem", marginTop: 14 }}>{error}</p>
+              <label
+                htmlFor="pc-photo"
+                style={{
+                  display: "block",
+                  fontSize: "0.78rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "var(--color-ink-faint)",
+                  margin: "16px 0 6px",
+                }}
+              >
+                Zdjęcia referencyjne <span className="optional">(opcjonalnie, łącznie do 4 MB)</span>
+              </label>
+              <input
+                id="pc-photo"
+                name="photo"
+                type="file"
+                accept="image/*,.heic,.heif"
+                multiple
+                onChange={(e) => {
+                  const files = [...(e.currentTarget.files ?? [])];
+                  const total = files.reduce((a, f) => a + f.size, 0);
+                  if (files.length > 6) {
+                    setPhotoError("Maksymalnie 6 zdjęć - resztę możecie dosłać mailem.");
+                    e.currentTarget.value = "";
+                  } else if (total > 4 * 1024 * 1024) {
+                    setPhotoError("Wybrane zdjęcia ważą łącznie ponad 4 MB - wybierzcie mniej albo mniejsze pliki.");
+                    e.currentTarget.value = "";
+                  } else {
+                    setPhotoError(null);
+                  }
+                }}
+                style={{
+                  width: "100%",
+                  padding: "10px 12px",
+                  border: "1px dashed var(--color-line)",
+                  borderRadius: 10,
+                  background: "var(--color-paper)",
+                  fontSize: "0.88rem",
+                }}
+              />
+              <p style={{ fontSize: "0.8rem", color: "var(--color-ink-faint)", marginTop: 6 }}>
+                Można wybrać kilka naraz. Możecie je też dosłać później - po zamówieniu napiszę do Was maila.
+              </p>
+              {(error || photoError) && (
+                <p style={{ color: "#a33", fontSize: "0.88rem", marginTop: 14 }}>{error ?? photoError}</p>
               )}
               <button className="btn" type="submit" disabled={sending}>
                 {sending ? "Wysyłanie..." : "Zamawiam - bez płatności online"}

@@ -53,10 +53,34 @@ export async function action({ request }: Route.ActionArgs) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { error: "Podajcie poprawny adres e-mail." };
   if (!details) return { error: "Brak konfiguracji portretu - odświeżcie stronę." };
 
+  // zdjecia referencyjne (opcjonalne, kilka) - trafiaja jako zalaczniki maila;
+  // lacznie do 4 MB, bo tyle przyjmie funkcja serverless na Vercelu
+  const photos = form.getAll("photo").filter((f): f is File => f instanceof File && f.size > 0);
+  if (photos.length > 6) return { error: "Maksymalnie 6 zdjęć - resztę doślijcie mailem." };
+  const totalSize = photos.reduce((a, f) => a + f.size, 0);
+  if (totalSize > 4 * 1024 * 1024)
+    return { error: "Zdjęcia ważą łącznie ponad 4 MB - zmniejszcie je albo doślijcie później mailem." };
+  const attachments: { filename: string; content: string }[] = [];
+  for (const photo of photos) {
+    if (!photo.type.startsWith("image/") && !/\.(heic|heif)$/i.test(photo.name))
+      return { error: "Załączniki muszą być zdjęciami (JPG, PNG, HEIC...)." };
+    const buf = Buffer.from(await photo.arrayBuffer());
+    const safeName = photo.name.replace(/[^\w.-]+/g, "_").slice(-80) || "zdjecie.jpg";
+    attachments.push({ filename: safeName, content: buf.toString("base64") });
+  }
+
   const db = await getDb();
   await db.create({
     collection: "inquiries",
-    data: { names, email, eventType: "portret", status: "nowe", details },
+    data: {
+      names,
+      email,
+      eventType: "portret",
+      status: "nowe",
+      details: attachments.length
+        ? `${details}\nZdjęcia referencyjne (${attachments.length}): ${attachments.map((a) => a.filename).join(", ")} (w mailu)`
+        : details,
+    },
   });
 
   const settings = await db.findGlobal({ slug: "settings" });
@@ -64,17 +88,21 @@ export async function action({ request }: Route.ActionArgs) {
     await Promise.all([
       sendMail({
         to: settings.contactEmail,
-        subject: `Nowe zapytanie o portret - ${names}`,
+        subject: `Nowe zamówienie portretu - ${names}`,
         text: [
-          "Nowe zapytanie o portret z alesierysuje.pl/portrety-na-zamowienie",
+          "Nowe zamówienie portretu z alesierysuje.pl/portrety-na-zamowienie",
           "",
           `Zamawia: ${names}`,
           `E-mail: ${email}`,
           `Konfiguracja: ${details}`,
+          attachments.length
+            ? `Zdjęcia referencyjne (${attachments.length}): ${attachments.map((a) => a.filename).join(", ")} - w załącznikach`
+            : "Zdjęcia referencyjne: brak - poproś mailowo",
           "",
           "Szczegóły w panelu: /admin (kolekcja Zapytania)",
         ].join("\n"),
         replyTo: email,
+        ...(attachments.length ? { attachments } : {}),
       }),
       sendMail({
         to: email,
@@ -82,10 +110,13 @@ export async function action({ request }: Route.ActionArgs) {
         text: [
           `Cześć ${names}!`,
           "",
-          "Zapytanie o portret dotarło do pracowni.",
+          "Zamówienie portretu dotarło do pracowni.",
           `Wybrana konfiguracja: ${details}`,
-          "Odezwę się w 24 - 48 godzin z prośbą o zdjęcie referencyjne i potwierdzeniem terminu realizacji.",
-          "Zapytanie do niczego nie zobowiązuje.",
+          attachments.length
+            ? `Zdjęcia referencyjne (${attachments.length}) dotarły razem z zamówieniem - dziękuję!`
+            : "Odezwę się w 24 - 48 godzin z prośbą o zdjęcia referencyjne.",
+          "Potwierdzimy mailowo termin i szczegóły - płatność dopiero po obustronnej akceptacji.",
+          "Zamówienie do niczego nie zobowiązuje.",
           "",
           "do usłyszenia,",
           "Aleksandra Sienica - alesierysuje.pl",

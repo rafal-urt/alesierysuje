@@ -5,6 +5,7 @@ type Mail = {
   subject: string;
   text: string;
   replyTo?: string;
+  attachments?: { filename: string; content: string }[]; // content = base64
 };
 
 export async function sendMail(mail: Mail): Promise<void> {
@@ -12,8 +13,9 @@ export async function sendMail(mail: Mail): Promise<void> {
   const from = process.env.EMAIL_FROM || "alesierysuje <onboarding@resend.dev>";
 
   if (!key) {
+    const att = mail.attachments?.map((a) => a.filename).join(", ") || "brak";
     console.log(
-      `[mail:dev] do: ${mail.to}\n[mail:dev] temat: ${mail.subject}\n${mail.text}\n---`,
+      `[mail:dev] do: ${mail.to}\n[mail:dev] temat: ${mail.subject}\n[mail:dev] załączniki: ${att}\n${mail.text}\n---`,
     );
     return;
   }
@@ -30,6 +32,7 @@ export async function sendMail(mail: Mail): Promise<void> {
       subject: mail.subject,
       text: mail.text,
       ...(mail.replyTo ? { reply_to: mail.replyTo } : {}),
+      ...(mail.attachments?.length ? { attachments: mail.attachments } : {}),
     }),
   });
   if (!res.ok) {
