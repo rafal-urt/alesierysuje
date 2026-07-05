@@ -1,7 +1,7 @@
 import type { Route } from "./+types/live-painting-eventy";
 import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
-import { A5Stack } from "~/components/A5Stack";
+import { CardFan } from "~/components/CardFan";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { EVENT_PACKAGES, EXTRA_ILLUSTRATION_B2B_PLN } from "~/data/prices";
 import { PackagesAccordion } from "~/components/PackagesAccordion";
@@ -122,7 +122,22 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
               </a>
             </div>
           </div>
-          <A5Stack caps={["zespół projektowy", "gość specjalny", "prezes zarządu"]} />
+          <CardFan
+            cards={[
+              {
+                src: "/gfx/prace/karta-event-solo.webp",
+                alt: "Akwarelowa ilustracja gościa eventu firmowego",
+              },
+              {
+                src: "/gfx/prace/karta-event-duet.webp",
+                alt: "Akwarelowa ilustracja pary gości z jubileuszu firmowego",
+              },
+              {
+                src: "/gfx/prace/karta-event-roz.webp",
+                alt: "Akwarelowa ilustracja gościa w różowej sukience",
+              },
+            ]}
+          />
         </div>
       </section>
 

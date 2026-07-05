@@ -3,7 +3,9 @@ import { useState } from "react";
 // Wachlarz prawdziwych kartek A5 - bez ramek i tla, sam papier z cieniem.
 // Najechana kartka wysuwa sie do gory i po opuszczeniu kursora
 // zostaje na wierzchu stosu (do czasu najechania innej).
-const CARDS = [
+export type FanCard = { src: string; alt: string };
+
+const WEDDING_CARDS: FanCard[] = [
   {
     src: "/gfx/prace/karta-wesele-grupa.webp",
     alt: "Akwarelowa ilustracja grupy gości weselnych",
@@ -20,11 +22,11 @@ const CARDS = [
 
 const BASE_Z = [1, 2, 1];
 
-export function CardFan() {
+export function CardFan({ cards = WEDDING_CARDS }: { cards?: FanCard[] }) {
   const [top, setTop] = useState<number | null>(null);
   return (
     <div className="card-fan soak d2" aria-hidden="true">
-      {CARDS.map((c, i) => (
+      {cards.map((c, i) => (
         <img
           key={c.src}
           src={c.src}
