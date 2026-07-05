@@ -3,7 +3,6 @@ import type { City } from "~/data/cities";
 import { Faq } from "~/components/Faq";
 import { A5Stack } from "~/components/A5Stack";
 import { WatercolorStain } from "~/components/WatercolorStain";
-import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { PackagesAccordion } from "~/components/PackagesAccordion";
 import { JsonLd } from "~/components/JsonLd";
 import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN, formatZl } from "~/data/prices";

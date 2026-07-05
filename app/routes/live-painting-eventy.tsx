@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import { Faq } from "~/components/Faq";
 import { A5Stack } from "~/components/A5Stack";
 import { WatercolorStain } from "~/components/WatercolorStain";
-import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { EVENT_PACKAGES, EXTRA_ILLUSTRATION_B2B_PLN } from "~/data/prices";
 import { PackagesAccordion } from "~/components/PackagesAccordion";
 import { getDb } from "~/lib/payload.server";
