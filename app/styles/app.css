@@ -529,11 +529,18 @@ section {
   width: 100%;
   height: auto;
 }
-/* kafelki galerii: wspolna proporcja 3:4 niezaleznie od zrodla */
-.strip .piece .frame img,
-.wall .piece .frame img {
+/* kafelki galerii: gole zdjecia z delikatnym cieniem, wspolna proporcja 3:4 */
+.strip .piece > img,
+.wall .piece > img {
+  display: block;
+  width: 100%;
+  height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
+  border-radius: 3px;
+  box-shadow:
+    0 12px 26px rgba(43, 43, 43, 0.16),
+    0 3px 8px rgba(43, 43, 43, 0.08);
 }
 .frame .cap {
   font-family: var(--font-hand);
@@ -1227,14 +1234,20 @@ section {
   width: 100%;
   text-align: center;
 }
-.lb-inner .frame img {
-  max-height: 60vh;
-  width: auto;
-  max-width: 100%;
-  margin: 0 auto;
-}
+
 .lb-inner .frame {
   margin-bottom: 22px;
+}
+.lb-inner > img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 60vh;
+  margin: 0 auto 22px;
+  border-radius: 4px;
+  box-shadow:
+    0 24px 60px rgba(43, 43, 43, 0.28),
+    0 6px 16px rgba(43, 43, 43, 0.12);
 }
 .lb-close {
   position: absolute;

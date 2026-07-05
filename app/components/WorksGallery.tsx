@@ -71,13 +71,13 @@ function Lightbox({
       <div className="lb-inner">
         {work && (
           <>
-            <div className="frame">
-              {work.imageUrl ? (
-                <img src={work.imageUrl} alt={work.imageAlt ?? work.title} width={work.imageWidth} height={work.imageHeight} />
-              ) : (
+            {work.imageUrl ? (
+              <img src={work.imageUrl} alt={work.imageAlt ?? work.title} width={work.imageWidth} height={work.imageHeight} />
+            ) : (
+              <div className="frame">
                 <WatercolorPlaceholder seed={work.seed} palette={work.palette} width={420} height={520} />
-              )}
-            </div>
+              </div>
+            )}
             <Link className="btn" to="/terminy" onClick={onClose}>
               Chcę takie ilustracje na swoim weselu
             </Link>
@@ -118,18 +118,18 @@ export function WorksGallery({ works, variant }: { works: GalleryWork[]; variant
             }}
             aria-label={`Powiększ: ${it.title}`}
           >
-            <div className="frame">
-              {it.imageUrl ? (
-                <img src={it.imageUrl} alt={it.imageAlt ?? it.title} width={it.imageWidth} height={it.imageHeight} loading="lazy" />
-              ) : (
+            {it.imageUrl ? (
+              <img src={it.imageUrl} alt={it.imageAlt ?? it.title} width={it.imageWidth} height={it.imageHeight} loading="lazy" />
+            ) : (
+              <div className="frame">
                 <WatercolorPlaceholder
                   seed={it.seed}
                   palette={it.palette}
                   width={it.big ? sizes.w : sizes.wSmall}
                   height={it.big ? sizes.h : sizes.hSmall}
                 />
-              )}
-            </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
