@@ -29,9 +29,10 @@ export default buildConfig({
     (process.env.VERCEL ? "tymczasowy-sekret-ustaw-PAYLOAD_SECRET" : ""),
   db: sqliteAdapter({
     client: {
-      url: process.env.DATABASE_URI || defaultDbUrl,
-      ...(process.env.DATABASE_AUTH_TOKEN
-        ? { authToken: process.env.DATABASE_AUTH_TOKEN }
+      // akceptujemy obie konwencje nazw: nasza (DATABASE_*) i domyslna Turso (TURSO_*)
+      url: process.env.DATABASE_URI || process.env.TURSO_DATABASE_URL || defaultDbUrl,
+      ...(process.env.DATABASE_AUTH_TOKEN || process.env.TURSO_AUTH_TOKEN
+        ? { authToken: process.env.DATABASE_AUTH_TOKEN || process.env.TURSO_AUTH_TOKEN }
         : {}),
     },
     // na produkcji (bez push) schemat wchodzi przez migracje przy starcie
