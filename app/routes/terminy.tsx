@@ -245,7 +245,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
       <WatercolorStain color="green" width={460} height={420} style={{ top: 60, left: -160 }} />
       <section className="pageshero" style={{ paddingBottom: 30 }}>
         <div className="wrap">
-          <h1 className="soak d1">Wolne terminy live paintingu</h1>
+          <h1 className="soak d1">Zapytaj o swój termin</h1>
           <p className="lead soak d2">
             Kalendarz jest prawdziwy w czasie rzeczywistym - to, co widzicie, jest dostępne teraz.
             Wybierzcie dzień i wyślijcie bezpłatne zapytanie o rezerwację - odpowiedź wraca w 24 - 48
