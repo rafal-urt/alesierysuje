@@ -35,10 +35,12 @@ const png64 = await sharp(MASTER).resize(64, 64).png().toBuffer();
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><image width="64" height="64" href="data:image/png;base64,${png64.toString("base64")}"/></svg>`;
 await fs.writeFile(path.join(PUB, "favicon.svg"), svg);
 
-// apple-touch-icon: 180 px z lekkim marginesem (iOS sam zaokragla rogi)
+// apple-touch-icon: iOS nie wspiera przezroczystosci (podklada czern),
+// wiec okragly sygnet laduje na bialym kwadracie z marginesem
 await sharp(MASTER)
   .resize(160, 160)
   .extend({ top: 10, bottom: 10, left: 10, right: 10, background: "#ffffff" })
+  .flatten({ background: "#ffffff" })
   .png()
   .toFile(path.join(PUB, "apple-touch-icon.png"));
 
