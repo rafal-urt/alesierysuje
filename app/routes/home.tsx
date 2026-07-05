@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import { Marquee } from "~/components/Marquee";
 import { Faq } from "~/components/Faq";
 import { WorksGallery } from "~/components/WorksGallery";
-import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { getDb, mapWork } from "~/lib/payload.server";
 import { plMonthYear } from "~/lib/dates";
@@ -81,38 +80,29 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         }))}
       />
       <div className="hero">
-        <WatercolorStain color="blue" width={680} height={540} bloom style={{ top: -140, right: -160 }} />
-        <WatercolorStain
-          color="rose"
-          width={440}
-          height={400}
-          bloom
-          style={{ bottom: -120, left: -140, animationDelay: "0.4s" }}
-        />
-        <div className="wrap hero-grid">
-          <div>
-            <h1 className="soak d1">
-              Malowanie <span className="fill">na&nbsp;żywo</span>, które zostaje na zawsze
-            </h1>
-            <p className="lead soak d2">
-              Live painting na weselach i eventach firmowych, szybkie portrety gości oraz portrety
-              na zamówienie ze zdjęcia. Aleksandra Sienica maluje Wasze najważniejsze chwile wtedy,
-              kiedy one trwają.
-            </p>
-            <div className="hero-cta soak d3">
-              <Link className="btn" to="/terminy">
-                Sprawdź swój termin
-              </Link>
-              <div className="season">
-                <span className="pulse" />
-                Wolnych weekendów w tym roku: <b>{freeWeekends}</b>
-              </div>
-            </div>
-          </div>
-          <div className="hero-frame soak d2">
-            <div className="frame">
-              <WatercolorPlaceholder seed={11} palette={0} width={300} height={380} />
-              <div className="cap">pierwszy taniec, sierpień</div>
+        <div className="hero-video" aria-hidden="true">
+          <video autoPlay muted loop playsInline preload="metadata" poster="/gfx/hero-poster.jpg">
+            <source src="/gfx/hero-live-painting.webm" type="video/webm" />
+            <source src="/gfx/hero-live-painting.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="hero-veil" aria-hidden="true" />
+        <div className="wrap">
+          <h1 className="soak d1">
+            Malowanie <span className="fill">na&nbsp;żywo</span>, które zostaje na zawsze.
+          </h1>
+          <p className="lead soak d2">
+            Live painting na weselach i eventach firmowych, szybkie portrety gości oraz portrety
+            na zamówienie ze zdjęcia. Aleksandra Sienica maluje Wasze najważniejsze chwile wtedy,
+            kiedy one trwają.
+          </p>
+          <div className="hero-cta soak d3">
+            <Link className="btn" to="/terminy">
+              Sprawdź swój termin
+            </Link>
+            <div className="season">
+              <span className="pulse" />
+              Wolnych weekendów w tym roku: <b>{freeWeekends}</b>
             </div>
           </div>
         </div>
