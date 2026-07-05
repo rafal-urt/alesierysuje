@@ -13,9 +13,9 @@ export type PortraitPrices = {
 
 // Wymiary ramki podglądu w skali pokoju (kanapa 220 cm) - z prototypu.
 const FORMATS = [
-  { key: "A4", label: "A4", w: 60, h: 84 },
-  { key: "A3", label: "A3", w: 84, h: 118 },
-  { key: "50x70", label: "50 × 70 cm", w: 100, h: 140 },
+  { key: "A4", label: "A4", dims: "21 × 30 cm", w: 60, h: 84 },
+  { key: "A3", label: "A3", dims: "30 × 42 cm", w: 84, h: 118 },
+  { key: "50x70", label: "50 × 70", dims: "50 × 70 cm", w: 100, h: 140 },
 ] as const;
 
 type FormatKey = (typeof FORMATS)[number]["key"];
@@ -28,14 +28,13 @@ function formatPrice(prices: PortraitPrices, key: FormatKey): number {
 
 export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
   const [people, setPeople] = useState(1);
-  const [photoError, setPhotoError] = useState<string | null>(null);
   const [format, setFormat] = useState<FormatKey>("A4");
   const [dedication, setDedication] = useState(false);
-  const [showForm, setShowForm] = useState(false);
+  const [photoInfo, setPhotoInfo] = useState<string | null>(null);
+  const [photoError, setPhotoError] = useState<string | null>(null);
   const fetcher = useFetcher<{ ok?: boolean; error?: string; names?: string }>();
   const sent = Boolean(fetcher.data?.ok);
   const error = fetcher.data?.error ?? null;
-
   const sending = fetcher.state !== "idle";
 
   const fmt = FORMATS.find((f) => f.key === format)!;
@@ -46,6 +45,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
   useEffect(() => {
     if (sent) track("zamowienie_portret", { format, osoby: people, cena: total });
   }, [sent, format, people, total]);
+
   const formatLabel = format === "50x70" ? "50 × 70" : format;
   const summary = `Portret ${formatLabel}, osoby: ${people === 5 ? "5+" : people}, ${
     dedication ? "z dedykacją" : "bez dedykacji"
@@ -53,6 +53,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
 
   return (
     <div className="wrap config">
+      {/* lewa kolumna: konfiguracja + podglad w skali */}
       <div>
         <div className="cstep soak">
           <div className="clabel">1 &middot; Ile osób na portrecie</div>
@@ -63,12 +64,18 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
                 type="button"
                 className={`opt${people === n ? " sel" : ""}`}
                 onClick={() => setPeople(n)}
+                aria-pressed={people === n}
               >
                 {n === 5 ? "5+" : n}
               </button>
             ))}
           </div>
+          <p className="cstep-hint">
+            Pierwsza osoba w cenie formatu, każda kolejna +{prices.extraPerson} zł. Mogę łączyć
+            osoby z różnych zdjęć.
+          </p>
         </div>
+
         <div className="cstep soak d1">
           <div className="clabel">2 &middot; Format</div>
           <div className="optrow">
@@ -76,14 +83,19 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
               <button
                 key={f.key}
                 type="button"
-                className={`opt${format === f.key ? " sel" : ""}`}
+                className={`opt opt-2l${format === f.key ? " sel" : ""}`}
                 onClick={() => setFormat(f.key)}
+                aria-pressed={format === f.key}
               >
                 {f.label}
+                <span className="opt-sub">
+                  {f.dims} &middot; {formatZl(formatPrice(prices, f.key))}
+                </span>
               </button>
             ))}
           </div>
         </div>
+
         <div className="cstep soak d2">
           <div className="clabel">3 &middot; Odręczna dedykacja na odwrocie</div>
           <div className="optrow">
@@ -91,6 +103,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
               type="button"
               className={`opt${!dedication ? " sel" : ""}`}
               onClick={() => setDedication(false)}
+              aria-pressed={!dedication}
             >
               Bez dedykacji
             </button>
@@ -98,61 +111,67 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
               type="button"
               className={`opt${dedication ? " sel" : ""}`}
               onClick={() => setDedication(true)}
+              aria-pressed={dedication}
             >
-              Z dedykacją (+{prices.dedication} zł)
+              Z dedykacją <span className="opt-inline-sub">+{prices.dedication} zł</span>
             </button>
           </div>
         </div>
-        <div className="cstep soak d3">
-          <div className="clabel">4 &middot; Zdjęcia referencyjne</div>
-          <div className="upload" style={{ cursor: "default" }}>
-            Zdjęcia (do 6) dodacie w formularzu zamówienia obok.
-            <br />
-            <small>Można je też dosłać później mailem - płatność dopiero po ustaleniu szczegółów.</small>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="room soak">
+
+        {/* wizualizacja: rosnie i maleje razem z wyborem formatu */}
+        <div className="room soak d3">
           <div className="rframe" style={{ width: fmt.w, height: fmt.h }}>
             <img src="/gfx/portret-podglad.webp" alt="" width={300} height={420} loading="lazy" />
           </div>
           <div className="sofa" />
-          <div className="scale-note">podgląd w skali - kanapa 220 cm</div>
+          <div className="scale-note">
+            {fmt.dims} na ścianie - podgląd w skali, kanapa 220 cm
+          </div>
         </div>
-        <div className="pricebox soak d1">
-          <div className="row">
-            <span>Portret, format {formatLabel}</span>
-            <span>{formatZl(base)}</span>
-          </div>
-          {extra > 0 && (
-            <div className="row">
-              <span>Dodatkowe osoby &times; {people - 1}</span>
-              <span>{formatZl(extra)}</span>
-            </div>
-          )}
-          {dedication && (
-            <div className="row">
-              <span>Odręczna dedykacja</span>
-              <span>{formatZl(prices.dedication)}</span>
-            </div>
-          )}
-          <div className="total">
-            <span>Razem</span>
-            <b>{formatZl(total)}</b>
-          </div>
+      </div>
 
-          {sent ? (
+      {/* prawa kolumna: podsumowanie + zamowienie (sticky na desktopie) */}
+      <div className="config-side">
+        {sent ? (
+          <div className="pricebox soak">
             <div className="success">
               <div className="check">&#10003;</div>
               <h3>Zamówienie przyjęte</h3>
-              <p style={{ color: "var(--color-ink-soft)", fontSize: "0.95rem", marginTop: 8 }}>
-                Odezwę się mailowo w 24 - 48 godzin z prośbą o zdjęcie i potwierdzeniem terminu
-                realizacji.
+              <p className="success-sub">
+                {summary}. Odezwę się mailowo w 24 - 48 godzin - potwierdzimy termin i szczegóły,
+                a płatność ustalimy dopiero po obustronnej akceptacji.
               </p>
             </div>
-          ) : showForm ? (
-            <fetcher.Form method="post" encType="multipart/form-data">
+          </div>
+        ) : (
+          <div className="pricebox soak">
+            <div className="clabel">4 &middot; Podsumowanie i zamówienie</div>
+            <div className="row">
+              <span>Portret, format {formatLabel}</span>
+              <span>{formatZl(base)}</span>
+            </div>
+            {extra > 0 && (
+              <div className="row">
+                <span>Dodatkowe osoby &times; {people - 1}</span>
+                <span>{formatZl(extra)}</span>
+              </div>
+            )}
+            {dedication && (
+              <div className="row">
+                <span>Odręczna dedykacja</span>
+                <span>{formatZl(prices.dedication)}</span>
+              </div>
+            )}
+            <div className="row row-free">
+              <span>Wysyłka kurierem</span>
+              <span>w cenie</span>
+            </div>
+            <div className="total">
+              <span>Razem</span>
+              <b>{formatZl(total)}</b>
+            </div>
+
+            <fetcher.Form method="post" encType="multipart/form-data" className="pcform">
               <input type="hidden" name="details" value={summary} />
               <input
                 type="text"
@@ -160,77 +179,29 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
                 tabIndex={-1}
                 autoComplete="off"
                 aria-hidden="true"
-                style={{ position: "absolute", left: -9999, width: 1, height: 1, opacity: 0 }}
+                className="hp-field"
               />
-              <label
-                htmlFor="pc-names"
-                style={{
-                  display: "block",
-                  fontSize: "0.78rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--color-ink-faint)",
-                  margin: "16px 0 6px",
-                }}
-              >
-                Imię i nazwisko
-              </label>
+              <label htmlFor="pc-names">Imię i nazwisko</label>
               <input
                 id="pc-names"
                 name="names"
                 type="text"
                 placeholder="np. Anna Kowalska"
+                autoComplete="name"
                 required
-                style={{
-                  width: "100%",
-                  padding: "12px 14px",
-                  border: "1px solid var(--color-line)",
-                  borderRadius: 10,
-                  background: "var(--color-paper)",
-                }}
               />
-              <label
-                htmlFor="pc-email"
-                style={{
-                  display: "block",
-                  fontSize: "0.78rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--color-ink-faint)",
-                  margin: "16px 0 6px",
-                }}
-              >
-                E-mail
-              </label>
+              <label htmlFor="pc-email">E-mail</label>
               <input
                 id="pc-email"
                 name="email"
                 type="email"
                 placeholder="anna@..."
+                autoComplete="email"
+                inputMode="email"
                 required
-                style={{
-                  width: "100%",
-                  padding: "12px 14px",
-                  border: "1px solid var(--color-line)",
-                  borderRadius: 10,
-                  background: "var(--color-paper)",
-                }}
               />
-              <label
-                htmlFor="pc-photo"
-                style={{
-                  display: "block",
-                  fontSize: "0.78rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--color-ink-faint)",
-                  margin: "16px 0 6px",
-                }}
-              >
-                Zdjęcia referencyjne <span className="optional">(opcjonalnie, łącznie do 4 MB)</span>
+              <label htmlFor="pc-photo">
+                Zdjęcia referencyjne <span className="optional">(opcjonalnie)</span>
               </label>
               <input
                 id="pc-photo"
@@ -238,48 +209,52 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
                 type="file"
                 accept="image/*,.heic,.heif"
                 multiple
+                className="pc-file"
                 onChange={(e) => {
                   const files = [...(e.currentTarget.files ?? [])];
-                  const total = files.reduce((a, f) => a + f.size, 0);
+                  const size = files.reduce((a, f) => a + f.size, 0);
                   if (files.length > 6) {
                     setPhotoError("Maksymalnie 6 zdjęć - resztę możecie dosłać mailem.");
+                    setPhotoInfo(null);
                     e.currentTarget.value = "";
-                  } else if (total > 4 * 1024 * 1024) {
-                    setPhotoError("Wybrane zdjęcia ważą łącznie ponad 4 MB - wybierzcie mniej albo mniejsze pliki.");
+                  } else if (size > 4 * 1024 * 1024) {
+                    setPhotoError(
+                      "Zdjęcia ważą łącznie ponad 4 MB - wybierzcie mniej albo mniejsze pliki.",
+                    );
+                    setPhotoInfo(null);
                     e.currentTarget.value = "";
                   } else {
                     setPhotoError(null);
+                    setPhotoInfo(
+                      files.length
+                        ? `Wybrano: ${files.length} ${files.length === 1 ? "zdjęcie" : files.length < 5 ? "zdjęcia" : "zdjęć"} (${(size / 1024 / 1024).toFixed(1).replace(".", ",")} MB)`
+                        : null,
+                    );
                   }
                 }}
-                style={{
-                  width: "100%",
-                  padding: "10px 12px",
-                  border: "1px dashed var(--color-line)",
-                  borderRadius: 10,
-                  background: "var(--color-paper)",
-                  fontSize: "0.88rem",
-                }}
               />
-              <p style={{ fontSize: "0.8rem", color: "var(--color-ink-faint)", marginTop: 6 }}>
-                Można wybrać kilka naraz. Możecie je też dosłać później - po zamówieniu napiszę do Was maila.
+              <p className="pc-hint">
+                {photoInfo ??
+                  "Do 6 zdjęć, łącznie 4 MB. Możecie je też dosłać później - napiszę mailowo."}
               </p>
               {(error || photoError) && (
-                <p style={{ color: "#a33", fontSize: "0.88rem", marginTop: 14 }}>{error ?? photoError}</p>
+                <p className="field-error" role="alert">
+                  {error ?? photoError}
+                </p>
               )}
-              <button className="btn" type="submit" disabled={sending}>
-                {sending ? "Wysyłanie..." : "Zamawiam - bez płatności online"}
+              <button className="btn pc-submit" type="submit" disabled={sending}>
+                {sending ? "Wysyłanie..." : `Zamawiam za ${formatZl(total)}`}
               </button>
+              <p className="pc-trust">
+                bez płatności online - termin, szczegóły i płatność potwierdzimy mailowo
+              </p>
             </fetcher.Form>
-          ) : (
-            <button className="btn" type="button" onClick={() => setShowForm(true)}>
-              Zamów portret
-            </button>
-          )}
-          <div className="small">
-            realizacja 10 - 14 dni &middot; wysyłka w cenie &middot; szkic do akceptacji przed
-            malowaniem
+
+            <div className="small">
+              szkic do akceptacji &middot; realizacja 10 - 14 dni &middot; wysyłka w cenie
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

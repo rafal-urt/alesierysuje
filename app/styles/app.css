@@ -2528,3 +2528,126 @@ footer {
 .crumbs-sep {
   margin: 0 8px;
 }
+
+/* ===== konfigurator portretu v2 ===== */
+.config-side {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+@media (max-width: 920px) {
+  .config-side {
+    position: static;
+  }
+}
+.opt.opt-2l {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
+}
+.opt .opt-sub {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 400;
+  color: var(--color-ink-faint);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.opt.sel .opt-sub {
+  color: rgba(250, 247, 242, 0.75);
+}
+.opt .opt-inline-sub {
+  font-size: 0.78rem;
+  color: var(--color-ink-faint);
+  font-weight: 400;
+}
+.opt.sel .opt-inline-sub {
+  color: rgba(250, 247, 242, 0.75);
+}
+.cstep-hint {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  color: var(--color-ink-faint);
+  line-height: 1.5;
+}
+.pricebox .row-free span:last-child {
+  color: var(--color-ink-faint);
+  font-size: 0.86rem;
+}
+.pcform label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  margin: 16px 0 6px;
+}
+.pcform input[type="text"],
+.pcform input[type="email"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: var(--color-paper);
+  font-size: 0.95rem;
+}
+.pcform input:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 1px;
+}
+.pcform .hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.pc-file {
+  width: 100%;
+  padding: 12px;
+  border: 1px dashed var(--color-line);
+  border-radius: 10px;
+  background: var(--color-paper);
+  font-size: 0.86rem;
+  color: var(--color-ink-soft);
+}
+.pc-file::file-selector-button {
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: #fff;
+  padding: 7px 14px;
+  margin-right: 12px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.pc-file::file-selector-button:hover {
+  border-color: var(--color-ink);
+}
+.pc-hint {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  color: var(--color-ink-faint);
+}
+.pc-submit {
+  width: 100%;
+  margin-top: 18px;
+  justify-content: center;
+}
+.pc-trust {
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-ink-faint);
+}
+.success-sub {
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  margin-top: 8px;
+  line-height: 1.55;
+}
