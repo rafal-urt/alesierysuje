@@ -177,7 +177,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                 <h3>Live art na evencie</h3>
                 <p>Malowanie na żywo i szybkie portrety gości - atrakcja, przy której robi się kolejka.</p>
                 <span className="go">
-                  Wyślij brief <span>&rarr;</span>
+                  Zobacz pakiety <span>&rarr;</span>
                 </span>
               </div>
             </Link>
