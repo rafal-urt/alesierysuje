@@ -148,7 +148,7 @@ nav.sitenav {
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
-  width: min(1120px, calc(100% - 24px));
+  width: min(1240px, calc(100% - 24px));
   border-radius: 999px;
   background: rgba(250, 247, 242, 0.78);
   backdrop-filter: blur(16px) saturate(1.5);
@@ -168,7 +168,7 @@ nav.sitenav.scrolled {
     0 2px 6px rgba(43, 43, 43, 0.06);
 }
 .nav-inner {
-  padding: 9px 10px 9px 24px;
+  padding: 9px 10px 9px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -429,11 +429,13 @@ section {
 /* ===== homepage: hero typograficzne ===== */
 .hero {
   position: relative;
-  min-height: calc(100vh - 96px);
+  margin-top: -118px; /* pod plywajaca wyspe nav */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
+  padding-top: 118px;
   padding-bottom: 40px;
 }
 .hero .eyebrow {
