@@ -236,7 +236,7 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
             <p>Każdy z kącikiem live art, fakturą VAT i umową - bez "napisz po wycenę".</p>
           </div>
           <div className="soak d1">
-            <PackagesAccordion packages={EVENT_PACKAGES} prices={prices} ctaLabel="Sprawdź termin" />
+            <PackagesAccordion packages={EVENT_PACKAGES} prices={prices} ctaLabel="Sprawdź termin" palette="e" />
           </div>
           <p className="deposit-note soak">
             Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna ilustracja to{" "}

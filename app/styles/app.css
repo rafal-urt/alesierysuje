@@ -14,6 +14,8 @@
   --color-line: rgba(43, 43, 43, 0.14);
   --color-line-soft: rgba(43, 43, 43, 0.08);
 
+  --color-wash-violet: #9b8fc0;
+
   /* fonty */
   --font-serif: "Fraunces", ui-serif, Georgia, serif;
   --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
@@ -2187,6 +2189,35 @@ footer {
 }
 .packpanel.t3 .packpanel-body li::before {
   background: var(--color-wash-ochre);
+}
+/* delikatne tla paneli: wesela - blekit / roz / ochra */
+.packpanel.w-1 {
+  background: #f3f7fb;
+}
+.packpanel.w-2 {
+  background: #fbf3f5;
+}
+.packpanel.w-3 {
+  background: #fbf5ec;
+}
+/* eventy - ziele / fiolet / morski (inne niz weselne) */
+.packpanel.e-1 {
+  background: #f2f7f1;
+}
+.packpanel.e-2 {
+  background: #f5f3f9;
+}
+.packpanel.e-3 {
+  background: #eff6f6;
+}
+.packpanel.e-1 .packpanel-body li::before {
+  background: var(--color-wash-green);
+}
+.packpanel.e-2 .packpanel-body li::before {
+  background: var(--color-wash-violet);
+}
+.packpanel.e-3 .packpanel-body li::before {
+  background: var(--color-wash-blue);
 }
 .packpanel-body .btn {
   align-self: flex-start;

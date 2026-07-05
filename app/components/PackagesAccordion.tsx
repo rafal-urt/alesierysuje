@@ -23,10 +23,13 @@ export function PackagesAccordion({
   packages,
   prices,
   ctaLabel = "Wybierz datę",
+  palette = "w",
 }: {
   packages: PackageDef[];
   prices: Record<string, number>;
   ctaLabel?: string;
+  /** "w" = wesela (blekit/roz/ochra), "e" = eventy (ziele/fiolet/morski) */
+  palette?: "w" | "e";
 }) {
   const [active, setActive] = useState(packages.find((p) => p.featured)?.key ?? packages[0].key);
 
@@ -37,7 +40,7 @@ export function PackagesAccordion({
         return (
           <div
             key={p.key}
-            className={`packpanel t${i + 1}${open ? " open" : ""}`}
+            className={`packpanel t${i + 1} ${palette}-${i + 1}${open ? " open" : ""}`}
             onMouseEnter={() => setActive(p.key)}
             onClick={() => setActive(p.key)}
             onFocus={() => setActive(p.key)}
