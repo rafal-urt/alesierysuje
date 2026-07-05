@@ -2781,11 +2781,11 @@ footer {
   cursor: default;
 }
 .paint-clear-dot {
+  flex: 0 0 auto;
   width: 10px;
   height: 10px;
-  border-radius: 50% 60% 55% 45%;
-  background: var(--color-wash-blue);
-  filter: blur(0.4px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 35%, #a7c4dc, var(--color-wash-blue) 70%);
 }
 .paint-hint {
   max-width: 320px;

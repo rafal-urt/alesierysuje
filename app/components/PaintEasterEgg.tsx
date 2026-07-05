@@ -37,7 +37,7 @@ export function PaintEasterEgg() {
       setHint(true);
       sessionStorage.setItem("as-paint-hint", "1");
     }, 3500);
-    const hide = window.setTimeout(() => setHint(false), 14500);
+    const hide = window.setTimeout(() => setHint(false), 33500);
     return () => {
       clearTimeout(show);
       clearTimeout(hide);
