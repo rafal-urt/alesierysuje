@@ -2805,3 +2805,25 @@ footer {
     transform: none;
   }
 }
+
+/* ===== mobile: galerie z widocznym "peekiem" kolejnego zdjecia ===== */
+@media (max-width: 720px) {
+  .strip {
+    gap: 18px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .strip .piece,
+  .strip .piece.big {
+    min-width: 58vw;
+  }
+  .wall {
+    gap: 22px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .wall .piece,
+  .wall .piece.big {
+    min-width: 60vw;
+  }
+}
