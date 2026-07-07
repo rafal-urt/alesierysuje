@@ -104,6 +104,14 @@ export function PaintEasterEgg() {
 
     const start = (e: MouseEvent) => {
       if (e.button !== 0 || isInteractive(e.target)) return;
+      // przeciaganie paska przewijania to tez mousedown na tle - clientWidth/
+      // clientHeight nie obejmuja scrollbarow, wiec klik poza nimi ignorujemy
+      if (
+        e.clientX >= document.documentElement.clientWidth ||
+        e.clientY >= document.documentElement.clientHeight
+      ) {
+        return;
+      }
       holdTimer = window.setTimeout(() => {
         setSize();
         active = {
