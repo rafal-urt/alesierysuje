@@ -3046,3 +3046,56 @@ footer {
   color: var(--color-ink-faint);
   white-space: nowrap;
 }
+
+/* ===== strzalki przewijania galerii (desktop z myszka; na dotyku swipe) ===== */
+.scroller {
+  position: relative;
+}
+.scroller-arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+  color: var(--color-ink-soft);
+  font-size: 1.6rem;
+  line-height: 1;
+  z-index: 5;
+  box-shadow:
+    0 8px 22px rgba(43, 43, 43, 0.16),
+    0 2px 6px rgba(43, 43, 43, 0.08);
+  transition:
+    opacity 0.25s ease,
+    border-color 0.15s,
+    color 0.15s,
+    transform 0.15s;
+}
+.scroller-arrow.left {
+  left: 16px;
+}
+.scroller-arrow.right {
+  right: 16px;
+}
+.scroller-arrow:hover {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+  transform: translateY(-50%) scale(1.06);
+}
+.scroller-arrow:focus-visible {
+  outline: 2px solid var(--color-wash-blue);
+  outline-offset: 3px;
+}
+.scroller-arrow.off {
+  opacity: 0;
+  pointer-events: none;
+}
+/* pokazuj tylko tam, gdzie jest prawdziwa mysz/touchpad z kursorem */
+@media (hover: hover) and (pointer: fine) {
+  .scroller-arrow {
+    display: block;
+  }
+}

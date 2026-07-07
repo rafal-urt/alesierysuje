@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { Pic } from "~/components/Pic";
@@ -106,6 +106,32 @@ export function WorksGallery({
   const prev = () =>
     setSelectedIndex((i) => (i === null ? null : (i - 1 + works.length) % works.length));
   const next = () => setSelectedIndex((i) => (i === null ? null : (i + 1) % works.length));
+
+  // strzalki do przewijania myszka (na dotyku dziala swipe, wiec sa ukryte w CSS)
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(false);
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const update = () => {
+      setCanLeft(el.scrollLeft > 4);
+      setCanRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+    };
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => {
+      el.removeEventListener("scroll", update);
+      ro.disconnect();
+    };
+  }, [works.length]);
+  const nudge = (dir: -1 | 1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * el.clientWidth * 0.75, behavior: "smooth" });
+  };
   const sizes =
     variant === "wall"
       ? { w: 340, h: 420, wSmall: 280, hSmall: 360 }
@@ -113,8 +139,9 @@ export function WorksGallery({
 
   return (
     <>
-      <div className={`${variant} soak`}>
-        {works.map((it, idx) => (
+      <div className="scroller">
+        <div className={`${variant} soak`} ref={scrollerRef}>
+          {works.map((it, idx) => (
           <div
             key={it.seed}
             className={`piece${it.big ? " big" : ""}`}
@@ -142,7 +169,26 @@ export function WorksGallery({
               </div>
             )}
           </div>
-        ))}
+          ))}
+        </div>
+        <button
+          type="button"
+          className={`scroller-arrow left${canLeft ? "" : " off"}`}
+          onClick={() => nudge(-1)}
+          aria-label="Przewiń galerię w lewo"
+          tabIndex={canLeft ? 0 : -1}
+        >
+          &#8249;
+        </button>
+        <button
+          type="button"
+          className={`scroller-arrow right${canRight ? "" : " off"}`}
+          onClick={() => nudge(1)}
+          aria-label="Przewiń galerię w prawo"
+          tabIndex={canRight ? 0 : -1}
+        >
+          &#8250;
+        </button>
       </div>
       <Lightbox work={selected} onClose={() => setSelectedIndex(null)} onPrev={prev} onNext={next} cta={cta} />
     </>
