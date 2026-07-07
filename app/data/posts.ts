@@ -16,6 +16,8 @@ export type Post = {
   imageAlt?: string;
   /** wymiary pliku z image - do width/height (CLS) */
   imageSize?: [number, number];
+  /** odręczny podpis pod okładką wpisu */
+  imageCap?: string;
   body: PostBlock[];
 };
 
@@ -32,6 +34,7 @@ export const POSTS: Post[] = [
     image: "/gfx/prace/wesele-ilustracje-goscie-roz.webp",
     imageAlt: "Akwarelowe ilustracje gości weselnych rozłożone obok siebie",
     imageSize: [900, 1200],
+    imageCap: "ilustracje gości z jednego wesela",
     body: [
       {
         type: "p",
@@ -88,6 +91,7 @@ export const POSTS: Post[] = [
     image: "/gfx/prace/event-portret-goscia-na-clipboardzie.webp",
     imageAlt: "Akwarelowy portret gościa w trakcie malowania, przypięty do deski",
     imageSize: [900, 1200],
+    imageCap: "10-15 minut i portret gotowy",
     body: [
       {
         type: "p",
@@ -140,6 +144,7 @@ export const POSTS: Post[] = [
     image: "/gfx/prace/karta-wesele-grupa.webp",
     imageAlt: "Akwarelowa ilustracja roześmianej grupy gości weselnych",
     imageSize: [560, 790],
+    imageCap: "pamiątka, która zostaje po weselu",
     body: [
       {
         type: "p",
@@ -199,6 +204,7 @@ export const POSTS: Post[] = [
     image: "/gfx/prace/a5-portret-duet.webp",
     imageAlt: "Akwarelowy portret pary namalowany na podstawie zdjęcia",
     imageSize: [600, 840],
+    imageCap: "portret duetu prosto z pracowni",
     body: [
       {
         type: "p",
@@ -254,6 +260,7 @@ export const POSTS: Post[] = [
     image: "/gfx/prace/wesele-sciana-ilustracji-gosci.webp",
     imageAlt: "Kilkadziesiąt akwarelowych ilustracji gości z jednego wesela",
     imageSize: [675, 1200],
+    imageCap: "ściana ilustracji z jednego wesela",
     body: [
       {
         type: "p",

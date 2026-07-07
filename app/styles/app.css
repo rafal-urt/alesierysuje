@@ -2908,9 +2908,29 @@ footer {
 .postmeta a {
   border-bottom: 1px solid var(--color-line);
 }
+/* okladka wpisu: gole zdjecie jak w galeriach, stala geometria 3:4,
+   wysrodkowana w kolumnie tekstu, odreczny podpis pod spodem */
 .postcover {
-  max-width: 420px;
-  margin-bottom: 34px;
+  width: min(380px, 100%);
+  margin: 6px auto 40px;
+}
+.postcover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow:
+    0 16px 34px rgba(43, 43, 43, 0.18),
+    0 3px 8px rgba(43, 43, 43, 0.08);
+}
+.postcover figcaption {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: var(--color-ink-soft);
+  text-align: center;
+  padding-top: 12px;
 }
 .post p {
   font-size: 1.02rem;

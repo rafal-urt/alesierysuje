@@ -114,9 +114,10 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
       <section style={{ paddingTop: 10 }}>
         <div className="wrap legal">
           {post.image && (
-            <div className="frame postcover">
+            <figure className="postcover">
               <img src={post.image} alt={post.imageAlt ?? post.title} width={imgW} height={imgH} />
-            </div>
+              {post.imageCap && <figcaption>{post.imageCap}</figcaption>}
+            </figure>
           )}
           <div className="post">
             {post.body.map((block, i) => (
