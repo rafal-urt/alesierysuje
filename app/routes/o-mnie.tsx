@@ -1,6 +1,8 @@
 import type { Route } from "./+types/o-mnie";
 import { Link } from "react-router";
 import { WatercolorStain } from "~/components/WatercolorStain";
+import { WorksGallery } from "~/components/WorksGallery";
+import { STATIC_WORKS } from "~/data/works-static";
 import { pageMeta, breadcrumbJsonLd, SITE_URL, WZK_PROFILE_URL, INSTAGRAM_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
@@ -14,6 +16,9 @@ export function meta({}: Route.MetaArgs) {
     ogImage: "/og/o-mnie.png",
   });
 }
+
+// wybór prac na pas "z ostatnich wieczorów": wesela + eventy dla marek
+const PICKED_WORKS = [0, 1, 3, 5, 10, 11].map((i) => STATIC_WORKS[i]);
 
 export default function OMnie() {
   return (
@@ -39,6 +44,8 @@ export default function OMnie() {
         }}
       />
       <WatercolorStain color="blue" width={460} height={420} style={{ top: 120, right: -140 }} />
+
+      {/* hero: zdjęcie ze sztalugi + historia */}
       <section className="pageshero">
         <div className="wrap about">
           <div className="soak">
@@ -79,19 +86,16 @@ export default function OMnie() {
               gotowy obraz.
             </p>
             <p className="soak d2">
-              Na weselu nikt nie pamięta, o której podano tort. Wszyscy pamiętają moment, w którym z
-              mokrej, białej kartki zaczęła wyłaniać się ich sala, ich taniec, ich ludzie. To jest ta
-              część mojej pracy, której nie widać na skanach - i dla której robię to dalej.
+              Nie proszę nikogo o pozowanie. Staję ze sztalugą tam, gdzie dzieje się życie - między
+              parkietem a stołami - i łapię to, co zwykle umyka: czyjś gest, kolor sukienki, śmiech
+              w pół zdania. Kwadrans później ta chwila wisi już w kąciku live art, podpisana i
+              gotowa do zabrania.
             </p>
             <p className="soak d3">
-              Pędzel trzymam w ręku od dziecka - z czystej pasji. Ze sztalugą między gości wyszłam w
-              2025 roku i od tamtej pory mam za sobą kilkanaście wesel wspaniałych osób oraz eventy
-              dla marek - od firmowych jubileuszy po wydarzenia modowe. Część z tych wieczorów
-              obejrzycie w moich <Link to="/realizacje">realizacjach</Link>.
-            </p>
-            <p className="soak d3">
-              Pracuję na papierze akwarelowym 300 g, farbami, które przeżyją niejedną przeprowadzkę.
-              Do każdego zlecenia podchodzę jak do jedynego - bo dla Was ono takie jest.
+              Ze sztalugą między gości wyszłam w 2025 roku. Od tamtej pory namalowałam kilkanaście
+              wesel wspaniałych osób i eventy dla marek - od firmowych jubileuszy po wydarzenia
+              modowe - a między zleceniami wracam do pracowni, gdzie powstają{" "}
+              <Link to="/portrety-na-zamowienie">portrety ze zdjęć</Link>.
             </p>
             <div className="trust-line soak d3">
               <span className="stars" aria-hidden="true">
@@ -103,6 +107,98 @@ export default function OMnie() {
               </a>
             </div>
             <span className="sig soak d3">Aleksandra Sienica</span>
+          </div>
+        </div>
+      </section>
+
+      {/* droga: trzy pociągnięcia pędzla */}
+      <section>
+        <div className="wrap">
+          <div className="sec-head soak">
+            <div className="eyebrow">Droga</div>
+            <h2>Od szkicownika do sztalugi</h2>
+          </div>
+          <div className="steps">
+            <div className="step soak">
+              <div className="brush" style={{ background: "var(--color-wash-rose)" }} />
+              <h3>Od dziecka</h3>
+              <p>
+                Pędzel był w moim domu zawsze - malowałam z czystej pasji, długo tylko do szuflady i
+                dla najbliższych. To tam wyrobiłam rękę, która dziś zdąża z portretem przed końcem
+                piosenki.
+              </p>
+            </div>
+            <div className="step soak d1">
+              <div className="brush" style={{ background: "var(--color-wash-blue)" }} />
+              <h3>2025 - pierwsza sztaluga</h3>
+              <p>
+                Wyszłam z pracowni między gości i wszystko zaskoczyło: malowanie przestało być
+                samotne, a wokół kartki po raz pierwszy zebrała się publiczność ciekawa każdej
+                kreski.
+              </p>
+            </div>
+            <div className="step soak d2">
+              <div className="brush" style={{ background: "var(--color-wash-ochre)" }} />
+              <h3>Dziś - cała Polska</h3>
+              <p>
+                Kilkanaście wesel, eventy dla marek i kalendarz otwarty do końca 2027. Pracownia
+                stoi w Warszawie, ale sztaluga jeździ wszędzie tam, gdzie dzieje się coś ważnego.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* warsztat w liczbach */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="sec-head soak">
+            <div className="eyebrow">Warsztat</div>
+            <h2>Czym i na czym maluję</h2>
+          </div>
+          <div className="bstats">
+            <div className="bstat soak">
+              <b>300 g</b>
+              <span>
+                bawełniany papier akwarelowy - nie faluje od wody i przeżyje niejedną przeprowadzkę
+              </span>
+            </div>
+            <div className="bstat soak d1">
+              <b>A5 &middot; A4</b>
+              <span>akwarela i tusz - ilustracje gości w A5, portret Pary Młodej w A4</span>
+            </div>
+            <div className="bstat soak d2">
+              <b>10 - 15 min</b>
+              <span>tyle trwa jedna praca przy sztaludze - cała reszta to uważne patrzenie</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* pas prac */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="sec-head soak">
+            <div className="eyebrow">Prace</div>
+            <h2>Z ostatnich wieczorów</h2>
+          </div>
+        </div>
+        <WorksGallery
+          works={PICKED_WORKS}
+          variant="strip"
+          cta={{ label: "Zobaczcie wszystkie realizacje", to: "/realizacje" }}
+        />
+      </section>
+
+      {/* CTA */}
+      <section>
+        <div className="wrap">
+          <div className="banner soak">
+            <WatercolorStain color="rose" width={420} height={380} style={{ bottom: -140, left: -80 }} />
+            <h2>Namaluję też Wasz wieczór</h2>
+            <Link className="btn light" to="/terminy">
+              Sprawdź swój termin
+            </Link>
           </div>
         </div>
       </section>
