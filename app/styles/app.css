@@ -2043,6 +2043,30 @@ footer {
   color: var(--color-paper);
   text-decoration: none;
 }
+/* social pod opisem marki: Instagram + opinie WZK */
+.fsocial {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.fsocial a {
+  align-self: flex-start;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.18s,
+    border-color 0.18s;
+}
+.fsocial a:hover {
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+  text-decoration: none;
+}
+.fstars {
+  color: var(--color-wash-ochre);
+  letter-spacing: 2px;
+  font-size: 0.85em;
+}
 .fmuted {
   font-size: 0.92rem;
   color: var(--color-ink-soft);

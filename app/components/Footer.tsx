@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { track } from "~/lib/track";
+import { WZK_PROFILE_URL, INSTAGRAM_URL } from "~/lib/seo";
 
 // Kazda podstrona ma w stopce dokladnie jeden link.
 export function Footer() {
@@ -19,6 +19,17 @@ export function Footer() {
             <Link className="btn sm" to="/terminy">
               Sprawdź swój termin
             </Link>
+            <div className="fsocial">
+              <a href={INSTAGRAM_URL} rel="noopener noreferrer" target="_blank">
+                Instagram &middot; @alesierysuje
+              </a>
+              <a href={WZK_PROFILE_URL} rel="noopener noreferrer" target="_blank">
+                <span className="fstars" aria-hidden="true">
+                  &#9733;&#9733;&#9733;&#9733;&#9733;
+                </span>{" "}
+                5/5 &middot; Wesele z klasą
+              </a>
+            </div>
           </div>
           <div className="fcol">
             <p className="fhead">Oferta</p>
@@ -50,6 +61,14 @@ export function Footer() {
                 <Link to="/blog">Blog</Link>
               </li>
               <li>
+                <Link to="/kontakt">Kontakt</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="fcol">
+            <p className="fhead">Maluję w</p>
+            <ul>
+              <li>
                 <Link to="/malowanie-na-zywo-warszawa">Warszawa</Link>
               </li>
               <li>
@@ -64,33 +83,8 @@ export function Footer() {
               <li>
                 <Link to="/malowanie-na-zywo-lodz">Łódź</Link>
               </li>
-            </ul>
-          </div>
-          <div className="fcol">
-            <p className="fhead">Kontakt</p>
-            <ul>
               <li>
-                <Link to="/kontakt">Formularz kontaktowy</Link>
-              </li>
-              <li>
-                <a
-                  href="mailto:alesierysuje@gmail.com"
-                  onClick={() => track("klik_mailto", { miejsce: "stopka" })}
-                >
-                  alesierysuje@gmail.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/alesierysuje"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Instagram &middot; @alesierysuje
-                </a>
-              </li>
-              <li>
-                <span className="fmuted">Warszawa &middot; dojazd w całej Polsce</span>
+                <span className="fmuted">i w całej Polsce - dojazd z Warszawy</span>
               </li>
             </ul>
           </div>
