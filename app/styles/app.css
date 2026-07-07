@@ -1289,7 +1289,8 @@ section {
 .lb-inner .frame {
   margin-bottom: 22px;
 }
-.lb-inner > img {
+.lb-inner > img,
+.lb-inner > picture > img {
   display: block;
   width: auto;
   max-width: 100%;
