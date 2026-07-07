@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import type { City } from "~/data/cities";
 import { Faq } from "~/components/Faq";
-import { A5Stack } from "~/components/A5Stack";
+import { CardFan } from "~/components/CardFan";
 import { WatercolorStain } from "~/components/WatercolorStain";
 import { PackagesAccordion } from "~/components/PackagesAccordion";
 import { JsonLd } from "~/components/JsonLd";
@@ -76,7 +76,7 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
               </a>
             </div>
           </div>
-          <A5Stack caps={["Para Młoda", "świadkowa", "goście"]} />
+          <CardFan />
         </div>
       </section>
 
