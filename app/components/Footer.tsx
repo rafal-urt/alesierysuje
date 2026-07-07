@@ -55,6 +55,15 @@ export function Footer() {
               <li>
                 <Link to="/malowanie-na-zywo-trojmiasto">Trójmiasto</Link>
               </li>
+              <li>
+                <Link to="/malowanie-na-zywo-poznan">Poznań</Link>
+              </li>
+              <li>
+                <Link to="/malowanie-na-zywo-krakow">Kraków</Link>
+              </li>
+              <li>
+                <Link to="/malowanie-na-zywo-lodz">Łódź</Link>
+              </li>
             </ul>
           </div>
           <div className="fcol">

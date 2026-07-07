@@ -109,6 +109,132 @@ export const CITIES: City[] = [
     ogImage: "/og/trojmiasto.png",
     areaServed: ["Gdańsk", "Gdynia", "Sopot", "Pomorze"],
   },
+  {
+    slug: "malowanie-na-zywo-poznan",
+    name: "Poznań",
+    inCity: "w Poznaniu i Wielkopolsce",
+    title: "Malowanie na żywo Poznań - live painting | alesierysuje",
+    description:
+      "Malowanie na żywo w Poznaniu: akwarelowe portrety gości na weselach i eventach w Wielkopolsce (live painting). Pakiety od 4 000 zł, wolne terminy online.",
+    h1: "Malowanie na żywo Poznań - live painting na weselu i evencie",
+    lead:
+      "Akwarelowe portrety gości malowane w trakcie przyjęcia - od 20 do 60 ilustracji z jednego wieczoru. Do Poznania i Wielkopolski przyjeżdżam z całym kącikiem live art: sztalugą, farbami i papierem 300 g.",
+    intro: [
+      "Wielkopolskie wesela mają dwa żywioły: eleganckie sale w samym Poznaniu i folwarki, dworki oraz stodoły rozsiane wokół miasta - od Kórnika po Puszczykowo. Akwarela odnajduje się w obu. W miejskich wnętrzach portrety gości dołączają do dopracowanej oprawy wieczoru, a w plenerowych przyjęciach pod miastem kącik live art staje się tym miejscem, wokół którego kręcą się goście między ogniskiem a parkietem.",
+      "Poznań to też miasto targów i biznesu - maluję na galach, konferencjach i wieczorach towarzyszących wydarzeniom targowym, z papierem przygotowanym pod branding i rozliczeniem na fakturę VAT. A mechanika jest wszędzie ta sama: goście podchodzą tylko na szybkie zdjęcie, wracają do rozmów, a podpisane ilustracje odbierają z ekspozycji przed końcem wieczoru. Koszt dojazdu do Wielkopolski podaję z góry przy potwierdzaniu terminu.",
+    ],
+    areas:
+      "Poznań i Wielkopolska: Kórnik · Puszczykowo · Śrem · Gniezno · Leszno - dojazd wyceniany z góry przy potwierdzeniu terminu",
+    reviewPattern: "pozna|wielkopol|kórnik|kornik|gniezn|puszczyk",
+    faq: [
+      {
+        q: "Ile kosztuje dojazd do Poznania?",
+        a: "Dojazd do Poznania i Wielkopolski wyceniam indywidualnie i podaję z góry przy potwierdzaniu terminu - kwotę znacie przed podpisaniem umowy. Ceny pakietów są takie same jak wszędzie.",
+      },
+      {
+        q: "Wesele mamy w stodole pod Poznaniem - da się tam malować?",
+        a: "Tak, folwarki i stodoły to wdzięczne miejsca na live painting. Potrzebuję tylko około 2 × 2 metrów na kącik, zadaszenia i dobrego światła - przy przyjęciach do późnej nocy wystarczy zwykła lampa przy stoliku.",
+      },
+      {
+        q: "Czy maluje Pani na eventach przy targach w Poznaniu?",
+        a: "Tak - gale, konferencje i wieczory towarzyszące wydarzeniom targowym, także kilkudniowe. Papier przygotowuję pod branding wydarzenia, a rozliczenie jest na fakturę VAT. Pakiety eventowe znajdziecie na osobnej stronie.",
+      },
+      {
+        q: "Ile portretów powstanie na weselu w Poznaniu?",
+        a: "Na żywo do 30 ilustracji A5 - jedna praca to 10 - 15 minut. W pakietach Klasycznym i Premium kolejne dokańczam w warszawskiej pracowni i wysyłam po weselu, łącznie nawet 60 prac.",
+      },
+      {
+        q: "Kiedy rezerwować termin na wesele w Wielkopolsce?",
+        a: "Najlepiej od razu po rezerwacji sali - sobotnie terminy w sezonie znikają pierwsze. Kalendarz online pokazuje dostępność w czasie rzeczywistym, a zapytanie jest bezpłatne i do niczego nie zobowiązuje.",
+      },
+    ],
+    ogImage: "/og/poznan.png",
+    areaServed: ["Poznań", "Wielkopolska"],
+  },
+  {
+    slug: "malowanie-na-zywo-krakow",
+    name: "Kraków",
+    inCity: "w Krakowie i Małopolsce",
+    title: "Malowanie na żywo Kraków - live painting | alesierysuje",
+    description:
+      "Malowanie na żywo w Krakowie: akwarelowe portrety gości na weselach i eventach w Małopolsce (live painting). Pakiety od 4 000 zł, wolne terminy online.",
+    h1: "Malowanie na żywo Kraków - live painting na weselu i evencie",
+    lead:
+      "Akwarelowe portrety gości malowane w trakcie przyjęcia - od 20 do 60 ilustracji z jednego wieczoru. Kraków ma wnętrza, które same proszą się o akwarelę - od kamienic przy Rynku po dworki Małopolski.",
+    intro: [
+      "Zabytkowa kamienica na Kazimierzu, klimatyczna piwnica ze sklepieniami, dworek pod Krakowem albo sala z widokiem na góry - małopolskie wesela wybierają miejsca z charakterem, a taki charakter świetnie wchodzi na papier. Kącik live art ustawiam nawet w kameralnych, zabytkowych wnętrzach: stolik i sztaluga zajmują około 2 × 2 metrów, więc mieszczą się tam, gdzie fotobudka nie ma szans.",
+      "Coraz częściej pary ciągną też z Krakowa wyżej - na wesela w Beskidach i na Podhalu, gdzie w tle ilustracji zamiast sali pojawia się panorama gór. Sam wieczór wygląda wszędzie tak samo: żadnego pozowania, tylko szybkie zdjęcie w kąciku i powrót do zabawy, a gotowe, podpisane portrety goście zabierają ze sobą. Maluję też na krakowskich eventach firmowych - od gal po konferencje, na fakturę VAT. Dojazd do Małopolski wyceniam z góry przy potwierdzeniu terminu.",
+    ],
+    areas:
+      "Kraków i Małopolska: Wieliczka · Niepołomice · Beskidy · Podhale i Zakopane - dojazd wyceniany z góry przy potwierdzeniu terminu",
+    reviewPattern: "krak|małopol|malopol|wielicz|podhal|zakopan|beskid",
+    faq: [
+      {
+        q: "Ile kosztuje dojazd do Krakowa?",
+        a: "Dojazd do Krakowa i Małopolski wyceniam indywidualnie i podaję z góry przy potwierdzaniu terminu - bez niespodzianek w umowie. Same pakiety kosztują tyle samo co w całej Polsce.",
+      },
+      {
+        q: "Nasza sala to zabytkowa kamienica - zmieści się tam kącik live art?",
+        a: "Prawie na pewno tak. Potrzebuję około 2 × 2 metrów na stolik i sztalugę - to mniej niż zajmuje stół dla czterech gości. W ciasnych, klimatycznych wnętrzach proszę tylko o jedno: punkt dobrego światła przy kąciku.",
+      },
+      {
+        q: "Wesele mamy w górach, na Podhalu - dojedzie Pani?",
+        a: "Tak, góry to żaden problem - dojazd wyceniam tak samo jak do Krakowa, z góry przy potwierdzeniu terminu. Przy weselach dwudniowych drugi dzień wyceniam z rabatem, bo koszt dojazdu dzielicie tylko raz.",
+      },
+      {
+        q: "Czy goście muszą przerywać zabawę, żeby dostać portret?",
+        a: "Nie - podchodzą do kącika na szybkie zdjęcie i wracają na parkiet, a ja maluję z fotografii. Jedna praca to 10 - 15 minut, gotowe ilustracje czekają podpisane w ekspozycji do końca wieczoru.",
+      },
+      {
+        q: "A eventy firmowe w Krakowie?",
+        a: "Jak najbardziej - gale, konferencje i imprezy firmowe w krakowskich hotelach i postindustrialnych przestrzeniach. Papier przygotowuję pod branding wydarzenia, rozliczenie na fakturę VAT.",
+      },
+    ],
+    ogImage: "/og/krakow.png",
+    areaServed: ["Kraków", "Małopolska"],
+  },
+  {
+    slug: "malowanie-na-zywo-lodz",
+    name: "Łódź",
+    inCity: "w Łodzi i województwie łódzkim",
+    title: "Malowanie na żywo Łódź - live painting | alesierysuje",
+    description:
+      "Malowanie na żywo w Łodzi: akwarelowe portrety gości na weselach i eventach (live painting). Blisko z Warszawy - niski koszt dojazdu. Pakiety od 4 000 zł.",
+    h1: "Malowanie na żywo Łódź - live painting na weselu i evencie",
+    lead:
+      "Akwarelowe portrety gości malowane w trakcie przyjęcia - od 20 do 60 ilustracji z jednego wieczoru. Z mojej warszawskiej pracowni do Łodzi jest niecałe półtorej godziny, więc dojazd kosztuje niewiele.",
+    intro: [
+      "Łódzkie wesela i eventy mają scenografię, o jakiej inne miasta mogą pomarzyć: surową cegłę dawnych fabryk, lofty z wysokimi oknami, podwórka przy Piotrkowskiej. Miękka akwarela na tym tle robi podwójne wrażenie - portrety gości powstają w kąciku live art, który w industrialnym wnętrzu wygląda jak mała pracownia artystki przeniesiona wprost na przyjęcie.",
+      "Jest też argument praktyczny: Łódź to najbliższy mojej pracowni duży ośrodek poza Mazowszem, więc koszt dojazdu jest symboliczny, a logistyka - najprostsza z możliwych. Łatwiej tu też o termin z krótszym wyprzedzeniem, bo dojazd nie wymaga noclegu. Sam wieczór działa jak wszędzie: szybkie zdjęcie zamiast pozowania, 10 - 15 minut na portret i podpisane ilustracje do odebrania z ekspozycji. Firmy zapraszają mnie też na łódzkie gale i imprezy integracyjne - z papierem pod branding i fakturą VAT.",
+    ],
+    areas:
+      "Łódź i województwo łódzkie: Pabianice · Zgierz · Uniejów · Spała - najniższy koszt dojazdu poza Mazowszem",
+    reviewPattern: "łódz|łodz|lodz|pabianic|zgierz|uniejów|uniejow|spał|spal",
+    faq: [
+      {
+        q: "Ile kosztuje dojazd do Łodzi?",
+        a: "Najmniej ze wszystkich miast poza Mazowszem - z Warszawy do Łodzi jest niecałe półtorej godziny. Dokładną kwotę podaję z góry przy potwierdzaniu terminu, a ceny pakietów są takie same jak wszędzie.",
+      },
+      {
+        q: "Nasza sala to dawna fabryka - czy cegła i przyciemnione światło to problem?",
+        a: "Industrialne wnętrza są wdzięczne malarsko, proszę tylko o punkt dobrego światła przy kąciku live art - wystarczy lampa przy stoliku. Około 2 × 2 metrów miejsca znajdzie się w każdym lofcie.",
+      },
+      {
+        q: "Zostały nam trzy miesiące do wesela - to jeszcze realny termin?",
+        a: "Sprawdźcie kalendarz online - przy Łodzi krótkie wyprzedzenie jest najmniej problematyczne, bo prosta logistyka pozwala mi domykać bliższe daty. Zapytanie jest bezpłatne, odpowiedź wraca w 24 - 48 godzin.",
+      },
+      {
+        q: "Ile ilustracji powstanie podczas łódzkiego wesela?",
+        a: "Na żywo do 30 prac A5, a w pakietach Klasycznym i Premium kolejne dokańczam w pracowni i wysyłam po weselu - łącznie nawet 60 ilustracji. Portret Pary Młodej w formacie A4 jest w cenie każdego pakietu.",
+      },
+      {
+        q: "Czy robi Pani też eventy firmowe w Łodzi?",
+        a: "Tak - gale, integracje i konferencje, także w postindustrialnych przestrzeniach, z których Łódź słynie. Papier przygotowuję pod branding wydarzenia, rozliczenie na fakturę VAT.",
+      },
+    ],
+    ogImage: "/og/lodz.png",
+    areaServed: ["Łódź", "województwo łódzkie"],
+  },
 ];
 
 export function getCity(slug: string): City | undefined {
