@@ -3089,8 +3089,14 @@ footer {
   outline: 2px solid var(--color-wash-blue);
   outline-offset: 3px;
 }
+/* brak overflow - strzalki calkiem schowane */
 .scroller-arrow.off {
   opacity: 0;
+  pointer-events: none;
+}
+/* osiagnieta krawedz - strzalka widoczna, ale przygaszona (czytelna afordancja) */
+.scroller-arrow.dim {
+  opacity: 0.3;
   pointer-events: none;
 }
 /* pokazuj tylko tam, gdzie jest prawdziwa mysz/touchpad z kursorem */

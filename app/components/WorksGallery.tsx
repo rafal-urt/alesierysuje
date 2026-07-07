@@ -111,12 +111,14 @@ export function WorksGallery({
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
+  const [hasOverflow, setHasOverflow] = useState(false);
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;
     const update = () => {
       setCanLeft(el.scrollLeft > 4);
       setCanRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+      setHasOverflow(el.scrollWidth > el.clientWidth + 8);
     };
     update();
     el.addEventListener("scroll", update, { passive: true });
@@ -173,7 +175,7 @@ export function WorksGallery({
         </div>
         <button
           type="button"
-          className={`scroller-arrow left${canLeft ? "" : " off"}`}
+          className={`scroller-arrow left${hasOverflow ? (canLeft ? "" : " dim") : " off"}`}
           onClick={() => nudge(-1)}
           aria-label="Przewiń galerię w lewo"
           tabIndex={canLeft ? 0 : -1}
@@ -182,7 +184,7 @@ export function WorksGallery({
         </button>
         <button
           type="button"
-          className={`scroller-arrow right${canRight ? "" : " off"}`}
+          className={`scroller-arrow right${hasOverflow ? (canRight ? "" : " dim") : " off"}`}
           onClick={() => nudge(1)}
           aria-label="Przewiń galerię w prawo"
           tabIndex={canRight ? 0 : -1}
