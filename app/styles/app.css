@@ -1933,6 +1933,23 @@ section {
   position: relative;
   transform: rotate(1.5deg);
 }
+/* zdjecie na /o-mnie: bez bialej ramki - goly kadr jak kafle galerii */
+.about-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+  box-shadow:
+    0 16px 34px rgba(43, 43, 43, 0.18),
+    0 3px 8px rgba(43, 43, 43, 0.08);
+}
+.about-photo figcaption {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: var(--color-ink-soft);
+  text-align: center;
+  padding-top: 12px;
+}
 
 /* ===== footer ===== */
 footer {

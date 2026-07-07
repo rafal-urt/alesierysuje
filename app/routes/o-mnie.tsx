@@ -23,7 +23,7 @@ export default function OMnie() {
         <div className="wrap about">
           <div className="soak">
             <div className="easel">
-              <div className="frame">
+              <figure className="about-photo">
                 <picture>
                   <source
                     type="image/avif"
@@ -42,8 +42,8 @@ export default function OMnie() {
                     height={1500}
                   />
                 </picture>
-                <div className="cap">live painting, wesele</div>
-              </div>
+                <figcaption>live painting, wesele</figcaption>
+              </figure>
             </div>
           </div>
           <div className="story">
