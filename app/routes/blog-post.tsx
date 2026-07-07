@@ -5,6 +5,7 @@ import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 import { getPost, readingMinutes, POSTS, type PostBlock } from "~/data/posts";
+import { Pic } from "~/components/Pic";
 
 export function loader({ params }: Route.LoaderArgs) {
   const post = getPost(params.slug);
@@ -115,7 +116,7 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
         <div className="wrap legal">
           {post.image && (
             <figure className="postcover">
-              <img src={post.image} alt={post.imageAlt ?? post.title} width={imgW} height={imgH} />
+              <Pic src={post.image} alt={post.imageAlt ?? post.title} width={imgW} height={imgH} />
               {post.imageCap && <figcaption>{post.imageCap}</figcaption>}
             </figure>
           )}

@@ -5,6 +5,7 @@ import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 import { POSTS, readingMinutes } from "~/data/posts";
+import { Pic } from "~/components/Pic";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
@@ -38,7 +39,7 @@ export default function Blog() {
               <article key={p.slug} className={`blogcard soak d${Math.min(i % 3, 2) + 1}`}>
                 {p.image && (
                   <Link to={`/blog/${p.slug}`} className="blogcard-img" tabIndex={-1}>
-                    <img
+                    <Pic
                       src={p.image}
                       alt={p.imageAlt ?? p.title}
                       width={p.imageSize?.[0] ?? 675}

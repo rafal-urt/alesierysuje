@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
+import { Pic } from "~/components/Pic";
 
 export type GalleryWork = {
   title: string;
@@ -74,7 +75,7 @@ function Lightbox({
         {work && (
           <>
             {work.imageUrl ? (
-              <img src={work.imageUrl} alt={work.imageAlt ?? work.title} width={work.imageWidth} height={work.imageHeight} />
+              <Pic src={work.imageUrl} alt={work.imageAlt ?? work.title} width={work.imageWidth} height={work.imageHeight} />
             ) : (
               <div className="frame">
                 <WatercolorPlaceholder seed={work.seed} palette={work.palette} width={420} height={520} />
@@ -129,7 +130,7 @@ export function WorksGallery({
             aria-label={`Powiększ: ${it.title}`}
           >
             {it.imageUrl ? (
-              <img src={it.imageUrl} alt={it.imageAlt ?? it.title} width={it.imageWidth} height={it.imageHeight} loading="lazy" />
+              <Pic src={it.imageUrl} alt={it.imageAlt ?? it.title} width={it.imageWidth} height={it.imageHeight} loading="lazy" />
             ) : (
               <div className="frame">
                 <WatercolorPlaceholder
