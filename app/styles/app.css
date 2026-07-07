@@ -2099,6 +2099,16 @@ footer {
   border-bottom: 1px solid var(--color-ink);
   color: var(--color-ink);
 }
+/* przyciski wewnatrz .legal: kolor linkow nie moze nadpisywac .btn */
+.legal a.btn {
+  color: var(--color-paper);
+}
+.legal a.btn.ghost {
+  color: var(--color-ink);
+}
+.legal a.btn.ghost:hover {
+  color: var(--color-paper);
+}
 
 /* ===== hero podstrony wesela: tekst + wachlarz ilustracji A5 ===== */
 .split-hero {
