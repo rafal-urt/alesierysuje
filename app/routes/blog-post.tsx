@@ -4,7 +4,7 @@ import { WatercolorStain } from "~/components/WatercolorStain";
 import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
-import { getPost } from "~/data/posts";
+import { getPost, readingMinutes, POSTS, type PostBlock } from "~/data/posts";
 
 export function loader({ params }: Route.LoaderArgs) {
   const post = getPost(params.slug);
@@ -23,8 +23,60 @@ export function meta({ data }: Route.MetaArgs) {
   });
 }
 
+// "**tekst**" -> pogrubienie, "[tekst](/sciezka)" -> link wewnętrzny
+function Inline({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (part.startsWith("**") && part.endsWith("**")) {
+          return <b key={i}>{part.slice(2, -2)}</b>;
+        }
+        const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (link) {
+          return (
+            <Link key={i} to={link[2]}>
+              {link[1]}
+            </Link>
+          );
+        }
+        return part;
+      })}
+    </>
+  );
+}
+
+function Block({ block, lead }: { block: PostBlock; lead: boolean }) {
+  if (block.type === "h2") {
+    return (
+      <h2>
+        <Inline text={block.text} />
+      </h2>
+    );
+  }
+  if (block.type === "ul") {
+    return (
+      <ul>
+        {block.items.map((item) => (
+          <li key={item.slice(0, 40)}>
+            <Inline text={item} />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  return (
+    <p className={lead ? "postlead" : undefined}>
+      <Inline text={block.text} />
+    </p>
+  );
+}
+
 export default function BlogPost({ loaderData }: Route.ComponentProps) {
   const { post } = loaderData;
+  const minutes = readingMinutes(post);
+  const others = POSTS.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const [imgW, imgH] = post.imageSize ?? [675, 1200];
   return (
     <main className="page">
       <JsonLd
@@ -41,6 +93,7 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
           description: post.description,
           datePublished: post.date,
           inLanguage: "pl-PL",
+          ...(post.image ? { image: SITE_URL + post.image } : {}),
           author: { "@type": "Person", name: "Aleksandra Sienica" },
           publisher: { "@id": SITE_URL + "#business" },
           mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
@@ -49,10 +102,10 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
       <WatercolorStain color="green" width={460} height={420} style={{ top: 80, left: -150 }} />
       <section className="pageshero">
         <div className="wrap legal">
-          <p style={{ fontSize: "0.85rem", color: "var(--color-ink-faint)", marginBottom: 10 }}>
-            <Link to="/blog">Blog</Link> &middot; {post.dateLabel}
-          </p>
           <Crumbs items={[{ name: "Blog", path: "/blog" }, { name: post.title }]} />
+          <p className="postmeta">
+            <Link to="/blog">Blog</Link> &middot; {post.dateLabel} &middot; {minutes} min czytania
+          </p>
           <h1 className="soak d1" style={{ fontSize: "clamp(1.9rem,3.6vw,2.8rem)" }}>
             {post.title}
           </h1>
@@ -61,16 +114,20 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
       <section style={{ paddingTop: 10 }}>
         <div className="wrap legal">
           {post.image && (
-            <div className="frame" style={{ maxWidth: 420, marginBottom: 34 }}>
-              <img src={post.image} alt={post.imageAlt ?? post.title} width={675} height={1200} />
+            <div className="frame postcover">
+              <img src={post.image} alt={post.imageAlt ?? post.title} width={imgW} height={imgH} />
             </div>
           )}
-          {post.body.map((paragraph) => (
-            <p key={paragraph.slice(0, 40)} style={{ fontSize: "1.05rem", lineHeight: 1.7 }}>
-              {paragraph}
-            </p>
-          ))}
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 30 }}>
+          <div className="post">
+            {post.body.map((block, i) => (
+              <Block
+                key={block.type === "ul" ? block.items[0].slice(0, 40) : block.text.slice(0, 40)}
+                block={block}
+                lead={i === 0 && block.type === "p"}
+              />
+            ))}
+          </div>
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 34 }}>
             <Link className="btn" to="/terminy">
               Zobacz kalendarz terminów
             </Link>
@@ -78,6 +135,17 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
               Sprawdź cennik
             </Link>
           </div>
+          {others.length > 0 && (
+            <aside className="postmore">
+              <p className="postmore-label">Czytajcie też</p>
+              {others.map((p) => (
+                <Link key={p.slug} to={`/blog/${p.slug}`} className="postmore-link">
+                  <span>{p.title}</span>
+                  <span className="postmore-date">{p.dateLabel}</span>
+                </Link>
+              ))}
+            </aside>
+          )}
         </div>
       </section>
     </main>

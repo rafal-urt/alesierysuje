@@ -4,18 +4,19 @@ import { WatercolorStain } from "~/components/WatercolorStain";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
-import { POSTS } from "~/data/posts";
+import { POSTS, readingMinutes } from "~/data/posts";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Blog - live painting i portrety | alesierysuje",
     description:
-      "Aktualności z pracowni alesierysuje: zapisy na nowe sezony, kulisy malowania na żywo na weselach i eventach.",
+      "Aktualności z pracowni alesierysuje: zapisy na nowe sezony, kulisy malowania na żywo na weselach i eventach, porady o portretach na zamówienie.",
     path: "/blog",
   });
 }
 
 export default function Blog() {
+  const posts = [...POSTS].sort((a, b) => b.date.localeCompare(a.date));
   return (
     <main className="page">
       <JsonLd data={breadcrumbJsonLd([{ name: "Blog", path: "/blog" }])} />
@@ -25,35 +26,40 @@ export default function Blog() {
           <Crumbs items={[{ name: "Blog" }]} />
           <h1 className="soak d1">Blog - z pracowni i sprzed sztalugi</h1>
           <p className="lead soak d2">
-            Aktualności o zapisach, kulisy malowania na żywo i portretów na zamówienie.
+            Aktualności o zapisach, kulisy malowania na żywo i porady - od cen po wybór zdjęcia do
+            portretu.
           </p>
         </div>
       </section>
       <section style={{ paddingTop: 10 }}>
-        <div className="wrap legal">
-          {POSTS.map((p) => (
-            <article key={p.slug} className="soak" style={{ marginBottom: 40 }}>
-              {p.image && (
-                <Link to={`/blog/${p.slug}`} style={{ display: "block", maxWidth: 260, marginBottom: 18 }}>
-                  <span className="frame" style={{ display: "block" }}>
-                    <img src={p.image} alt={p.imageAlt ?? p.title} width={675} height={1200} loading="lazy" />
-                  </span>
+        <div className="wrap">
+          <div className="bloglist">
+            {posts.map((p, i) => (
+              <article key={p.slug} className={`blogcard soak d${Math.min(i % 3, 2) + 1}`}>
+                {p.image && (
+                  <Link to={`/blog/${p.slug}`} className="blogcard-img" tabIndex={-1}>
+                    <img
+                      src={p.image}
+                      alt={p.imageAlt ?? p.title}
+                      width={p.imageSize?.[0] ?? 675}
+                      height={p.imageSize?.[1] ?? 1200}
+                      loading={i < 2 ? "eager" : "lazy"}
+                    />
+                  </Link>
+                )}
+                <p className="blogcard-meta">
+                  {p.dateLabel} &middot; {readingMinutes(p)} min czytania
+                </p>
+                <h2>
+                  <Link to={`/blog/${p.slug}`}>{p.title}</Link>
+                </h2>
+                <p className="blogcard-excerpt">{p.excerpt}</p>
+                <Link className="blogcard-more" to={`/blog/${p.slug}`}>
+                  Czytaj dalej &rarr;
                 </Link>
-              )}
-              <h2>
-                <Link to={`/blog/${p.slug}`} style={{ borderBottom: "1px solid transparent" }}>
-                  {p.title}
-                </Link>
-              </h2>
-              <p style={{ fontSize: "0.85rem", color: "var(--color-ink-faint)", marginBottom: 8 }}>
-                {p.dateLabel}
-              </p>
-              <p>{p.excerpt}</p>
-              <Link className="btn ghost sm" to={`/blog/${p.slug}`}>
-                Czytaj dalej &rarr;
-              </Link>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </main>
