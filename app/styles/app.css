@@ -1950,6 +1950,15 @@ section {
   text-align: center;
   padding-top: 12px;
 }
+.about .story p a,
+.about .trust-line a {
+  border-bottom: 1px solid var(--color-line);
+  transition: border-color 0.2s;
+}
+.about .story p a:hover,
+.about .trust-line a:hover {
+  border-color: var(--color-ink);
+}
 
 /* ===== footer ===== */
 footer {
