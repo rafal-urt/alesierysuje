@@ -32,20 +32,27 @@ export async function loader({ request }: Route.LoaderArgs) {
 }
 
 export const links: Route.LinksFunction = () => [
-  // LCP na mobile to poster hero (wideo ukryte < 720px) - preload go przyspiesza
-  { rel: "preload", as: "image", href: "/gfx/hero-poster.jpg", media: "(max-width: 720px)" },
+  // LCP: poster hero - na mobile to caly hero (wideo ukryte < 720px), na desktopie
+  // pierwsza klatka zanim dociagnie sie webm
+  { rel: "preload", as: "image", href: "/gfx/hero-poster.jpg" },
   { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
   { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
   { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  // fonty self-hosted (app/styles/fonts.css) - preload dwoch krytycznych subsetow
+  // (naglowki serif + tekst sans); latin-ext dociaga sie przez unicode-range
   {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
+    rel: "preload",
+    as: "font",
+    type: "font/woff2",
+    href: "/fonts/fraunces-normal-300-latin.woff2",
     crossOrigin: "anonymous",
   },
   {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap",
+    rel: "preload",
+    as: "font",
+    type: "font/woff2",
+    href: "/fonts/instrument-sans-normal-400-latin.woff2",
+    crossOrigin: "anonymous",
   },
 ];
 
