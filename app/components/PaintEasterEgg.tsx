@@ -51,8 +51,13 @@ export function PaintEasterEgg() {
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
     const setSize = () => {
+      // scrollHeight liczy tez sam canvas (element absolutny), wiec mierzymy
+      // dokument z ukrytym canvasem - inaczej canvas nigdy by sie nie skurczyl
+      // i strona rosla pod stopka po kazdym wydluzeniu tresci (FAQ, resize)
+      canvas.style.display = "none";
       const w = document.documentElement.clientWidth;
       const h = document.documentElement.scrollHeight;
+      canvas.style.display = "";
       if (canvas.width !== w || canvas.height !== h) {
         const tmp = document.createElement("canvas");
         tmp.width = canvas.width;
@@ -119,16 +124,21 @@ export function PaintEasterEgg() {
       active = null;
     };
 
+    // ResizeObserver na body lapie i zmiane szerokosci okna, i zmiany
+    // wysokosci tresci (akordeony, doladowane zdjecia) - canvas rosnie
+    // I kurczy sie razem ze strona
+    const ro = new ResizeObserver(setSize);
+    ro.observe(document.body);
+
     window.addEventListener("mousedown", start);
     window.addEventListener("mouseup", stop);
     window.addEventListener("mouseleave", stop);
-    window.addEventListener("resize", setSize);
     return () => {
       stop();
+      ro.disconnect();
       window.removeEventListener("mousedown", start);
       window.removeEventListener("mouseup", stop);
       window.removeEventListener("mouseleave", stop);
-      window.removeEventListener("resize", setSize);
     };
   }, []);
 
