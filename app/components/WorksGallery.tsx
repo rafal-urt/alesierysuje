@@ -95,7 +95,7 @@ function Lightbox({
 export function WorksGallery({
   works,
   variant,
-  cta = { label: "Chcę takie ilustracje na swoim weselu", to: "/terminy" },
+  cta = { label: "Chcę takie ilustracje na swoim wydarzeniu", to: "/terminy" },
 }: {
   works: GalleryWork[];
   variant: "strip" | "wall";
