@@ -1987,7 +1987,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
-.fcol h5 {
+.fcol .fhead {
   font-size: 0.76rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;

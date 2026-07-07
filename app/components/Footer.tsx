@@ -21,7 +21,7 @@ export function Footer() {
             </Link>
           </div>
           <div className="fcol">
-            <h5>Oferta</h5>
+            <p className="fhead">Oferta</p>
             <ul>
               <li>
                 <Link to="/malowanie-na-zywo-wesele">Wesela</Link>
@@ -38,7 +38,7 @@ export function Footer() {
             </ul>
           </div>
           <div className="fcol">
-            <h5>Pracownia</h5>
+            <p className="fhead">Pracownia</p>
             <ul>
               <li>
                 <Link to="/realizacje">Realizacje</Link>
@@ -58,7 +58,7 @@ export function Footer() {
             </ul>
           </div>
           <div className="fcol">
-            <h5>Kontakt</h5>
+            <p className="fhead">Kontakt</p>
             <ul>
               <li>
                 <Link to="/kontakt">Formularz kontaktowy</Link>
