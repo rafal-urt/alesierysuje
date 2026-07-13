@@ -63,5 +63,25 @@ export default buildConfig({
         payload.logger.error({ err }, "Seed przy starcie nie powiódł się");
       }
     }
+    // dodatkowy administrator z env (ADMIN_EMAIL + ADMIN_PASSWORD) - bez hasel w repo;
+    // idempotentne, wiec dziala tez na ulotnej bazie serverless (tworzy przy kazdym starcie)
+    if (process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD) {
+      try {
+        const existing = await payload.find({
+          collection: "users",
+          where: { email: { equals: process.env.ADMIN_EMAIL } },
+          limit: 1,
+        });
+        if (existing.docs.length === 0) {
+          await payload.create({
+            collection: "users",
+            data: { email: process.env.ADMIN_EMAIL, password: process.env.ADMIN_PASSWORD },
+          });
+          payload.logger.info(`Utworzono administratora ${process.env.ADMIN_EMAIL} (z env)`);
+        }
+      } catch (err) {
+        payload.logger.error({ err }, "Nie udało się utworzyć administratora z env");
+      }
+    }
   },
 });
