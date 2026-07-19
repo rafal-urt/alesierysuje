@@ -23,6 +23,68 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: "malowanie-gosci-na-urodzinach-na-zywo",
+    title: "Malowanie gości na urodzinach na żywo - jak wygląda i ile kosztuje?",
+    description:
+      "Malowanie gości na urodzinach na żywo: akwarelowe portrety gości jako atrakcja premium na okrągłe urodziny i jubileusze. Jak to wygląda, ceny i rezerwacja terminu.",
+    date: "2026-07-19",
+    dateLabel: "19 lipca 2026",
+    excerpt:
+      "Akwarelowe portrety gości malowane w trakcie przyjęcia urodzinowego - atrakcja, po której każdy gość wychodzi z ręcznie malowaną pamiątką. Opowiadam, jak to wygląda i ile kosztuje.",
+    image: "/gfx/prace/event-40-lecie-ilustracje-gosci.webp",
+    imageAlt: "Akwarelowe ilustracje gości z przyjęcia jubileuszowego rozłożone obok siebie",
+    imageSize: [675, 1200],
+    imageCap: "ilustracje gości z jednego jubileuszu",
+    body: [
+      {
+        type: "p",
+        text: "Szukacie atrakcji na urodziny, po której zostaje coś więcej niż pasek zdjęć z fotobudki? **Malowanie gości na urodzinach na żywo** działa dokładnie tak jak na weselu: podczas przyjęcia maluję akwarelowe portrety gości, a każdy zabiera swój do domu jeszcze tego samego wieczoru. To atrakcja z kategorii premium - przez cały wieczór na sali pracuje artystka, a po przyjęciu każdy gość ma na ścianie ręcznie malowaną pamiątkę. Sprawdza się na okrągłych urodzinach, eleganckich przyjęciach w gronie najbliższych i na firmowych jubileuszach.",
+      },
+      { type: "h2", text: "Jak wygląda malowanie na żywo na urodzinach" },
+      {
+        type: "p",
+        text: "Na sali rozstawiam **kącik live art** - stolik ze sztalugą i ekspozycją prac, potrzebuję na to około 2 × 2 metrów. Goście nie pozują: podchodzą tylko na **szybkie zdjęcie** i wracają do zabawy, a ja maluję z fotografii. Jedna akwarela A5 na papierze 300 g to **10-15 minut** pracy. Gotowe, podpisane i zabezpieczone ilustracje czekają na ekspozycji, więc każdy odbiera swoją, kiedy chce. Kącik szybko staje się miejscem, wokół którego kręci się całe przyjęcie - goście wracają sprawdzać, kto już wisi w galerii.",
+      },
+      { type: "h2", text: "Na jakie urodziny to się sprawdza" },
+      {
+        type: "ul",
+        items: [
+          "**Okrągłe urodziny: 40, 50, 60** - eleganckie przyjęcia w gronie rodziny i przyjaciół, gdzie na ścianie jubilata zostaje potem seria portretów najbliższych",
+          "**Kameralne przyjęcia w restauracji** - uroczysta kolacja na kilkanaście-kilkadziesiąt osób, na której kącik live art gra rolę głównej atrakcji wieczoru",
+          "**Jubileusze firmowe** - malowałam m.in. na 40-leciu firmy; dla wydarzeń biznesowych mam osobne [pakiety eventowe](/malowanie-na-zywo-eventy) z fakturą VAT",
+        ],
+      },
+      { type: "h2", text: "Portret jubilata" },
+      {
+        type: "p",
+        text: "Na urodzinach miejsce weselnego portretu Pary Młodej zajmuje **portret jubilata w formacie A4** - większy niż ilustracje gości i zwykle najbardziej wyczekiwana praca wieczoru. To jedyna ilustracja, której nie oddaję z kącika, tylko wręczam osobiście - dobry moment na toast.",
+      },
+      { type: "h2", text: "Ile kosztuje malowanie gości na urodzinach" },
+      {
+        type: "ul",
+        items: [
+          "**Przyjęcia prywatne** (okrągłe urodziny, rocznice) rozliczam jak wesela: pakiety **od 4 000 zł** - Kameralny to 6 godzin malowania i 20 ilustracji na żywo dla przyjęć do 60 gości",
+          "**Jubileusze firmowe** to pakiety eventowe **od 4 500 zł** - z umową i fakturą VAT",
+          "**Każda ilustracja ponad pakiet - 100 zł**; czego nie zdążę namalować na żywo, dokańczam w pracowni i dosyłam po przyjęciu",
+        ],
+      },
+      {
+        type: "p",
+        text: "Wszystkie kwoty trzymam jawne - pełne porównanie pakietów znajdziecie w [cenniku](/cennik), bez pisania po wycenę.",
+      },
+      { type: "h2", text: "Niespodzianka dla jubilata? Da się zrobić" },
+      {
+        type: "p",
+        text: "Malowanie na żywo często zamawiają nie sami jubilaci, tylko ich bliscy - jako **niespodziankę urodzinową**. Wszystko dogadujemy wtedy w tajemnicy: na konsultacji online przed przyjęciem ustalamy motyw, kolory i plan wieczoru, a szczegóły techniczne kącika omawiam bezpośrednio z salą. Jubilat dowiaduje się o wszystkim dopiero, gdy przy sztaludze powstaje jego portret.",
+      },
+      { type: "h2", text: "Jak zarezerwować termin" },
+      {
+        type: "p",
+        text: "Wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy) - w formularzu wybierzcie rodzaj wydarzenia „Urodziny / jubileusz”. Wysyłacie bezpłatne zapytanie i w ciągu 24-48 godzin wracam do Was z potwierdzeniem. Zapytanie do niczego nie zobowiązuje - to po prostu początek rozmowy o Waszym przyjęciu.",
+      },
+    ],
+  },
+  {
     slug: "ile-kosztuje-malowanie-na-zywo-na-weselu",
     title: "Ile kosztuje malowanie na żywo na weselu? Realne ceny 2026/2027",
     description:
