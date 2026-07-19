@@ -23,6 +23,412 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: "karykaturzysta-czy-malowanie-akwarela-na-weselu",
+    title: "Karykaturzysta czy malowanie akwarelą na weselu - co wybrać?",
+    description:
+      "Karykaturzysta na wesele czy malowanie gości akwarelą? Porównuję tempo pracy, charakter prac i ceny obu atrakcji - i podpowiadam, jak wybrać pod swoje wesele.",
+    date: "2026-07-19",
+    dateLabel: "19 lipca 2026",
+    excerpt:
+      "Obie atrakcje wyglądają podobnie: na sali pracuje artysta, goście dostają swoje podobizny. Różnice widać w tempie, charakterze prac i cenie - porównuję je uczciwie.",
+    image: "/gfx/prace/karta-wesele-para.webp",
+    imageAlt: "Akwarelowy portret pary gości weselnych",
+    imageSize: [560, 790],
+    imageCap: "akwarela zamiast przerysowanej kreski",
+    body: [
+      {
+        type: "p",
+        text: "W zapytaniach od par to pytanie wraca co tydzień: „zastanawiamy się jeszcze nad karykaturzystą - czym to się właściwie różni?”. Uczciwa odpowiedź: to **dwie różne usługi**, które z daleka wyglądają identycznie - na sali siedzi artysta, goście dostają swoje podobizny. Różnice zaczynają się w szczegółach i to one decydują, czy za pięć lat ta praca będzie wisieć na ścianie, czy leżeć w pudełku po butach. Rozkładam porównanie na pięć kryteriów - a na końcu piszę wprost, w jakiej sytuacji sama poleciłabym karykaturzystę.",
+      },
+      { type: "h2", text: "Kryterium 1: produkt. Żart kontra portret" },
+      {
+        type: "p",
+        text: "Sednem karykatury jest **przerysowanie**: większy nos, charakterystyczny uśmiech, żartobliwa scenka z gościem w roli głównej. To rozrywka - i w tej roli działa świetnie, bo śmieje się i portretowany, i kolejka za nim. Akwarela idzie w drugą stronę: **portret bez karykaturalnej przesady**, w kolorze, z charakterem stylizacji i tego konkretnego wieczoru. Karykatura ma rozbawić, akwarela ma się podobać - także za dziesięć lat.",
+      },
+      { type: "h2", text: "Kryterium 2: tempo i liczba prac" },
+      {
+        type: "p",
+        text: "Czarno-biała karykatura powstaje w **4-5 minut** - sprawny karykaturzysta robi 60 i więcej rysunków w wieczór. Moja akwarela A5 to **10-15 minut**, czyli do 30 prac na żywo, a kolejne dokańczam po weselu w pracowni na podstawie zdjęć i dosyłam pocztą. Żadna z tych liczb nie jest „lepsza” - karykaturzysta optymalizuje ilość, ja jakość pojedynczej pracy. Pytanie brzmi: wolicie, żeby rysunek dostał każdy gość, czy żeby każda praca była małym obrazem?",
+      },
+      { type: "h2", text: "Kryterium 3: materiały i trwałość" },
+      {
+        type: "p",
+        text: "Tu różnica jest największa i najmniej widoczna na weselu. Karykatury powstają zwykle flamastrem albo ołówkiem na cienkim papierze - po kilku latach na słońcu tusz blaknie, a papier żółknie. Ja maluję na **papierze akwarelowym 300 g**, pigmentami odpornymi na światło - to papier, który bez problemu znosi oprawę w passe-partout i dekady na ścianie. Jeśli pamiątka ma przeżyć dłużej niż lodówkowy magnes, zapytajcie każdego artystę o gramaturę papieru: to jedno pytanie mówi o usłudze więcej niż całe portfolio.",
+      },
+      { type: "h2", text: "Kryterium 4: cena - i co naprawdę porównujecie" },
+      {
+        type: "p",
+        text: "Karykaturzysta na wesele to na polskim rynku zwykle **1 600-2 500 zł** za kilka godzin rysowania. Malowanie akwarelą zaczyna się u mnie **od 4 000 zł**. Zanim uznacie, że różnica jest ogromna, przeliczcie na pojedynczą pracę: 2 000 zł za 60 karykatur to około **35 zł za rysunek**, 6 000 zł za 40 akwarel to około **150 zł za obraz**. Obie ceny są uczciwe - tylko za różne rzeczy: pierwsza za gadżet rozrywkowy, druga za ręcznie malowaną pracę, którą oprawia się w ramę. Pełne pakiety rozbieram na czynniki we wpisie o [cenach malowania na żywo](/blog/ile-kosztuje-malowanie-na-zywo-na-weselu).",
+      },
+      { type: "h2", text: "Kryterium 5: charakter atrakcji na sali" },
+      {
+        type: "p",
+        text: "Karykaturzysta to często showman - komentuje, żartuje, zbiera publiczność; na weselach w luźnym klimacie robi z tego mały stand-up. Kącik live art działa ciszej: sztaluga, ekspozycja rosnąca przez wieczór, goście przystają, wracają, sprawdzają, kto już „wisi w galerii”. Jedna atrakcja gra głośno, druga elegancko - i to powinno współgrać z resztą Waszej oprawy, od muzyki po florystykę.",
+      },
+      { type: "h2", text: "Kiedy poleciłabym karykaturzystę" },
+      {
+        type: "p",
+        text: "Piszę to bez ironii: jeśli budżet na atrakcję zamyka się w 2 500 zł, zależy Wam na tym, żeby rysunek dostał dosłownie każdy gość, a Wasze wesele ma być przede wszystkim zabawne - **karykaturzysta będzie lepszym wyborem**. Nie ma sensu dopłacać do akwareli, jeśli jej mocne strony (trwałość, elegancja, charakter obrazu) nie są tym, na czym Wam zależy.",
+      },
+      { type: "h2", text: "Kiedy akwarela" },
+      {
+        type: "p",
+        text: "Jeśli planujecie elegancką oprawę, chcecie w każdym pakiecie **portret Pary Młodej A4** i zależy Wam, żeby goście wynieśli z wesela pracę, która trafi do ramki, a nie do szuflady - to jest moja działka. Zobaczcie [realizacje z wesel](/realizacje) i porównajcie z portfolio karykaturzystów: różnicę widać szybciej, niż da się ją opisać. Wolne daty do końca 2027 znajdziecie w [kalendarzu terminów](/terminy), a jawne ceny w [cenniku](/cennik). A jeśli dopiero poznajecie temat - zacznijcie od wpisu [co to jest live art](/blog/co-to-jest-live-art-live-painting).",
+      },
+    ],
+  },
+  {
+    slug: "co-to-jest-live-art-live-painting",
+    title: "Live art, live painting, malowanie na żywo - co to właściwie jest?",
+    description:
+      "Live art (live painting, malowanie na żywo) to malowanie portretów gości podczas wesela lub eventu. Wyjaśniam odmiany, przebieg, ceny w Polsce i jak wybrać artystę.",
+    date: "2026-07-19",
+    dateLabel: "19 lipca 2026",
+    excerpt:
+      "Live art, live painting, malowanie na żywo - trzy nazwy tej samej atrakcji. Wyjaśniam, czym się różnią jej odmiany, jak przebiega taki wieczór i ile to kosztuje w Polsce.",
+    image: "/gfx/prace/event-portret-goscia-w-rozu.webp",
+    imageAlt: "Akwarelowy portret gościa w różowej tonacji malowany na żywo",
+    imageSize: [900, 1200],
+    imageCap: "portret gościa prosto ze sztalugi",
+    body: [
+      {
+        type: "p",
+        text: "**Live art**, **live painting**, po polsku **malowanie na żywo** - trzy nazwy tego samego zjawiska: artysta maluje podczas wesela lub eventu, na oczach gości, a sztuka powstaje w czasie rzeczywistym zamiast przyjechać gotowa. Trend przywędrował do Polski z amerykańskich wesel i tygodni mody, gdzie „live wedding painter” i „event sketch artist” to od lat osobne zawody - u nas wciąż jest na tyle świeży, że na większości przyjęć goście widzą go pierwszy raz. Ten wpis porządkuje temat od zera: odmiany, przebieg wieczoru, realne ceny i pytania, które warto zadać przed rezerwacją.",
+      },
+      { type: "h2", text: "Cztery odmiany live artu - i cztery różne pamiątki" },
+      {
+        type: "ul",
+        items: [
+          "**Portrety gości** - seria kilkudziesięciu małych akwarel malowanych w trakcie przyjęcia; pamiątkę dostaje **każdy sportretowany gość**. To odmiana, w której specjalizuję się ja: 20-40 prac A5 w wieczór",
+          "**Jeden obraz sceny** (wedding painting) - artysta przez całe przyjęcie maluje jedno duże płótno, np. pierwszy taniec; praca trwa 6-8 godzin, a pamiątka zostaje **tylko u Pary Młodej**. W USA taka usługa zaczyna się od równowartości kilkunastu tysięcy złotych",
+          "**Karykatury** - szybkie, żartobliwe rysunki z przerysowaniem, 4-5 minut na pracę; bliżej im do rozrywki niż do sztuki. Szczegółowe porównanie z akwarelą zrobiłam [w osobnym wpisie](/blog/karykaturzysta-czy-malowanie-akwarela-na-weselu)",
+          "**Fashion sketching** - szybkie szkice sylwetek i stylizacji, często na iPadzie; standard na eventach modowych i premierach produktów, rzadkość na weselach",
+        ],
+      },
+      { type: "h2", text: "Jak wygląda wieczór z malowaniem na żywo" },
+      {
+        type: "p",
+        text: "Opiszę swój wariant, bo znam go od podszewki. Kącik live art rozstawiam, zanim goście wejdą na salę: stolik, sztaluga, ekspozycja - potrzebuję około **2 × 2 metrów** z dobrym światłem, najlepiej z widokiem na parkiet. Goście **nie pozują**: podchodzą na szybkie zdjęcie i wracają do zabawy, a ja maluję z fotografii - jedna akwarela A5 na papierze 300 g to 10-15 minut. Pierwsze prace wiszą na ekspozycji jeszcze przed obiadem i od tego momentu kącik żyje własnym życiem: goście wracają sprawdzać, kto doszedł do galerii, i odbierają swoje podpisane ilustracje, kiedy chcą. Finał należy do portretu Pary Młodej albo jubilata - większego, w formacie A4, wręczanego osobiście. Czego nie zdążę namalować na żywo, dokańczam po przyjęciu w pracowni i dosyłam pocztą.",
+      },
+      { type: "h2", text: "Czego live art nie jest" },
+      {
+        type: "p",
+        text: "Dwa nieporozumienia, które warto rozbroić przed rezerwacją. Po pierwsze: to nie jest „analogowa fotobudka” - prace są ręczne i unikatowe, więc ich liczba jest fizycznie ograniczona tempem malowania; na dużym weselu nie każdy gość dostanie pracę **na żywo** i uczciwy artysta powie Wam to wprost (u mnie odpowiedzią jest system dokańczania prac w pracowni). Po drugie: to nie pokaz szybkiego rysowania dla publiki - artysta naprawdę pracuje przez cały wieczór, a show polega na tym, że galeria rośnie, nie na tym, że ktoś macha pędzlem do muzyki.",
+      },
+      { type: "h2", text: "Ile kosztuje live painting w Polsce" },
+      {
+        type: "p",
+        text: "Rynkowe widełki dla malowania gości na żywo to obecnie mniej więcej **1 900-5 700 zł**, a decydują o nich cztery rzeczy: technika (ołówek jest tańszy od akwareli), liczba prac, doświadczenie artysty i dojazd. Usługi z jednym dużym obrazem sceny wyceniane są osobno i zwykle wyżej. U mnie pakiety weselne zaczynają się **od 4 000 zł**, eventowe dla firm **od 4 500 zł** (z umową i fakturą VAT) - wszystkie kwoty są jawne w [cenniku](/cennik), a na czynniki rozkładam je we wpisie [ile kosztuje malowanie na żywo na weselu](/blog/ile-kosztuje-malowanie-na-zywo-na-weselu).",
+      },
+      { type: "h2", text: "Na jakie okazje sprawdza się live art" },
+      {
+        type: "ul",
+        items: [
+          "**Wesela** - najpopularniejsza okazja: portrety gości jako podziękowania i portret Pary Młodej jako pamiątka; całość opisuję na stronie o [malowaniu na żywo na weselu](/malowanie-na-zywo-wesele)",
+          "**Eventy firmowe** - gale, jubileusze, konferencje, premiery; papier przygotowuję pod branding wydarzenia, a kącik działa też jako materiał do relacji w social mediach - szczegóły na stronie [malowania na żywo na eventach](/malowanie-na-zywo-eventy)",
+          "**Okrągłe urodziny i jubileusze prywatne** - kameralne przyjęcia premium, o których piszę we wpisie o [malowaniu gości na urodzinach](/blog/malowanie-gosci-na-urodzinach-na-zywo)",
+        ],
+      },
+      { type: "h2", text: "Cztery pytania, które warto zadać przed rezerwacją" },
+      {
+        type: "ul",
+        items: [
+          "**„Ile prac powstanie i co z resztą chętnych?”** - konkretna liczba w umowie i jasna procedura dokańczania to znak profesjonalisty",
+          "**„Na jakim papierze i jakimi farbami?”** - papier 300 g i pigmenty odporne na światło to różnica między pamiątką na dekady a rysunkiem, który wyblaknie w dwa lata",
+          "**„Czy mogę zobaczyć prace z realnych wydarzeń, nie tylko z pracowni?”** - malowanie w biegu, przy słabym świetle, to inna dyscyplina niż praca w domu; moje [realizacje są tutaj](/realizacje)",
+          "**„Co jest w cenie?”** - dojazd, ekspozycja, konsultacja przed wydarzeniem, portret główny; jawny cennik oszczędza niespodzianek",
+        ],
+      },
+      {
+        type: "p",
+        text: "Jeśli po tej lekturze live art wydaje się Wam czymś dla Waszego przyjęcia - wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy). Zapytanie jest bezpłatne i do niczego nie zobowiązuje.",
+      },
+    ],
+  },
+  {
+    slug: "podziekowania-dla-gosci-weselnych-pomysly",
+    title: "Podziękowania dla gości weselnych - 8 pomysłów, które zostają na lata",
+    description:
+      "Szukacie pomysłu na podziękowania dla gości weselnych? 8 sprawdzonych propozycji - od portretów malowanych na żywo po świece i lawendę - z podziałem na te, które zostają na lata.",
+    date: "2026-07-19",
+    dateLabel: "19 lipca 2026",
+    excerpt:
+      "Krówki z datą ślubu znikają przed oczepinami. Zebrałam 8 pomysłów na podziękowania dla gości - z uczciwym podziałem na upominki, które znikają w wieczór, i te, które zostają na lata.",
+    image: "/gfx/prace/wesele-ilustracje-przed-wreczeniem.webp",
+    imageAlt: "Akwarelowe portrety gości weselnych przygotowane do wręczenia",
+    imageSize: [900, 1200],
+    imageCap: "portrety gości tuż przed wręczeniem",
+    body: [
+      {
+        type: "p",
+        text: "Zacznijmy od rachunku, który mało kto robi: 80 gości razy 15 zł za upominek to **1 200 zł** - kwota, która może zniknąć przed oczepinami albo zostać w domach gości na lata. Podziękowania dla gości weselnych to jedyny element budżetu, który fizycznie wychodzi z wesela razem z gośćmi, więc warto wybrać go świadomie. Zebrałam 8 pomysłów z realnymi cenami za sztukę i uczciwym podziałem: co znika w wieczór, a co zostaje.",
+      },
+      { type: "h2", text: "Zanim wybierzecie: trzy pytania" },
+      {
+        type: "ul",
+        items: [
+          "**Czy to zostaje?** - krówka znika w wieczór, świeca po miesiącu, portret nigdy; sama trwałość nie przesądza wyboru, ale trzeba ją znać",
+          "**Ile sztuk naprawdę potrzebujecie?** - część upominków (miód, świeca, nalewka) wręcza się „na parę” albo „na rodzinę”, co przy 100 gościach potrafi zmniejszyć zamówienie o połowę",
+          "**Kto to rozłoży?** - upominki na talerzach musi ktoś rozłożyć przed wejściem gości; dogadajcie to z salą albo wyznaczcie osobę, bo w dniu ślubu Wy nie będziecie mieć na to głowy",
+        ],
+      },
+      { type: "h2", text: "1. Portret gościa malowany na żywo" },
+      {
+        type: "p",
+        text: "Zaczynam od swojej działki, bo to jedyny punkt tej listy, który jest jednocześnie **atrakcją wieczoru i podziękowaniem**: podczas przyjęcia maluję akwarelowe portrety gości, a każdy zabiera swój do domu - podpisany, na papierze 300 g, gotowy do oprawienia. W pakiecie Klasycznym (6 000 zł, do 40 ilustracji) wychodzi **około 150 zł za gościa** - najdrożej na tej liście, ale to jedyne podziękowanie, które ląduje w ramce, a nie w szufladzie. I jedyne, przy którym wręczanie samo w sobie bawi całą salę. Szczegóły na stronie o [malowaniu na żywo na weselu](/malowanie-na-zywo-wesele).",
+      },
+      { type: "h2", text: "2. Personalizowane słodycze - 2-5 zł za sztukę" },
+      {
+        type: "p",
+        text: "Krówki, czekoladki, lizaki z imionami i datą - klasyka, która nigdy nie obraża i niczego nie udaje. Umówmy się tylko co do jednego: to akcent na talerzu, nie pamiątka. Jeśli budżet jest napięty, słodycze plus jedna mocna atrakcja to lepszy układ niż drogi drobiazg, którego nikt nie zapamięta.",
+      },
+      { type: "h2", text: "3. Świece sojowe - 15-35 zł za sztukę" },
+      {
+        type: "p",
+        text: "Rozsądny środek stawki: świeca pali się tygodniami i przypomina o Was przy każdym zapaleniu. Praktyczna rada z wesel, na których je widziałam: wybierzcie **jeden dobry zapach zamiast personalizowanej etykiety** - etykietę z datą goście widzą raz, zapach czują przez miesiąc.",
+      },
+      { type: "h2", text: "4. Miody i domowe przetwory - 10-25 zł za słoiczek" },
+      {
+        type: "p",
+        text: "Miód z lokalnej pasieki albo konfitura według rodzinnego przepisu opowiada historię: o regionie, o Waszej rodzinie, o tym, że ktoś się postarał. Upominek szczególnie doceniany przez starszych gości - i jeden z niewielu, które wręcza się „na rodzinę”, co realnie obniża koszt całości.",
+      },
+      { type: "h2", text: "5. Lawenda albo herbata - 5-12 zł za sztukę" },
+      {
+        type: "p",
+        text: "Woreczek lawendy wędruje do szafy i pachnie przez sezon albo dwa; słoiczek herbaty z płatkami róży wygląda elegancko na talerzu i kosztuje grosze. Najtańsza opcja z kategorii „zostaje dłużej niż wieczór” - dobra, gdy liczba gości idzie w setki.",
+      },
+      { type: "h2", text: "6. Sadzonki i nasiona - 8-15 zł za sztukę" },
+      {
+        type: "p",
+        text: "Mini sukulent albo torebka nasion łąki kwietnej z liścikiem „niech rośnie z nami”. Jedyny upominek na tej liście, który z czasem **rośnie** - i wraca do Was w rozmowach na rocznicach. Jedno zastrzeżenie logistyczne: sadzonki źle znoszą noc w aucie zimą, to pomysł na wesela od wiosny do września.",
+      },
+      { type: "h2", text: "7. Nalewka domowa - koszt własny plus 3-6 zł za buteleczkę" },
+      {
+        type: "p",
+        text: "Jeśli w rodzinie jest ktoś, kto robi dobrą nalewkę - to jest ten moment. Mała buteleczka z ręcznie podpisaną etykietą ma charakter, którego nie kupicie w hurtowni ślubnych gadżetów. Zacznijcie przygotowania kilka miesięcy przed weselem: dobra nalewka potrzebuje czasu, a butelkowanie stu sztuk to wieczór pracy.",
+      },
+      { type: "h2", text: "8. Wachlarze na letnie wesele - 5-12 zł za sztukę" },
+      {
+        type: "p",
+        text: "Jedyny upominek, który pracuje już podczas ceremonii: bambusowy wachlarz w sierpniowy skwar to ratunek, nie gadżet. Po weselu zostaje jako pamiątka z konkretnym wspomnieniem - „to z tego upału na Waszym ślubie”.",
+      },
+      { type: "h2", text: "Trzy błędy, które widuję najczęściej" },
+      {
+        type: "ul",
+        items: [
+          "**Wręczanie przy wyjściu** - goście wychodzą falami i połowa upominków zostaje na stole; lepiej położyć je na talerzach albo przy winietkach, gdzie pracują też jako dekoracja",
+          "**Personalizacja zamiast jakości** - data ślubu na byle świecy nie robi z niej pamiątki; goście zapamiętują rzecz, nie nadruk",
+          "**Trzy drobiazgi zamiast jednego konkretu** - budżet rozmieniony na krówkę, magnes i wachlarz zrobi mniejsze wrażenie niż jedna rzecz wybrana z sensem",
+        ],
+      },
+      { type: "h2", text: "Jak wybrać mądrze" },
+      {
+        type: "p",
+        text: "Moja zasada zza sztalugi: **jedna rzecz, która zostaje, zamiast trzech, które znikają**. Goście nie pamiętają liczby upominków - pamiętają ten jeden, który wisi na ścianie albo stoi na półce. Jeśli ma nim być portret malowany na żywo, sprawdźcie [wolne terminy](/terminy) - sezonowe weekendy znikają pierwsze. A o pamiątkach, które z wesela zabieracie Wy, a nie goście, piszę we wpisie o [pamiątkach z wesela](/blog/pamiatka-z-wesela-pomysly).",
+      },
+    ],
+  },
+  {
+    slug: "ksiega-gosci-alternatywy",
+    title: "Księga gości na weselu - 7 alternatyw dla zeszytu z życzeniami",
+    description:
+      "Klasyczna księga gości bywa martwa już przed północą. 7 alternatyw: audio-księga, wspólne płótno, wino-kapsuła czasu, portrety gości i inne pomysły, które naprawdę działają.",
+    date: "2026-07-19",
+    dateLabel: "19 lipca 2026",
+    excerpt:
+      "Zeszyt z życzeniami zwykle kończy z trzema wpisami i odciskiem kieliszka. Zebrałam 7 alternatyw dla księgi gości - od audio-księgi po portrety malowane na żywo.",
+    image: "/gfx/prace/wesele-k-j-ilustracje-gosci.webp",
+    imageAlt: "Galeria akwarelowych portretów gości z jednego wesela",
+    imageSize: [900, 1200],
+    imageCap: "galeria gości zamiast zeszytu z wpisami",
+    body: [
+      {
+        type: "p",
+        text: "Klasyczna **księga gości** umiera zawsze tak samo: leży na stoliku przy wejściu, dostaje trzy wpisy „wszystkiego najlepszego” przed obiadem i odcisk kieliszka po północy. Problem nie leży w gościach, tylko w formule - zeszyt stoi tam, gdzie nikt się nie zatrzymuje, i prosi o wpis w momencie, gdy nikt nie ma jeszcze nic do powiedzenia. Dobre alternatywy odwracają jedno albo drugie: zmieniają miejsce, moment albo medium. Oto 7 sprawdzonych - z kosztami i pułapkami logistycznymi, o których mało kto uprzedza.",
+      },
+      { type: "h2", text: "1. Audio-księga gości" },
+      {
+        type: "p",
+        text: "Stary telefon z centralką nagrywa życzenia zamiast zeszytu - a po kilku toastach goście mówią rzeczy, których nigdy by nie napisali. Wynajem to zwykle **600-1 200 zł** za weekend, z nagraniami zgranymi na pendrive. Rada logistyczna: postawcie telefon **przy barze, nie przy wejściu** - życzenia nagrywa się najlepiej między drugim a czwartym toastem, a nie na trzeźwo o siedemnastej.",
+      },
+      { type: "h2", text: "2. Wspólne płótno" },
+      {
+        type: "p",
+        text: "Goście odciskają palce jako listki drzewa, dorysowują, podpisują się na jednym dużym obrazie. Koszt w wersji własnej to **około 200-300 zł** (płótno, farby akrylowe, pędzle) - najtańsza pozycja na liście. Dwa warunki powodzenia: wyznaczcie osobę, która pilnuje stanowiska przez pierwszą godzinę i ośmiela gości, oraz połóżcie obok wilgotne chusteczki, bo farba na palcach skutecznie zniechęca kolejnych chętnych.",
+      },
+      { type: "h2", text: "3. Wideo-budka z życzeniami" },
+      {
+        type: "p",
+        text: "Kamera w ustronnym kącie, przycisk „nagraj”, minuta na życzenia. Z nagrań powstaje film, który po latach ogląda się lepiej niż teledysk ślubny - zwłaszcza fragmenty z okolic północy. Potrzebuje dwóch rzeczy, o których wynajmujący nie zawsze mówią: **dobrego światła** (ciemny kąt to ciemne nagrania) i miejsca na tyle osobnego, żeby nieśmiali goście nie mieli publiczności.",
+      },
+      { type: "h2", text: "4. Polaroidy z albumem" },
+      {
+        type: "p",
+        text: "Goście robią sobie zdjęcie instaxem, wklejają do albumu, dopisują życzenia - jedyny „zeszyt”, do którego naprawdę ustawia się kolejka. Pułapka jest w budżecie wkładów: **jedno zdjęcie to 4-5 zł**, więc sto zdjęć kosztuje więcej niż niejeden aparat. Kupcie dwa aparaty (kolejka!), zapas wkładów z górką i taśmę klejącą, która nie niszczy zdjęć.",
+      },
+      { type: "h2", text: "5. Wino-kapsuła czasu" },
+      {
+        type: "p",
+        text: "Skrzynka z winem i listami od gości, zamykana na weselu i otwierana na piątą rocznicę. Kosztuje tyle, co skrzynka i dobre wino, a po latach robi większe wrażenie niż wszystkie pozostałe punkty razem wzięte. Dwie rady: wybierzcie wino, które zniesie pięć lat leżakowania (sommelier w dobrym sklepie doradzi w pięć minut), i przygotujcie papeterię z piórem na stole - „napiszcie list” działa dopiero, gdy jest czym i na czym.",
+      },
+      { type: "h2", text: "6. Karty z pytaniami na stołach" },
+      {
+        type: "p",
+        text: "Na każdym stole karty z pytaniami, goście wypełniają je między daniami, a Wy zbieracie po weselu pudełko odpowiedzi. Koszt: domowa drukarka i ryza grubszego papieru. Cała robota jest w pytaniach - ogólne („życzenia dla Młodej Pary”) dają ogólne odpowiedzi, konkretne dają złoto: „co nam wróżysz za 10 lat?”, „najlepsza rada na pierwszą kłótnię?”, „co musimy ugotować, gdy wpadniesz w odwiedziny?”.",
+      },
+      { type: "h2", text: "7. Portrety gości - księga w drugą stronę" },
+      {
+        type: "p",
+        text: "Mój faworyt, z oczywistych względów - i jedyna pozycja, która odwraca kierunek: zamiast zbierać wpisy od gości, to **Wy zostawiacie każdemu gościowi pamiątkę**. Kącik live art działa jak księga gości na odwrót: każdy, kto podszedł na szybkie zdjęcie, wychodzi z wesela z ręcznie malowaną akwarelą, a Wam zostaje portret Pary Młodej A4 i galeria, która rosła na oczach wszystkich przez cały wieczór. Pakiety zaczynają się od 4 000 zł - a jak dokładnie wygląda taki wieczór, opisuję we wpisie [live painting na weselu krok po kroku](/blog/live-painting-na-weselu-jak-to-wyglada).",
+      },
+      { type: "h2", text: "Jak to spiąć w całość" },
+      {
+        type: "p",
+        text: "Najlepszy układ, jaki widuję na weselach, to para: **jedno od gości dla Was** (audio-księga, wino-kapsuła, karty) i **jedno od Was dla gości** (portrety albo przemyślane podziękowania - pomysły zebrałam [w osobnym wpisie](/blog/podziekowania-dla-gosci-weselnych-pomysly)). Więcej niż dwie rzeczy zaczynają ze sobą konkurować o uwagę gości. Jeśli portrety mają być Waszą połową tej pary - [sprawdźcie swój termin](/terminy), zapytanie jest bezpłatne.",
+      },
+    ],
+  },
+  {
+    slug: "pamiatka-z-wesela-pomysly",
+    title: "Pamiątka z wesela - 7 pomysłów na coś więcej niż album ze zdjęciami",
+    description:
+      "Jaka pamiątka z wesela zostaje na lata? 7 pomysłów: portret Pary Młodej malowany na żywo, portrety gości, portret ze zdjęcia ślubnego, bukiet w ramce, kapsuła czasu i inne.",
+    date: "2026-07-19",
+    dateLabel: "19 lipca 2026",
+    excerpt:
+      "Album i film to podstawa - ale najlepsze pamiątki z wesela to te, które wiszą na ścianie i widzi się je codziennie. 7 pomysłów, od akwareli malowanych na żywo po kapsułę czasu.",
+    image: "/gfx/prace/karta-wesele-czworka.webp",
+    imageAlt: "Akwarelowa ilustracja czwórki gości weselnych",
+    imageSize: [560, 790],
+    imageCap: "pamiątka, którą widuje się codziennie",
+    body: [
+      {
+        type: "p",
+        text: "Album ze zdjęciami i film to podstawa - ale otwieracie je kilka razy w roku. Najlepsze **pamiątki z wesela** to te, które widzicie codziennie przy porannej kawie: wiszą na ścianie, stoją na półce, rosną na parapecie. Zebrałam 7 pomysłów w dwóch grupach, bo to podział, od którego zależy Wasz kalendarz: część pamiątek **musi powstać w trakcie wesela** i trzeba je zaplanować przed, a część można zamówić spokojnie po przyjęciu.",
+      },
+      { type: "h2", text: "Powstają w trakcie wesela - planujcie przed" },
+      {
+        type: "p",
+        text: "Trzy pierwsze pozycje mają wspólną cechę: nie da się ich „dorobić” po fakcie. Jeśli któraś ma być na Waszym weselu, rezerwujcie z wyprzedzeniem - dobrzy wykonawcy w sezonie znikają na rok naprzód.",
+      },
+      { type: "h2", text: "1. Portret Pary Młodej malowany na weselu" },
+      {
+        type: "p",
+        text: "Akwarela **A4 na papierze 300 g**, malowana na żywo w trakcie Waszego przyjęcia - w cenie każdego mojego pakietu [malowania na żywo](/malowanie-na-zywo-wesele) (od 4 000 zł, razem z portretami gości). Różnica względem portretu ze zdjęcia jest subtelna, ale realna: ta praca **fizycznie powstała na Waszej sali**, między pierwszym tańcem a toastami, i była częścią wieczoru, a nie wspomnieniem o nim. Z pamiątek, które maluję, ta wisi potem najbliżej sypialni.",
+      },
+      { type: "h2", text: "2. Galeria portretów gości" },
+      {
+        type: "p",
+        text: "Pamiątka rozproszona: kilkadziesiąt akwarel malowanych w trakcie wesela wisi potem w kilkudziesięciu domach i w każdym z nich przypomina o Waszym przyjęciu. To jedyna pozycja na liście, która działa w obie strony - goście mają pamiątkę od Was, a Wy wspomnienie galerii rosnącej przez cały wieczór i zdjęcia kącika, które i tak zrobi połowa sali.",
+      },
+      { type: "h2", text: "3. Bukiet ślubny zasuszony w ramce" },
+      {
+        type: "p",
+        text: "Kwiaty z bukietu, sprasowane i oprawione w ramę 3D, zamieniają się w botaniczną kompozycję na ścianę - u florystek specjalizujących się w suszeniu to zwykle **300-700 zł** z oprawą. Kluczowy jest czas: bukiet musi trafić do suszenia **w 2-3 dni po weselu**, kiedy Wy będziecie najmniej zdolni do ogarniania czegokolwiek. Wyznaczcie osobę odpowiedzialną już teraz - to jedno zdanie ratuje całą pamiątkę.",
+      },
+      { type: "h2", text: "Można zamówić po weselu - bez pośpiechu" },
+      {
+        type: "p",
+        text: "Druga grupa to pamiątki, na które macie czas: powstają ze zdjęć, dokumentów i przedmiotów, które z wesela i tak zostaną.",
+      },
+      { type: "h2", text: "4. Portret ze zdjęcia ślubnego" },
+      {
+        type: "p",
+        text: "Akwarela z Waszego ulubionego kadru - w [konfiguratorze portretów](/portrety-na-zamowienie) wybieracie format (od 490 zł za A4) i widzicie cenę od razu, realizacja trwa 10-14 dni. Ciekawostka z mojej pracowni: połowę takich portretów zamawiają nie pary, tylko **świadkowie i rodzice** - jako prezent na pierwszą rocznicę. Jeśli czytacie to jako świadkowa: tak, to jest ten pomysł.",
+      },
+      { type: "h2", text: "5. Album fine art zamiast pliku w chmurze" },
+      {
+        type: "p",
+        text: "Zdjęcia z wesela zasługują na coś więcej niż folder „wesele_final_v2” na dysku. Album na papierze archiwalnym, z selekcją 60-80 kadrów, u fotografów kosztuje zwykle **1 500-4 000 zł** ekstra - i to on będzie krążył po stole na każdym rodzinnym spotkaniu przez następne dekady. Rada: zamawiajcie selekcję razem z fotografem, póki pamięta Wasze wesele; po dwóch latach to już tylko katalog plików.",
+      },
+      { type: "h2", text: "6. Kapsuła czasu" },
+      {
+        type: "p",
+        text: "Skrzynka zamykana po weselu i otwierana na piątą rocznicę: butelka wina z przyjęcia, listy od Was do siebie nawzajem, menu, zaproszenie, gazeta z dnia ślubu. Koszt bliski zeru, efekt po latach - największy na tej liście. Najtrudniejsze jest jedno: naprawdę jej nie otwierać.",
+      },
+      { type: "h2", text: "7. Zaproszenie albo przysięga w ramce" },
+      {
+        type: "p",
+        text: "Najprostszy pomysł: pięknie złożone zaproszenie albo tekst przysięgi przepisany kaligrafią (u kaligrafek zwykle **150-400 zł**) w dobrej ramie. Kosztuje najmniej ze wszystkiego, a na ścianie robi więcej, niż podpowiada cena - bo to Wasze własne słowa, nie dekoracja ze sklepu.",
+      },
+      { type: "h2", text: "Plan minimum" },
+      {
+        type: "p",
+        text: "Jeśli miałabym to sprowadzić do jednej zasady: **jedna pamiątka na ścianę, jedna do otwierania**. Ściana pracuje codziennie, pudełko raz w roku - i właśnie ta para pokrywa oba rodzaje wspominania. Jeśli tą pierwszą ma być akwarela malowana na żywo, zajrzyjcie do [cennika](/cennik) i [kalendarza terminów](/terminy). A o pamiątkach, które z wesela wynoszą goście, piszę we wpisie o [podziękowaniach dla gości](/blog/podziekowania-dla-gosci-weselnych-pomysly).",
+      },
+    ],
+  },
+  {
+    slug: "atrakcje-na-event-firmowy-pomysly",
+    title: "Atrakcje na event firmowy - 7 pomysłów, które nie są kolejną fotobudką",
+    description:
+      "Szukacie atrakcji na event firmowy, galę lub imprezę integracyjną? 7 sprawdzonych pomysłów - od malowania gości na żywo po silent disco - i jak wybrać pod cel wydarzenia.",
+    date: "2026-07-19",
+    dateLabel: "19 lipca 2026",
+    excerpt:
+      "Fotobudka i DJ to za mało, żeby goście zapamiętali firmowe wydarzenie. 7 atrakcji na event, galę i integrację - w tym kilka, po których uczestnicy wychodzą z pamiątką.",
+    image: "/gfx/prace/event-fashion-days-ilustracje.webp",
+    imageAlt: "Akwarelowe ilustracje gości z eventu modowego",
+    imageSize: [900, 1200],
+    imageCap: "ilustracje z eventu modowego",
+    body: [
+      {
+        type: "p",
+        text: "Jest sala, jest budżet, jest agenda - brakuje punktu programu, który goście będą pamiętać po miesiącu. Znam to z drugiej strony sztalugi: regularnie maluję na galach, jubileuszach i konferencjach i widzę, które atrakcje pracują, a które tylko stoją. Wzór, który się powtarza, jest prosty: **wygrywają atrakcje, po których coś zostaje** - w rękach gościa, w telefonach uczestników albo w materiałach z eventu. Oto 7 pomysłów z orientacyjnymi budżetami i dopasowaniem do typu wydarzenia.",
+      },
+      { type: "h2", text: "1. Malowanie gości na żywo (live painting)" },
+      {
+        type: "p",
+        text: "Moja działka, więc znam liczby z pierwszej ręki: podczas wydarzenia maluję **akwarelowe portrety gości** - 15-30 prac na żywo, każda trafia do rąk uczestnika. Dla organizatora to trzy efekty naraz: atrakcja, przy której zawsze stoi grupka ludzi; **pamiątka z logo wydarzenia**, bo papier przygotowuję pod branding; i najbardziej fotogeniczny kącik na sali - materiał do relacji robi się sam. Pakiety eventowe od **4 500 zł**, z umową i fakturą VAT. Malowałam m.in. na evencie modowym, 40-leciu firmy i całodniowej konferencji - szczegóły i realizacje na stronie o [malowaniu na żywo na eventach](/malowanie-na-zywo-eventy).",
+      },
+      { type: "h2", text: "2. Silent disco - zwykle 2 000-4 000 zł" },
+      {
+        type: "p",
+        text: "Bezprzewodowe słuchawki z kilkoma kanałami muzyki rozwiązują odwieczny konflikt eventów: głośna zabawa i rozmowy biznesowe w tej samej sali, w tym samym czasie. Dodatkowy atut, o którym mówi się rzadziej: działa w miejscach z ciszą nocną i w przestrzeniach biurowych, gdzie klasyczna impreza z nagłośnieniem odpada.",
+      },
+      { type: "h2", text: "3. Warsztaty kulinarne albo degustacja - od 150-250 zł za osobę" },
+      {
+        type: "p",
+        text: "Wspólne gotowanie pod okiem kucharza albo prowadzona degustacja win, kaw czy serów. To najlepszy wybór, gdy celem jest **integracja małych zespołów**: przy krojeniu i próbowaniu rozmowa toczy się sama, bez wymuszonych gier. Skala jest ograniczeniem - powyżej 40-50 osób warsztaty zamieniają się w pokaz, a cena rośnie liniowo z liczbą gości.",
+      },
+      { type: "h2", text: "4. Iluzjonista lub mentalista - zwykle 3 000-8 000 zł" },
+      {
+        type: "p",
+        text: "Na galach zasiadanych najlepiej działa wariant **close-up**: artysta przechodzi między stolikami w trakcie kolacji i robi iluzję z centymetra, na oczach ośmiu osób naraz. To skuteczniejszy lodołamacz niż występ sceniczny - daje każdemu stolikowi wspólny temat na resztę wieczoru, a nie piętnaście minut patrzenia w scenę.",
+      },
+      { type: "h2", text: "5. Strefa gier retro - zwykle 1 500-3 000 zł" },
+      {
+        type: "p",
+        text: "Automaty arcade, flipery, konsole z lat 90. Atrakcja **bezobsługowa i falowa**: goście podchodzą, grają, wracają - przez cały wieczór, bez kolejki i bez harmonogramu. Dobra na duże konferencje i eventy z ciągłym przepływem gości, gdzie atrakcje „na godzinę” się nie sprawdzają.",
+      },
+      { type: "h2", text: "6. Kaligraf personalizujący upominki" },
+      {
+        type: "p",
+        text: "Artysta podpisuje na miejscu notesy, butelki, torby - gość wybiera przedmiot i patrzy, jak jego imię powstaje na żywo. Mechanizm jest ten sam, na którym opiera się moja praca: **gadżet z imieniem przestaje być gadżetem, a zaczyna być prezentem**. Idealne na premiery produktów i stoiska targowe, gdzie firma i tak rozdaje upominki - personalizacja wielokrotnie podnosi ich postrzeganą wartość przy niewielkim koszcie.",
+      },
+      { type: "h2", text: "7. Muzyka na żywo - zwykle 2 000-6 000 zł" },
+      {
+        type: "p",
+        text: "Kwartet smyczkowy na powitanie, duet jazzowy do kolacji, band na wieczór - żywa muzyka ustawia rangę wydarzenia w pierwszych trzech minutach, zanim ktokolwiek zdąży przeczytać agendę. Jedna rada z sal, na których pracuję: repertuar dobierajcie do profilu gości, nie do gustu zarządu.",
+      },
+      { type: "h2", text: "Dobór pod typ wydarzenia" },
+      {
+        type: "ul",
+        items: [
+          "**Gala zasiadana** - close-up magic, muzyka na żywo, live painting: atrakcje, które działają przy stolikach, bez wyciągania gości z krzeseł",
+          "**Integracja zespołu** - warsztaty kulinarne, silent disco: tu celem jest rozmowa, nie widowisko",
+          "**Konferencja i targi** - strefy bezobsługowe (gry retro), kaligraf i live painting przy stoisku: atrakcje falowe, dopasowane do ciągłego przepływu ludzi",
+          "**Jubileusz firmy** - atrakcje z pamiątką: portrety gości na brandowanym papierze zostają w domach pracowników na lata, a to dokładnie ten efekt, o który chodzi w jubileuszu",
+        ],
+      },
+      { type: "h2", text: "Jedno kryterium, które porządkuje wybór" },
+      {
+        type: "p",
+        text: "Gdy porównujecie oferty, zadajcie każdej to samo pytanie: **co z tej atrakcji zostanie tydzień po evencie?** Wspomnienie, zdjęcie w telefonie, przedmiot w domu gościa - im dalej w tej skali, tym dłużej wydarzenie pracuje na markę. Jeśli odpowiedzią ma być ręcznie malowany portret z logo Waszego wydarzenia, napiszcie przez [formularz kontaktowy](/kontakt) albo sprawdźcie [wolne terminy](/terminy) - do wyceny wystarczy data, miejsce i orientacyjna liczba gości.",
+      },
+    ],
+  },
+  {
     slug: "malowanie-gosci-na-urodzinach-na-zywo",
     title: "Malowanie gości na urodzinach na żywo - jak wygląda i ile kosztuje?",
     description:
