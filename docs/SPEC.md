@@ -24,7 +24,7 @@ Ruch: jedna zasada - "farba wsiąka w papier". Klasa `.soak`: elementy wchodzą 
 | `/` | Malowanie na żywo, które zostaje na zawsze. | Live painting na wesele i eventy - malowanie na żywo \| alesierysuje | live painting i malowanie na żywo na weselach i eventach, live art, portrety gości, portrety ze zdjęcia; CTA terminy i ceny |
 | `/live-painting-wesele` | Live painting na wesele - obraz malowany na żywo. | Live painting na wesele - malowanie na żywo \| alesierysuje | pakiety, jawne ceny od 3 900 zł, rezerwacja terminu online |
 | `/live-painting-eventy` | Live art na event firmowy - malowanie na żywo i portrety gości. | Live art na event firmowy - malowanie na żywo \| alesierysuje | eventy firmowe, szybkie portrety gości, faktura VAT, brief |
-| `/portrety-na-zamowienie` | Portrety na zamówienie - portret ze zdjęcia malowany ręcznie. | Portrety na zamówienie - portret ze zdjęcia \| alesierysuje | konfigurator, cena na żywo, realizacja 10-14 dni |
+| `/portrety-na-zamowienie` | Portrety akwarelowe na zamówienie - portret ze zdjęcia malowany ręcznie. | Portrety akwarelowe ze zdjęcia na zamówienie \| alesierysuje | konfigurator, cena na żywo, realizacja 10-14 dni, sekcja o technice akwarelowej; strona celuje w dwie intencje: "portret ze zdjęcia" i "portrety akwarelowe" |
 | `/realizacje` | Realizacje - malowanie na żywo i portrety. | Realizacje - live painting i portrety \| alesierysuje | galeria prac z wesel, eventów i pracowni |
 | `/cennik` | Cennik - live painting i portrety na zamówienie. | Cennik - live painting, malowanie na żywo, portrety \| alesierysuje | jawne ceny wszystkich usług |
 | `/o-mnie` | Aleksandra Sienica - maluję na żywo. | Aleksandra Sienica - artystka live painting \| alesierysuje | sylwetka artystki |

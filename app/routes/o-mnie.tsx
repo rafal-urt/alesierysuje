@@ -95,7 +95,7 @@ export default function OMnie() {
               Ze sztalugą między gości wyszłam w 2025 roku. Od tamtej pory namalowałam kilkanaście
               wesel wspaniałych osób i eventy dla marek - od firmowych jubileuszy po wydarzenia
               modowe - a między zleceniami wracam do pracowni, gdzie powstają{" "}
-              <Link to="/portrety-na-zamowienie">portrety ze zdjęć</Link>.
+              <Link to="/portrety-na-zamowienie">portrety akwarelowe ze zdjęć</Link>.
             </p>
             <div className="trust-line soak d3">
               <span className="stars" aria-hidden="true">

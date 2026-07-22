@@ -702,7 +702,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "Każda kolejna osoba na portrecie to +160 zł, a ręcznie napisana dedykacja - +90 zł. Cenę swojej konfiguracji zobaczycie na żywo w [konfiguratorze portretów](/portrety-na-zamowienie), bez pisania po wycenę.",
+        text: "Każda kolejna osoba na portrecie to +160 zł, a ręcznie napisana dedykacja - +90 zł. Cenę swojej konfiguracji zobaczycie na żywo w [konfiguratorze portretów akwarelowych](/portrety-na-zamowienie), bez pisania po wycenę.",
       },
       { type: "h2", text: "Ile trwa realizacja" },
       {

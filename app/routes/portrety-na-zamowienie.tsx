@@ -132,15 +132,23 @@ export async function action({ request }: Route.ActionArgs) {
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: "Portret ze zdjęcia - portrety na zamówienie | alesierysuje",
+    title: "Portrety akwarelowe ze zdjęcia na zamówienie | alesierysuje",
     description:
-      "Portret ze zdjęcia malowany ręcznie akwarelą. Konfigurator online z ceną na żywo od 490 zł, realizacja 10 - 14 dni, wysyłka w cenie.",
+      "Portrety akwarelowe malowane ręcznie ze zdjęcia - oryginał na papierze 300 g, nie wydruk. Cena od 490 zł, realizacja 10 - 14 dni, wysyłka w cenie.",
     path: "/portrety-na-zamowienie",
     ogImage: "/og/portrety.png",
   });
 }
 
-const FAQ_ITEMS = [
+const faqItems = (p: { a4: number; b50x70: number }) => [
+  {
+    q: "Ile kosztuje portret akwarelowy?",
+    a: `Cena zależy od formatu i liczby osób: portret akwarelowy jednej osoby zaczyna się od ${p.a4} zł w formacie A4, największy format 50 × 70 cm to ${p.b50x70} zł. Każda kolejna osoba i opcjonalna dedykacja są dopłatą - pełną cenę swojego portretu wyliczycie w konfiguratorze na tej stronie, bez kontaktu i bez zobowiązań. Wysyłka kurierem na terenie Polski jest w cenie.`,
+  },
+  {
+    q: "Na jakim papierze malowane są portrety akwarelowe?",
+    a: "Na papierze akwarelowym o gramaturze 300 g, bezkwasowym - takim, który nie faluje pod wodą i nie żółknie z czasem. Używam pigmentów o wysokiej światłotrwałości, więc portret trzymany poza bezpośrednim słońcem zachowa kolor przez dziesięciolecia. Każda praca jest podpisana na froncie i powstaje w jednym egzemplarzu - nie robię wydruków ani kopii.",
+  },
   {
     q: "Jakie zdjęcie najlepiej wysłać?",
     a: "Takie, na którym dobrze widać twarze - ostre, w miarę równym świetle, bez mocnych filtrów. Nie musi być profesjonalne: większość portretów maluję ze zwykłych zdjęć z telefonu. Jeśli macie wątpliwości, wyślijcie kilka - doradzę, z którego portret wyjdzie najlepiej.",
@@ -169,6 +177,7 @@ const FAQ_ITEMS = [
 
 export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProps) {
   const { portraits, reviews } = loaderData;
+  const FAQ_ITEMS = faqItems(portraits);
   return (
     <main className="page">
       <JsonLd data={breadcrumbJsonLd([{ name: "Portrety na zamówienie", path: "/portrety-na-zamowienie" }])} />
@@ -176,8 +185,10 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
         data={{
           "@context": "https://schema.org",
           "@type": "Product",
-          name: "Portret na zamówienie ze zdjęcia",
-          description: "Portret akwarelowy malowany ręcznie na podstawie zdjęcia, formaty A4 - 50 × 70 cm.",
+          name: "Portret akwarelowy na zamówienie ze zdjęcia",
+          description:
+            "Portret akwarelowy malowany ręcznie na podstawie zdjęcia, akwarela na papierze 300 g, formaty A4 - 50 × 70 cm. Oryginał w jednym egzemplarzu, nie wydruk.",
+          image: PORTRAIT_WORKS.filter((w) => w.imageUrl).map((w) => SITE_URL + w.imageUrl),
           brand: { "@type": "Brand", name: "alesierysuje" },
           offers: {
             "@type": "AggregateOffer",
@@ -186,6 +197,28 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
             priceCurrency: "PLN",
             availability: "https://schema.org/InStock",
           },
+        }}
+      />
+      {/* ImageGallery - intencja na "portrety akwarelowe" jest mocno obrazkowa,
+          opisane ImageObject dają szansę na wejście w Google Images i image pack. */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          name: "Portrety akwarelowe - galeria realizacji",
+          about: "Portrety akwarelowe malowane ręcznie ze zdjęcia",
+          associatedMedia: PORTRAIT_WORKS.filter((w) => w.imageUrl).map((w) => ({
+            "@type": "ImageObject",
+            contentUrl: SITE_URL + w.imageUrl,
+            name: w.title,
+            caption: w.imageAlt,
+            description: w.imageAlt,
+            ...(w.imageWidth ? { width: String(w.imageWidth) } : {}),
+            ...(w.imageHeight ? { height: String(w.imageHeight) } : {}),
+            creator: { "@type": "Person", name: "Aleksandra Sienica" },
+            creditText: "alesierysuje",
+            copyrightNotice: "alesierysuje - Aleksandra Sienica",
+          })),
         }}
       />
       <JsonLd
@@ -205,11 +238,12 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
       <section className="pageshero">
         <div className="wrap">
           <Crumbs items={[{ name: "Portrety na zamówienie" }]} />
-          <h1 className="soak d1">Portrety na zamówienie - portret ze zdjęcia malowany ręcznie</h1>
+          <h1 className="soak d1">Portrety akwarelowe na zamówienie - portret ze zdjęcia malowany ręcznie</h1>
           <p className="lead soak d2">
-            Wybieracie liczbę osób i format, cena układa się na Waszych oczach, a zamówienie
-            składacie formularzem - bez żadnej płatności online. Szczegóły i płatność ustalamy
-            mailowo, dopiero gdy obie strony wszystko zaakceptują.
+            Maluję portrety akwarelowe ze zdjęć - ręcznie, na papierze 300 g, w jednym
+            egzemplarzu. Wybieracie liczbę osób i format, cena układa się na Waszych oczach, a
+            zamówienie składacie formularzem - bez żadnej płatności online. Szczegóły i płatność
+            ustalamy mailowo, dopiero gdy obie strony wszystko zaakceptują.
           </p>
         </div>
       </section>
@@ -223,7 +257,7 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
       <section style={{ paddingTop: 30, paddingBottom: 10 }}>
         <div className="wrap manifesto">
           <div className="eyebrow soak">Portret ze zdjęcia</div>
-          <h2 className="soak d1">Obraz ze zdjęcia na zamówienie - jak to wygląda u mnie</h2>
+          <h2 className="soak d1">Portrety akwarelowe ze zdjęcia - jak to wygląda u mnie</h2>
           <p className="soak d2">
             Portret ze zdjęcia to najprostszy sposób, żeby zatrzymać kogoś ważnego na papierze -
             nie w chmurze, nie w rolce telefonu, tylko na ścianie. Wysyłacie fotografię, a ja
@@ -246,7 +280,7 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
         <div className="wrap sec-top soak">
           <div className="sec-head">
             <div className="eyebrow">Realizacje</div>
-            <h2>Portrety, które już wiszą na ścianach</h2>
+            <h2>Portrety akwarelowe, które już wiszą na ścianach</h2>
             <p>Kliknijcie pracę, żeby przyjrzeć się z bliska.</p>
           </div>
         </div>
@@ -357,6 +391,63 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
         </div>
       </section>
 
+      {/* technika akwarelowa */}
+      <section style={{ paddingTop: 40 }}>
+        <div className="wrap manifesto">
+          <div className="eyebrow soak">Technika</div>
+          <h2 className="soak d1">Akwarela - dlaczego portret maluję właśnie nią</h2>
+          <p className="soak d2">
+            Akwarela jest jedyną techniką, w której światło nie jest domalowane - ono zostaje.
+            Biel na portrecie akwarelowym to nie warstwa białej farby, tylko niezamalowany papier
+            prześwitujący spod przezroczystych warstw pigmentu. Dlatego skóra na akwareli wygląda
+            miękko i żywo, a nie jak wygładzona plastikowa powierzchnia. Ta sama cecha czyni
+            akwarelę techniką bez odwrotu: raz położonego koloru nie da się zamalować ani
+            poprawić, więc każda warstwa musi być przemyślana, zanim dotknie papieru.
+          </p>
+          <p className="soak d2">
+            Maluję na papierze akwarelowym 300 g - na tyle gramaturowym, że nie faluje pod wodą i
+            nie wymaga naciągania. Portrety akwarelowe buduję warstwami: najpierw najjaśniejsze
+            tony i rozmycia mokrym w mokre, potem stopniowo ciemniejsze przejścia, a na końcu
+            detale i kontur. Każda warstwa musi całkowicie wyschnąć, zanim położę kolejną -
+            stąd realizacja 10 - 14 dni, a nie dwa popołudnia.
+          </p>
+          <div className="timeline">
+            <div className="tl soak">
+              <h3>Czym akwarela różni się od oleju</h3>
+              <p>
+                Olej jest kryjący, gęsty i pozwala poprawiać w nieskończoność - daje efekt
+                bardziej dosłowny i ciężki. Akwarela jest przezroczysta i lekka, świetnie znosi
+                niedopowiedzenie: tło potrafi zniknąć w bieli papieru, a uwaga zostaje na twarzy.
+              </p>
+            </div>
+            <div className="tl soak d1">
+              <h3>Czym różni się od rysunku ołówkiem</h3>
+              <p>
+                Ołówek daje formę, ale nie daje koloru - a to zwykle kolor sukienki, włosów czy
+                światła sprawia, że rozpoznajecie na portrecie konkretną osobę, a nie sam
+                poprawnie odrysowany kształt.
+              </p>
+            </div>
+            <div className="tl soak d2">
+              <h3>Czym różni się od filtra i generatora AI</h3>
+              <p>
+                Filtr "akwarelowy" i generator przeliczają piksele - wychodzi z tego rozmyte
+                zdjęcie, wciąż zdjęcie. Tu każda plama jest decyzją: co uprościć, co pominąć, co
+                podkreślić. Dostajecie interpretację, nie przetworzenie.
+              </p>
+            </div>
+            <div className="tl soak d3">
+              <h3>Czy akwarela nie wyblaknie</h3>
+              <p>
+                Maluję pigmentami o wysokiej światłotrwałości na papierze bezkwasowym. Portret
+                powieszony poza zasięgiem bezpośredniego słońca, najlepiej za szkłem, zachowuje
+                kolor przez dziesięciolecia - akwarele z XIX wieku wciąż wiszą w muzeach.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* recznie, nie z drukarki */}
       <section style={{ paddingTop: 40 }}>
         <div className="wrap manifesto">
@@ -410,7 +501,7 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">FAQ</div>
-            <h2>Pytania o portrety na zamówienie</h2>
+            <h2>Pytania o portrety akwarelowe</h2>
           </div>
           <Faq items={FAQ_ITEMS} />
         </div>
