@@ -6,6 +6,7 @@ import { getDb } from "~/lib/payload.server";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
+import { cacheContent } from "~/lib/cache";
 
 export async function loader() {
   const db = await getDb();
@@ -167,3 +168,5 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
     </main>
   );
 }
+
+export const headers = cacheContent;

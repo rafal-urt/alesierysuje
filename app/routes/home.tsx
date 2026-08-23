@@ -10,6 +10,16 @@ import { plMonthYear } from "~/lib/dates";
 import { countFreeWeekends } from "~/lib/availability.server";
 import { pageMeta, SITE_URL, WZK_PROFILE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
+import { cacheContent } from "~/lib/cache";
+
+// LCP: poster hero - na mobile to caly hero (wideo ukryte < 720px), na desktopie
+// pierwsza klatka zanim dociagnie sie webm. Preload tylko tutaj: hero istnieje
+// wylacznie na stronie glownej, wiec globalny preload w root marnowal 123 kB
+// wysokiego priorytetu na kazdej innej trasie.
+export const links: Route.LinksFunction = () => [
+  { rel: "preload", as: "image", href: "/gfx/hero-poster.jpg" },
+];
+
 
 export async function loader() {
   const db = await getDb();
@@ -355,3 +365,5 @@ export default function Home({ loaderData }: Route.ComponentProps) {
     </main>
   );
 }
+
+export const headers = cacheContent;

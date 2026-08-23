@@ -4,6 +4,7 @@ import { getCity } from "~/data/cities";
 import { getDb } from "~/lib/payload.server";
 import { plMonthYear } from "~/lib/dates";
 import { pageMeta } from "~/lib/seo";
+import { cacheContent } from "~/lib/cache";
 
 const city = getCity("malowanie-na-zywo-krakow")!;
 
@@ -45,3 +46,5 @@ export async function loader() {
 export default function LivePaintingKrakow(props: Route.ComponentProps) {
   return <CityPage city={city} data={props.loaderData} />;
 }
+
+export const headers = cacheContent;

@@ -12,6 +12,7 @@ import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { track } from "~/lib/track";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
+import { cacheAvailability } from "~/lib/cache";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
@@ -491,3 +492,5 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
     </main>
   );
 }
+
+export const headers = cacheAvailability;

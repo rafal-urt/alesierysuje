@@ -32,9 +32,6 @@ export async function loader({ request }: Route.LoaderArgs) {
 }
 
 export const links: Route.LinksFunction = () => [
-  // LCP: poster hero - na mobile to caly hero (wideo ukryte < 720px), na desktopie
-  // pierwsza klatka zanim dociagnie sie webm
-  { rel: "preload", as: "image", href: "/gfx/hero-poster.jpg" },
   { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
   { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
   { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },

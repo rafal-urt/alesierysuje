@@ -11,6 +11,7 @@ import { Faq } from "~/components/Faq";
 import { WorksGallery } from "~/components/WorksGallery";
 import { PORTRAIT_WORKS } from "~/data/works-static";
 import { plMonthYear } from "~/lib/dates";
+import { cacheContent } from "~/lib/cache";
 
 export async function loader() {
   const db = await getDb();
@@ -522,3 +523,5 @@ export default function PortretyNaZamowienie({ loaderData }: Route.ComponentProp
     </main>
   );
 }
+
+export const headers = cacheContent;

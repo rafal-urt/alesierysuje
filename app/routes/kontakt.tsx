@@ -10,6 +10,7 @@ import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { track } from "~/lib/track";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
+import { cacheContent } from "~/lib/cache";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
@@ -240,3 +241,5 @@ export default function Kontakt() {
     </main>
   );
 }
+
+export const headers = cacheContent;

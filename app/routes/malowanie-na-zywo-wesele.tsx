@@ -12,6 +12,7 @@ import { plMonthYear } from "~/lib/dates";
 import { pageMeta, breadcrumbJsonLd, SITE_URL, WZK_PROFILE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
+import { cacheContent } from "~/lib/cache";
 
 export async function loader() {
   const db = await getDb();
@@ -295,3 +296,5 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
     </main>
   );
 }
+
+export const headers = cacheContent;
