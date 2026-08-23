@@ -254,7 +254,7 @@ export interface Inquiry {
   names: string;
   email: string;
   city?: string | null;
-  eventType: 'wesele' | 'event-firmowy' | 'urodziny-jubileusz' | 'portret' | 'inne';
+  eventType: 'wesele' | 'event-firmowy' | 'urodziny-jubileusz' | 'portret' | 'ilustracja' | 'inne';
   guests?: number | null;
   company?: string | null;
   preferredPackage?:

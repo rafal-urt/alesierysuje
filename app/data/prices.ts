@@ -133,3 +133,23 @@ export const PORTRAIT_PRICING = {
 export function formatZl(n: number): string {
   return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " zł";
 }
+
+// ===== Minimalistyczne ilustracje ze zdjęcia =====
+// Pierwsza i druga postać mają własne stawki, każda kolejna - osoba albo
+// zwierzę - to dopłata liczona tak samo. Wysyłka doliczana zawsze.
+export const ILLUSTRATION_PRICES = {
+  A5: { label: "A5", dims: "14,8 × 21 cm", one: 139, two: 189, extra: 50 },
+  A4: { label: "A4", dims: "21 × 29,7 cm", one: 199, two: 259, extra: 75 },
+} as const;
+
+export type IllustrationFormat = keyof typeof ILLUSTRATION_PRICES;
+
+export const ILLUSTRATION_SHIPPING_PLN = 18;
+
+// Cena samej ilustracji (bez wysyłki) dla formatu i liczby postaci.
+export function illustrationPrice(format: IllustrationFormat, subjects: number): number {
+  const p = ILLUSTRATION_PRICES[format];
+  if (subjects <= 1) return p.one;
+  if (subjects === 2) return p.two;
+  return p.two + (subjects - 2) * p.extra;
+}

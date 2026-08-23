@@ -35,6 +35,7 @@ export const Inquiries: CollectionConfig = {
         { label: "Event firmowy", value: "event-firmowy" },
         { label: "Urodziny / jubileusz", value: "urodziny-jubileusz" },
         { label: "Portret na zamówienie", value: "portret" },
+        { label: "Minimalistyczna ilustracja", value: "ilustracja" },
         { label: "Inna okazja", value: "inne" },
       ],
     },
