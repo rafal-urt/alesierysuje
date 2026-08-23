@@ -21,6 +21,7 @@ export function meta({ data }: Route.MetaArgs) {
     title: data.post.title.length <= 45 ? `${data.post.title} | alesierysuje` : data.post.title,
     description: data.post.description,
     path: `/blog/${data.post.slug}`,
+    ogType: "article",
   });
 }
 

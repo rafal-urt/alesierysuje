@@ -8,19 +8,28 @@ type PageMetaArgs = {
   description: string;
   path: string;
   ogImage?: string;
+  /** "article" dla wpisow bloga - reszta serwisu to "website" */
+  ogType?: "website" | "article";
 };
 
+// Adres kanoniczny trasy. Podstrony bez ukosnika na koncu (tak samo jak
+// trailingSlash:false na Vercelu i wpisy w sitemapie), ale korzen serwisu
+// zawsze z ukosnikiem - "/" to jego sciezka, a nie jej brak.
+export function canonicalUrl(path: string): string {
+  return path === "/" ? SITE_URL + "/" : SITE_URL + path;
+}
+
 // Komplet meta dla trasy: title, description, canonical, OG, twitter.
-export function pageMeta({ title, description, path, ogImage }: PageMetaArgs) {
-  const url = SITE_URL + (path === "/" ? "" : path);
+export function pageMeta({ title, description, path, ogImage, ogType }: PageMetaArgs) {
+  const url = canonicalUrl(path);
   return [
     { title },
     { name: "description", content: description },
-    { tagName: "link", rel: "canonical", href: url || SITE_URL },
+    { tagName: "link", rel: "canonical", href: url },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:url", content: url || SITE_URL },
-    { property: "og:type", content: "website" },
+    { property: "og:url", content: url },
+    { property: "og:type", content: ogType ?? "website" },
     { property: "og:locale", content: "pl_PL" },
     { property: "og:site_name", content: SITE_NAME },
     { property: "og:image", content: SITE_URL + (ogImage ?? "/og/default.png") },
@@ -36,7 +45,7 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Strona główna", item: SITE_URL },
+      { "@type": "ListItem", position: 1, name: "Strona główna", item: canonicalUrl("/") },
       ...items.map((it, i) => ({
         "@type": "ListItem",
         position: i + 2,
@@ -61,7 +70,7 @@ export function localBusinessJsonLd() {
     name: "alesierysuje - Aleksandra Sienica",
     description:
       "Malowanie na żywo (live painting) na weselach i eventach. Portrety na zamówienie ze zdjęcia.",
-    url: SITE_URL,
+    url: canonicalUrl("/"),
     logo: SITE_URL + "/gfx/logo.png",
     image: SITE_URL + "/og/home.png",
     email: "alesierysuje@gmail.com",
