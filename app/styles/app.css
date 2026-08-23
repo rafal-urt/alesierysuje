@@ -232,9 +232,10 @@ footer .logo img {
 
 /* ===== rozwijane podmenu uslug =====
    Wzorzec "disclosure": rodzic to <button aria-expanded>, a nie link - nie ma
-   wlasnej strony. Panel otwiera klikniecie i klawiatura (stan .open); na
-   urzadzeniach ze wskaznikiem dochodzi hover jako sama wygoda. Swiadomie bez
-   :focus-within, zeby aria-expanded nie klamalo o stanie panelu. */
+   wlasnej strony. Panel otwiera klikniecie, klawiatura i - na szerokim ekranie
+   z mysza - najechanie; wszystkie trzy ustawiaja ten sam stan .open w Nav.tsx,
+   wiec aria-expanded zawsze zgadza sie z tym, co widac. Swiadomie bez
+   :focus-within i bez :hover w CSS, zeby nie bylo drugiego zrodla prawdy. */
 .nav-group {
   position: relative;
 }
@@ -317,6 +318,16 @@ footer .logo img {
     transform: none;
     pointer-events: auto;
   }
+  /* niewidoczny mostek zasypujacy 8 px odstepu nad panelem - bez niego kursor
+     w drodze z przycisku do listy opuszcza grupe i podmenu znika w polowie ruchu */
+  .nav-sub::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
   .nav-sub a {
     display: block;
     white-space: nowrap;
@@ -325,14 +336,6 @@ footer .logo img {
     font-size: 0.85rem;
     padding: 10px 14px;
     border-radius: 14px;
-  }
-}
-@media (min-width: 1021px) and (hover: hover) and (pointer: fine) {
-  .nav-group:hover > .nav-sub {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    pointer-events: auto;
   }
 }
 .nav-cta {

@@ -34,6 +34,10 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   // etykieta rozwinietej grupy albo null - naraz otwarta jest najwyzej jedna
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  // czy otwierac podmenu najechaniem - tylko szeroki ekran z prawdziwa myszka.
+  // Warunek jest lustrem media query w app.css; startuje na false, wiec SSR
+  // i hydracja daja ten sam HTML (handlery nie zmieniaja znacznikow).
+  const [canHover, setCanHover] = useState(false);
   const { pathname } = useLocation();
   const navRef = useRef<HTMLElement>(null);
 
@@ -42,6 +46,14 @@ export function Nav() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1021px) and (hover: hover) and (pointer: fine)");
+    const update = () => setCanHover(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
   useEffect(() => {
@@ -95,7 +107,16 @@ export function Nav() {
             // rodzic podswietlony, gdy jestesmy na ktorejkolwiek z jego podstron
             const isCurrent = item.children.some((c) => c.to === pathname);
             return (
-              <li key={item.label} className={`nav-group${isOpen ? " open" : ""}`}>
+              <li
+                key={item.label}
+                className={`nav-group${isOpen ? " open" : ""}`}
+                // Hover steruje tym samym stanem co klik - inaczej panel otwarty
+                // najechaniem ignorowalby klikniecie, a aria-expanded klamaloby.
+                // Szczeline miedzy przyciskiem a panelem zasypuje .nav-sub::before,
+                // bez tego kursor w drodze w dol opuszcza grupe i panel znika.
+                onPointerEnter={canHover ? () => setOpenGroup(item.label) : undefined}
+                onPointerLeave={canHover ? () => setOpenGroup(null) : undefined}
+              >
                 <button
                   type="button"
                   className={`nav-parent${isCurrent ? " active" : ""}`}
