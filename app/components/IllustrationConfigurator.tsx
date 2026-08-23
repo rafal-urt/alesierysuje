@@ -78,9 +78,9 @@ export function IllustrationConfigurator() {
             ))}
           </div>
           <p className="cstep-hint">
-            Zwierzęta liczą się tak samo jak osoby. Pierwsza postać w cenie formatu, druga
+            Pies albo kot liczy się jak osoba. Pierwsza postać w cenie formatu, druga
             +{formatZl(fmt.two - fmt.one)}, każda kolejna +{formatZl(fmt.extra)}. Więcej niż{" "}
-            {MAX_SUBJECTS} postaci - napiszcie, uzgodnimy szczegóły.
+            {MAX_SUBJECTS} postaci - napisz, uzgodnimy szczegóły.
           </p>
         </div>
       </div>
@@ -92,8 +92,8 @@ export function IllustrationConfigurator() {
               <div className="check">&#10003;</div>
               <h3>Zamówienie przyjęte</h3>
               <p className="success-sub">
-                {summary}. Odezwę się mailowo w 24 - 48 godzin - potwierdzimy szczegóły, a
-                płatność ustalimy dopiero po obustronnej akceptacji.
+                {summary}. Odezwę się w ciągu doby albo dwóch - ustalimy szczegóły i termin,
+                a potem biorę się do malowania.
               </p>
             </div>
           </div>
@@ -179,8 +179,7 @@ export function IllustrationConfigurator() {
                 }}
               />
               <p className="pc-hint">
-                {photoInfo ??
-                  "Do 6 zdjęć, łącznie 4 MB. Możecie je też dosłać później - napiszę mailowo."}
+                {photoInfo ?? "Do 6 zdjęć, łącznie 4 MB. Możesz je dosłać też później."}
               </p>
               {(error || photoError) && (
                 <p className="field-error" role="alert">
@@ -191,7 +190,7 @@ export function IllustrationConfigurator() {
                 {sending ? "Wysyłanie..." : `Zamawiam za ${formatZl(total)}`}
               </button>
               <p className="pc-trust">
-                bez płatności online - szczegóły i płatność potwierdzimy mailowo
+                to jeszcze nie zakup - najpierw się odezwę
               </p>
             </fetcher.Form>
           </div>

@@ -8,7 +8,7 @@ import { CARD_WORKS } from "~/data/works-static";
 import { getDb } from "~/lib/payload.server";
 import { sendMail } from "~/lib/email.server";
 import { clientIp, rateLimit } from "~/lib/rateLimit.server";
-import { pageMeta, breadcrumbJsonLd, SITE_URL, WZK_PROFILE_URL } from "~/lib/seo";
+import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 import { cacheContent } from "~/lib/cache";
@@ -144,24 +144,24 @@ const HERO_CARDS = [
 
 const FAQ_ITEMS = [
   {
-    q: "Czym to się różni od portretu akwarelowego na zamówienie?",
-    a: "Kreską i skalą. Minimalistyczna ilustracja to kilka pewnych pociągnięć pędzla - sylwetka, gest, charakter - na formacie A5 albo A4. Portret akwarelowy ze zdjęcia idzie w drugą stronę: więcej detalu twarzy, więcej warstw, większe formaty i wyższa cena. Jeśli szukacie czegoś na ścianę nad kanapą, zajrzyjcie do portretów; jeśli na półkę, biurko albo na prezent - jesteście we właściwym miejscu.",
+    q: "Czym to się różni od portretu akwarelowego?",
+    a: "Kreską i skalą. Tutaj chodzi o skrót - kilka pociągnięć pędzla, sylwetka, gest, charakter. Portret akwarelowy idzie w drugą stronę: więcej detalu twarzy, więcej warstw, większy format. Ilustracja staje na półce albo na biurku, portret wisi na ścianie.",
   },
   {
     q: "Jakie zdjęcie się nada?",
-    a: "Zwykłe, z telefonu. Liczy się ostra twarz i światło - najlepiej dzienne, bez mocnego kontrastu z tyłu. Nie musicie pozować ani niczego ustawiać; im bardziej naturalne ujęcie, tym lepiej wychodzi gest, o który w tych ilustracjach chodzi. Mogę też połączyć osoby z kilku różnych zdjęć na jednej ilustracji - wystarczy je dołączyć i napisać, kto z kim.",
+    a: "Zwykłe, z telefonu. Najlepiej w dziennym świetle i bez ostrego kontrastu za plecami. Nie trzeba pozować ani niczego ustawiać - im bardziej naturalne ujęcie, tym lepiej wychodzi gest, o który w tych ilustracjach chodzi. Jeśli chcesz połączyć osoby z kilku zdjęć, przyślij wszystkie i napisz, kto z kim.",
   },
   {
     q: "Czy pies albo kot może być na ilustracji?",
-    a: "Jak najbardziej i traktuję go dokładnie tak samo jak osobę - liczy się do postaci na ilustracji i kosztuje tyle samo co kolejny człowiek. Zwierzęta wychodzą w tej kresce wyjątkowo dobrze, bo minimalizm wyłapuje ich sylwetkę i charakter bez wchodzenia w każdy włos.",
+    a: "Może i wychodzi zwykle świetnie - oszczędna kreska wyłapuje sylwetkę i charakter zwierzaka, nie wchodząc w każdy włos. Liczy się tak samo jak osoba, więc kosztuje tyle, co kolejny człowiek na ilustracji.",
   },
   {
-    q: "Ile czeka się na gotową ilustrację?",
-    a: "Termin potwierdzam mailowo przy przyjmowaniu zamówienia - zależy od tego, ile prac mam akurat w pracowni i czy nie wypada właśnie sezon weselny. Odzywam się w ciągu 24 - 48 godzin od złożenia zamówienia i wtedy podaję konkretną datę, zanim cokolwiek zapłacicie.",
+    q: "Ile trwa malowanie?",
+    a: "Termin podaję, kiedy się odezwę - zależy, ile prac mam akurat na stole i czy nie trwa właśnie sezon weselny. Jeśli ilustracja ma być prezentem na konkretną datę, napisz o tym od razu - wtedy od początku wiem, czy zdążę.",
   },
   {
-    q: "Czy płacę od razu przy zamówieniu?",
-    a: "Nie. Formularz nie pobiera żadnych płatności - to zapytanie z gotową wyceną. Po jego wysłaniu odzywam się mailowo, potwierdzamy szczegóły i termin, i dopiero wtedy ustalamy płatność. Do tego momentu nic Was nie wiąże.",
+    q: "Jak wygląda płatność?",
+    a: "Wypełnienie formularza to jeszcze nie zakup - najpierw piszemy do siebie i ustalamy, co dokładnie maluję. O płatności rozmawiamy, kiedy wiadomo już wszystko.",
   },
 ];
 
@@ -215,26 +215,16 @@ export default function MinimalistyczneIlustracje() {
             <Crumbs items={[{ name: "Minimalistyczne ilustracje" }]} />
             <h1 className="soak d1">Minimalistyczne ilustracje ze zdjęcia - A5 i A4</h1>
             <p className="lead soak d2">
-              Kilka pewnych pociągnięć pędzla zamiast dosłowności - tyle, żeby od razu wiedzieć,
-              kto to jest, i tyle światła, żeby rysunek oddychał. Ta sama kreska, którą maluję na
-              żywo na weselach i eventach, tylko że tym razem z Waszego zdjęcia i spokojnie,
-              w pracowni.
+              Przysyłasz mi zdjęcie kogoś, kogo lubisz. Maluję je akwarelą - oszczędną kreską,
+              która nie kopiuje twarzy, tylko wyłapuje to, jak ta osoba stoi, przechyla głowę,
+              trzyma psa. Powstaje jedna, na papierze, malowana ręką.
             </p>
             <div className="hero-cta soak d3">
               <a className="btn" href="#konfigurator">
-                Zamów i poznaj cenę
+                Zamów ilustrację
               </a>
               <a className="btn ghost" href="#przyklady">
-                Zobacz przykłady
-              </a>
-            </div>
-            <div className="trust-line soak d3">
-              <span className="stars" aria-hidden="true">
-                &#9733;&#9733;&#9733;&#9733;&#9733;
-              </span>
-              5/5 &middot;{" "}
-              <a href={WZK_PROFILE_URL} target="_blank" rel="noopener noreferrer">
-                opinie z portalu Wesele z klasą
+                Zobacz prace
               </a>
             </div>
           </div>
@@ -247,18 +237,17 @@ export default function MinimalistyczneIlustracje() {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Przykłady</div>
-            <h2>Tak wygląda ta kreska</h2>
+            <h2>Zobacz, jak to wygląda</h2>
           </div>
           <p className="soak" style={{ maxWidth: 720, margin: "0 auto 8px", textAlign: "center" }}>
-            Poniższe ilustracje powstały na żywo, w trakcie wesel i eventów - przy stoliku,
-            w kilkanaście minut na sztukę. Zamawiając ilustrację ze zdjęcia, dostajecie dokładnie
-            tę samą rękę i tę samą technikę, tylko malowaną bez pośpiechu.
+            Te malowałam na weselach, przy stoliku, między jednym a drugim tańcem. Twoja
+            powstanie w pracowni - spokojniej i z większą uwagą dla szczegółu.
           </p>
         </div>
         <WorksGallery
           works={CARD_WORKS}
           variant="strip"
-          cta={{ label: "Chcę taką ilustrację ze swojego zdjęcia", to: "#konfigurator" }}
+          cta={{ label: "Chcę taką ze swojego zdjęcia", to: "#konfigurator" }}
         />
       </section>
 
@@ -267,12 +256,11 @@ export default function MinimalistyczneIlustracje() {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Wycena i zamówienie</div>
-            <h2>Policz swoją ilustrację</h2>
+            <h2>Zamów swoją ilustrację</h2>
           </div>
           <p className="soak" style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-            Cena zależy tylko od dwóch rzeczy: formatu i liczby postaci. Żadnych dopłat
-            za tło, kadr czy poprawki - wysyłka {formatZl(ILLUSTRATION_SHIPPING_PLN)} doliczona
-            od razu, żeby kwota na dole była tą ostateczną.
+            Cena zależy od formatu i od tego, ile postaci ma się zmieścić. Wysyłka jest
+            już wliczona w sumę na dole.
           </p>
         </div>
         <IllustrationConfigurator />
@@ -282,33 +270,33 @@ export default function MinimalistyczneIlustracje() {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Jak to działa</div>
-            <h2>Od zdjęcia do przesyłki w trzech krokach</h2>
+            <h2>Jak to wygląda od Twojej strony</h2>
           </div>
           <div className="steps">
             <div className="step soak">
               <div className="brush" style={{ background: "var(--color-wash-ochre)" }} />
-              <h3>Przysyłacie zdjęcie</h3>
+              <h3>Przysyłasz zdjęcie</h3>
               <p>
-                Zwykła fotografia z telefonu wystarczy - liczy się ostra twarz i dobre światło.
-                Jeśli macie kilka ujęć do wyboru, dołączcie wszystkie; podpowiem, które da
-                najlepszy efekt, i mogę połączyć osoby z różnych zdjęć.
+                Zwykłe, z telefonu. Liczy się ostra twarz i dzienne światło. Jeśli masz kilka
+                ujęć, przyślij wszystkie - powiem, z którego wyjdzie najlepiej, i mogę zebrać
+                osoby z różnych kadrów na jednej ilustracji.
               </p>
             </div>
             <div className="step soak d1">
               <div className="brush" style={{ background: "var(--color-wash-rose)" }} />
-              <h3>Ustalamy szczegóły</h3>
+              <h3>Piszemy do siebie</h3>
               <p>
-                Odzywam się w ciągu 24 - 48 godzin. Potwierdzamy format, liczbę postaci i termin,
-                a jeśli ilustracja ma być prezentem - także datę, na którą musi dojechać. Dopiero
-                wtedy rozmawiamy o płatności.
+                Odzywam się w ciągu doby albo dwóch. Ustalamy format, kto ma się znaleźć na
+                ilustracji i na kiedy ma dojechać - zwłaszcza jeśli to prezent z konkretną datą.
               </p>
             </div>
             <div className="step soak d2">
               <div className="brush" style={{ background: "var(--color-wash-blue)" }} />
               <h3>Maluję i wysyłam</h3>
               <p>
-                Ilustracja powstaje ręcznie, akwarelą na papierze 300 g. Do Was jedzie oryginał -
-                podpisany i zabezpieczony na czas transportu - a nie wydruk pliku.
+                Akwarela na papierze 300 g, podpisana. Z tego samego zdjęcia dwa razy wyszłaby
+                inaczej - i to jest w tym najlepsze. Pakuję ją płasko, między sztywne kartony,
+                żeby dojechała w takim stanie, w jakim schodzi ze stołu.
               </p>
             </div>
           </div>
@@ -320,15 +308,15 @@ export default function MinimalistyczneIlustracje() {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Formaty</div>
-            <h2>Dwa rozmiary, dwa różne zastosowania</h2>
+            <h2>Który format wybrać</h2>
           </div>
           <div className="steps">
             <div className="step soak">
               <div className="brush" style={{ background: "var(--color-wash-rose)" }} />
               <h3>A5 &middot; {ILLUSTRATION_PRICES.A5.dims}</h3>
               <p>
-                Format kameralny - jedna postać albo para. Staje na półce, mieści się w małej
-                ramce i najczęściej wyjeżdża jako prezent, który nie wymaga okazji.
+                Kameralny - jedna postać albo para. Staje na półce, mieści się w małej ramce
+                i najczęściej jest prezentem, który nie potrzebuje okazji.
               </p>
               <p>
                 <b>{formatZl(ILLUSTRATION_PRICES.A5.one)}</b> za jedną postać,{" "}
@@ -340,8 +328,8 @@ export default function MinimalistyczneIlustracje() {
               <div className="brush" style={{ background: "var(--color-wash-blue)" }} />
               <h3>A4 &middot; {ILLUSTRATION_PRICES.A4.dims}</h3>
               <p>
-                Dwa razy więcej miejsca na gest i oddech wokół postaci. Naturalny wybór na ścianę
-                i na większe rodziny - przy czwórce czy piątce A5 zaczyna być ciasne.
+                Dwa razy więcej miejsca na gest i powietrze wokół postaci. Na ścianę i na
+                większe rodziny - przy czwórce czy piątce A5 robi się ciasno.
               </p>
               <p>
                 <b>{formatZl(ILLUSTRATION_PRICES.A4.one)}</b> za jedną postać,{" "}
@@ -351,8 +339,7 @@ export default function MinimalistyczneIlustracje() {
             </div>
           </div>
           <p className="soak" style={{ textAlign: "center", opacity: 0.75, marginTop: 18 }}>
-            Zwierzęta liczą się tak samo jak osoby. Do każdego zamówienia dochodzi wysyłka{" "}
-            {formatZl(ILLUSTRATION_SHIPPING_PLN)}.
+            Do każdego zamówienia dochodzi wysyłka {formatZl(ILLUSTRATION_SHIPPING_PLN)}.
           </p>
         </div>
       </section>
@@ -361,7 +348,7 @@ export default function MinimalistyczneIlustracje() {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Pytania</div>
-            <h2>Zanim zamówicie</h2>
+            <h2>Zanim zamówisz</h2>
           </div>
           <Faq items={FAQ_ITEMS} />
         </div>
@@ -376,9 +363,9 @@ export default function MinimalistyczneIlustracje() {
               height={380}
               style={{ bottom: -140, left: -80 }}
             />
-            <h2>Macie zdjęcie, które chce być ilustracją?</h2>
+            <h2>Masz takie zdjęcie?</h2>
             <a className="btn light" href="#konfigurator">
-              Policz cenę i zamów
+              Zamów ilustrację
             </a>
           </div>
         </div>
