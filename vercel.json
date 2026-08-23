@@ -7,6 +7,19 @@
   ],
   "buildCommand": "npm run build",
   "installCommand": "npm install",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.alesierysuje.pl"
+        }
+      ],
+      "destination": "https://alesierysuje.pl/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/fonts/(.*)",
