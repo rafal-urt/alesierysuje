@@ -43,7 +43,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Malowanie na żywo na wesele i eventy | alesierysuje",
     description:
-      "Malowanie na żywo na weselach i eventach: akwarelowe portrety gości do zabrania jeszcze tego wieczoru. Sprawdź wolne terminy i jawne ceny.",
+      "Malowanie na żywo na weselach i eventach: akwarelowe portrety gości do zabrania jeszcze tego wieczoru. Sprawdź wolne terminy i ceny.",
     path: "/",
     ogImage: "/og/home.png",
   });
@@ -114,7 +114,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Od czego zaczynamy</div>
-            <h2>Trzy powody, dla których tu jesteście</h2>
+            <h2>Trzy rzeczy, które maluję</h2>
           </div>
           <div className="doors">
             <Link className="door soak" to="/malowanie-na-zywo-wesele">
@@ -229,8 +229,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             <span>portretów gości w jeden wieczór eventowy</span>
           </div>
           <div className="bst soak d2">
-            <b>0 dni</b>
-            <span>czekania - goście zabierają swoje ilustracje jeszcze tej samej nocy</span>
+            <b>tej samej nocy</b>
+            <span>goście zabierają swoje ilustracje do domu prosto z wesela</span>
           </div>
         </div>
       </div>
@@ -246,8 +246,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <div className="brush" style={{ background: "var(--color-wash-blue)" }} />
               <h3>Wybieracie datę</h3>
               <p>
-                Kalendarz pokazuje dostępność każdego dnia. Wybieracie termin i wysyłacie bezpłatne
-                zapytanie - bez zobowiązań.
+                Kalendarz pokazuje, które dni są jeszcze wolne. Wybieracie swój i piszecie do
+                mnie - odpowiadam w ciągu doby albo dwóch.
               </p>
             </div>
             <div className="step soak d1">
@@ -274,11 +274,11 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <WatercolorStain color="green" width={480} height={420} style={{ top: 40, left: -160 }} />
         <div className="wrap manifesto">
           <div className="eyebrow soak">Czym jest live painting</div>
-          <h2 className="soak d1">Malowanie na żywo to nie usługa. To scena</h2>
+          <h2 className="soak d1">Malowanie na żywo, czyli obraz, który dzieje się przy Was</h2>
           <p className="soak d2">
-            Live painting, po polsku malowanie na żywo, to sztuka tworzona na oczach gości - na
-            weselu, evencie firmowym, gali czy premierze. Zamawiacie proces: sztalugę na sali i
-            kilka godzin, w których każdy gość może zobaczyć, jak powstaje jego akwarelowy portret.
+            Live painting, po polsku malowanie na żywo, to sztuka powstająca na oczach gości -
+            na weselu, evencie firmowym, gali czy premierze. Na sali staje sztaluga i przez kilka
+            godzin każdy może zobaczyć, jak z białej kartki wychodzi jego akwarelowy portret.
             Podczas jednego wydarzenia maluję na żywo do 30 ilustracji formatu A5 - każdą podpisaną
             i gotową do zabrania jeszcze tego samego wieczoru - a kolejne dokańczam w pracowni i
             dosyłam po evencie.
@@ -305,11 +305,11 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             <div className="eyebrow">Opinie</div>
             <h2>Słowo od par i gości</h2>
             <p>
-              Prawdziwe opinie par - wszystkie możecie zweryfikować na{" "}
+              Zebrane na{" "}
               <a href={WZK_PROFILE_URL} target="_blank" rel="noopener noreferrer">
-                moim profilu w serwisie Wesele z klasą
+                moim profilu w Weselu z klasą
               </a>
-              .
+              , gdzie piszą je pary po weselu.
             </p>
           </div>
           <div className="quotes">

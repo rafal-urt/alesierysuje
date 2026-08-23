@@ -58,7 +58,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Czy papier może być przygotowany pod nasz branding?",
-    a: "Tak - papier przygotowuję indywidualnie pod identyfikację wydarzenia: logo, kolory, motyw przewodni. Pamiątka nosi Waszą markę, a mimo to goście naprawdę chcą ją zatrzymać.",
+    a: "Tak - papier przygotowuję indywidualnie pod identyfikację wydarzenia: logo, kolory, motyw przewodni. Logo trafia więc na coś, co goście wieszają w domach, zamiast schować do szuflady.",
   },
   {
     q: "Czy wystawiacie fakturę VAT?",
@@ -113,8 +113,8 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
             <p className="lead soak d2">
               Seria akwarelowych portretów gości malowanych w trakcie wydarzenia - od 20 do 40
               ilustracji A5 na papierze przygotowanym pod branding eventu. Goście wpadają do kącika
-              live art na szybkie zdjęcie, wracają do rozmów, a wychodzą z pamiątką, którą naprawdę
-              zatrzymają. Faktura VAT, umowa, jedna osoba kontaktowa.
+              live art na szybkie zdjęcie, wracają do rozmów, a wychodzą z pamiątką, która ląduje
+              na lodówce, nie w koszu przy wyjściu. Faktura VAT, umowa, jedna osoba kontaktowa.
             </p>
             <div className="hero-cta soak d3">
               <Link className="btn" to="/terminy">
@@ -179,7 +179,7 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
             <div className="tl soak">
               <h3>Termin</h3>
               <p>
-                Sprawdzacie datę w kalendarzu online i wysyłacie bezpłatne zapytanie. Wracam w
+                Sprawdzacie datę w kalendarzu online i piszecie do mnie. Wracam w
                 24 - 48 h z wyceną i propozycją formuły.
               </p>
             </div>

@@ -85,7 +85,7 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
               </tbody>
             </table>
             <div className="note">
-              Termin sprawdzicie bezpłatnym zapytaniem w kalendarzu. Ilustracje, których nie zdążę
+              Termin sprawdzicie w kalendarzu. Ilustracje, których nie zdążę
               namalować na żywo, dokańczam w pracowni i dosyłam po weselu. Dojazd na Mazowszu w
               cenie.
             </div>

@@ -97,15 +97,6 @@ export default function OMnie() {
               modowe - a między zleceniami wracam do pracowni, gdzie powstają{" "}
               <Link to="/portrety-na-zamowienie">portrety akwarelowe ze zdjęć</Link>.
             </p>
-            <div className="trust-line soak d3">
-              <span className="stars" aria-hidden="true">
-                &#9733;&#9733;&#9733;&#9733;&#9733;
-              </span>
-              5/5 &middot;{" "}
-              <a href={WZK_PROFILE_URL} target="_blank" rel="noopener noreferrer">
-                opinie par z portalu Wesele z klasą
-              </a>
-            </div>
             <span className="sig soak d3">Aleksandra Sienica</span>
           </div>
         </div>

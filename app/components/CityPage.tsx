@@ -114,8 +114,8 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
               <span>tyle trwa namalowanie jednego akwarelowego portretu</span>
             </div>
             <div className="bstat soak d2">
-              <b>0 minut</b>
-              <span>w kolejce - szybkie zdjęcie w kąciku i wracacie do zabawy</span>
+              <b>bez kolejki</b>
+              <span>szybkie zdjęcie w kąciku i wracacie do zabawy</span>
             </div>
             <div className="bstat soak d3">
               <b>A5 &middot; 300 g</b>
@@ -136,7 +136,7 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
             <div className="tl soak">
               <h3>Zapytanie</h3>
               <p>
-                Wybieracie termin w kalendarzu online i wysyłacie bezpłatne zapytanie. Odpowiedź
+                Wybieracie termin w kalendarzu online i piszecie do mnie. Odpowiedź
                 wraca w 24 - 48 h.
               </p>
             </div>
@@ -170,7 +170,7 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Pakiety weselne</div>
-            <h2>Trzy pakiety, jawne ceny</h2>
+            <h2>Trzy pakiety i ich ceny</h2>
             <p>Ceny są takie same w całej Polsce - różni się tylko koszt dojazdu.</p>
           </div>
           <div className="soak d1">
@@ -179,7 +179,7 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
           <p className="deposit-note soak">
             Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna ilustracja to{" "}
             <b>{EXTRA_ILLUSTRATION_PLN} zł</b>. Termin sprawdzacie w kalendarzu i rezerwujecie
-            bezpłatnym zapytaniem - odpowiedź wraca w 24 - 48 godzin.
+            zapytaniem - odpowiedź wraca w 24 - 48 godzin.
           </p>
         </div>
       </section>

@@ -116,8 +116,7 @@ export async function action({ request }: Route.ActionArgs) {
           attachments.length
             ? `Zdjęcia referencyjne (${attachments.length}) dotarły razem z zamówieniem - dziękuję!`
             : "Odezwę się w 24 - 48 godzin z prośbą o zdjęcia referencyjne.",
-          "Potwierdzimy mailowo termin i szczegóły - płatność dopiero po obustronnej akceptacji.",
-          "Zamówienie do niczego nie zobowiązuje.",
+          "Odezwę się mailowo, ustalimy termin i szczegóły, a potem biorę się do malowania.",
           "",
           "do usłyszenia,",
           "Aleksandra Sienica - alesierysuje.pl",
@@ -144,7 +143,7 @@ export function meta({}: Route.MetaArgs) {
 const faqItems = (p: { a4: number; b50x70: number }) => [
   {
     q: "Ile kosztuje portret akwarelowy?",
-    a: `Cena zależy od formatu i liczby osób: portret akwarelowy jednej osoby zaczyna się od ${p.a4} zł w formacie A4, największy format 50 × 70 cm to ${p.b50x70} zł. Każda kolejna osoba i opcjonalna dedykacja są dopłatą - pełną cenę swojego portretu wyliczycie w konfiguratorze na tej stronie, bez kontaktu i bez zobowiązań. Wysyłka kurierem na terenie Polski jest w cenie.`,
+    a: `Cena zależy od formatu i liczby osób: portret akwarelowy jednej osoby zaczyna się od ${p.a4} zł w formacie A4, największy format 50 × 70 cm to ${p.b50x70} zł. Każda kolejna osoba i opcjonalna dedykacja są dopłatą - pełną cenę swojego portretu wyliczycie w konfiguratorze na tej stronie, jeszcze przed napisaniem do mnie. Wysyłka kurierem na terenie Polski jest w cenie.`,
   },
   {
     q: "Na jakim papierze malowane są portrety akwarelowe?",
@@ -172,7 +171,7 @@ const faqItems = (p: { a4: number; b50x70: number }) => [
   },
   {
     q: "Czy portret można oprawić?",
-    a: "Tak - maluję w standardowych formatach (A4, A3, 50 × 70 cm), więc pasują do ram dostępnych od ręki. Najlepiej wyglądają w ramie z passe-partout i za szkłem. Chętnie podpowiem konkretne rozwiązanie do Waszego wnętrza.",
+    a: "Tak - maluję w standardowych formatach (A4, A3, 50 × 70 cm), więc pasują do ram dostępnych od ręki. Najlepiej wyglądają w ramie z passe-partout i za szkłem. Chętnie podpowiem, co sprawdzi się u Was na ścianie.",
   },
 ];
 

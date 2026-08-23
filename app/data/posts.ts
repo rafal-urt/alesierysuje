@@ -73,7 +73,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Kiedy akwarela" },
       {
         type: "p",
-        text: "Jeśli planujecie elegancką oprawę, chcecie w każdym pakiecie **portret Pary Młodej A4** i zależy Wam, żeby goście wynieśli z wesela pracę, która trafi do ramki, a nie do szuflady - to jest moja działka. Zobaczcie [realizacje z wesel](/realizacje) i porównajcie z portfolio karykaturzystów: różnicę widać szybciej, niż da się ją opisać. Wolne daty do końca 2027 znajdziecie w [kalendarzu terminów](/terminy), a jawne ceny w [cenniku](/cennik). A jeśli dopiero poznajecie temat - zacznijcie od wpisu [co to jest live art](/blog/co-to-jest-live-art-live-painting).",
+        text: "Jeśli planujecie elegancką oprawę, chcecie w każdym pakiecie **portret Pary Młodej A4** i zależy Wam, żeby goście wynieśli z wesela pracę, która trafi do ramki, a nie do szuflady - to jest moja działka. Zobaczcie [realizacje z wesel](/realizacje) i porównajcie z portfolio karykaturzystów: różnicę widać szybciej, niż da się ją opisać. Wolne daty do końca 2027 znajdziecie w [kalendarzu terminów](/terminy), a ceny w [cenniku](/cennik). A jeśli dopiero poznajecie temat - zacznijcie od wpisu [co to jest live art](/blog/co-to-jest-live-art-live-painting).",
       },
     ],
   },
@@ -141,7 +141,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "Jeśli po tej lekturze live art wydaje się Wam czymś dla Waszego przyjęcia - wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy). Zapytanie jest bezpłatne i do niczego nie zobowiązuje.",
+        text: "Jeśli po tej lekturze live art wydaje się Wam czymś dla Waszego przyjęcia - wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy). Napiszcie - to po prostu początek rozmowy.",
       },
     ],
   },
@@ -284,7 +284,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Jak to spiąć w całość" },
       {
         type: "p",
-        text: "Najlepszy układ, jaki widuję na weselach, to para: **jedno od gości dla Was** (audio-księga, wino-kapsuła, karty) i **jedno od Was dla gości** (portrety albo przemyślane podziękowania - pomysły zebrałam [w osobnym wpisie](/blog/podziekowania-dla-gosci-weselnych-pomysly)). Więcej niż dwie rzeczy zaczynają ze sobą konkurować o uwagę gości. Jeśli portrety mają być Waszą połową tej pary - [sprawdźcie swój termin](/terminy), zapytanie jest bezpłatne.",
+        text: "Najlepszy układ, jaki widuję na weselach, to para: **jedno od gości dla Was** (audio-księga, wino-kapsuła, karty) i **jedno od Was dla gości** (portrety albo przemyślane podziękowania - pomysły zebrałam [w osobnym wpisie](/blog/podziekowania-dla-gosci-weselnych-pomysly)). Więcej niż dwie rzeczy zaczynają ze sobą konkurować o uwagę gości. Jeśli portrety mają być Waszą połową tej pary - [sprawdźcie swój termin](/terminy).",
       },
     ],
   },
@@ -486,7 +486,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Jak zarezerwować termin" },
       {
         type: "p",
-        text: "Wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy) - w formularzu wybierzcie rodzaj wydarzenia „Urodziny / jubileusz”. Wysyłacie bezpłatne zapytanie i w ciągu 24-48 godzin wracam do Was z potwierdzeniem. Zapytanie do niczego nie zobowiązuje - to po prostu początek rozmowy o Waszym przyjęciu.",
+        text: "Wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy) - w formularzu wybierzcie rodzaj wydarzenia „Urodziny / jubileusz”. Piszecie do mnie i w ciągu 24-48 godzin wracam z odpowiedzią. To po prostu początek rozmowy o Waszym przyjęciu.",
       },
     ],
   },
@@ -543,7 +543,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Jak zarezerwować termin" },
       {
         type: "p",
-        text: "Wszystkie wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy). Wybieracie dzień, wysyłacie bezpłatne zapytanie i w ciągu 24-48 godzin wracam do Was z potwierdzeniem. Zapytanie do niczego nie zobowiązuje - to po prostu początek rozmowy.",
+        text: "Wszystkie wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy). Wybieracie dzień, piszecie do mnie i w ciągu 24-48 godzin wracam z odpowiedzią. To po prostu początek rozmowy.",
       },
     ],
   },
@@ -720,7 +720,7 @@ export const POSTS: Post[] = [
     slug: "zapisy-live-painting-2027",
     title: "Zapisy na 2027 ruszyły - kalendarz i cennik już dostępne",
     description:
-      "Zapisy oraz cennik na malowanie gości na żywo na 2027 właśnie ruszyły. Sprawdź wolne terminy w kalendarzu online i zarezerwuj swój dzień bezpłatnym zapytaniem.",
+      "Zapisy oraz cennik na malowanie gości na żywo na 2027 właśnie ruszyły. Sprawdź wolne terminy w kalendarzu online i zarezerwuj swój dzień.",
     date: "2026-07-04",
     dateLabel: "4 lipca 2026",
     excerpt:
@@ -736,7 +736,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "Rezerwacja działa tak jak lubicie: wybieracie dzień, wysyłacie bezpłatne zapytanie i w ciągu 24 - 48 godzin wracam do Was z potwierdzeniem dostępności. Zapytanie do niczego nie zobowiązuje - to po prostu początek rozmowy o Waszym weselu albo evencie.",
+        text: "Rezerwacja działa tak jak lubicie: wybieracie dzień, piszecie do mnie i w ciągu 24 - 48 godzin wracam z potwierdzeniem dostępności. To po prostu początek rozmowy o Waszym weselu albo evencie.",
       },
       {
         type: "p",

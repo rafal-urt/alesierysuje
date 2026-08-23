@@ -64,7 +64,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Co jeśli zmienimy datę wesela?",
-    a: "Piszecie i sprawdzamy nowy termin w kalendarzu. Zapytanie jest bezpłatne, więc przy zmianie z wyprzedzeniem zwykle udaje się bez problemu.",
+    a: "Piszecie i sprawdzamy nowy termin w kalendarzu. Przy zmianie z wyprzedzeniem zwykle udaje się bez problemu.",
   },
   {
     q: "Malujecie też poprawiny?",
@@ -153,8 +153,8 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
               <span>tyle trwa namalowanie jednego akwarelowego portretu</span>
             </div>
             <div className="bstat soak d2">
-              <b>0 minut</b>
-              <span>w kolejce - szybkie zdjęcie w kąciku i wracacie do zabawy</span>
+              <b>bez kolejki</b>
+              <span>szybkie zdjęcie w kąciku i wracacie do zabawy</span>
             </div>
             <div className="bstat soak d3">
               <b>A5 &middot; 300 g</b>
@@ -179,7 +179,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             <div className="tl soak">
               <h3>Zapytanie</h3>
               <p>
-                Wybieracie termin w kalendarzu i wysyłacie bezpłatne zapytanie. Odpowiedź wraca w
+                Wybieracie termin w kalendarzu i piszecie do mnie. Odpowiedź wraca w
                 24 - 48 h, potem ustalamy szczegóły.
               </p>
             </div>
@@ -227,14 +227,14 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Pakiety</div>
-            <h2>Trzy pakiety, jawne ceny</h2>
+            <h2>Trzy pakiety i ich ceny</h2>
             <p>Każdy zawiera portret Pary Młodej i podpisane, zabezpieczone prace dla gości.</p>
           </div>
           <div className="soak d1">
             <PackagesAccordion packages={WEDDING_PACKAGES} prices={prices} />
           </div>
           <p className="deposit-note soak">
-            Termin sprawdzacie w kalendarzu i rezerwujecie <b>bezpłatnym zapytaniem</b> - odpowiedź
+            Termin sprawdzacie w kalendarzu i rezerwujecie <b>zapytaniem</b> - odpowiedź
             wraca w 24 - 48 godzin. Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna
             ilustracja to <b>{EXTRA_ILLUSTRATION_PLN} zł</b> - a czego nie zdążę namalować na żywo,
             dokańczam w pracowni i dosyłam po weselu. Dojazd na terenie Mazowsza w cenie, dalej -

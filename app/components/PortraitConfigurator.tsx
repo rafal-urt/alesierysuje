@@ -138,8 +138,8 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
               <div className="check">&#10003;</div>
               <h3>Zamówienie przyjęte</h3>
               <p className="success-sub">
-                {summary}. Odezwę się mailowo w 24 - 48 godzin - potwierdzimy termin i szczegóły,
-                a płatność ustalimy dopiero po obustronnej akceptacji.
+                {summary}. Odezwę się w ciągu doby albo dwóch - ustalimy termin i szczegóły,
+                a potem biorę się do malowania.
               </p>
             </div>
           </div>

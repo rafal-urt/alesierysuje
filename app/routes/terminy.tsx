@@ -18,7 +18,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Wolne terminy live painting 2026/2027 | alesierysuje",
     description:
-      "Kalendarz dostępności live paintingu do końca 2027. Wybierz wolny dzień i wyślij bezpłatne zapytanie o termin - odpowiedź w 24 - 48 godzin.",
+      "Kalendarz dostępności live paintingu do końca 2027. Wybierz wolny dzień i napisz do mnie - odpowiedź w 24 - 48 godzin.",
     path: "/terminy",
     ogImage: "/og/terminy.png",
   });
@@ -160,7 +160,7 @@ export async function action({ request }: Route.ActionArgs): Promise<ActionResul
           ``,
           `Wasze zapytanie o termin ${dateLabel} dotarło do pracowni.`,
           `Sprawdzę dostępność i wrócę do Was mailowo - zwykle w ciągu 24 - 48 godzin.`,
-          `Zapytanie jest bezpłatne i do niczego nie zobowiązuje.`,
+          `Odpowiadam w ciągu doby albo dwóch.`,
           ``,
           `do usłyszenia,`,
           `Aleksandra Sienica - alesierysuje.pl`,
@@ -266,9 +266,8 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
           <Crumbs items={[{ name: "Terminy" }]} />
           <h1 className="soak d1">Zapytaj o swój termin</h1>
           <p className="lead soak d2">
-            Kalendarz jest prawdziwy w czasie rzeczywistym - to, co widzicie, jest dostępne teraz.
-            Wybierzcie dzień i wyślijcie bezpłatne zapytanie o rezerwację - odpowiedź wraca w 24 - 48
-            godzin.
+            Kalendarz pokazuje moją dostępność na bieżąco. Wybierzcie wolny dzień i napiszcie
+            do mnie; odpowiedź wraca w 24 - 48 godzin.
           </p>
         </div>
       </section>
@@ -470,7 +469,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                       </p>
                     )}
                     <button className="btn" type="submit" disabled={sending}>
-                      {sending ? "Wysyłanie..." : "Wyślij bezpłatne zapytanie"}
+                      {sending ? "Wysyłanie..." : "Wyślij zapytanie o termin"}
                     </button>
                     <div className="fine">
                       Bezpłatne i niezobowiązujące - to początek rozmowy, nie rezerwacja. Odpowiedź
@@ -480,7 +479,7 @@ export default function Terminy({ loaderData }: Route.ComponentProps) {
                 )}
                 {!selected && (
                   <div className="fine">
-                    Zapytanie jest bezpłatne i do niczego nie zobowiązuje. Odpowiedź w 24 - 48
+                    Rezerwacja dopiero po naszej rozmowie. Odpowiedź w 24 - 48
                     godzin.
                   </div>
                 )}

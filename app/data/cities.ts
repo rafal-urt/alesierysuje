@@ -49,7 +49,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Jak szybko trzeba rezerwować termin w Warszawie?",
-        a: "Warszawskie soboty w sezonie schodzą pierwsze - najbezpieczniej sprawdzić datę w kalendarzu online od razu po rezerwacji sali. Zapytanie jest bezpłatne i do niczego nie zobowiązuje.",
+        a: "Warszawskie soboty w sezonie schodzą pierwsze - najbezpieczniej sprawdzić datę w kalendarzu online od razu po rezerwacji sali. Napiszcie do mnie - to po prostu początek rozmowy.",
       },
       {
         q: "Maluje Pani też na eventach firmowych w Warszawie?",
@@ -99,7 +99,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Wesele mamy w sezonie letnim nad morzem - kiedy rezerwować?",
-        a: "Jak najwcześniej - nadmorskie terminy od czerwca do września znikają szybciej niż gdziekolwiek indziej. Kalendarz online pokazuje dostępność w czasie rzeczywistym, a zapytanie jest bezpłatne.",
+        a: "Jak najwcześniej - nadmorskie terminy od czerwca do września znikają szybciej niż gdziekolwiek indziej. Kalendarz online pokazuje dostępność w czasie rzeczywistym - wystarczy wybrać dzień i napisać.",
       },
       {
         q: "A eventy firmowe w Trójmieście?",
@@ -145,7 +145,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Kiedy rezerwować termin na wesele w Wielkopolsce?",
-        a: "Najlepiej od razu po rezerwacji sali - sobotnie terminy w sezonie znikają pierwsze. Kalendarz online pokazuje dostępność w czasie rzeczywistym, a zapytanie jest bezpłatne i do niczego nie zobowiązuje.",
+        a: "Najlepiej od razu po rezerwacji sali - sobotnie terminy w sezonie znikają pierwsze. Kalendarz online pokazuje dostępność w czasie rzeczywistym - wystarczy wybrać dzień i napisać.",
       },
     ],
     ogImage: "/og/poznan.png",
@@ -221,7 +221,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Zostały nam trzy miesiące do wesela - to jeszcze realny termin?",
-        a: "Sprawdźcie kalendarz online - przy Łodzi krótkie wyprzedzenie jest najmniej problematyczne, bo prosta logistyka pozwala mi domykać bliższe daty. Zapytanie jest bezpłatne, odpowiedź wraca w 24 - 48 godzin.",
+        a: "Sprawdźcie kalendarz online - przy Łodzi krótkie wyprzedzenie jest najmniej problematyczne, bo prosta logistyka pozwala mi domykać bliższe daty. Odpowiedź wraca w 24 - 48 godzin.",
       },
       {
         q: "Ile ilustracji powstanie podczas łódzkiego wesela?",
