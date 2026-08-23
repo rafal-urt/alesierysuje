@@ -13,6 +13,7 @@ export default [
   route("malowanie-na-zywo-poznan", "routes/malowanie-na-zywo-poznan.tsx"),
   route("malowanie-na-zywo-krakow", "routes/malowanie-na-zywo-krakow.tsx"),
   route("malowanie-na-zywo-lodz", "routes/malowanie-na-zywo-lodz.tsx"),
+  route("minimalistyczne-ilustracje-ze-zdjecia", "routes/minimalistyczne-ilustracje-ze-zdjecia.tsx"),
   route("portrety-na-zamowienie", "routes/portrety-na-zamowienie.tsx"),
   route("realizacje", "routes/realizacje.tsx"),
   route("cennik", "routes/cennik.tsx"),

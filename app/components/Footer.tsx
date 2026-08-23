@@ -41,6 +41,9 @@ export function Footer() {
                 <Link to="/malowanie-na-zywo-eventy">Eventy firmowe</Link>
               </li>
               <li>
+                <Link to="/minimalistyczne-ilustracje-ze-zdjecia">Minimalistyczne ilustracje</Link>
+              </li>
+              <li>
                 <Link to="/portrety-na-zamowienie">Portrety akwarelowe ze zdjęcia</Link>
               </li>
               <li>

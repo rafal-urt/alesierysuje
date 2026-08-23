@@ -229,6 +229,112 @@ footer .logo img {
   color: var(--color-ink);
   background: rgba(43, 43, 43, 0.09);
 }
+
+/* ===== rozwijane podmenu uslug =====
+   Wzorzec "disclosure": rodzic to <button aria-expanded>, a nie link - nie ma
+   wlasnej strony. Panel otwiera klikniecie i klawiatura (stan .open); na
+   urzadzeniach ze wskaznikiem dochodzi hover jako sama wygoda. Swiadomie bez
+   :focus-within, zeby aria-expanded nie klamalo o stanie panelu. */
+.nav-group {
+  position: relative;
+}
+.nav-parent {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 9px 13px;
+  border-radius: 999px;
+  transition: all 0.18s;
+}
+.nav-parent:hover {
+  color: var(--color-ink);
+  background: rgba(43, 43, 43, 0.06);
+}
+.nav-parent.active {
+  color: var(--color-ink);
+  background: rgba(43, 43, 43, 0.09);
+}
+.nav-caret {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  opacity: 0.55;
+  transition: transform 0.18s;
+}
+.nav-group.open .nav-caret {
+  transform: rotate(180deg);
+}
+
+@media (min-width: 1021px) {
+  .nav-sub {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 268px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    background-image:
+      linear-gradient(rgba(250, 247, 242, 0.95), rgba(250, 247, 242, 0.95)),
+      url("/gfx/tla/tlo-roz.webp");
+    background-image:
+      linear-gradient(rgba(250, 247, 242, 0.95), rgba(250, 247, 242, 0.95)),
+      image-set(url("/gfx/tla/tlo-roz.avif") type("image/avif"), url("/gfx/tla/tlo-roz.webp") type("image/webp"));
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(16px) saturate(1.5);
+    -webkit-backdrop-filter: blur(16px) saturate(1.5);
+    border: 1px solid rgba(43, 43, 43, 0.09);
+    border-radius: 20px;
+    box-shadow: 0 16px 44px rgba(43, 43, 43, 0.14);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease,
+      visibility 0.18s;
+    z-index: 100;
+  }
+  .nav-group.open > .nav-sub {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+  .nav-sub a {
+    display: block;
+    white-space: nowrap;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    border-radius: 14px;
+  }
+}
+@media (min-width: 1021px) and (hover: hover) and (pointer: fine) {
+  .nav-group:hover > .nav-sub {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+}
 .nav-cta {
   background: var(--color-ink) !important;
   color: var(--color-paper) !important;
@@ -305,6 +411,36 @@ footer .logo img {
   }
   .nav-cta {
     margin: 8px 6px 4px;
+  }
+  .nav-group {
+    width: 100%;
+  }
+  .nav-parent {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 13px;
+    border-radius: 16px;
+  }
+  /* w panelu burgera podmenu dziala jak harmonijka - ten sam stan .open,
+     wiec aria-expanded pozostaje prawdziwe na kazdej szerokosci */
+  .nav-sub {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 4px;
+  }
+  .nav-group.open > .nav-sub {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .nav-sub a {
+    text-transform: none;
+    font-size: 0.9rem;
+    padding: 11px;
+    border-radius: 14px;
+    opacity: 0.88;
   }
 }
 

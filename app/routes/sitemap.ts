@@ -21,6 +21,7 @@ const ENTRIES: SitemapEntry[] = [
   { path: "/malowanie-na-zywo-poznan" },
   { path: "/malowanie-na-zywo-krakow" },
   { path: "/malowanie-na-zywo-lodz" },
+  { path: "/minimalistyczne-ilustracje-ze-zdjecia" },
   { path: "/portrety-na-zamowienie", images: imagesOf(PORTRAIT_WORKS) },
   { path: "/realizacje", images: imagesOf(STATIC_WORKS) },
   { path: "/cennik" },
