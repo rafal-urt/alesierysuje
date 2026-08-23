@@ -212,10 +212,9 @@ footer .logo img {
   margin: 0;
 }
 .nav-links a {
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: var(--color-ink-soft);
   padding: 9px 13px;
   border-radius: 999px;
@@ -244,10 +243,9 @@ footer .logo img {
   align-items: center;
   gap: 6px;
   font-family: inherit;
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: var(--color-ink-soft);
   background: none;
   border: none;
@@ -331,9 +329,8 @@ footer .logo img {
   .nav-sub a {
     display: block;
     white-space: nowrap;
-    text-transform: none;
     letter-spacing: 0.01em;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     padding: 10px 14px;
     border-radius: 14px;
   }
@@ -438,12 +435,13 @@ footer .logo img {
     flex-direction: column;
     gap: 2px;
   }
+  /* rodzice sa rownorzedni z Realizacje/Cennik/O mnie, wiec wygladaja tak samo -
+     hierarchie niesie wylacznie odroznienie podpozycji: mniejsze i przygaszone */
   .nav-sub a {
-    text-transform: none;
-    font-size: 0.9rem;
-    padding: 11px;
+    font-size: 0.84rem;
+    padding: 10px;
     border-radius: 14px;
-    opacity: 0.88;
+    opacity: 0.66;
   }
 }
 
