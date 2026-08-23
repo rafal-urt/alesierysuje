@@ -513,6 +513,20 @@ section {
   position: relative;
   padding: 110px 0;
 }
+
+/* Rytm sekcji liczony byl pod desktop i szedl na telefony bez zmian - dwie
+   sasiadujace sekcje dawaly 220 px pustki, czyli ponad cwierc ekranu.
+   Na waskich ekranach oddech musi byc proporcjonalny do wysokosci okna. */
+@media (max-width: 1020px) {
+  section {
+    padding: 78px 0;
+  }
+}
+@media (max-width: 720px) {
+  section {
+    padding: 56px 0;
+  }
+}
 .sec-head {
   max-width: 680px;
   margin-bottom: 56px;
@@ -1503,10 +1517,16 @@ section {
 @media (max-width: 920px) {
   .config {
     grid-template-columns: 1fr;
+    /* po zlozeniu do jednej kolumny odstep miedzy kolumnami staje sie odstepem
+       pionowym - 64 px zostawialo dziure miedzy ostatnim krokiem a podsumowaniem */
+    gap: 28px;
   }
 }
 .cstep {
   margin-bottom: 38px;
+}
+.cstep:last-child {
+  margin-bottom: 0;
 }
 .cstep .clabel {
   font-size: 0.78rem;
@@ -1520,6 +1540,30 @@ section {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+/* Na telefonie zawijanie flexa ustawialo przyciski nierowno - piec liczb
+   potrzebowalo 335 px przy dostepnych 334 i ostatnia spadala do drugiego
+   wiersza. Rowne kolumny siatki mieszcza komplet i wygladaja celowo. */
+@media (max-width: 720px) {
+  .optrow {
+    gap: 8px;
+  }
+  .optrow-nums {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .optrow-nums .opt {
+    padding-left: 0;
+    padding-right: 0;
+    justify-content: center;
+  }
+  /* karty formatow niosa druga linie z wymiarem i cena - nie sciskamy ich
+     do piatki, tylko ukladamy w rowne kolumny po tyle, ile sie miesci */
+  .optrow-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
 }
 .opt {
   background: #fff;

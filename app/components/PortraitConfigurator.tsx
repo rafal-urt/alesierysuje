@@ -57,7 +57,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
       <div>
         <div className="cstep soak">
           <div className="clabel">1 &middot; Ile osób na portrecie</div>
-          <div className="optrow">
+          <div className="optrow optrow-nums">
             {[1, 2, 3, 4, 5].map((n) => (
               <button
                 key={n}
@@ -78,7 +78,7 @@ export function PortraitConfigurator({ prices }: { prices: PortraitPrices }) {
 
         <div className="cstep soak d1">
           <div className="clabel">2 &middot; Format</div>
-          <div className="optrow">
+          <div className="optrow optrow-cards">
             {FORMATS.map((f) => (
               <button
                 key={f.key}

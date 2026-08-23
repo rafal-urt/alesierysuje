@@ -44,7 +44,7 @@ export function IllustrationConfigurator() {
       <div>
         <div className="cstep soak">
           <div className="clabel">1 &middot; Format</div>
-          <div className="optrow">
+          <div className="optrow optrow-cards">
             {FORMATS.map((f) => (
               <button
                 key={f.key}
@@ -64,7 +64,7 @@ export function IllustrationConfigurator() {
 
         <div className="cstep soak d1">
           <div className="clabel">2 &middot; Ile postaci na ilustracji</div>
-          <div className="optrow">
+          <div className="optrow optrow-nums">
             {Array.from({ length: MAX_SUBJECTS }, (_, i) => i + 1).map((n) => (
               <button
                 key={n}
@@ -80,7 +80,7 @@ export function IllustrationConfigurator() {
           <p className="cstep-hint">
             Zwierzęta liczą się tak samo jak osoby. Pierwsza postać w cenie formatu, druga
             +{formatZl(fmt.two - fmt.one)}, każda kolejna +{formatZl(fmt.extra)}. Więcej niż{" "}
-            {MAX_SUBJECTS} postaci - napiszcie, wycenię indywidualnie.
+            {MAX_SUBJECTS} postaci - napiszcie, uzgodnimy szczegóły.
           </p>
         </div>
       </div>

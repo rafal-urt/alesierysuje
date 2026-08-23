@@ -357,7 +357,7 @@ export default function MinimalistyczneIlustracje() {
         </div>
       </section>
 
-      <section style={{ paddingTop: 20 }}>
+      <section>
         <div className="wrap">
           <div className="sec-head soak">
             <div className="eyebrow">Pytania</div>
