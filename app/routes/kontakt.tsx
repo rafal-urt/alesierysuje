@@ -138,8 +138,7 @@ export default function Kontakt() {
             ) : (
               <>
                 Napisz, jaką datę i miejsce masz na myśli - sprawdzę termin i wrócę z odpowiedzią.
-                Tu też napiszesz o współpracy, nietypowym pomyśle albo portrecie. Wolisz Instagram?
-                Tam też odpisuję.
+                Tu też napiszesz o współpracy, nietypowym pomyśle albo portrecie.
               </>
             )}
           </p>
