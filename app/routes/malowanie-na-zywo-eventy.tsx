@@ -11,6 +11,7 @@ import { pageMeta, breadcrumbJsonLd, SITE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 import { cacheContent } from "~/lib/cache";
+import { inquiryHref, INQUIRY_CTA } from "~/lib/booking";
 
 export async function loader() {
   const db = await getDb();
@@ -117,8 +118,8 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
               na lodówce, nie w koszu przy wyjściu. Faktura VAT, umowa, jedna osoba kontaktowa.
             </p>
             <div className="hero-cta soak d3">
-              <Link className="btn" to="/terminy">
-                Sprawdź termin
+              <Link className="btn" to={inquiryHref()}>
+                {INQUIRY_CTA}
               </Link>
               <a className="btn ghost" href="#pakiety">
                 Zobacz pakiety i ceny
@@ -179,7 +180,7 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
             <div className="tl soak">
               <h3>Termin</h3>
               <p>
-                Sprawdzacie datę w kalendarzu online i piszecie do mnie. Wracam w
+                Piszecie do mnie z datą i miejscem eventu. Wracam w
                 24 - 48 h z wyceną i propozycją formuły.
               </p>
             </div>
@@ -254,7 +255,7 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
             <p>Każdy z kącikiem live art, fakturą VAT i umową - bez "napisz po wycenę".</p>
           </div>
           <div className="soak d1">
-            <PackagesAccordion packages={EVENT_PACKAGES} prices={prices} ctaLabel="Sprawdź termin" palette="e" eventTypeParam="event-firmowy" />
+            <PackagesAccordion packages={EVENT_PACKAGES} prices={prices} palette="e" eventTypeParam="event-firmowy" />
           </div>
           <p className="deposit-note soak">
             Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna ilustracja to{" "}
@@ -309,8 +310,8 @@ export default function LivePaintingEventy({ loaderData }: Route.ComponentProps)
           <div className="banner soak">
             <WatercolorStain color="ochre" width={420} height={380} style={{ bottom: -140, left: -80 }} />
             <h2>Wasi goście zapamiętają ten wieczór</h2>
-            <Link className="btn light" to="/terminy">
-              Sprawdź termin
+            <Link className="btn light" to={inquiryHref()}>
+              {INQUIRY_CTA}
             </Link>
           </div>
         </div>

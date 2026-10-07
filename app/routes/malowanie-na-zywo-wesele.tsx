@@ -13,6 +13,7 @@ import { pageMeta, breadcrumbJsonLd, SITE_URL, WZK_PROFILE_URL } from "~/lib/seo
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 import { cacheContent } from "~/lib/cache";
+import { inquiryHref, INQUIRY_CTA } from "~/lib/booking";
 
 export async function loader() {
   const db = await getDb();
@@ -64,7 +65,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Co jeśli zmienimy datę wesela?",
-    a: "Piszecie i sprawdzamy nowy termin w kalendarzu. Przy zmianie z wyprzedzeniem zwykle udaje się bez problemu.",
+    a: "Piszecie do mnie i sprawdzamy, czy nowy termin jest wolny. Przy zmianie z wyprzedzeniem zwykle udaje się bez problemu.",
   },
   {
     q: "Malujecie też poprawiny?",
@@ -119,8 +120,8 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
               odbierają z kącika i zabierają do domu jeszcze tej nocy.
             </p>
             <div className="hero-cta soak d3">
-              <Link className="btn" to="/terminy">
-                Sprawdź swój termin
+              <Link className="btn" to={inquiryHref()}>
+                {INQUIRY_CTA}
               </Link>
               <a className="btn ghost" href="#pakiety">
                 Zobacz pakiety i ceny
@@ -179,7 +180,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             <div className="tl soak">
               <h3>Zapytanie</h3>
               <p>
-                Wybieracie termin w kalendarzu i piszecie do mnie. Odpowiedź wraca w
+                Piszecie do mnie z datą i miejscem wesela. Odpowiedź wraca w
                 24 - 48 h, potem ustalamy szczegóły.
               </p>
             </div>
@@ -234,7 +235,7 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
             <PackagesAccordion packages={WEDDING_PACKAGES} prices={prices} />
           </div>
           <p className="deposit-note soak">
-            Termin sprawdzacie w kalendarzu i rezerwujecie <b>zapytaniem</b> - odpowiedź
+            Termin rezerwujecie <b>zapytaniem</b> przez formularz - odpowiedź
             wraca w 24 - 48 godzin. Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna
             ilustracja to <b>{EXTRA_ILLUSTRATION_PLN} zł</b> - a czego nie zdążę namalować na żywo,
             dokańczam w pracowni i dosyłam po weselu. Dojazd na terenie Mazowsza w cenie, dalej -
@@ -287,8 +288,8 @@ export default function LivePaintingWesele({ loaderData }: Route.ComponentProps)
           <div className="banner soak">
             <WatercolorStain color="rose" width={420} height={380} style={{ bottom: -140, left: -80 }} />
             <h2>Najlepsze terminy w sezonie znikają pierwsze</h2>
-            <Link className="btn light" to="/terminy">
-              Zobacz kalendarz 2027
+            <Link className="btn light" to={inquiryHref()}>
+              {INQUIRY_CTA}
             </Link>
           </div>
         </div>

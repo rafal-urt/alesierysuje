@@ -1,6 +1,7 @@
 import type { Route } from "./+types/realizacje";
 import { Link } from "react-router";
 import { WorksGallery } from "~/components/WorksGallery";
+import { inquiryHref } from "~/lib/booking";
 import { STATIC_WORKS } from "~/data/works-static";
 import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
@@ -44,7 +45,7 @@ export default function Realizacje({ loaderData }: Route.ComponentProps) {
         </div>
         <WorksGallery works={works} variant="wall" />
         <div className="wrap" style={{ textAlign: "center", paddingTop: 20 }}>
-          <Link className="btn" to="/terminy">
+          <Link className="btn" to={inquiryHref()}>
             Chcę takie ilustracje na swoim wydarzeniu
           </Link>
         </div>

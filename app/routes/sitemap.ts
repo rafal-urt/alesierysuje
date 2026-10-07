@@ -1,4 +1,5 @@
 import { SITE_URL, canonicalUrl } from "~/lib/seo";
+import { CALENDAR_ENABLED } from "~/lib/booking";
 import { POSTS } from "~/data/posts";
 import { CARD_WORKS, PORTRAIT_WORKS, STATIC_WORKS } from "~/data/works-static";
 
@@ -26,7 +27,7 @@ const ENTRIES: SitemapEntry[] = [
   { path: "/realizacje", images: imagesOf(STATIC_WORKS) },
   { path: "/cennik" },
   { path: "/o-mnie" },
-  { path: "/terminy" },
+  ...(CALENDAR_ENABLED ? [{ path: "/terminy" }] : []),
   { path: "/kontakt" },
   { path: "/polityka-prywatnosci" },
   { path: "/blog" },

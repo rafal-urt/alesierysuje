@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { WZK_PROFILE_URL, INSTAGRAM_URL } from "~/lib/seo";
+import { inquiryHref, INQUIRY_CTA } from "~/lib/booking";
 
 // Kazda podstrona ma w stopce dokladnie jeden link.
 export function Footer() {
@@ -16,8 +17,8 @@ export function Footer() {
               na żywo - na weselach i eventach w całej Polsce - oraz portrety ze zdjęć, prosto
               z pracowni.
             </p>
-            <Link className="btn sm" to="/terminy">
-              Sprawdź swój termin
+            <Link className="btn sm" to={inquiryHref()}>
+              {INQUIRY_CTA}
             </Link>
             <div className="fsocial">
               <a href={INSTAGRAM_URL} rel="noopener noreferrer" target="_blank">

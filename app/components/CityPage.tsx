@@ -8,6 +8,7 @@ import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 import { WEDDING_PACKAGES, EXTRA_ILLUSTRATION_PLN, formatZl } from "~/data/prices";
 import { breadcrumbJsonLd, SITE_URL, WZK_PROFILE_URL } from "~/lib/seo";
+import { inquiryHref, INQUIRY_CTA } from "~/lib/booking";
 
 export type CityPageData = {
   weddingPrices: Record<string, number>;
@@ -59,8 +60,8 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
             <h1 className="soak d1">{city.h1}</h1>
             <p className="lead soak d2">{city.lead}</p>
             <div className="hero-cta soak d3">
-              <Link className="btn" to="/terminy">
-                Sprawdź swój termin
+              <Link className="btn" to={inquiryHref()}>
+                {INQUIRY_CTA}
               </Link>
               <a className="btn ghost" href="#pakiety">
                 Zobacz pakiety i ceny
@@ -136,7 +137,7 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
             <div className="tl soak">
               <h3>Zapytanie</h3>
               <p>
-                Wybieracie termin w kalendarzu online i piszecie do mnie. Odpowiedź
+                Piszecie do mnie z datą i miejscem przyjęcia. Odpowiedź
                 wraca w 24 - 48 h.
               </p>
             </div>
@@ -178,8 +179,8 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
           </div>
           <p className="deposit-note soak">
             Gdy chętnych jest więcej, niż zakłada pakiet, każda kolejna ilustracja to{" "}
-            <b>{EXTRA_ILLUSTRATION_PLN} zł</b>. Termin sprawdzacie w kalendarzu i rezerwujecie
-            zapytaniem - odpowiedź wraca w 24 - 48 godzin.
+            <b>{EXTRA_ILLUSTRATION_PLN} zł</b>. Termin rezerwujecie
+            zapytaniem przez formularz - odpowiedź wraca w 24 - 48 godzin.
           </p>
         </div>
       </section>
@@ -261,8 +262,8 @@ export function CityPage({ city, data }: { city: City; data: CityPageData }) {
           <div className="banner soak">
             <WatercolorStain color="blue" width={420} height={380} style={{ bottom: -140, left: -80 }} />
             <h2>Najlepsze terminy w sezonie znikają pierwsze</h2>
-            <Link className="btn light" to="/terminy">
-              Sprawdź wolne terminy
+            <Link className="btn light" to={inquiryHref()}>
+              {INQUIRY_CTA}
             </Link>
           </div>
         </div>

@@ -7,6 +7,7 @@ import { pageMeta, breadcrumbJsonLd } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 import { cacheContent } from "~/lib/cache";
+import { inquiryHref, INQUIRY_CTA } from "~/lib/booking";
 
 export async function loader() {
   const db = await getDb();
@@ -85,7 +86,7 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
               </tbody>
             </table>
             <div className="note">
-              Termin sprawdzicie w kalendarzu. Ilustracje, których nie zdążę
+              O wolny termin pytacie przez formularz kontaktowy. Ilustracje, których nie zdążę
               namalować na żywo, dokańczam w pracowni i dosyłam po weselu. Dojazd na Mazowszu w
               cenie.
             </div>
@@ -160,8 +161,8 @@ export default function Cennik({ loaderData }: Route.ComponentProps) {
               .
             </div>
           </div>
-          <Link className="btn soak" to="/terminy">
-            Sprawdź wolne terminy
+          <Link className="btn soak" to={inquiryHref()}>
+            {INQUIRY_CTA}
           </Link>
         </div>
       </section>

@@ -73,7 +73,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Kiedy akwarela" },
       {
         type: "p",
-        text: "Jeśli planujecie elegancką oprawę, chcecie w każdym pakiecie **portret Pary Młodej A4** i zależy Wam, żeby goście wynieśli z wesela pracę, która trafi do ramki, a nie do szuflady - to jest moja działka. Zobaczcie [realizacje z wesel](/realizacje) i porównajcie z portfolio karykaturzystów: różnicę widać szybciej, niż da się ją opisać. Wolne daty do końca 2027 znajdziecie w [kalendarzu terminów](/terminy), a ceny w [cenniku](/cennik). A jeśli dopiero poznajecie temat - zacznijcie od wpisu [co to jest live art](/blog/co-to-jest-live-art-live-painting).",
+        text: "Jeśli planujecie elegancką oprawę, chcecie w każdym pakiecie **portret Pary Młodej A4** i zależy Wam, żeby goście wynieśli z wesela pracę, która trafi do ramki, a nie do szuflady - to jest moja działka. Zobaczcie [realizacje z wesel](/realizacje) i porównajcie z portfolio karykaturzystów: różnicę widać szybciej, niż da się ją opisać. O wolną datę zapytacie przez [formularz kontaktowy](/kontakt), a ceny znajdziecie w [cenniku](/cennik). A jeśli dopiero poznajecie temat - zacznijcie od wpisu [co to jest live art](/blog/co-to-jest-live-art-live-painting).",
       },
     ],
   },
@@ -141,7 +141,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "Jeśli po tej lekturze live art wydaje się Wam czymś dla Waszego przyjęcia - wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy). Napiszcie - to po prostu początek rozmowy.",
+        text: "Jeśli po tej lekturze live art wydaje się Wam czymś dla Waszego przyjęcia - [napiszcie do mnie](/kontakt) i podajcie datę. Śmiało - to po prostu początek rozmowy.",
       },
     ],
   },
@@ -224,7 +224,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Jak wybrać mądrze" },
       {
         type: "p",
-        text: "Moja zasada zza sztalugi: **jedna rzecz, która zostaje, zamiast trzech, które znikają**. Goście nie pamiętają liczby upominków - pamiętają ten jeden, który wisi na ścianie albo stoi na półce. Jeśli ma nim być portret malowany na żywo, sprawdźcie [wolne terminy](/terminy) - sezonowe weekendy znikają pierwsze. A o pamiątkach, które z wesela zabieracie Wy, a nie goście, piszę we wpisie o [pamiątkach z wesela](/blog/pamiatka-z-wesela-pomysly).",
+        text: "Moja zasada zza sztalugi: **jedna rzecz, która zostaje, zamiast trzech, które znikają**. Goście nie pamiętają liczby upominków - pamiętają ten jeden, który wisi na ścianie albo stoi na półce. Jeśli ma nim być portret malowany na żywo, [zapytajcie o swój termin](/kontakt) - sezonowe weekendy znikają pierwsze. A o pamiątkach, które z wesela zabieracie Wy, a nie goście, piszę we wpisie o [pamiątkach z wesela](/blog/pamiatka-z-wesela-pomysly).",
       },
     ],
   },
@@ -284,7 +284,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Jak to spiąć w całość" },
       {
         type: "p",
-        text: "Najlepszy układ, jaki widuję na weselach, to para: **jedno od gości dla Was** (audio-księga, wino-kapsuła, karty) i **jedno od Was dla gości** (portrety albo przemyślane podziękowania - pomysły zebrałam [w osobnym wpisie](/blog/podziekowania-dla-gosci-weselnych-pomysly)). Więcej niż dwie rzeczy zaczynają ze sobą konkurować o uwagę gości. Jeśli portrety mają być Waszą połową tej pary - [sprawdźcie swój termin](/terminy).",
+        text: "Najlepszy układ, jaki widuję na weselach, to para: **jedno od gości dla Was** (audio-księga, wino-kapsuła, karty) i **jedno od Was dla gości** (portrety albo przemyślane podziękowania - pomysły zebrałam [w osobnym wpisie](/blog/podziekowania-dla-gosci-weselnych-pomysly)). Więcej niż dwie rzeczy zaczynają ze sobą konkurować o uwagę gości. Jeśli portrety mają być Waszą połową tej pary - [zapytajcie o swój termin](/kontakt).",
       },
     ],
   },
@@ -354,7 +354,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Plan minimum" },
       {
         type: "p",
-        text: "Jeśli miałabym to sprowadzić do jednej zasady: **jedna pamiątka na ścianę, jedna do otwierania**. Ściana pracuje codziennie, pudełko raz w roku - i właśnie ta para pokrywa oba rodzaje wspominania. Jeśli tą pierwszą ma być akwarela malowana na żywo, zajrzyjcie do [cennika](/cennik) i [kalendarza terminów](/terminy). A o pamiątkach, które z wesela wynoszą goście, piszę we wpisie o [podziękowaniach dla gości](/blog/podziekowania-dla-gosci-weselnych-pomysly).",
+        text: "Jeśli miałabym to sprowadzić do jednej zasady: **jedna pamiątka na ścianę, jedna do otwierania**. Ściana pracuje codziennie, pudełko raz w roku - i właśnie ta para pokrywa oba rodzaje wspominania. Jeśli tą pierwszą ma być akwarela malowana na żywo, zajrzyjcie do [cennika](/cennik) i [napiszcie do mnie](/kontakt). A o pamiątkach, które z wesela wynoszą goście, piszę we wpisie o [podziękowaniach dla gości](/blog/podziekowania-dla-gosci-weselnych-pomysly).",
       },
     ],
   },
@@ -424,7 +424,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Jedno kryterium, które porządkuje wybór" },
       {
         type: "p",
-        text: "Gdy porównujecie oferty, zadajcie każdej to samo pytanie: **co z tej atrakcji zostanie tydzień po evencie?** Wspomnienie, zdjęcie w telefonie, przedmiot w domu gościa - im dalej w tej skali, tym dłużej wydarzenie pracuje na markę. Jeśli odpowiedzią ma być ręcznie malowany portret z logo Waszego wydarzenia, napiszcie przez [formularz kontaktowy](/kontakt) albo sprawdźcie [wolne terminy](/terminy) - do wyceny wystarczy data, miejsce i orientacyjna liczba gości.",
+        text: "Gdy porównujecie oferty, zadajcie każdej to samo pytanie: **co z tej atrakcji zostanie tydzień po evencie?** Wspomnienie, zdjęcie w telefonie, przedmiot w domu gościa - im dalej w tej skali, tym dłużej wydarzenie pracuje na markę. Jeśli odpowiedzią ma być ręcznie malowany portret z logo Waszego wydarzenia, napiszcie przez [formularz kontaktowy](/kontakt) - do wyceny wystarczy data, miejsce i orientacyjna liczba gości.",
       },
     ],
   },
@@ -486,7 +486,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Jak zarezerwować termin" },
       {
         type: "p",
-        text: "Wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy) - w formularzu wybierzcie rodzaj wydarzenia „Urodziny / jubileusz”. Piszecie do mnie i w ciągu 24-48 godzin wracam z odpowiedzią. To po prostu początek rozmowy o Waszym przyjęciu.",
+        text: "O wolną datę pytacie przez [formularz kontaktowy](/kontakt) - napiszcie, że chodzi o urodziny albo jubileusz, i podajcie dzień oraz miejsce. Piszecie do mnie i w ciągu 24-48 godzin wracam z odpowiedzią. To po prostu początek rozmowy o Waszym przyjęciu.",
       },
     ],
   },
@@ -543,7 +543,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Jak zarezerwować termin" },
       {
         type: "p",
-        text: "Wszystkie wolne daty do końca 2027 roku widać w [kalendarzu terminów](/terminy). Wybieracie dzień, piszecie do mnie i w ciągu 24-48 godzin wracam z odpowiedzią. To po prostu początek rozmowy.",
+        text: "Zapisy do końca 2027 roku są otwarte. [Piszecie do mnie](/kontakt) z datą i miejscem i w ciągu 24-48 godzin wracam z odpowiedzią. To po prostu początek rozmowy.",
       },
     ],
   },
@@ -596,7 +596,7 @@ export const POSTS: Post[] = [
       },
       {
         type: "p",
-        text: "Chcecie sprawdzić, czy Wasza data jest jeszcze wolna? Kalendarz z terminami do końca 2027 jest [tutaj](/terminy), a pełne pakiety i ceny w [cenniku](/cennik).",
+        text: "Chcecie sprawdzić, czy Wasza data jest jeszcze wolna? [Napiszcie do mnie](/kontakt) z datą, a pełne pakiety i ceny w [cenniku](/cennik).",
       },
     ],
   },
@@ -656,7 +656,7 @@ export const POSTS: Post[] = [
       { type: "h2", text: "Jak wybrać, żeby nie przesadzić" },
       {
         type: "p",
-        text: "Moja rada zza sztalugi: **jedna mocna atrakcja zamiast trzech przeciętnych**. Goście i tak najbardziej zapamiętują to, co osobiste - rzeczy zrobione dla nich, nie obok nich. Jeśli macie wybierać, wybierzcie coś, po czym zostaje pamiątka: wspomnienia z wesela mają wtedy fizyczny kształt. A jeśli tym czymś ma być malowanie na żywo - [sprawdźcie swój termin](/terminy), sezonowe weekendy znikają pierwsze.",
+        text: "Moja rada zza sztalugi: **jedna mocna atrakcja zamiast trzech przeciętnych**. Goście i tak najbardziej zapamiętują to, co osobiste - rzeczy zrobione dla nich, nie obok nich. Jeśli macie wybierać, wybierzcie coś, po czym zostaje pamiątka: wspomnienia z wesela mają wtedy fizyczny kształt. A jeśli tym czymś ma być malowanie na żywo - [zapytajcie o swój termin](/kontakt), sezonowe weekendy znikają pierwsze.",
       },
     ],
   },
@@ -718,13 +718,13 @@ export const POSTS: Post[] = [
   },
   {
     slug: "zapisy-live-painting-2027",
-    title: "Zapisy na 2027 ruszyły - kalendarz i cennik już dostępne",
+    title: "Zapisy na 2027 ruszyły - cennik już dostępny",
     description:
-      "Zapisy oraz cennik na malowanie gości na żywo na 2027 właśnie ruszyły. Sprawdź wolne terminy w kalendarzu online i zarezerwuj swój dzień.",
+      "Zapisy oraz cennik na malowanie gości na żywo na 2027 właśnie ruszyły. Napisz do mnie z datą i zarezerwuj swój dzień.",
     date: "2026-07-04",
     dateLabel: "4 lipca 2026",
     excerpt:
-      "Zapisy oraz cennik na malowanie gości na żywo na 2027 właśnie ruszyły - wszystkie wolne terminy znajdziecie w moim kalendarzu online.",
+      "Zapisy oraz cennik na malowanie gości na żywo na 2027 właśnie ruszyły - przyjmuję rezerwacje na terminy do końca 2027 roku.",
     image: "/gfx/prace/wesele-sciana-ilustracji-gosci.webp",
     imageAlt: "Kilkadziesiąt akwarelowych ilustracji gości z jednego wesela",
     imageSize: [675, 1200],
@@ -732,11 +732,11 @@ export const POSTS: Post[] = [
     body: [
       {
         type: "p",
-        text: "Zapisy oraz cennik na malowanie gości na żywo na 2027 właśnie ruszyły. Wszystkie wolne terminy - od dziś aż do końca 2027 roku - znajdziecie w moim kalendarzu online. To, co widzicie w kalendarzu, jest dostępne naprawdę: zajęte daty oznaczam na bieżąco.",
+        text: "Zapisy oraz cennik na malowanie gości na żywo na 2027 właśnie ruszyły. Przyjmuję rezerwacje na terminy od dziś aż do końca 2027 roku - wystarczy [napisać do mnie](/kontakt) z datą i miejscem.",
       },
       {
         type: "p",
-        text: "Rezerwacja działa tak jak lubicie: wybieracie dzień, piszecie do mnie i w ciągu 24 - 48 godzin wracam z potwierdzeniem dostępności. To po prostu początek rozmowy o Waszym weselu albo evencie.",
+        text: "Rezerwacja działa prosto: piszecie, jaki dzień macie na myśli, a ja w ciągu 24 - 48 godzin wracam z potwierdzeniem dostępności. To po prostu początek rozmowy o Waszym weselu albo evencie.",
       },
       {
         type: "p",

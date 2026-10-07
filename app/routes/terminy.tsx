@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useFetcher, useSearchParams } from "react-router";
+import { redirect, useFetcher, useSearchParams } from "react-router";
 import type { Route } from "./+types/terminy";
 import { Calendar } from "~/components/Calendar";
 import { WatercolorStain } from "~/components/WatercolorStain";
@@ -13,6 +13,7 @@ import { track } from "~/lib/track";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 import { cacheAvailability } from "~/lib/cache";
+import { CALENDAR_ENABLED } from "~/lib/booking";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
@@ -24,7 +25,10 @@ export function meta({}: Route.MetaArgs) {
   });
 }
 
-export async function loader() {
+export async function loader({ request }: Route.LoaderArgs) {
+  // Kalendarz chwilowo ukryty - stare linki prowadzą do formularza kontaktowego.
+  // 302, bo strona wróci; rodzaj wydarzenia i pakiet idą dalej w query.
+  if (!CALENDAR_ENABLED) throw redirect(`/kontakt${new URL(request.url).search}`, 302);
   const [taken, end] = await Promise.all([getTakenDates(), getCalendarEnd()]);
   const today = todayWarsaw();
   return {
@@ -64,6 +68,7 @@ const ALL_PACKAGE_VALUES = [
 type ActionResult = { ok: true; names: string } | { error: string; field?: string };
 
 export async function action({ request }: Route.ActionArgs): Promise<ActionResult> {
+  if (!CALENDAR_ENABLED) return { error: "Zapytania przyjmuję teraz przez formularz kontaktowy." };
   const form = await request.formData();
 
   // honeypot - boty wypełniają ukryte pole; udajemy sukces

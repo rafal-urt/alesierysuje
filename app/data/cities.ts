@@ -49,7 +49,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Jak szybko trzeba rezerwować termin w Warszawie?",
-        a: "Warszawskie soboty w sezonie schodzą pierwsze - najbezpieczniej sprawdzić datę w kalendarzu online od razu po rezerwacji sali. Napiszcie do mnie - to po prostu początek rozmowy.",
+        a: "Warszawskie soboty w sezonie schodzą pierwsze - najbezpieczniej zapytać o datę od razu po rezerwacji sali. Napiszcie do mnie - to po prostu początek rozmowy.",
       },
       {
         q: "Maluje Pani też na eventach firmowych w Warszawie?",
@@ -99,7 +99,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Wesele mamy w sezonie letnim nad morzem - kiedy rezerwować?",
-        a: "Jak najwcześniej - nadmorskie terminy od czerwca do września znikają szybciej niż gdziekolwiek indziej. Kalendarz online pokazuje dostępność w czasie rzeczywistym - wystarczy wybrać dzień i napisać.",
+        a: "Jak najwcześniej - nadmorskie terminy od czerwca do września znikają szybciej niż gdziekolwiek indziej. Wystarczy napisać, jaki dzień macie na myśli - w 24 - 48 godzin odpowiadam, czy jest wolny.",
       },
       {
         q: "A eventy firmowe w Trójmieście?",
@@ -115,7 +115,7 @@ export const CITIES: City[] = [
     inCity: "w Poznaniu i Wielkopolsce",
     title: "Malowanie na żywo Poznań - live painting | alesierysuje",
     description:
-      "Malowanie na żywo w Poznaniu: akwarelowe portrety gości na weselach i eventach w Wielkopolsce (live painting). Pakiety od 4 000 zł, wolne terminy online.",
+      "Malowanie na żywo w Poznaniu: akwarelowe portrety gości na weselach i eventach w Wielkopolsce (live painting). Pakiety od 4 000 zł, zapisy na 2027 otwarte.",
     h1: "Malowanie na żywo Poznań - live painting na weselu i evencie",
     lead:
       "Akwarelowe portrety gości malowane w trakcie przyjęcia - od 20 do 60 ilustracji z jednego wieczoru. Do Poznania i Wielkopolski przyjeżdżam z całym kącikiem live art: sztalugą, farbami i papierem 300 g.",
@@ -145,7 +145,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Kiedy rezerwować termin na wesele w Wielkopolsce?",
-        a: "Najlepiej od razu po rezerwacji sali - sobotnie terminy w sezonie znikają pierwsze. Kalendarz online pokazuje dostępność w czasie rzeczywistym - wystarczy wybrać dzień i napisać.",
+        a: "Najlepiej od razu po rezerwacji sali - sobotnie terminy w sezonie znikają pierwsze. Wystarczy napisać, jaki dzień macie na myśli - w 24 - 48 godzin odpowiadam, czy jest wolny.",
       },
     ],
     ogImage: "/og/poznan.png",
@@ -157,7 +157,7 @@ export const CITIES: City[] = [
     inCity: "w Krakowie i Małopolsce",
     title: "Malowanie na żywo Kraków - live painting | alesierysuje",
     description:
-      "Malowanie na żywo w Krakowie: akwarelowe portrety gości na weselach i eventach w Małopolsce (live painting). Pakiety od 4 000 zł, wolne terminy online.",
+      "Malowanie na żywo w Krakowie: akwarelowe portrety gości na weselach i eventach w Małopolsce (live painting). Pakiety od 4 000 zł, zapisy na 2027 otwarte.",
     h1: "Malowanie na żywo Kraków - live painting na weselu i evencie",
     lead:
       "Akwarelowe portrety gości malowane w trakcie przyjęcia - od 20 do 60 ilustracji z jednego wieczoru. Kraków ma wnętrza, które same proszą się o akwarelę - od kamienic przy Rynku po dworki Małopolski.",
@@ -221,7 +221,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Zostały nam trzy miesiące do wesela - to jeszcze realny termin?",
-        a: "Sprawdźcie kalendarz online - przy Łodzi krótkie wyprzedzenie jest najmniej problematyczne, bo prosta logistyka pozwala mi domykać bliższe daty. Odpowiedź wraca w 24 - 48 godzin.",
+        a: "Napiszcie z datą - przy Łodzi krótkie wyprzedzenie jest najmniej problematyczne, bo prosta logistyka pozwala mi domykać bliższe daty. Odpowiedź wraca w 24 - 48 godzin.",
       },
       {
         q: "Ile ilustracji powstanie podczas łódzkiego wesela?",

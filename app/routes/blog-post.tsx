@@ -6,6 +6,7 @@ import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 import { getPost, readingMinutes, POSTS, type PostBlock } from "~/data/posts";
 import { Pic } from "~/components/Pic";
+import { inquiryHref, INQUIRY_CTA } from "~/lib/booking";
 
 export function loader({ params }: Route.LoaderArgs) {
   const post = getPost(params.slug);
@@ -131,8 +132,8 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
             ))}
           </div>
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 34 }}>
-            <Link className="btn" to="/terminy">
-              Zobacz kalendarz terminów
+            <Link className="btn" to={inquiryHref()}>
+              {INQUIRY_CTA}
             </Link>
             <Link className="btn ghost" to="/cennik">
               Sprawdź cennik

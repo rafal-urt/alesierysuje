@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { formatZl } from "~/data/prices";
+import { inquiryHref, CALENDAR_ENABLED } from "~/lib/booking";
 
 export type PackageDef = {
   key: string;
@@ -22,7 +23,7 @@ function FeatureText({ text }: { text: string }) {
 export function PackagesAccordion({
   packages,
   prices,
-  ctaLabel = "Wybierz datę",
+  ctaLabel = CALENDAR_ENABLED ? "Wybierz datę" : "Zapytaj o ten pakiet",
   palette = "w",
   eventTypeParam = "wesele",
 }: {
@@ -31,7 +32,7 @@ export function PackagesAccordion({
   ctaLabel?: string;
   /** "w" = wesela (blekit/roz/ochra), "e" = eventy (ziele/fiolet/morski) */
   palette?: "w" | "e";
-  /** rodzaj wydarzenia przekazywany do formularza /terminy */
+  /** rodzaj wydarzenia przekazywany do formularza zapytania */
   eventTypeParam?: "wesele" | "event-firmowy";
 }) {
   const [active, setActive] = useState(packages.find((p) => p.featured)?.key ?? packages[0].key);
@@ -73,7 +74,7 @@ export function PackagesAccordion({
               </ul>
               <Link
                 className={p.featured ? "btn" : "btn ghost"}
-                to={`/terminy?typ=${eventTypeParam}&pakiet=${p.key === "prestizowy" ? "premium" : p.key}`}
+                to={inquiryHref({ typ: eventTypeParam, pakiet: p.key === "prestizowy" ? "premium" : p.key })}
                 tabIndex={open ? 0 : -1}
                 onClick={(e) => e.stopPropagation()}
               >

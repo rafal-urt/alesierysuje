@@ -6,6 +6,7 @@ import { STATIC_WORKS } from "~/data/works-static";
 import { pageMeta, breadcrumbJsonLd, SITE_URL, WZK_PROFILE_URL, INSTAGRAM_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
+import { inquiryHref, INQUIRY_CTA } from "~/lib/booking";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
@@ -132,7 +133,7 @@ export default function OMnie() {
               <div className="brush" style={{ background: "var(--color-wash-ochre)" }} />
               <h3>Dziś - cała Polska</h3>
               <p>
-                Kilkanaście wesel, eventy dla marek i kalendarz otwarty do końca 2027. Pracownia
+                Kilkanaście wesel, eventy dla marek i zapisy otwarte do końca 2027. Pracownia
                 stoi w Warszawie, ale sztaluga jeździ wszędzie tam, gdzie dzieje się coś ważnego.
               </p>
             </div>
@@ -187,8 +188,8 @@ export default function OMnie() {
           <div className="banner soak">
             <WatercolorStain color="rose" width={420} height={380} style={{ bottom: -140, left: -80 }} />
             <h2>Namaluję też Wasz wieczór</h2>
-            <Link className="btn light" to="/terminy">
-              Sprawdź swój termin
+            <Link className="btn light" to={inquiryHref()}>
+              {INQUIRY_CTA}
             </Link>
           </div>
         </div>

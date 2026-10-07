@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { inquiryHref } from "~/lib/booking";
 import { Link } from "react-router";
 import { WatercolorPlaceholder } from "~/components/WatercolorPlaceholder";
 import { Pic } from "~/components/Pic";
@@ -95,7 +96,7 @@ function Lightbox({
 export function WorksGallery({
   works,
   variant,
-  cta = { label: "Chcę takie ilustracje na swoim wydarzeniu", to: "/terminy" },
+  cta = { label: "Chcę takie ilustracje na swoim wydarzeniu", to: inquiryHref() },
 }: {
   works: GalleryWork[];
   variant: "strip" | "wall";

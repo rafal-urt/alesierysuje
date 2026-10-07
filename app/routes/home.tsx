@@ -11,6 +11,7 @@ import { countFreeWeekends } from "~/lib/availability.server";
 import { pageMeta, SITE_URL, WZK_PROFILE_URL } from "~/lib/seo";
 import { JsonLd } from "~/components/JsonLd";
 import { cacheContent } from "~/lib/cache";
+import { inquiryHref, INQUIRY_CTA } from "~/lib/booking";
 
 // LCP: poster hero - na mobile to caly hero (wideo ukryte < 720px), na desktopie
 // pierwsza klatka zanim dociagnie sie webm. Preload tylko tutaj: hero istnieje
@@ -97,8 +98,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             kiedy one trwają.
           </p>
           <div className="hero-cta soak d3">
-            <Link className="btn" to="/terminy">
-              Sprawdź swój termin
+            <Link className="btn" to={inquiryHref()}>
+              {INQUIRY_CTA}
             </Link>
             <div className="season">
               <span className="pulse" />
@@ -246,8 +247,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               <div className="brush" style={{ background: "var(--color-wash-blue)" }} />
               <h3>Wybieracie datę</h3>
               <p>
-                Kalendarz pokazuje, które dni są jeszcze wolne. Wybieracie swój i piszecie do
-                mnie - odpowiadam w ciągu doby albo dwóch.
+                Piszecie do mnie, jaki dzień macie na myśli. Sprawdzam, czy jest wolny, i
+                odpowiadam w ciągu doby albo dwóch.
               </p>
             </div>
             <div className="step soak d1">
@@ -356,8 +357,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <div className="banner soak">
             <WatercolorStain color="blue" width={420} height={380} style={{ top: -120, right: -80 }} />
             <h2>Wasz wieczór może być na tej ścianie</h2>
-            <Link className="btn light" to="/terminy">
-              Sprawdź wolne terminy
+            <Link className="btn light" to={inquiryHref()}>
+              {INQUIRY_CTA}
             </Link>
           </div>
         </div>

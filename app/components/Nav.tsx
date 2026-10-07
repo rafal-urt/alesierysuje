@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
+import { inquiryHref, CALENDAR_ENABLED } from "~/lib/booking";
 
 type Leaf = { to: string; label: string };
 type Item = Leaf | { label: string; children: Leaf[] };
@@ -139,8 +140,8 @@ export function Nav() {
             );
           })}
           <li>
-            <NavLink to="/terminy" className="nav-cta">
-              Sprawdź termin
+            <NavLink to={inquiryHref()} className="nav-cta">
+              {CALENDAR_ENABLED ? "Sprawdź termin" : "Napisz do mnie"}
             </NavLink>
           </li>
         </ul>

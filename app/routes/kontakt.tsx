@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useFetcher } from "react-router";
+import { useFetcher, useSearchParams } from "react-router";
 import type { Route } from "./+types/kontakt";
 import { Link } from "react-router";
 import { WatercolorStain } from "~/components/WatercolorStain";
@@ -11,6 +11,7 @@ import { track } from "~/lib/track";
 import { JsonLd } from "~/components/JsonLd";
 import { Crumbs } from "~/components/Crumbs";
 import { cacheContent } from "~/lib/cache";
+import { CALENDAR_ENABLED, PACKAGE_LABELS, TYPE_LABELS, prefillMessage } from "~/lib/booking";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
@@ -34,6 +35,11 @@ export async function action({ request }: Route.ActionArgs) {
   const names = String(form.get("names") ?? "").trim();
   const email = String(form.get("email") ?? "").trim();
   const message = String(form.get("message") ?? "").trim();
+  // wejście z przycisku pakietu niesie rodzaj wydarzenia i pakiet - trafiają do zapytania w panelu
+  const typ = String(form.get("typ") ?? "");
+  const pakiet = String(form.get("pakiet") ?? "");
+  const eventType = typ in TYPE_LABELS ? (typ as "wesele" | "event-firmowy") : "inne";
+  const pakietLabel = PACKAGE_LABELS[pakiet];
 
   if (!names) return { error: "Podaj swoje imię.", field: "names" };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
@@ -44,7 +50,10 @@ export async function action({ request }: Route.ActionArgs) {
   const db = await getDb();
   await db.create({
     collection: "inquiries",
-    data: { names, email, eventType: "inne", status: "nowe", details: `Wiadomość z /kontakt:\n${message}` },
+    data: { names, email, eventType,
+      status: "nowe",
+      details: `Wiadomość z /kontakt${pakietLabel ? ` (pakiet ${pakietLabel})` : ""}:\n${message}`,
+    },
   });
 
   const settings = await db.findGlobal({ slug: "settings" });
@@ -57,6 +66,7 @@ export async function action({ request }: Route.ActionArgs) {
           "Nowa wiadomość z formularza kontaktowego alesierysuje.pl",
           "",
           `Od: ${names} <${email}>`,
+          ...(pakietLabel ? [`Pakiet: ${pakietLabel}`] : []),
           "",
           message,
           "",
@@ -93,6 +103,10 @@ export default function Kontakt() {
   }, [sent]);
   const err = fetcher.data && "error" in fetcher.data ? fetcher.data : null;
   const sending = fetcher.state !== "idle";
+  const [searchParams] = useSearchParams();
+  const typParam = searchParams.get("typ") ?? "";
+  const pakietParam = searchParams.get("pakiet") ?? "";
+  const prefill = prefillMessage(typParam, pakietParam);
 
   return (
     <main className="page">
@@ -112,12 +126,22 @@ export default function Kontakt() {
           <Crumbs items={[{ name: "Kontakt" }]} />
           <h1 className="soak d1">Kontakt - napisz do mnie</h1>
           <p className="lead soak d2">
-            Pytanie o wolny termin najszybciej załatwisz w{" "}
-            <Link to="/terminy" style={{ borderBottom: "1px solid var(--color-ink)" }}>
-              kalendarzu
-            </Link>
-            . Na wszystko inne - współprace, nietypowe pomysły, portrety - jest ten formularz albo
-            Instagram.
+            {CALENDAR_ENABLED ? (
+              <>
+                Pytanie o wolny termin najszybciej załatwisz w{" "}
+                <Link to="/terminy" style={{ borderBottom: "1px solid var(--color-ink)" }}>
+                  kalendarzu
+                </Link>
+                . Na wszystko inne - współprace, nietypowe pomysły, portrety - jest ten formularz albo
+                Instagram.
+              </>
+            ) : (
+              <>
+                Napisz, jaką datę i miejsce masz na myśli - sprawdzę termin i wrócę z odpowiedzią.
+                Tu też napiszesz o współpracy, nietypowym pomyśle albo portrecie. Wolisz Instagram?
+                Tam też odpisuję.
+              </>
+            )}
           </p>
         </div>
       </section>
@@ -145,6 +169,10 @@ export default function Kontakt() {
                     aria-hidden="true"
                     style={{ position: "absolute", left: -9999, width: 1, height: 1, opacity: 0 }}
                   />
+                  {typParam in TYPE_LABELS && <input type="hidden" name="typ" value={typParam} />}
+                  {pakietParam in PACKAGE_LABELS && (
+                    <input type="hidden" name="pakiet" value={pakietParam} />
+                  )}
                   <label htmlFor="k-names">Imię</label>
                   <input
                     id="k-names"
@@ -181,7 +209,8 @@ export default function Kontakt() {
                     id="k-message"
                     name="message"
                     rows={6}
-                    placeholder="O czym chcesz pogadać?"
+                    placeholder="Data, miejsce, rodzaj wydarzenia - albo po prostu o czym chcesz pogadać"
+                    defaultValue={prefill}
                     required
                     minLength={10}
                     aria-invalid={err?.field === "message" || undefined}
@@ -230,11 +259,13 @@ export default function Kontakt() {
                 <span>zwykle w 24 - 48 godzin</span>
               </li>
             </ul>
-            <div style={{ marginTop: 26 }}>
-              <Link className="btn ghost sm" to="/terminy">
-                Wolisz sprawdzić termin? &rarr;
-              </Link>
-            </div>
+            {CALENDAR_ENABLED && (
+              <div style={{ marginTop: 26 }}>
+                <Link className="btn ghost sm" to="/terminy">
+                  Wolisz sprawdzić termin? &rarr;
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </section>
