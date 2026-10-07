@@ -42,7 +42,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Malowanie na żywo na eventach - live art | alesierysuje",
     description:
-      "Live art na event firmowy: akwarelowe portrety gości na papierze pod branding. Pakiety od 4 500 zł, faktura VAT. Sprawdź wolne terminy.",
+      "Live art na event firmowy: akwarelowe portrety gości na papierze pod branding. Pakiety od 4 500 zł, faktura VAT. Zapytaj o termin.",
     path: "/malowanie-na-zywo-eventy",
     ogImage: "/og/eventy.png",
   });

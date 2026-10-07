@@ -44,7 +44,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: "Malowanie na żywo na wesele i eventy | alesierysuje",
     description:
-      "Malowanie na żywo na weselach i eventach: akwarelowe portrety gości do zabrania jeszcze tego wieczoru. Sprawdź wolne terminy i ceny.",
+      "Malowanie na żywo na weselach i eventach: akwarelowe portrety gości do zabrania jeszcze tego wieczoru. Ceny jawne, zapytaj o swój termin.",
     path: "/",
     ogImage: "/og/home.png",
   });
